@@ -2,17 +2,15 @@ package br.ucb.fct.endereco;
 
 public class Endereco {
 	private String enderecoResidencial, cidade, bairro, complemento, uf, cep;
-	private Integer numero, id;
+	private Integer numero, idEndereco;
 	
 	
-	
-
-	public Integer getId() {
-		return id;
+	public Integer getIdEndereco() {
+		return idEndereco;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setIdEndereco(Integer idEndereco) {
+		this.idEndereco = idEndereco;
 	}
 
 	public String getEnderecoResidencial() {
