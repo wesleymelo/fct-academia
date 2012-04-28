@@ -1,5 +1,6 @@
 package br.ucb.fct.exceptions;
 
+@SuppressWarnings("serial")
 public class DAOException extends RuntimeException{
 	private Exception exception;
 	private String msg;
