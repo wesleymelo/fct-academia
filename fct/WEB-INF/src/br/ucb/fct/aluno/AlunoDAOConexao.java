@@ -8,63 +8,69 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import br.ucb.fct.connection.MyConnection;
-import br.ucb.fct.endereco.Endereco;
+import br.ucb.fct.enuns.EnumTypePessoa;
 import br.ucb.fct.exceptions.*;
-import br.ucb.fct.telefone.Telefone;
-import br.ucb.fct.util.Util;
+import br.ucb.fct.pessoa.Pessoa;
+import br.ucb.fct.pessoa.PessoaDAO;
+import br.ucb.fct.util.Factory;
 
 public class AlunoDAOConexao implements AlunoDAO {
 
 	@Override
-	public void insert(Aluno aluno) throws DAOException {
-		
-		String sql = "INSERT INTO alunos (?,?,?,?,?,?,?,?,?);";
-		Connection con = MyConnection.init();
-
+	public boolean insert(Aluno aluno) throws DAOException {
+		String sql = "INSERT INTO alunos(idAluno, peso, altura) VALUES (?,?,?);";
+		Connection con = null;
+		PreparedStatement ps = null;
+		PessoaDAO dao = Factory.initPessoaDAO();
+		int retorno;
+		if(!dao.insert(getPessoaByAluno(aluno)))
+			return false;
 		try {
-			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(2,aluno.getNome());
-			ps.setString(3,aluno.getRg());
-			ps.setString(4,aluno.getCpf());
-			ps.setString(6,aluno.getStatus().toString());
-			ps.setBoolean(7,aluno.getStatus());
-			ps.setDouble(8,aluno.getAltura());
-			ps.setDouble(9,aluno.getPeso());
-			ps.execute();
+			con = MyConnection.init();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1,dao.findLastId());
+			ps.setDouble(2,aluno.getPeso());
+			ps.setDouble(3,aluno.getAltura());
+			retorno = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DAOException(e,"ERRO! INSERT no Banco ALUNOS. DATA("+new Date()+")");
-		}
-	}
-
-	@Override
-	public void delete(int id) throws DAOException {
-		String sql = "DELETE FROM aluno WHERE id = "+id+";";
-		Connection con = MyConnection.init();
-		Statement stm = null;
-		try {
-			stm = con.createStatement();
-			stm.execute(sql);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new DAOException(e,"ERRO! DELETE no Banco. DATA("+new Date()+")");
+			throw new DAOException(e,"ERRO! INSERT na TABELA ALUNOS. DATA("+new Date()+")");
 		}finally{
-			MyConnection.closeConnection(con, stm);
+			MyConnection.closeConnection(con, ps);
 		}
+		return retorno == 0 ? false: true;
+	}
+
+	@Override
+	public boolean delete(int id) throws DAOException {
+		String sql = "DELETE FROM alunos WHERE idAluno = ?;";
+		Connection con = MyConnection.init();
+		PreparedStatement ps = null;
+		int retorno;
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setObject(1,id);
+			retorno = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException(e,"ERRO! DELETE na TABELA MODALIDADES. DATA("+new Date()+")");
+		}finally{
+			MyConnection.closeConnection(con, ps);
+		}
+		return retorno == 0 ? false: Factory.initPessoaDAO().delete(id);
 		
 	}
 
 	@Override
-	public void update(Aluno aluno, int id) throws DAOException {
-		
-		
-		String sql = "UPDATE alunos SET id = ?, nome = ?, cpf = ?, dataNasc = ?, tipo = ?, status = ?, altura = ?, peso = ? ;";
-		Connection con = MyConnection.init();
-
+	public boolean update(Aluno aluno, int id) throws DAOException {
+		String sql = "UPDATE alunos SET peso = ?, altura = ?";
+		Connection con = null;
+		PreparedStatement ps = null;
+		int retorno = 0;
 		try {
-			PreparedStatement ps = con.prepareStatement(sql);
+			con = MyConnection.init();
+			ps = con.prepareStatement(sql);
 			ps.setObject(2,aluno.getNome());
 			ps.setObject(3,aluno.getCpf());
 			ps.setObject(6,aluno.getStatus());
@@ -73,14 +79,17 @@ public class AlunoDAOConexao implements AlunoDAO {
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DAOException(e,"ERRO! UPDATE no Banco. DATA("+new Date()+")");
+			throw new DAOException(e,"ERRO! UPDATE na TABELA ALUNOS. DATA("+new Date()+")");
+		}finally{
+			MyConnection.closeConnection(con, ps);
 		}
+		return retorno == 0 ? false: Factory.initPessoaDAO().update(getPessoaByAluno(aluno), id);
 		
 	}
 
 	@Override
 	public List<Aluno> selectAll() throws DAOException {
-		String sql = "SELECT * FROM alunos;";
+		String sql = "SELECT * FROM alunos, pessoas WHERE idAluno = idPessoa";
 		List<Aluno> alunos = new ArrayList<Aluno>();
 		Connection con = MyConnection.init();		
 		Statement stm = null;
@@ -92,7 +101,7 @@ public class AlunoDAOConexao implements AlunoDAO {
 				alunos.add(getAluno(rs));
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DAOException(e,"ERRO! SELECTALL no Banco. DATA("+new Date()+")");
+			throw new DAOException(e,"ERRO! SELECTALL na TABELA ALUNOS e PESSOAS. DATA("+new Date()+")");
 		}
 		return alunos;
 		
@@ -100,13 +109,33 @@ public class AlunoDAOConexao implements AlunoDAO {
 
 	@Override
 	public Aluno selectById(int id) throws DAOException {
-		return new Aluno();
+		String sql = "SELECT * FROM alunos, pessoas WHERE idAluno = idPessoa AND idAluno = ?";
+		Connection con = MyConnection.init();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Aluno aluno;
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+			rs = ps.executeQuery();
+			aluno = getAluno(rs);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException(e,"ERRO! SELECT_BY_ID na TABELA ALUNOS e PESSOAS. DATA("+new Date()+")");
+		}finally{
+			MyConnection.closeConnection(con, ps, rs);
+		}
+		return aluno;
 	}
 	
-	public static Aluno getAluno(ResultSet rs){
-		
-		return new Aluno();
-		
+	public static Aluno getAluno(ResultSet rs) throws SQLException{
+		return new Aluno(rs.getInt("idPessoa"), EnumTypePessoa.findEmunTypePessoaByNumber(rs.getInt("tipoPessoa")), rs.getDate("dataCadastro"), rs.getString("nome"), 
+				  rs.getString("cpf"), rs.getString("sexo").charAt(0), rs.getDate("dataNascimento"), rs.getString("rg"), rs.getString("orgaoEmissor"), rs.getString("naturalidade"), rs.getString("nacionalidade"),
+				  Factory.initEnderecoDAO().selectById(rs.getInt("idPessoa")), Factory.initTelefoneDAO().selectById(rs.getInt("idPessoa")), rs.getString("email"), rs.getBoolean("status"), rs.getDouble("peso"), rs.getDouble("altura"));
+	}
+	
+	public static Pessoa getPessoaByAluno(Aluno aluno){
+		return new Pessoa(aluno.getTipoPessoa(), aluno.getDataCadastro(), aluno.getNome(), aluno.getCpf(), aluno.getSexo(), aluno.getDataNascimento(), aluno.getRg(), aluno.getOrgaoEmissor(), aluno.getNaturalidade(), aluno.getNacionalidade(), aluno.getEndereco(), aluno.getTelefones(), aluno.getEmail(), aluno.getStatus());
 	}
 	
 
