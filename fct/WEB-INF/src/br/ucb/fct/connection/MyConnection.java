@@ -2,6 +2,7 @@ package br.ucb.fct.connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
@@ -33,7 +34,21 @@ public class MyConnection {
 				stm.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
-				//throw new DAOException(e, "Erro ao fechar conexão. DATA("+(new Date())+")");
+				throw new DAOException(e, "Erro ao fechar conexão. DATA("+(new Date())+")");
+			}
+			
+		}
+	}
+	
+	public static void closeConnection(Connection con, Statement stm, ResultSet rs) throws DAOException{
+		if(con != null && stm != null && rs != null){
+			try {
+				con.close();
+				stm.close();
+				rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+				throw new DAOException(e, "Erro ao fechar conexão. DATA("+(new Date())+")");
 			}
 			
 		}
