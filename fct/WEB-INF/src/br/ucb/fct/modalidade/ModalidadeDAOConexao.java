@@ -87,7 +87,7 @@ public class ModalidadeDAOConexao implements ModalidadeDAO{
 				modalidades.add(getModalidade(rs));
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DAOException(e,"ERRO! SELECTALL na TABELA MODALIDADES. DATA("+new Date()+")");
+			throw new DAOException(e,"ERRO! SELECT_ALL na TABELA MODALIDADES. DATA("+new Date()+")");
 		}finally{
 			MyConnection.closeConnection(con, stm, rs);
 		}
@@ -95,7 +95,7 @@ public class ModalidadeDAOConexao implements ModalidadeDAO{
 	}
 
 	@Override
-	public Modalidade findModalidadeById(int id) throws DAOException {
+	public Modalidade selectById(int id) throws DAOException {
 		String sql = "SELECT * FROM modalidades WHERE idModalidade = ?;";
 		Connection con = MyConnection.init();
 		PreparedStatement ps = null;
@@ -108,7 +108,9 @@ public class ModalidadeDAOConexao implements ModalidadeDAO{
 			modalidade = getModalidade(rs);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DAOException(e,"ERRO! FIND_MODALIDADE_BY_ID na TABELA MODALIDADES. DATA("+new Date()+")");
+			throw new DAOException(e,"ERRO! SELECT_BY_ID na TABELA MODALIDADES. DATA("+new Date()+")");
+		}finally{
+			MyConnection.closeConnection(con, ps, rs);
 		}
 		return modalidade;
 	}

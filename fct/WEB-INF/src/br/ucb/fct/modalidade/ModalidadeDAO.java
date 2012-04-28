@@ -10,6 +10,6 @@ public interface ModalidadeDAO {
 	public boolean delete(int id) throws DAOException;
 	public boolean updade(Modalidade modalidade) throws DAOException;
 	public List<Modalidade> selectAll() throws DAOException;
-	public Modalidade findModalidadeById(int id) throws DAOException;
+	public Modalidade selectById(int id) throws DAOException;
 	
 }
