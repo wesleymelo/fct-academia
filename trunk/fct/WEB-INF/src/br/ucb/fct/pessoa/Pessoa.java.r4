@@ -1,0 +1,20 @@
+package br.ucb.apptf.pessoa;
+
+import java.util.Date;
+
+import br.ucb.apptf.endereco.Endereco;
+
+public class Pessoa {
+	
+	private Integer id;
+	private Integer idTelefone;
+	private String nome;
+	private String cpf;
+	private Endereco endereco;
+	private Date dataNasc;
+	private Boolean status;
+	private Character tipo;
+	
+	
+		
+}
