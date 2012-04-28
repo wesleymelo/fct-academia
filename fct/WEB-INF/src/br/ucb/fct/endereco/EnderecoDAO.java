@@ -1,13 +1,15 @@
 package br.ucb.fct.endereco;
 
-import java.sql.SQLException;
+import java.util.List;
+
+import br.ucb.fct.exceptions.DAOException;
 
 public interface EnderecoDAO {
 
-	public void insert(Endereco endereco)  throws SQLException;
-	public void delete(Integer id) throws SQLException;
-	public void update(Endereco endereco, Integer id) throws SQLException;
-	public void selectAll() throws SQLException;
-	public void selectById(int id) throws SQLException;
+	public boolean insert(Endereco endereco)  throws DAOException;
+	public boolean delete(int id) throws DAOException;
+	public boolean update(Endereco endereco, int id) throws DAOException;
+	public List<Endereco> selectAll() throws DAOException;
+	public Endereco selectById(int id) throws DAOException;
 	
 }
