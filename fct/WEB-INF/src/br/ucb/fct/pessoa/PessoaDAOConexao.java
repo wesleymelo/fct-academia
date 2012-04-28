@@ -139,5 +139,23 @@ public class PessoaDAOConexao implements PessoaDAO {
 		return pessoa;
 		
 	}
+	
+	public int findLastId() throws DAOException {
+		String sql = "SELECT MAX(idPessoa)FROM pessoas as id";
+		Connection con = MyConnection.init();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		int lastId = -1;
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			lastId = rs.getInt("id");
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException(e,"ERRO! FINDLASTID na TABELA PESSOAS. DATA("+new java.util.Date()+")");
+		}
+		return lastId;
+		
+	}
 
 }
