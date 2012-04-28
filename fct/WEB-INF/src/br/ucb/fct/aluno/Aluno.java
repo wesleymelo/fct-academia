@@ -1,9 +1,29 @@
 package br.ucb.fct.aluno;	
 
+import java.util.Date;
+import java.util.List;
+
+import br.ucb.fct.endereco.Endereco;
+import br.ucb.fct.enuns.EnumTypePessoa;
 import br.ucb.fct.pessoa.Pessoa;
+import br.ucb.fct.telefone.Telefone;
 
 public class Aluno extends Pessoa{
 	
+	public Aluno(Integer idPessoa, EnumTypePessoa tipoPessoa,
+			Date dataCadastro, String nome, String cpf, Character sexo,
+			Date dataNascimento, String rg, String orgaoEmissor,
+			String naturalidade, String nacionalidade, Endereco endereco,
+			List<Telefone> telefones, String email, Boolean status) {
+		super(idPessoa, tipoPessoa, dataCadastro, nome, cpf, sexo, dataNascimento, rg,
+				orgaoEmissor, naturalidade, nacionalidade, endereco, telefones, email,
+				status);
+	}
+
+	public Aluno() {
+		super();
+	}
+
 	private Double peso;
 	private Double altura;
 	
