@@ -18,7 +18,7 @@ public class Modalidade {
 		this.descricao = descricao;
 	}
 	
-	private Modalidade(Integer id, String descricao) {
+	public Modalidade(Integer id, String descricao) {
 		setId(id);
 		setDescricao(descricao);
 	}
@@ -46,6 +46,4 @@ public class Modalidade {
 			return false;
 		return true;
 	}
-	
-	
 }
