@@ -1,36 +1,142 @@
 package br.ucb.fct.pessoa;
 
-import br.ucb.fct.connection.DAOException;
+import java.sql.Connection;
+import br.ucb.fct.enuns.EnumTypePessoa;
+import br.ucb.fct.exceptions.DAOException;
+import br.ucb.fct.util.Factory;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import br.ucb.fct.connection.MyConnection;
 
 public class PessoaDAOConexao implements PessoaDAO {
 
 	@Override
-	public void insert(Pessoa pessoa) throws DAOException {
-		// TODO Auto-generated method stub
+	public boolean insert(Pessoa pessoa) throws DAOException {
+		String sql = "INSERT INTO pessoas(idPessoa,tipoPessoa, dataCadastro, nome, cpf, sexo, rg, orgaoEmissor, " +
+				"idEndereco, email, nacionalidade, naturalidade, status) VALUES(null,?,?,?,?,?,?,?,?,?,?,?,?);";
+		Connection con = MyConnection.init();
+		int retorno;
+		PreparedStatement ps;
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt(1,pessoa.getTipoPessoa().getNumber());
+			ps.setDate(2, (Date) pessoa.getDataCadastro());
+			ps.setString(3, pessoa.getNome());
+			ps.setString(4, pessoa.getCpf());
+			ps.setString(5, pessoa.getSexo().toString());
+			ps.setString(6, pessoa.getRg());
+			ps.setString(7, pessoa.getOrgaoEmissor());
+			ps.setInt(8, pessoa.getEndereco().getIdEndereco());
+			ps.setString(9, pessoa.getEmail());
+			ps.setString(10, pessoa.getNacionalidade());
+			ps.setString(11, pessoa.getNaturalidade());
+			ps.setBoolean(12, pessoa.getStatus());
+			retorno = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException(e,"ERRO! INSERT na TABELA PESSOAS. DATA("+new java.util.Date()+")");
+		}
+		return retorno == 0 ? false: true;
+	}
+
+	@Override
+	public boolean delete(int id) throws DAOException {
+		String sql = "DELETE FROM pessoas WHERE idPessoa = ?";
+		Connection con = MyConnection.init();
+		int retorno;
+		PreparedStatement ps;
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt(1,id);
+			retorno = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException(e,"ERRO! DELETE na TABELA PESSOAS. DATA("+new java.util.Date()+")");
+		}
+		return retorno == 0 ? false: true;
+	}
+
+	@Override
+	public boolean update(Pessoa pessoa, int id) throws DAOException {
+		String sql = "UPDATE pessoas SET idPessoa,tipoPessoa, dataCadastro, nome, cpf, sexo, rg, orgaoEmissor, " +
+				"idEndereco, email, nacionalidade, naturalidade, status) VALUES(null,?,?,?,?,?,?,?,?,?,?,?,?);";
+		Connection con = MyConnection.init();
+		int retorno;
+		PreparedStatement ps;
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt(1,pessoa.getTipoPessoa().getNumber());
+			ps.setDate(2, (Date) pessoa.getDataCadastro());
+			ps.setString(3, pessoa.getNome());
+			ps.setString(4, pessoa.getCpf());
+			ps.setString(5, pessoa.getSexo().toString());
+			ps.setString(6, pessoa.getRg());
+			ps.setString(7, pessoa.getOrgaoEmissor());
+			ps.setInt(8, pessoa.getEndereco().getIdEndereco());
+			ps.setString(9, pessoa.getEmail());
+			ps.setString(10, pessoa.getNacionalidade());
+			ps.setString(11, pessoa.getNaturalidade());
+			ps.setBoolean(12, pessoa.getStatus());
+			retorno = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException(e,"ERRO! INSERT na TABELA PESSOAS. DATA("+new java.util.Date()+")");
+		}
+		return retorno == 0 ? false: true;
 		
 	}
 
 	@Override
-	public void delete(int id) throws DAOException {
-		// TODO Auto-generated method stub
+	public List<Pessoa> selectAll() throws DAOException {
+		String sql = "SELECT * FROM pessoas";
+		Connection con = MyConnection.init();
+		Statement stm = null;
+		ResultSet rs = null;
+		List<Pessoa> pessoas = new ArrayList<Pessoa>();
+		try {
+			stm = con.createStatement();
+			rs = stm.executeQuery(sql);
+			while(rs.next())
+				pessoas.add(getPessoa(rs));
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException(e,"ERRO! SELECTALL na TABELA PESSOAS. DATA("+new java.util.Date()+")");
+		}finally{
+			MyConnection.closeConnection(con, stm, rs);
+		}
+		return pessoas;
 		
 	}
 
-	@Override
-	public void update(Pessoa pessoa, int id) throws DAOException {
-		// TODO Auto-generated method stub
-		
+	public Pessoa getPessoa(ResultSet rs) throws SQLException {
+		return new Pessoa(rs.getInt("idPessoa"), EnumTypePessoa.findEmunTypePessoaByNumber(rs.getInt("tipoPessoa")), rs.getDate("dataCadastro"), rs.getString("nome"), 
+						  rs.getString("cpf"), rs.getString("sexo").charAt(0), rs.getDate("dataNascimento"), rs.getString("rg"), rs.getString("orgaoEmissor"), rs.getString("naturalidade"), rs.getString("nacionalidade"),
+						  Factory.initEnderecoDAO().selectById(rs.getInt("idPessoa")), Factory.initTelefoneDAO().selectById(rs.getInt("idPessoa")), rs.getString("email"), rs.getBoolean("status"));
 	}
 
 	@Override
-	public void selectAll() throws DAOException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void selectById(int id) throws DAOException {
-		// TODO Auto-generated method stub
+	public Pessoa selectById(int id) throws DAOException {
+		String sql = "SELECT * FROM pessoas WHERE idPessoa = ?;";
+		Connection con = MyConnection.init();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Pessoa pessoa;
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+			rs = ps.executeQuery();
+			pessoa = getPessoa(rs);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException(e,"ERRO! FIND_PESSOA_BY_ID na TABELA PESSOAS. DATA("+new java.util.Date()+")");
+		}
+		return pessoa;
 		
 	}
 

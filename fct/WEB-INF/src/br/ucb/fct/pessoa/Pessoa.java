@@ -4,15 +4,14 @@ import java.util.Date;
 import java.util.List;
 
 import br.ucb.fct.endereco.Endereco;
+import br.ucb.fct.enuns.EnumTypePessoa;
 import br.ucb.fct.telefone.Telefone;
 
 public class Pessoa {
-	
 
-	private Integer id;
-	private Telefone telefone;
+
 	private Integer idPessoa;
-	private Integer tipoPessoa;
+	private EnumTypePessoa tipoPessoa;
 	private Date dataCadastro;
 	private String nome;
 	private String cpf;
@@ -23,51 +22,51 @@ public class Pessoa {
 	private String naturalidade;
 	private String nacionalidade;
 	private Endereco endereco;
-	private String dataNasc;
 	private List<Telefone> telefones;
 	private String email;
 	private Boolean status;
 	
+	
+	
+	public Pessoa(Integer idPessoa, EnumTypePessoa tipoPessoa, Date dataCadastro, String nome,
+			String cpf, Character sexo, Date dataNascimento, String rg,
+			String orgaoEmissor, String naturalidade, String nacionalidade,
+			Endereco endereco, List<Telefone> telefones,
+			String email, Boolean status) {
+		setIdPessoa(idPessoa);
+		setTipoPessoa(tipoPessoa);
+		setDataCadastro(dataCadastro);
+		setNome(nome);
+		setCpf(cpf);
+		setSexo(sexo);
+		setDataNascimento(dataNascimento);
+		setRg(rg);
+		setOrgaoEmissor(orgaoEmissor);
+		setNaturalidade(naturalidade);
+		setNacionalidade(nacionalidade);
+		setTelefones(telefones);
+		setEndereco(endereco);
+		setEmail(email);
+		setStatus(status);
+
+	}
+
 	public Integer getIdPessoa() {
 		return idPessoa;
-	}
-	
-	public Integer getId() {
-		return id;
-	}
-	
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	
-	public Telefone getTelefone() {
-		return telefone;
-	}
-	
-	public void setTelefone(Telefone telefone) {
-		this.telefone = telefone;
-	}
-	
-	public String getDataNasc() {
-		return dataNasc;
-	}
-	
-	public void setDataNasc(String dataNasc) {
-		this.dataNasc = dataNasc;
 	}
 	
 	public void setIdPessoa(Integer idPessoa) {
 		this.idPessoa = idPessoa;
 	}
 	
-	public Integer getTipoPessoa() {
+	public EnumTypePessoa getTipoPessoa() {
 		return tipoPessoa;
 	}
-	
-	public void setTipoPessoa(Integer tipoPessoa) {
+
+	public void setTipoPessoa(EnumTypePessoa tipoPessoa) {
 		this.tipoPessoa = tipoPessoa;
 	}
-	
+
 	public Date getDataCadastro() {
 		return dataCadastro;
 	}
