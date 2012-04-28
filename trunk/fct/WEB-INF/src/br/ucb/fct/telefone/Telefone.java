@@ -4,16 +4,18 @@ import br.ucb.fct.enuns.EnumTypeFone;
 
 public class Telefone {
 	
-	private Integer id;
+	private Integer idTelefone;
+	private Integer idPessoa;
 	private String numero;
 	private String ddd;
 	private EnumTypeFone tipo;
 	
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
+	public Telefone(Integer idTelefone, Integer idPessoa, String numero, String ddd, EnumTypeFone tipo) {
+		setIdTelefone(idTelefone);
+		setIdPessoa(idPessoa);
+		setNumero(numero);
+		setDdd(ddd);
+		setTipo(tipo);
 	}
 	public String getNumero() {
 		return numero;
@@ -21,6 +23,21 @@ public class Telefone {
 	public void setNumero(String numero) {
 		this.numero = numero;
 	}
+	
+	public Integer getIdPessoa() {
+		return idPessoa;
+	}
+	public void setIdPessoa(Integer idPessoa) {
+		this.idPessoa = idPessoa;
+	}
+	
+	public Integer getIdTelefone() {
+		return idTelefone;
+	}
+	public void setIdTelefone(Integer idTelefone) {
+		this.idTelefone = idTelefone;
+	}
+	
 	public String getDdd() {
 		return ddd;
 	}
