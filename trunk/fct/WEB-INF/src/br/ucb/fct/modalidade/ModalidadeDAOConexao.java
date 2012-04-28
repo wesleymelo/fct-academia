@@ -66,7 +66,7 @@ public class ModalidadeDAOConexao implements ModalidadeDAO{
 
 	@Override
 	public List<Modalidade> selectAll() throws DAOException {
-		// TODO Auto-generated method stub
+		String sql = "SELECT * FROM modalidades;";
 		return null;
 	}
 
