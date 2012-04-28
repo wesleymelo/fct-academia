@@ -109,7 +109,7 @@ public class EnderecoDAOConexao implements EnderecoDAO {
 
 	@Override
 	public Endereco selectById(int id) throws DAOException {
-		String sql = "SELECT * FROM enderecos WHERE idEndereco = ?;";
+		String sql = "SELECT * FROM enderecos e, pessoas p  WHERE e.idEndereco = p.idEndereco AND p.idPessoa = ?;";
 		Connection con = MyConnection.init();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
