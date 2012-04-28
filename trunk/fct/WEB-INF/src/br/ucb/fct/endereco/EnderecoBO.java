@@ -8,7 +8,7 @@ public class EnderecoBO {
 	private EnderecoDAO enderecoDAO;
 
 	public EnderecoBO() {
-		this.enderecoDAO = Factory.criaEnderecoDAO();
+		this.enderecoDAO = Factory.initEnderecoDAO();
 	}	
 	
 	public void insert(Endereco endereco) throws SQLException{
