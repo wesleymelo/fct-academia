@@ -25,11 +25,9 @@ public class AlunoDAOConexao implements AlunoDAO {
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1,aluno.getId());
 			ps.setString(2,aluno.getNome());
 			ps.setString(3,aluno.getRg());
 			ps.setString(4,aluno.getCpf());
-			ps.setString(5,Util.formatDateIn(aluno.getDataNasc())); 
 			ps.setString(6,aluno.getStatus().toString());
 			ps.setBoolean(7,aluno.getStatus());
 			ps.setDouble(8,aluno.getAltura());
@@ -67,11 +65,8 @@ public class AlunoDAOConexao implements AlunoDAO {
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setObject(1,aluno.getId());
 			ps.setObject(2,aluno.getNome());
 			ps.setObject(3,aluno.getCpf());
-			ps.setObject(4,Util.formatDateIn(aluno.getDataNasc())); 
-			ps.setObject(5,aluno.getTipo().toString());
 			ps.setObject(6,aluno.getStatus());
 			ps.setObject(7,aluno.getAltura());
 			ps.setObject(8,aluno.getPeso());
@@ -104,8 +99,8 @@ public class AlunoDAOConexao implements AlunoDAO {
 	}
 
 	@Override
-	public void selectById(int id) throws DAOException {
-		
+	public Aluno selectById(int id) throws DAOException {
+		return new Aluno();
 	}
 	
 	public static Aluno getAluno(ResultSet rs){
