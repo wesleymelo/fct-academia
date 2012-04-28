@@ -11,4 +11,5 @@ public interface PessoaDAO {
 	public boolean update(Pessoa pessoa, int id) throws DAOException;
 	public List<Pessoa> selectAll() throws DAOException;
 	public Pessoa selectById(int id) throws DAOException;
+	public int findLastId() throws DAOException;
 }

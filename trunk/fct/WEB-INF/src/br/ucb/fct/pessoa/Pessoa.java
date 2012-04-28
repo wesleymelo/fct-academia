@@ -51,9 +51,25 @@ public class Pessoa {
 
 	}
 
-	public Pessoa() {
-		// TODO Auto-generated constructor stub
-	}
+	public Pessoa(EnumTypePessoa tipoPessoa, Date dataCadastro, String nome,
+			String cpf, Character sexo, Date dataNascimento, String rg,
+			String orgaoEmissor, String naturalidade, String nacionalidade,
+			Endereco endereco, List<Telefone> telefones, String email,
+			Boolean status) {
+		setTipoPessoa(tipoPessoa);
+		setDataCadastro(dataCadastro);
+		setNome(nome);
+		setCpf(cpf);
+		setSexo(sexo);
+		setDataNascimento(dataNascimento);
+		setRg(rg);
+		setOrgaoEmissor(orgaoEmissor);
+		setNaturalidade(naturalidade);
+		setNacionalidade(nacionalidade);
+		setTelefones(telefones);
+		setEndereco(endereco);
+		setEmail(email);
+		setStatus(status);	}
 
 	public Integer getIdPessoa() {
 		return idPessoa;
