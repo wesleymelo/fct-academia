@@ -1,0 +1,91 @@
+package br.ucb.apptf.pessoa;
+
+import java.util.Date;
+
+import br.ucb.apptf.endereco.Endereco;
+import br.ucb.apptf.telefone.Telefone;
+
+public class Pessoa {
+	
+	private Integer id;
+	private Telefone telefone;
+	private String nome;
+	private String cpf;
+	private Endereco endereco;
+	private String dataNasc;
+	private Boolean status;
+	private Character tipo;
+	private String rg;
+	
+	
+	public String getRg() {
+		return rg;
+	}
+
+	public void setRg(String rg) {
+		this.rg = rg;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+	
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
+	public Telefone getTelefone() {
+		return telefone;
+	}
+	
+	public void setTelefone(Telefone telefone) {
+		this.telefone = telefone;
+	}
+	
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public String getCpf() {
+		return cpf;
+	}
+	
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+	
+	public Endereco getEndereco() {
+		return endereco;
+	}
+	
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+	
+	public String getDataNasc() {
+		return dataNasc;
+	}
+	
+	public void setDataNasc(String dataNasc) {
+		this.dataNasc = dataNasc;
+	}
+	
+	public Boolean getStatus() {
+		return status;
+	}
+	
+	public void setStatus(Boolean status) {
+		this.status = status;
+	}
+	
+	public Character getTipo() {
+		return tipo;
+	}
+	
+	public void setTipo(Character tipo) {
+		this.tipo = tipo;
+	}
+		
+}
