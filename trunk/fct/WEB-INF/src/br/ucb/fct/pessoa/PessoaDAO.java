@@ -2,7 +2,7 @@ package br.ucb.fct.pessoa;
 
 import java.util.List;
 
-import br.ucb.fct.connection.DAOException;
+import br.ucb.fct.exceptions.DAOException;
 import br.ucb.fct.pessoa.Pessoa;
 
 public interface PessoaDAO {
