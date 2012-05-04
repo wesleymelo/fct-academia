@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import br.ucb.fct.endereco.Endereco;
+import br.ucb.fct.enuns.EnumTypeSexo;
 import br.ucb.fct.enuns.EnumTypePessoa;
 import br.ucb.fct.telefone.Telefone;
 
@@ -15,7 +16,7 @@ public class Pessoa {
 	private Date dataCadastro;
 	private String nome;
 	private String cpf;
-	private Character sexo; 
+	private EnumTypeSexo sexo; 
 	private Date dataNascimento;
 	private String rg;
 	private String orgaoEmissor;
@@ -29,7 +30,7 @@ public class Pessoa {
 	
 	
 	public Pessoa(Integer idPessoa, EnumTypePessoa tipoPessoa, Date dataCadastro, String nome,
-			String cpf, Character sexo, Date dataNascimento, String rg,
+			String cpf, EnumTypeSexo sexo, Date dataNascimento, String rg,
 			String orgaoEmissor, String naturalidade, String nacionalidade,
 			Endereco endereco, List<Telefone> telefones,
 			String email, Boolean status) {
@@ -52,7 +53,7 @@ public class Pessoa {
 	}
 
 	public Pessoa(EnumTypePessoa tipoPessoa, Date dataCadastro, String nome,
-			String cpf, Character sexo, Date dataNascimento, String rg,
+			String cpf, EnumTypeSexo sexo, Date dataNascimento, String rg,
 			String orgaoEmissor, String naturalidade, String nacionalidade,
 			Endereco endereco, List<Telefone> telefones, String email,
 			Boolean status) {
@@ -111,11 +112,11 @@ public class Pessoa {
 		this.cpf = cpf;
 	}
 	
-	public Character getSexo() {
+	public EnumTypeSexo getSexo() {
 		return sexo;
 	}
 	
-	public void setSexo(Character sexo) {
+	public void setSexo(EnumTypeSexo sexo) {
 		this.sexo = sexo;
 	}
 	
