@@ -2,7 +2,7 @@ package br.ucb.fct.aluno;
 
 import java.util.List;
 
-import br.ucb.fct.connection.DAOException;
+import br.ucb.fct.exceptions.DAOException;
 
 public interface AlunoDAO {
 	public boolean insert(Aluno aluno)  throws DAOException;
