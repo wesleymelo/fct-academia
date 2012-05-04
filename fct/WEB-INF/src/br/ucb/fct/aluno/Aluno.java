@@ -5,6 +5,7 @@ import java.util.List;
 
 import br.ucb.fct.endereco.Endereco;
 import br.ucb.fct.enuns.EnumTypePessoa;
+import br.ucb.fct.enuns.EnumTypeSexo;
 import br.ucb.fct.pessoa.Pessoa;
 import br.ucb.fct.telefone.Telefone;
 
@@ -14,7 +15,7 @@ public class Aluno extends Pessoa{
 	private Double altura;
 	
 	public Aluno(Integer idPessoa, EnumTypePessoa tipoPessoa, Date dataCadastro, String nome,
-			String cpf, Character sexo, Date dataNascimento, String rg,
+			String cpf, EnumTypeSexo sexo, Date dataNascimento, String rg,
 			String orgaoEmissor, String naturalidade, String nacionalidade,
 			Endereco endereco, List<Telefone> telefones,
 			String email, Boolean status, Double peso, Double altura) {
