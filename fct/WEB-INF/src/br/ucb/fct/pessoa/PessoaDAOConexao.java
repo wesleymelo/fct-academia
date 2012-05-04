@@ -2,6 +2,7 @@ package br.ucb.fct.pessoa;
 
 import java.sql.Connection;
 import br.ucb.fct.enuns.EnumTypePessoa;
+import br.ucb.fct.enuns.EnumTypeSexo;
 import br.ucb.fct.exceptions.DAOException;
 import br.ucb.fct.util.Factory;
 import java.sql.Date;
@@ -29,7 +30,7 @@ public class PessoaDAOConexao implements PessoaDAO {
 			ps.setDate(2, (Date) pessoa.getDataCadastro());
 			ps.setString(3, pessoa.getNome());
 			ps.setString(4, pessoa.getCpf());
-			ps.setString(5, pessoa.getSexo().toString());
+			ps.setString(5, pessoa.getSexo().getCodigo().toString());
 			ps.setString(6, pessoa.getRg());
 			ps.setString(7, pessoa.getOrgaoEmissor());
 			ps.setInt(8, pessoa.getEndereco().getIdEndereco());
@@ -75,7 +76,7 @@ public class PessoaDAOConexao implements PessoaDAO {
 			ps.setDate(2, (Date) pessoa.getDataCadastro());
 			ps.setString(3, pessoa.getNome());
 			ps.setString(4, pessoa.getCpf());
-			ps.setString(5, pessoa.getSexo().toString());
+			ps.setString(5, pessoa.getSexo().getCodigo().toString());
 			ps.setString(6, pessoa.getRg());
 			ps.setString(7, pessoa.getOrgaoEmissor());
 			ps.setInt(8, pessoa.getEndereco().getIdEndereco());
@@ -116,7 +117,7 @@ public class PessoaDAOConexao implements PessoaDAO {
 
 	public Pessoa getPessoa(ResultSet rs) throws SQLException {
 		return new Pessoa(rs.getInt("idPessoa"), EnumTypePessoa.findEmunTypePessoaByNumber(rs.getInt("tipoPessoa")), rs.getDate("dataCadastro"), rs.getString("nome"), 
-						  rs.getString("cpf"), rs.getString("sexo").charAt(0), rs.getDate("dataNascimento"), rs.getString("rg"), rs.getString("orgaoEmissor"), rs.getString("naturalidade"), rs.getString("nacionalidade"),
+						  rs.getString("cpf"), EnumTypeSexo.findByCodigo(rs.getString("sexo").charAt(0)), rs.getDate("dataNascimento"), rs.getString("rg"), rs.getString("orgaoEmissor"), rs.getString("naturalidade"), rs.getString("nacionalidade"),
 						  Factory.initEnderecoDAO().selectById(rs.getInt("idPessoa")), Factory.initTelefoneDAO().selectById(rs.getInt("idPessoa")), rs.getString("email"), rs.getBoolean("status"));
 	}
 
