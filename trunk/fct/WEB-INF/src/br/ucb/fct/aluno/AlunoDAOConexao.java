@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.List;
 import br.ucb.fct.connection.MyConnection;
 import br.ucb.fct.enuns.EnumTypePessoa;
+import br.ucb.fct.enuns.EnumTypeSexo;
 import br.ucb.fct.exceptions.*;
 import br.ucb.fct.pessoa.Pessoa;
 import br.ucb.fct.pessoa.PessoaDAO;
@@ -130,7 +131,7 @@ public class AlunoDAOConexao implements AlunoDAO {
 	
 	public static Aluno getAluno(ResultSet rs) throws SQLException{
 		return new Aluno(rs.getInt("idPessoa"), EnumTypePessoa.findEmunTypePessoaByNumber(rs.getInt("tipoPessoa")), rs.getDate("dataCadastro"), rs.getString("nome"), 
-				  rs.getString("cpf"), rs.getString("sexo").charAt(0), rs.getDate("dataNascimento"), rs.getString("rg"), rs.getString("orgaoEmissor"), rs.getString("naturalidade"), rs.getString("nacionalidade"),
+				  rs.getString("cpf"), EnumTypeSexo.findByCodigo(rs.getString("sexo").charAt(0)), rs.getDate("dataNascimento"), rs.getString("rg"), rs.getString("orgaoEmissor"), rs.getString("naturalidade"), rs.getString("nacionalidade"),
 				  Factory.initEnderecoDAO().selectById(rs.getInt("idPessoa")), Factory.initTelefoneDAO().selectById(rs.getInt("idPessoa")), rs.getString("email"), rs.getBoolean("status"), rs.getDouble("peso"), rs.getDouble("altura"));
 	}
 	
