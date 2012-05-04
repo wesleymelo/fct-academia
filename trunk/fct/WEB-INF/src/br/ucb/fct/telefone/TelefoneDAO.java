@@ -1,7 +1,7 @@
 package br.ucb.fct.telefone;
 
 import java.util.List;
-import br.ucb.fct.connection.DAOException;
+import br.ucb.fct.exceptions.DAOException;
 
 public interface TelefoneDAO {
 	
