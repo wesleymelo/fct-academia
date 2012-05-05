@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import br.ucb.fct.acesso.Acesso;
 import br.ucb.fct.enuns.EnumAcesso;
+import br.ucb.gameStore.model.beans.Usuario;
 
 public class Filtro implements Filter{
 
@@ -20,23 +21,20 @@ public class Filtro implements Filter{
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response,
-			FilterChain chain) throws IOException, ServletException {
+			FilterChain filtro) throws IOException, ServletException {
 		
 		
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse resp = (HttpServletResponse) response;
 		
-		System.out.println("COCOCOCOCOCOCOCOCOCO");
-		
 		Acesso acesso = (Acesso) req.getSession().getAttribute(EnumAcesso.ACESSO.getChave());
-	
-		System.out.println(acesso);
-		
-		if(acesso!=null){
-			chain.doFilter(req,resp);
+			
+		if(acesso==null){
+			resp.sendRedirect(req.getContextPath()+"/admin/index.jsp");	
 			return;
 		}
-		resp.sendRedirect(req.getContextPath()+"/index.jsp");
+		filtro.doFilter(req,resp);
+		
 			
 		
 	}
