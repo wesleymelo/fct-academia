@@ -5,7 +5,7 @@
         	<div class="container_12">
             	<div class="grid_12">
                 	<!-- You can change the copyright line for your own -->
-                	<p>&copy; UCB - Todos os direitos reservados</p>
+                	<p>&copy; 2012 - All rights reserved.</p>
         		</div>
             </div>
             <div style="clear:both;"></div>
