@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<title>Magic Admin. Advanced, Beautiful and Customizable Admin Template.</title>
+		<title>.:: FCT - Fl&aacute;vio Carvalho Team ::.</title>
        
         <!-- CSS Reset -->
 		<link rel="stylesheet" type="text/css" href="css/reset.css" tppabs="http://www.xooom.pl/work/magicadmin/css/reset.css" media="screen" />
@@ -35,6 +35,11 @@
 		<!-- JQuery thickbox plugin script -->
 		<script type="text/javascript" src="js/thickbox.js" tppabs="http://www.xooom.pl/work/magicadmin/js/thickbox.js"></script>
         
+        <!-- JQuery thickbox plugin script -->
+		<script type="text/javascript" src="js/jquery.masked-input-plugin.js"></script>
+         
+       
+        
 	</head>
 	<body>
     	<!-- Header -->
@@ -50,19 +55,29 @@
             <!-- Password -->
             <div class="grid_login">
                 <div class="module">
-                     <h2><span>Login</span></h2>
+                     <h2><span><center>Realize seu Login</center></span></h2>
                         
                      <div class="module-body">
                         <form action="" method="post">
                             <p>
-                                <label>Informe seu usu&aacute;rio:</label>
-                                <input class="input-long" type="text" />
+                                <label>CPF:</label>
+                                <input class="input-short" type="text" name="cpf" id="cpf" onKeyPress="return txtBoxFormat(document.form, 'cpf', '999.999.999-99', event);" size="15" maxlength="14" />
+                            	<span class="notification-input ni-correct">This is correct, thanks!</span>
+                            	<script>
+									jQuery(function($){
+		       							$("#cpf").mask("999.999.999-99");
+		       						});
+								</script>
                             </p>
                             
                             <p>
-                                <label>Informe sua senha:</label>
+                                <label>Senha:</label>
                                 <input class="input-short" type="password" />
+                                <span class="notification-input ni-error">Sorry, try again.</span>
                             </p>
+                            
+                       
+                            
                             
                             <fieldset>
                                 <input class="submit-green" type="submit" value="Entrar" /> 
