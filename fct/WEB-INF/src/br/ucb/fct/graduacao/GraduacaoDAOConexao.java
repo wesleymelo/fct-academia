@@ -12,7 +12,7 @@ import java.util.List;
 import br.ucb.fct.connection.MyConnection;
 import br.ucb.fct.exceptions.DAOException;
 import br.ucb.fct.pessoa.Pessoa;
-import br.ucb.fct.turmas.Turma;
+import br.ucb.fct.turma.Turma;
 
 public class GraduacaoDAOConexao implements GraduacaoDAO {
 
@@ -103,18 +103,20 @@ public class GraduacaoDAOConexao implements GraduacaoDAO {
 		Connection con = MyConnection.init();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		Graduacao graduacao;
+		Graduacao graduacao = null;
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, id);
 			rs = ps.executeQuery();
-			graduacao = getGraduacao(rs);
+			if(rs.first())
+				graduacao = getGraduacao(rs);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DAOException(e,"ERRO! FIND_PESSOA_BY_ID na TABELA GRADUACOES. DATA("+new java.util.Date()+")");
+			throw new DAOException(e,"ERRO! SELECT_BY_ID na TABELA GRADUACOES. DATA("+new java.util.Date()+")");
 		}
 		return graduacao;
 	}
+	
 	public Graduacao getGraduacao(ResultSet rs) throws SQLException{
 		return new Graduacao(rs.getInt(1), rs.getInt(2), rs.getNString(3));
 	}
