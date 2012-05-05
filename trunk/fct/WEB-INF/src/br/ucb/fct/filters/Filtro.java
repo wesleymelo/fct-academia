@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import br.ucb.fct.acesso.Acesso;
 import br.ucb.fct.enuns.EnumAcesso;
-import br.ucb.gameStore.model.beans.Usuario;
 
 public class Filtro implements Filter{
 
