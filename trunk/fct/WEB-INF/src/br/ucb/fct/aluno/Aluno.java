@@ -19,6 +19,7 @@ public class Aluno extends Pessoa{
 			String orgaoEmissor, String naturalidade, String nacionalidade,
 			Endereco endereco, List<Telefone> telefones,
 			String email, Boolean status, Double peso, Double altura) {
+		
 		super(idPessoa,tipoPessoa,dataCadastro,nome, cpf, sexo, dataNascimento, rg, 
 			  orgaoEmissor,  naturalidade,  nacionalidade, endereco, telefones,email,  status);
 		setAltura(altura);
