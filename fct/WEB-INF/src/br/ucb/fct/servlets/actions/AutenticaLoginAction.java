@@ -19,11 +19,11 @@ public class AutenticaLoginAction implements Action{
 		String url = "";
 		if(isValida(req)){
 			try{
-				Acesso acesso = AcessoBO.findByUsuarioAndSenha(req.getParameter(EnumAcesso.USUARIO.toString()), Encrypter.encripta(EnumAcesso.SENHA.toString()));
+				Acesso acesso = AcessoBO.findByUsuarioAndSenha(req.getParameter(EnumAcesso.LOGIN.getChave()), Encrypter.encripta(EnumAcesso.SENHA.toString()));
 				if(acesso != null){
 					HttpSession session = req.getSession(true);
 					session.setAttribute(EnumAcesso.ACESSO.toString(), acesso);
-					url = "index.do";	
+					url = "index.jsp";
 				}
 				else{
 					req.setAttribute(EnumTypeErro.ERROLOGAR.getChave(), EnumTypeErro.ERROLOGAR.getDescricao());
