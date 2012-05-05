@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<title>Magic Admin. Advanced, Beautiful and Customizable Admin Template.</title>
+		<title>.:: FCT - Fl&aacute;vio Carvalho Team ::.</title>
        
         <!-- CSS Reset -->
 		<link rel="stylesheet" type="text/css" href="css/reset.css" tppabs="http://www.xooom.pl/work/magicadmin/css/reset.css" media="screen" />
@@ -52,6 +52,9 @@
         
 		<!-- JQuery thickbox plugin script -->
 		<script type="text/javascript" src="js/thickbox.js" tppabs="http://www.xooom.pl/work/magicadmin/js/thickbox.js"></script>
+        
+        <!-- JQuery thickbox plugin script -->
+		<script type="text/javascript" src="js/jquery.masked-input-plugin.js"></script>
         
         <!-- Initiate WYIWYG text area -->
 		<script type="text/javascript">
@@ -139,7 +142,7 @@
                                 <ul id="nav">
                                     <li id="current"><a href="">Painel de Controle</a></li>
                                     <li><a href="">Outro</a></li>
-                                </ul>z
+                                </ul>
                             </div>
                             <div id="logo_bottom"></div>
                         </div><!-- End. #Logo -->
