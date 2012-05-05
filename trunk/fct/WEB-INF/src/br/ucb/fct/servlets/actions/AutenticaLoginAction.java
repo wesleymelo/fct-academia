@@ -38,8 +38,8 @@ public class AutenticaLoginAction implements Action{
 	}
 
 	private boolean isValida(HttpServletRequest req) {
-		Acesso acesso = (Acesso) req.getAttribute(EnumAcesso.ACESSO.toString());
-		if(!Validator.isStringValid(acesso.getSenha()) || !Validator.isStringValid(acesso.getUsuario())){
+		Acesso acesso = (Acesso) req.getAttribute(EnumAcesso.ACESSO.getChave());
+		if(!Validator.isStringValid(acesso.getSenha()) || !Validator.isCPFValid(acesso.getPessoa().getCpf())){
 			req.setAttribute(EnumTypeErro.ERROLOGAR.getChave(), EnumTypeErro.ERROLOGAR.getDescricao());
 			return false;
 		}
