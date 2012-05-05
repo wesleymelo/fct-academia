@@ -7,6 +7,8 @@ import br.ucb.fct.endereco.EnderecoDAOConexao;
 import br.ucb.fct.envelope.EnvelopeDAO;
 import br.ucb.fct.envelope.EnvelopeDAOConexao;
 import br.ucb.fct.exceptions.DAOException;
+import br.ucb.fct.graduacao.GraduacaoDAO;
+import br.ucb.fct.graduacao.GraduacaoDAOConexao;
 import br.ucb.fct.modalidade.ModalidadeDAO;
 import br.ucb.fct.modalidade.ModalidadeDAOConexao;
 import br.ucb.fct.pessoa.PessoaDAO;
@@ -47,6 +49,10 @@ public class Factory {
 	
 	public static EnvelopeDAO initEnvelopeDAO(){
 		return new EnvelopeDAOConexao();
+	}
+	
+	public static GraduacaoDAO initGraduacaoDAO(){
+		return new GraduacaoDAOConexao();
 	}
 	
 }
