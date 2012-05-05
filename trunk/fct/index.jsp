@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
     
-<%@ include file="includes/header.jsp" %>    
+<c:import url="includes/header.jsp"/>    
 <!-- Dashboard icons -->
 		<div class="container_12">
             <div class="grid_7">
@@ -79,4 +80,4 @@
             </div> <!-- End .grid_5 -->
             <div style="clear:both;"></div>
         </div> <!-- End .container_12 -->
-<%@ include file="includes/footer.jsp" %> 
+<c:import url="includes/footer.jsp" />
