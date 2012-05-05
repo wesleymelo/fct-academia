@@ -7,7 +7,10 @@ import java.sql.SQLException;
 import java.util.Date;
 import br.ucb.fct.connection.MyConnection;
 import br.ucb.fct.exceptions.DAOException;
+import br.ucb.fct.pessoa.PessoaDAO;
+import br.ucb.fct.pessoa.PessoaDAOConexao;
 import br.ucb.fct.util.Encrypter;
+import br.ucb.fct.util.Factory;
 
 public class AcessoDAOConexao implements AcessoDAO {
 
@@ -26,7 +29,7 @@ public class AcessoDAOConexao implements AcessoDAO {
 			ps.setString(2, Encrypter.encripta(senha));
 			rs = ps.executeQuery();
 			if(rs.first())
-				acesso = new Acesso(rs.getInt("idAcesso"), rs.getInt("idPessoa"), rs.getString("usuario"));
+				acesso = new Acesso(rs.getInt("idAcesso"), Factory.initPessoaDAO().selectById(rs.getInt("idPessoa")));
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new DAOException(e, "ERRO! FINDBYUSUARIOANDSENHA na TABELA ACESSO. DATA("+new Date()+")");
@@ -36,7 +39,7 @@ public class AcessoDAOConexao implements AcessoDAO {
 
 	@Override
 	public boolean insert(Acesso acesso) throws DAOException {
-		String sql = "INSERT INTO acesso(idAcesso, idPessoa, usuario, senha) VALUES(null, ?, ?, ?)";
+		String sql = "INSERT INTO acesso(idAcesso, idPessoa, senha) VALUES(null, ?, ?)";
 		Connection conn;
 		PreparedStatement ps;
 		int retorno;
@@ -44,9 +47,8 @@ public class AcessoDAOConexao implements AcessoDAO {
 		try {
 			conn = MyConnection.init();
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, acesso.getIdPessoa());
-			ps.setString(2, acesso.getUsuario());
-			ps.setString(3, Encrypter.encripta(acesso.getSenha()));
+			ps.setInt(1, acesso.getPessoa().getIdPessoa());
+			ps.setString(2, Encrypter.encripta(acesso.getSenha()));
 			retorno = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
