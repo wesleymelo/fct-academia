@@ -29,7 +29,7 @@ public class AcessoDAOConexao implements AcessoDAO {
 				acesso = new Acesso(rs.getInt("idAcesso"), rs.getInt("idPessoa"), rs.getString("usuario"));
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new br.ucb.fct.exceptions.DAOException(e, "ERRO! FINDBYUSUARIOANDSENHA na TABELA ACESSO. DATA("+new Date()+")");
+			throw new DAOException(e, "ERRO! FINDBYUSUARIOANDSENHA na TABELA ACESSO. DATA("+new Date()+")");
 		}
 		return acesso;
 	}
