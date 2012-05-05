@@ -85,8 +85,8 @@ public class ProfessorDAOConexao implements ProfessorDAO {
 
 	@Override
 	public List<Professor> selectAll() throws DAOException {
-		String sql = "SELECT * FROM professores, pessoas WHERE idAluno = idPessoa";
-		List<Professor> professor = new ArrayList<Professor>();
+		String sql = "SELECT * FROM professores, pessoas WHERE idProfessor = idPessoa";
+		List<Professor> professores = new ArrayList<Professor>();
 		Connection con = MyConnection.init();		
 		Statement stm = null;
 		ResultSet rs = null;
@@ -94,12 +94,12 @@ public class ProfessorDAOConexao implements ProfessorDAO {
 			stm = con.createStatement();
 			rs = stm.executeQuery(sql);
 			while(rs.next())
-				professor.add(getProfessor(rs));
+				professores.add(getProfessor(rs));
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new DAOException(e,"ERRO! SELECTALL na TABELA PROFESSORES e PESSOAS. DATA("+new Date()+")");
 		}
-		return professor;
+		return professores;
 		
 	}
 
