@@ -16,22 +16,22 @@ public class AutenticaLoginAction implements Action{
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp){
-		String url = "";
+		String url = req.getContextPath();
 		if(isValida(req)){
 			try{
 				Acesso acesso = AcessoBO.findByUsuarioAndSenha(req.getParameter(EnumAcesso.LOGIN.getChave()), Encrypter.encripta(EnumAcesso.SENHA.toString()));
 				if(acesso != null){
 					HttpSession session = req.getSession(true);
 					session.setAttribute(EnumAcesso.ACESSO.toString(), acesso);
-					url = "index.jsp";
+					url += "/index.jsp";
 				}
 				else{
 					req.setAttribute(EnumTypeErro.ERROLOGAR.getChave(), EnumTypeErro.ERROLOGAR.getDescricao());
-					url = "login.jsp";
+					url += "/login.jsp";
 				}
 			}catch (DAOException e) {
 				req.setAttribute(EnumTypeErro.ERROLOGAR.getChave(), EnumTypeErro.ERROLOGAR.getDescricao());
-				url = "login.jsp";
+				url += "/login.jsp";
 			}
 		}
 		return url;
