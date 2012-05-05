@@ -21,16 +21,22 @@ public class Filtro implements Filter{
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
+		
+		
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse resp = (HttpServletResponse) response;
 		
-		Acesso acesso = (Acesso) req.getSession().getAttribute(EnumAcesso.ACESSO.toString());
-			
+		System.out.println("COCOCOCOCOCOCOCOCOCO");
+		
+		Acesso acesso = (Acesso) req.getSession().getAttribute(EnumAcesso.ACESSO.getChave());
+	
+		System.out.println(acesso);
+		
 		if(acesso!=null){
 			chain.doFilter(req,resp);
 			return;
 		}
-		resp.sendRedirect(req.getContextPath()+"/login.jsp");
+		resp.sendRedirect(req.getContextPath()+"/index.jsp");
 			
 		
 	}
