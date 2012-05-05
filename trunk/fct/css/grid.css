@@ -9,7 +9,8 @@
 --------------------------------------------------------------------------------*/
 
 .container_12,
-.container_16
+.container_16,
+.conteiner_login
 {
 	width: 92%;
 	margin-left: 4%;
@@ -18,6 +19,13 @@
 
 /* =Grid >> Global
 --------------------------------------------------------------------------------*/
+
+.grid_login{
+	display: inline;
+	float: left;
+	margin-left: 30%;
+	margin-right: 25%;
+}
 
 .grid_1,
 .grid_2,
@@ -46,6 +54,12 @@
 .container_16 .grid_4
 {
 	width: 23%;
+}
+
+
+.container_login .grid_login
+{
+	width: 35%;
 }
 
 .container_12 .grid_6,
