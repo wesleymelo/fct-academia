@@ -139,7 +139,7 @@
                                 <ul id="nav">
                                     <li id="current"><a href="">Painel de Controle</a></li>
                                     <li><a href="">Outro</a></li>
-                                </ul>
+                                </ul>z
                             </div>
                             <div id="logo_bottom"></div>
                         </div><!-- End. #Logo -->
