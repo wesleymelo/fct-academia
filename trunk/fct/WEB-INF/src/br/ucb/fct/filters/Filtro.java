@@ -30,7 +30,7 @@ public class Filtro implements Filter{
 			chain.doFilter(req,resp);
 			return;
 		}
-		resp.sendRedirect(req.getContextPath()+"/index.do");
+		resp.sendRedirect(req.getContextPath()+"/login.jsp");
 			
 		
 	}
