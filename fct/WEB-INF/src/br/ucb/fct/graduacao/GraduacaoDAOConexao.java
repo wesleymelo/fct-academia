@@ -118,6 +118,6 @@ public class GraduacaoDAOConexao implements GraduacaoDAO {
 	}
 	
 	public Graduacao getGraduacao(ResultSet rs) throws SQLException{
-		return new Graduacao(rs.getInt(1), rs.getInt(2), rs.getNString(3));
+		return new Graduacao(rs.getInt("idGraduacao"), rs.getInt(2), rs.getNString(3));
 	}
 }
