@@ -20,6 +20,8 @@ import br.ucb.fct.secretaria.SecretariaDAO;
 import br.ucb.fct.secretaria.SecretariaDAOConexao;
 import br.ucb.fct.telefone.TelefoneDAO;
 import br.ucb.fct.telefone.TelefoneDAOConexao;
+import br.ucb.fct.turmas.TurmaDAO;
+import br.ucb.fct.turmas.TurmaDAOConexao;
 
 public class Factory {
 	
@@ -54,5 +56,10 @@ public class Factory {
 	public static GraduacaoDAO initGraduacaoDAO(){
 		return new GraduacaoDAOConexao();
 	}
+	
+	public static TurmaDAO initTurmaDAO(){
+		return new TurmaDAOConexao();
+	}
+	
 	
 }
