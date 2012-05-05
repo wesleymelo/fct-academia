@@ -27,6 +27,7 @@ public class Controller extends HttpServlet{
 	protected void processaRequisicao(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		Action action = null;
+		System.out.println("AQUI SERVLET");
 		Properties properties = getProperties();
 		String acao = properties.getProperty(getAcao(req));
 		if(acao != null){
