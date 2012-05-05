@@ -20,8 +20,8 @@ import br.ucb.fct.secretaria.SecretariaDAO;
 import br.ucb.fct.secretaria.SecretariaDAOConexao;
 import br.ucb.fct.telefone.TelefoneDAO;
 import br.ucb.fct.telefone.TelefoneDAOConexao;
-import br.ucb.fct.turmas.TurmaDAO;
-import br.ucb.fct.turmas.TurmaDAOConexao;
+import br.ucb.fct.turma.TurmaDAO;
+import br.ucb.fct.turma.TurmaDAOConexao;
 
 public class Factory {
 	
