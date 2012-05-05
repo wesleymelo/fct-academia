@@ -4,6 +4,8 @@ import java.util.List;
 
 import br.ucb.fct.endereco.EnderecoDAO;
 import br.ucb.fct.endereco.EnderecoDAOConexao;
+import br.ucb.fct.envelope.EnvelopeDAO;
+import br.ucb.fct.envelope.EnvelopeDAOConexao;
 import br.ucb.fct.exceptions.DAOException;
 import br.ucb.fct.modalidade.ModalidadeDAO;
 import br.ucb.fct.modalidade.ModalidadeDAOConexao;
@@ -35,13 +37,16 @@ public class Factory {
 		return new PessoaDAOConexao();
 	}
 	
-	public static ProfessorDAO initProfessor(){
+	public static ProfessorDAO initProfessorDAO(){
 		return new ProfessorDAOConexao();
 	}
 	
-	public static SecretariaDAO initSecretaria(){
+	public static SecretariaDAO initSecretariaDAO(){
 		return new SecretariaDAOConexao();
 	}
 	
+	public static EnvelopeDAO initEnvelopeDAO(){
+		return new EnvelopeDAOConexao();
+	}
 	
 }
