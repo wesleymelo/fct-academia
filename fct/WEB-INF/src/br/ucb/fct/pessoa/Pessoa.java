@@ -27,8 +27,6 @@ public class Pessoa {
 	private String email;
 	private Boolean status;
 	
-	
-	
 	public Pessoa(Integer idPessoa, EnumTypePessoa tipoPessoa, Date dataCadastro, String nome,
 			String cpf, EnumTypeSexo sexo, Date dataNascimento, String rg,
 			String orgaoEmissor, String naturalidade, String nacionalidade,
