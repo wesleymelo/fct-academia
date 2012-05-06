@@ -17,6 +17,6 @@
 		
 		<filter-mapping>
 			<filter-name>filtro</filter-name>
-			<url-pattern>/admin/*</url-pattern>
+			<url-pattern>/admin/index.jsp</url-pattern>
 		</filter-mapping>
 </web-app>
