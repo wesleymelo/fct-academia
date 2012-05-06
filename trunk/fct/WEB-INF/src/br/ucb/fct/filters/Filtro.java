@@ -29,17 +29,17 @@ public class Filtro implements Filter{
 		Acesso acesso = (Acesso) req.getSession().getAttribute(EnumAcesso.ACESSO.getChave());
 			
 		if(acesso==null){
-			resp.sendRedirect(req.getContextPath()+"/admin/index.jsp");	
+			resp.sendRedirect(req.getContextPath()+"/admin/login.jsp");	
 			return;
 		}
 		filtro.doFilter(req,resp);
 		
-			
 		
 	}
 
 	@Override
 	public void init(FilterConfig arg0) throws ServletException {
+	
 	}
 	
 }
