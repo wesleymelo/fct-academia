@@ -10,37 +10,49 @@ import br.ucb.fct.enuns.EnumAcesso;
 import br.ucb.fct.enuns.EnumTypeErro;
 import br.ucb.fct.exceptions.DAOException;
 import br.ucb.fct.util.Encrypter;
+import br.ucb.fct.util.Util;
 import br.ucb.fct.util.Validator;
 
 public class AutenticaLoginAction implements Action{
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp){
-		String url = req.getContextPath();
-		System.out.println(url);
+		String url = "";
 		if(isValida(req)){
 			try{
-				Acesso acesso = AcessoBO.findByUsuarioAndSenha(req.getParameter(EnumAcesso.LOGIN.getChave()), Encrypter.encripta(EnumAcesso.SENHA.toString()));
+				String cpf = Util.unFormat(req.getParameter(EnumAcesso.LOGIN.getChave()));
+				String senha = req.getParameter(EnumAcesso.SENHA.getChave());
+				
+				
+				System.out.println("CPF: "+cpf);
+				System.out.println("SENHA: "+senha);
+				System.out.println("Acesso = COCOCOCOCO");
+				Acesso acesso = AcessoBO.findByUsuarioAndSenha(cpf, senha);
+				System.out.println("Acesso = COCOCOCOCO");
+				System.out.println("Acesso = "+acesso);
 				if(acesso != null){
 					HttpSession session = req.getSession(true);
 					session.setAttribute(EnumAcesso.ACESSO.getChave(), acesso);
-					url += "/admin/index.jsp";
+					url = "/view/admin/index.jsp";
 				}
 				else{
 					req.setAttribute(EnumTypeErro.ERROLOGAR.getChave(), EnumTypeErro.ERROLOGAR.getDescricao());
-					url += "/admin/login.jsp";
+					url = "/view/login.jsp";
 				}
 			}catch (DAOException e) {
 				req.setAttribute(EnumTypeErro.ERROLOGAR.getChave(), EnumTypeErro.ERROLOGAR.getDescricao());
-				url += "admin/login.jsp";
+				url = "/view/login.jsp";
 			}
 		}
+		System.out.println("url: >>>'"+url+"'<<<");
 		return url;
 	}
 
 	private boolean isValida(HttpServletRequest req) {
-		Acesso acesso = (Acesso) req.getAttribute(EnumAcesso.ACESSO.getChave());
-		if(!Validator.isStringValid(acesso.getSenha()) || !Validator.isCPFValid(acesso.getPessoa().getCpf())){
+		String senha = req.getParameter("senha");
+		String cpf = Util.unFormat(req.getParameter("cpf"));
+		
+		if(!(Validator.isStringValid(senha)) || !Validator.isCPFValid(cpf)){
 			req.setAttribute(EnumTypeErro.ERROLOGAR.getChave(), EnumTypeErro.ERROLOGAR.getDescricao());
 			return false;
 		}
