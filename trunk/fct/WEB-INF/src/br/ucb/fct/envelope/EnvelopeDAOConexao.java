@@ -102,12 +102,13 @@ public class EnvelopeDAOConexao implements EnvelopeDAO {
 		Connection con = MyConnection.init();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		Envelope envelope;
+		Envelope envelope = null;
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, id);
 			rs = ps.executeQuery();
-			envelope = getEnvelope(rs);
+			if(rs.first())
+				envelope = getEnvelope(rs);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new DAOException(e,"ERRO! SELECT_BY_ID na TABELA ENVELOPES. DATA("+new Date()+")");

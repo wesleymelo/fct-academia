@@ -100,12 +100,13 @@ public class ModalidadeDAOConexao implements ModalidadeDAO{
 		Connection con = MyConnection.init();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		Modalidade modalidade;
+		Modalidade modalidade = null;
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setObject(1, id);
 			rs = ps.executeQuery();
-			modalidade = getModalidade(rs);
+			if(rs.first())
+				modalidade = getModalidade(rs);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new DAOException(e,"ERRO! SELECT_BY_ID na TABELA MODALIDADES. DATA("+new Date()+")");
