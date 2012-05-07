@@ -19,7 +19,6 @@ public class AcessoDAOConexao implements AcessoDAO {
 		PreparedStatement ps;
 		ResultSet rs;
 		Acesso acesso = null;
-		System.out.println("AQUI");
 		try {
 			conn = MyConnection.init();
 			ps = conn.prepareStatement(sql);
