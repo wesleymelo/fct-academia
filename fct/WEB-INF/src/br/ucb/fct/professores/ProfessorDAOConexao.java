@@ -109,12 +109,13 @@ public class ProfessorDAOConexao implements ProfessorDAO {
 		Connection con = MyConnection.init();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		Professor professor;
+		Professor professor = null;
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, id);
 			rs = ps.executeQuery();
-			professor = getProfessor(rs);
+			if(rs.first())
+				professor = getProfessor(rs);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new DAOException(e,"ERRO! SELECT_BY_ID na TABELA PROFESSOR e PESSOAS. DATA("+new Date()+")");
