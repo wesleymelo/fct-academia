@@ -114,12 +114,13 @@ public class AlunoDAOConexao implements AlunoDAO {
 		Connection con = MyConnection.init();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		Aluno aluno;
+		Aluno aluno = null;
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, id);
 			rs = ps.executeQuery();
-			aluno = getAluno(rs);
+			if(rs.first())
+				aluno = getAluno(rs);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new DAOException(e,"ERRO! SELECT_BY_ID na TABELA ALUNOS e PESSOAS. DATA("+new Date()+")");
