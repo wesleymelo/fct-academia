@@ -105,12 +105,13 @@ public class TurmaDAOConexao implements TurmaDAO{
 		Connection con = MyConnection.init();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		Turma   turma;
+		Turma   turma = null;
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setObject(1, id);
 			rs = ps.executeQuery();
-			turma = getTurma(rs);
+			if(rs.first())
+				turma = getTurma(rs);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new DAOException(e,"ERRO! SELECT_BY_ID na TABELA TURMA. DATA("+new Date()+")");
