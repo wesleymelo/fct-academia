@@ -6,13 +6,13 @@ import sun.misc.BASE64Encoder;
 
 public class Encrypter {
 	public static String encripta (String senha) {  
-        try {  
+		try {  
             MessageDigest digest = MessageDigest.getInstance("MD5");  
             digest.update(senha.getBytes()); 
             return new BASE64Encoder().encode(digest.digest());  
         } catch (NoSuchAlgorithmException e) {  
-            e.printStackTrace();  
-            return senha;  
+            e.printStackTrace();   
         }  
+        return senha; 
     }  
 }

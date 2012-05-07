@@ -15,6 +15,10 @@ public class Util {
 		return date;
 	}
 	
+	public static String unFormat(String str)  {
+        return str.replace(".", "").replace("-", "").replace(" ", "").replace("/", "").replace("(", "").replace(")", "");
+	}
+	
 	public static Date formatDateOut(String data){
 		DateFormat formatador = new SimpleDateFormat("yyyy-MM-dd");  
 		Date date = null;
