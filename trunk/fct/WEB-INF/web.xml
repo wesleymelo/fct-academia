@@ -5,18 +5,19 @@
          http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
   		
   		<welcome-file-list>
-  			<welcome-file>admin/login.jsp</welcome-file>
+  			<welcome-file>/admin/login.jsp</welcome-file>
   		</welcome-file-list>
   		
-  		
-  		<!-- filtros -->
   		<filter>
-			<filter-name>filtro</filter-name>
-			<filter-class>br.ucb.fct.filters.Filtro</filter-class>
-		</filter>
+  			<filter-name>filtro</filter-name>
+  			<filter-class>br.ucb.fct.filters.Filtro</filter-class>
+  		</filter>
+  		
+  		<filter-mapping>
+  			<filter-name>filtro</filter-name>
+  			<url-pattern>/admin/*</url-pattern>
+  			
+  		</filter-mapping>
+  	
 		
-		<filter-mapping>
-			<filter-name>filtro</filter-name>
-			<url-pattern>/admin/*</url-pattern>
-		</filter-mapping>
 </web-app>
