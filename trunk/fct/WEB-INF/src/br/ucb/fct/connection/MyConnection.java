@@ -11,7 +11,7 @@ import br.ucb.fct.exceptions.DAOException;
 
 public class MyConnection {
 	
-	private static final String URL = "jdbc:mysql://localhost:3306/#", USER = "root", PASS = "root", NAME = "com.mysql.jdbc.Driver" ;
+	private static final String URL = "jdbc:mysql://localhost:3306/academia", USER = "root", PASS = "root", NAME = "com.mysql.jdbc.Driver" ;
 	
 	public static Connection init() {
 		Connection con;

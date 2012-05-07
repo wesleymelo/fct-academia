@@ -1,7 +1,7 @@
 package br.ucb.fct.enuns;
 
 public enum EnumAcesso {
-	ACESSO("acesso"), LOGIN("login"), SENHA("senha");
+	ACESSO("acesso"), LOGIN("cpf"), SENHA("senha");
 	
 	private String chave;
 	

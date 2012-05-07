@@ -3,6 +3,12 @@ package br.ucb.fct.acesso;
 import br.ucb.fct.pessoa.Pessoa;
 
 public class Acesso {
+	@Override
+	public String toString() {
+		return "Acesso [idAcesso=" + idAcesso + ", pessoa=" + pessoa
+				+ ", senha=" + senha + "]";
+	}
+
 	private Integer idAcesso;
 	private Pessoa pessoa;
 	private String senha;
