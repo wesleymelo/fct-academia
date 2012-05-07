@@ -113,11 +113,12 @@ public class SecretariaDAOConexao implements SecretariaDAO {
 		Connection con = MyConnection.init();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		Secretaria secretaria;
+		Secretaria secretaria = null;
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, id);
 			rs = ps.executeQuery();
+			if(rs.first())		
 			secretaria = getSecretaria(rs);
 		} catch (SQLException e) {
 			e.printStackTrace();
