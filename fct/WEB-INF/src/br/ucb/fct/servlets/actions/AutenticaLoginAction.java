@@ -22,18 +22,12 @@ public class AutenticaLoginAction implements Action{
 			try{
 				String cpf = Util.unFormat(req.getParameter(EnumAcesso.LOGIN.getChave()));
 				String senha = req.getParameter(EnumAcesso.SENHA.getChave());
-				
-				
-				System.out.println("CPF: "+cpf);
-				System.out.println("SENHA: "+senha);
-				System.out.println("Acesso = COCOCOCOCO");
 				Acesso acesso = AcessoBO.findByUsuarioAndSenha(cpf, senha);
-				System.out.println("Acesso = COCOCOCOCO");
 				System.out.println("Acesso = "+acesso);
 				if(acesso != null){
 					HttpSession session = req.getSession(true);
 					session.setAttribute(EnumAcesso.ACESSO.getChave(), acesso);
-					url = "/view/admin/index.jsp";
+					url = "/view/admin/principal/index.jsp";
 				}
 				else{
 					req.setAttribute(EnumTypeErro.ERROLOGAR.getChave(), EnumTypeErro.ERROLOGAR.getDescricao());
