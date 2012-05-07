@@ -31,7 +31,6 @@ public class AcessoDAOConexao implements AcessoDAO {
 			e.printStackTrace();
 			throw new DAOException(e, "ERRO! FINDBYUSUARIOANDSENHA na TABELA ACESSO. DATA("+new Date()+")");
 		}
-		System.out.println("Acesso: sql -> "+acesso);
 		return acesso;
 	}
 
