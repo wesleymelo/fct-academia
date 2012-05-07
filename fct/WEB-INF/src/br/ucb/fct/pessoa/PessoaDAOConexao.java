@@ -118,7 +118,7 @@ public class PessoaDAOConexao implements PessoaDAO {
 	public Pessoa getPessoa(ResultSet rs) throws SQLException {
 		return new Pessoa(rs.getInt("idPessoa"), EnumTypePessoa.findEmunTypePessoaByNumber(rs.getInt("tipoPessoa")), rs.getDate("dataCadastro"), rs.getString("nome"), 
 						  rs.getString("cpf"), EnumTypeSexo.findByCodigo(rs.getString("sexo").charAt(0)), rs.getDate("dataNascimento"), rs.getString("rg"), rs.getString("orgaoEmissor"), rs.getString("naturalidade"), rs.getString("nacionalidade"),
-						  Factory.initEnderecoDAO().selectById(rs.getInt("idPessoa")), Factory.initTelefoneDAO().selectById(rs.getInt("idPessoa")), rs.getString("email"), rs.getBoolean("status"));
+						  Factory.initEnderecoDAO().selectById(rs.getInt("idEndereco")), Factory.initTelefoneDAO().selectById(rs.getInt("idPessoa")), rs.getString("email"), rs.getBoolean("status"));
 	}
 
 	@Override
@@ -127,12 +127,13 @@ public class PessoaDAOConexao implements PessoaDAO {
 		Connection con = MyConnection.init();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		Pessoa pessoa;
+		Pessoa pessoa = null;
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, id);
 			rs = ps.executeQuery();
-			pessoa = getPessoa(rs);
+			if(rs.first())
+				pessoa = getPessoa(rs);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new DAOException(e,"ERRO! FIND_PESSOA_BY_ID na TABELA PESSOAS. DATA("+new java.util.Date()+")");
@@ -157,6 +158,26 @@ public class PessoaDAOConexao implements PessoaDAO {
 		}
 		return lastId;
 		
+	}
+
+	@Override
+	public Pessoa selectByCPF(String cpf) throws DAOException {
+		String sql = "SELECT * FROM pessoas WHERE cpf = ?;";
+		Connection con = MyConnection.init();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Pessoa pessoa = null;
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, cpf);
+			rs = ps.executeQuery();
+			if(rs.first())
+				pessoa = getPessoa(rs);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException(e,"ERRO! FIND_PESSOA_BY_CPF na TABELA PESSOAS. DATA("+new java.util.Date()+")");
+		}
+		return pessoa;
 	}
 
 }
