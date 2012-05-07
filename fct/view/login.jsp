@@ -58,10 +58,10 @@
                      <h2><span><center>Realize seu Login</center></span></h2>
                         
                      <div class="module-body">
-                        <form action="" method="post">
+                        <form action="autenticaLogin.do"" method="post">
                             <p>
                                 <label>CPF:</label>
-                                <input class="input-short" type="text" name="cpf" id="cpf" onKeyPress="return txtBoxFormat(document.form, 'cpf', '999.999.999-99', event);" size="15" maxlength="14" />
+                                <input class="input-short" type="text" name="cpf" id="cpf" size="15" maxlength="14" />
                             	<span class="notification-input ni-correct">This is correct, thanks!</span>
                             	<script>
 									jQuery(function($){
@@ -72,13 +72,13 @@
                             
                             <p>
                                 <label>Senha:</label>
-                                <input class="input-short" type="password" />
+                                <input class="input-short" type="password"  name="senha" id="senha"/>
                                 <span class="notification-input ni-error">Sorry, try again.</span>
                             </p>
                             
                        
                             
-                            
+                         
                             <fieldset>
                                 <input class="submit-green" type="submit" value="Entrar" /> 
                                 <input class="submit-gray" type="reset" value="Limpar" />
