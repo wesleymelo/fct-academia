@@ -30,7 +30,7 @@ public class Filtro implements Filter{
 		Acesso acesso = (Acesso) req.getSession().getAttribute(EnumAcesso.ACESSO.getChave());
 			
 		if(acesso==null){
-			resp.sendRedirect(req.getContextPath()+"/admin/login.jsp");
+			resp.sendRedirect(req.getContextPath()+"/login.jsp");
 			return;
 		}
 
