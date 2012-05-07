@@ -10,7 +10,6 @@ import br.ucb.fct.telefone.Telefone;
 
 public class Pessoa {
 
-
 	private Integer idPessoa;
 	private EnumTypePessoa tipoPessoa;
 	private Date dataCadastro;
@@ -306,6 +305,18 @@ public class Pessoa {
 		} else if (!tipoPessoa.equals(other.tipoPessoa))
 			return false;
 		return true;
+	}
+	
+	@Override
+	public String toString() {
+		return "Pessoa [idPessoa=" + idPessoa + ", tipoPessoa=" + tipoPessoa
+				+ ", dataCadastro=" + dataCadastro + ", nome=" + nome
+				+ ", cpf=" + cpf + ", sexo=" + sexo + ", dataNascimento="
+				+ dataNascimento + ", rg=" + rg + ", orgaoEmissor="
+				+ orgaoEmissor + ", naturalidade=" + naturalidade
+				+ ", nacionalidade=" + nacionalidade + ", endereco=" + endereco
+				+ ", telefones=" + telefones + ", email=" + email + ", status="
+				+ status + "]";
 	}
 		
 }
