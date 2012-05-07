@@ -71,7 +71,7 @@ public class TelefoneDAOConexao implements TelefoneDAO{
 
 	@Override
 	public List<Telefone> selectById(int id) throws DAOException {
-		String sql = "SELECT * FROM telefones t, pessoas p WHERE p.idPessoa = t.idPessoa AND t.idPessoa = ?";
+		String sql = "SELECT * FROM telefones t, pessoas p WHERE p.idPessoa = t.idPessoa AND t.idPessoa = ?;";
 		Connection con = MyConnection.init();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -84,7 +84,7 @@ public class TelefoneDAOConexao implements TelefoneDAO{
 				telefones.add(getTelefone(rs));
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DAOException(e,"ERRO! SELECTALL na TABELA MODALIDADES. DATA("+new java.util.Date()+")");
+			throw new DAOException(e,"ERRO! SELECTBYID na TABELA TELEFONES. DATA("+new java.util.Date()+")");
 		}finally{
 			MyConnection.closeConnection(con, ps, rs);
 		}
