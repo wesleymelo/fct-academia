@@ -138,6 +138,4 @@ public class AlunoDAOConexao implements AlunoDAO {
 	public static Pessoa getPessoaByAluno(Aluno aluno){
 		return new Pessoa(aluno.getTipoPessoa(), aluno.getDataCadastro(), aluno.getNome(), aluno.getCpf(), aluno.getSexo(), aluno.getDataNascimento(), aluno.getRg(), aluno.getOrgaoEmissor(), aluno.getNaturalidade(), aluno.getNacionalidade(), aluno.getEndereco(), aluno.getTelefones(), aluno.getEmail(), aluno.getStatus());
 	}
-	
-
 }

@@ -7,8 +7,6 @@ import java.sql.SQLException;
 import java.util.Date;
 import br.ucb.fct.connection.MyConnection;
 import br.ucb.fct.exceptions.DAOException;
-import br.ucb.fct.pessoa.PessoaDAO;
-import br.ucb.fct.pessoa.PessoaDAOConexao;
 import br.ucb.fct.util.Encrypter;
 import br.ucb.fct.util.Factory;
 

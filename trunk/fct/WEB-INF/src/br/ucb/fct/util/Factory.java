@@ -1,12 +1,11 @@
 package br.ucb.fct.util;
 
-import java.util.List;
-
 import br.ucb.fct.endereco.EnderecoDAO;
 import br.ucb.fct.endereco.EnderecoDAOConexao;
 import br.ucb.fct.envelope.EnvelopeDAO;
 import br.ucb.fct.envelope.EnvelopeDAOConexao;
-import br.ucb.fct.exceptions.DAOException;
+import br.ucb.fct.gasto.GastoDAO;
+import br.ucb.fct.gasto.GastoDAOConexao;
 import br.ucb.fct.graduacao.GraduacaoDAO;
 import br.ucb.fct.graduacao.GraduacaoDAOConexao;
 import br.ucb.fct.modalidade.ModalidadeDAO;
@@ -15,7 +14,6 @@ import br.ucb.fct.pessoa.PessoaDAO;
 import br.ucb.fct.pessoa.PessoaDAOConexao;
 import br.ucb.fct.professores.ProfessorDAO;
 import br.ucb.fct.professores.ProfessorDAOConexao;
-import br.ucb.fct.secretaria.Secretaria;
 import br.ucb.fct.secretaria.SecretariaDAO;
 import br.ucb.fct.secretaria.SecretariaDAOConexao;
 import br.ucb.fct.telefone.TelefoneDAO;
@@ -59,6 +57,10 @@ public class Factory {
 	
 	public static TurmaDAO initTurmaDAO(){
 		return new TurmaDAOConexao();
+	}
+	
+	public static GastoDAO initGastoDAO(){
+		return new GastoDAOConexao();
 	}
 	
 	

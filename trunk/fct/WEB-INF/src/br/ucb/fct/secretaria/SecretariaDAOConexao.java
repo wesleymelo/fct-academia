@@ -17,7 +17,7 @@ import br.ucb.fct.pessoa.PessoaDAO;
 import br.ucb.fct.util.Factory;
 
 public class SecretariaDAOConexao implements SecretariaDAO {
-
+	//É NECESSÁRIO ARRUMAR ESSAS QUERYS, POIS NÃO PODEREMOS EXCLUIR SECRETARIA, ALUNO OU PROFESSOR.
 	@Override
 	public boolean insert(Secretaria secretaria) throws DAOException {
 		String sql = "INSERT INTO secretarias(idSecretaria, dataAdimissao, horaInicial, horaFinal) VALUES (?,?,?,?);";
