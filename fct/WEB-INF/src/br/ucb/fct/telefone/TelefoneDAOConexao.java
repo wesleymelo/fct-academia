@@ -79,7 +79,7 @@ public class TelefoneDAOConexao implements TelefoneDAO{
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, id);
-			rs = ps.executeQuery(sql);
+			rs = ps.executeQuery();
 			while(rs.next())
 				telefones.add(getTelefone(rs));
 		} catch (SQLException e) {
