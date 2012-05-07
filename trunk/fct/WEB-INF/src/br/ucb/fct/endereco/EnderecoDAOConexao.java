@@ -109,16 +109,17 @@ public class EnderecoDAOConexao implements EnderecoDAO {
 
 	@Override
 	public Endereco selectById(int id) throws DAOException {
-		String sql = "SELECT * FROM enderecos e, pessoas p  WHERE e.idEndereco = p.idEndereco AND p.idPessoa = ?;";
+		String sql = "SELECT * FROM enderecos e, pessoas p  WHERE e.idEndereco = p.idEndereco AND p.idEndereco = ?;";
 		Connection con = MyConnection.init();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		Endereco endereco;
+		Endereco endereco = null;
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setObject(1, id);
 			rs = ps.executeQuery();
-			endereco = getEndereco(rs);
+			if(rs.first())
+				endereco = getEndereco(rs);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new DAOException(e,"ERRO! SELECT_BY_ID na TABELA ENDERECOS. DATA("+new Date()+")");
@@ -130,7 +131,7 @@ public class EnderecoDAOConexao implements EnderecoDAO {
 	}
 	
 	public Endereco getEndereco(ResultSet rs) throws SQLException{
-		return new Endereco(rs.getNString(2), rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getInt(8),rs.getInt(5));
+		return new Endereco(rs.getString("enderecoResidencial"), rs.getString("cidade"),rs.getString("bairro"),rs.getString("complemento"),rs.getString("uf"),rs.getString("cep"),rs.getInt("numero"),rs.getInt("idEndereco"));
 	}
 	
 
