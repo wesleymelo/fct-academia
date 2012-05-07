@@ -30,6 +30,7 @@ public class Controller extends HttpServlet{
 			String nameAction = getNameAction(req);
 			Action action = getAction(nameAction);
 			String proxima = action.execute(req, resp);
+			System.out.println("Proxima: "+proxima);
 			if(proxima!=null)
 				req.getRequestDispatcher(proxima).forward(req, resp);
 		}catch ( ServletException e) {
