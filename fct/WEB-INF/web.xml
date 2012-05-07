@@ -12,7 +12,7 @@
   
   <filter>
   	<filter-name>filtro</filter-name>
-  	<filter-class>br.ucb.fct.filters.filtro</filter-class>
+  	<filter-class>br.ucb.fct.filters.Filtro</filter-class>
   </filter>
 	
   <filter-mapping>
