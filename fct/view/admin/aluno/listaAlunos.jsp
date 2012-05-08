@@ -31,7 +31,7 @@
 	<div class="container_12">
 		<div class="grid_12">
 			<ul>
-				<li><a href="#">Alunos</a></li>
+				<li id="current"><a href="#">Alunos</a></li>
 				<li><a href="#">Professores</a></li>
 				<li><a href="#">Secret&aacute;ria</a></li>
 				<li><a href="#">Modadidades</a></li>
@@ -61,10 +61,10 @@
 
 			<!-- Button -->
 			<div class="float-right">
-				<a href="" class="button"> <span>Novo(a) Aluno(a)<img
+				<a href="" class="button"> <span><b>Novo(a) Aluno(a)</b><img
 						src="../../images/plus-small.gif"
 						tppabs="http://www.xooom.pl/work/magicadmin/images/plus-small.gif"
-						width="12" height="9" alt="New article" /></span>
+						width="12" height="9" alt="Novo" /></span>
 				</a>
 			</div>
 
@@ -91,23 +91,25 @@
 					<table id="myTable" class="tablesorter">
 						<thead>
 							<tr>
-								<th style="width: 5%">#</th>
-								<th style="width: 20%">Title</th>
-								<th style="width: 21%">Author</th>
-								<th style="width: 13%">Category</th>
-								<th style="width: 13%">Pages</th>
-								<th style="width: 13%">Price</th>
-								<th style="width: 15%"></th>
+								<th style="width: 4%">#</th>
+								<th style="width: 25%">Nome</th>
+								<th style="width: 10%">CPF</th>
+								<th style="width: 10%">Data Nascimento</th>
+								<th style="width: 10%">Data Nascimento</th>
+								<th style="width: 25%">Email</th>
+								<th style="width: 08%">Sexo</th>
+								<th style="width: 10%">A&ccedil;&otilde;es</th>
+								
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
 								<td class="align-center">1</td>
-								<td><a href="">Don Quixote</a></td>
-								<td>Cervantes</td>
-								<td>adventure</td>
-								<td>992</td>
-								<td>$11.55</td>
+								<td><a href="">123 da Silva 4</a></td>
+								<td>000.000.000-00</td>
+								<td>00/00/0000</td>
+								<td>nada@algumacoisa.dominio</td>
+								<td>M</td>
 								<td><input type="checkbox" /> <a href=""><img
 										src="../../images/tick-circle.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/tick-circle.gif"
