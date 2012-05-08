@@ -2,13 +2,15 @@ package br.ucb.fct.gasto;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import br.ucb.fct.connection.MyConnection;
 import br.ucb.fct.exceptions.DAOException;
-import br.ucb.fct.util.Factory;
 
 public class GastoDAOConexao implements GastoDAO {
 
@@ -79,21 +81,56 @@ public class GastoDAOConexao implements GastoDAO {
 			MyConnection.closeConnection(con, ps);
 		}
 		return retorno == 0?false:true;
-		
-		
 	}
 
 	@Override
 	public List<Gasto> selectAll() throws DAOException {
-
-		return null;
+		String sql="SELECT * FROM gastos;";
+		List<Gasto> gastos= new ArrayList<Gasto>();
+		Connection con=null;
+		Statement  stm=null;
+		ResultSet rs=null;
+		try {
+			con=MyConnection.init();
+			stm=con.createStatement();
+			rs=stm.executeQuery(sql);
+			while(rs.next()){
+				gastos.add(getGasto(rs));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException(e,"ERRO! SELECTALL na TABELA Gastos. DATA("+new Date()+")");
+		}finally{
+			MyConnection.closeConnection(con, stm, rs);
+		}
+		return gastos;
 	}
-
 	@Override
 	public Gasto selectById(int id) throws DAOException {
-		
-		return null;
+		String sql="SELECT * FROM gastos WHERE idGasto="+id+";";
+		Connection con=null;
+		Statement  stm=null;
+		ResultSet rs=null;
+		Gasto newGasto=null;
+		try {
+			con=MyConnection.init();
+			stm=con.createStatement();
+			rs=stm.executeQuery(sql);
+			newGasto=getGasto(rs);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException(e,"ERRO! SELECT BY ID NA TABELA GASTOS. DATA("+new Date()+")");
+		}finally{
+			MyConnection.closeConnection(con, stm, rs);
+		}
+		return newGasto;
 	}
+	
+	private Gasto getGasto(ResultSet rs) throws SQLException {
+		return new Gasto(rs.getInt("idGasto"),rs.getInt("idDespesa"),rs.getDouble("valor"),rs.getDate("data"),rs.getInt("idSecretaria"));
+	}
+
+	
 	
 	
 
