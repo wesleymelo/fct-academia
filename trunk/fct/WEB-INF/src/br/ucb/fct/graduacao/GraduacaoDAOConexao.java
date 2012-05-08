@@ -11,8 +11,6 @@ import java.util.List;
 
 import br.ucb.fct.connection.MyConnection;
 import br.ucb.fct.exceptions.DAOException;
-import br.ucb.fct.pessoa.Pessoa;
-import br.ucb.fct.turma.Turma;
 
 public class GraduacaoDAOConexao implements GraduacaoDAO {
 

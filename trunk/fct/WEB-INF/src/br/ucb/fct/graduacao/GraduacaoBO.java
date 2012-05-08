@@ -1,9 +1,6 @@
 package br.ucb.fct.graduacao;
 
 import java.sql.SQLException;
-
-import br.ucb.fct.turma.Turma;
-import br.ucb.fct.turma.TurmaDAO;
 import br.ucb.fct.util.Factory;
 
 public class GraduacaoBO {

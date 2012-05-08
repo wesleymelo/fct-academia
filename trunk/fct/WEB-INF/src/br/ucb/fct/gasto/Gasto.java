@@ -7,8 +7,8 @@ public class Gasto {
 	private Double valor;
 	private Date data;
 	
-	public Gasto(Integer idGasto, Integer idDespesa, Integer idSecretaria,
-			Double valor, Date data) {
+	public Gasto(Integer idGasto, Integer idDespesa,
+			Double valor, Date data, Integer idSecretaria) {
 		setIdGasto(idGasto);
 		setIdDespesa(idDespesa);
 		setIdSecretaria(idSecretaria);

@@ -9,7 +9,6 @@ import br.ucb.fct.acesso.AcessoBO;
 import br.ucb.fct.enuns.EnumAcesso;
 import br.ucb.fct.enuns.EnumTypeErro;
 import br.ucb.fct.exceptions.DAOException;
-import br.ucb.fct.util.Encrypter;
 import br.ucb.fct.util.Util;
 import br.ucb.fct.util.Validator;
 
