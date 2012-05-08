@@ -9,5 +9,6 @@ INSERT into academia.secretarias VALUES(1, 0, '00:00', '00:00', '2012-05-07' );
 INSERT into academia.acessos VALUES(null, 1, MD5(1212));
 
 INSERT into academia.telefones VALUES (null, 1, '61', '33731526', 1);
+
 INSERT into academia.telefones VALUES (null, 1, '61', '84456902', 2);
                           
