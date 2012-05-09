@@ -127,12 +127,11 @@ public class ProfessorDAOConexao implements ProfessorDAO {
 	
 	public static Professor getProfessor(ResultSet rs) throws SQLException{
 		return new Professor(rs.getInt("idPessoa"), EnumTypePessoa.findEmunTypePessoaByNumber(rs.getInt("tipoPessoa")), rs.getDate("dataCadastro"), rs.getString("nome"), 
-				  rs.getString("cpf"), EnumTypeSexo.findByCodigo(rs.getString("sexo").charAt(0)), rs.getDate("dataNascimento"), rs.getString("rg"), rs.getString("orgaoEmissor"), rs.getString("naturalidade"), rs.getString("nacionalidade"),
-				  Factory.initEnderecoDAO().selectById(rs.getInt("idPessoa")), Factory.initTelefoneDAO().selectById(rs.getInt("idPessoa")), rs.getString("email"), rs.getBoolean("status"), rs.getDate("dataAdimissao"));
+				  rs.getString("cpf"), EnumTypeSexo.findByCodigo(rs.getString("sexo").charAt(0)), rs.getDate("dataNascimento"), Factory.initEnderecoDAO().selectById(rs.getInt("idPessoa")), Factory.initTelefoneDAO().selectById(rs.getInt("idPessoa")), rs.getString("email"), rs.getBoolean("status"), rs.getDate("dataAdimissao"));
 	}
 	
 	public static Pessoa getPessoaByProfessor(Professor professor){
-		return new Pessoa(professor.getTipoPessoa(), professor.getDataCadastro(), professor.getNome(), professor.getCpf(), professor.getSexo(), professor.getDataNascimento(), professor.getRg(), professor.getOrgaoEmissor(), professor.getNaturalidade(), professor.getNacionalidade(), professor.getEndereco(), professor.getTelefones(), professor.getEmail(), professor.getStatus());
+		return new Pessoa(professor.getTipoPessoa(), professor.getDataCadastro(), professor.getNome(), professor.getCpf(), professor.getSexo(), professor.getDataNascimento(), professor.getEndereco(), professor.getTelefones(), professor.getEmail(), professor.getStatus());
 	}
 	
 

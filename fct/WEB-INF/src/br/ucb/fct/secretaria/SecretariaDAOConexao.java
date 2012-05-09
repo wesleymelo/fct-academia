@@ -131,12 +131,11 @@ public class SecretariaDAOConexao implements SecretariaDAO {
 	
 	public static Secretaria getSecretaria(ResultSet rs) throws SQLException{
 		return new Secretaria(rs.getInt("idPessoa"), EnumTypePessoa.findEmunTypePessoaByNumber(rs.getInt("tipoPessoa")), rs.getDate("dataCadastro"), rs.getString("nome"), 
-				  rs.getString("cpf"), EnumTypeSexo.findByCodigo(rs.getString("sexo").charAt(0)), rs.getDate("dataNascimento"), rs.getString("rg"), rs.getString("orgaoEmissor"), rs.getString("naturalidade"), rs.getString("nacionalidade"),
-				  Factory.initEnderecoDAO().selectById(rs.getInt("idPessoa")), Factory.initTelefoneDAO().selectById(rs.getInt("idPessoa")), rs.getString("email"), rs.getBoolean("status"), rs.getDate("dataAdimissao"), rs.getString("horaInicial"), rs.getString("horaFinal"));
+				  rs.getString("cpf"), EnumTypeSexo.findByCodigo(rs.getString("sexo").charAt(0)), rs.getDate("dataNascimento"), Factory.initEnderecoDAO().selectById(rs.getInt("idPessoa")), Factory.initTelefoneDAO().selectById(rs.getInt("idPessoa")), rs.getString("email"), rs.getBoolean("status"), rs.getDate("dataAdimissao"), rs.getString("horaInicial"), rs.getString("horaFinal"));
 	}
 	
 	public static Pessoa getPessoaBySecretaria(Secretaria secretaria){
-		return new Pessoa(secretaria.getTipoPessoa(), secretaria.getDataCadastro(), secretaria.getNome(), secretaria.getCpf(), secretaria.getSexo(), secretaria.getDataNascimento(), secretaria.getRg(), secretaria.getOrgaoEmissor(), secretaria.getNaturalidade(), secretaria.getNacionalidade(), secretaria.getEndereco(), secretaria.getTelefones(), secretaria.getEmail(), secretaria.getStatus());
+		return new Pessoa(secretaria.getTipoPessoa(), secretaria.getDataCadastro(), secretaria.getNome(), secretaria.getCpf(), secretaria.getSexo(), secretaria.getDataNascimento(), secretaria.getEndereco(), secretaria.getTelefones(), secretaria.getEmail(), secretaria.getStatus());
 	}
 	
 

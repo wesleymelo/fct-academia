@@ -15,13 +15,11 @@ public class Aluno extends Pessoa{
 	private Double altura;
 	
 	public Aluno(Integer idPessoa, EnumTypePessoa tipoPessoa, Date dataCadastro, String nome,
-			String cpf, EnumTypeSexo sexo, Date dataNascimento, String rg,
-			String orgaoEmissor, String naturalidade, String nacionalidade,
+			String cpf, EnumTypeSexo sexo, Date dataNascimento,
 			Endereco endereco, List<Telefone> telefones,
 			String email, Boolean status, Double peso, Double altura) {
 		
-		super(idPessoa,tipoPessoa,dataCadastro,nome, cpf, sexo, dataNascimento, rg, 
-			  orgaoEmissor,  naturalidade,  nacionalidade, endereco, telefones,email,  status);
+		super(idPessoa,tipoPessoa,dataCadastro,nome, cpf, sexo, dataNascimento, endereco, telefones,email,  status);
 		setAltura(altura);
 		setPeso(peso);
 	}

@@ -17,18 +17,13 @@ public class Pessoa {
 	private String cpf;
 	private EnumTypeSexo sexo; 
 	private Date dataNascimento;
-	private String rg;
-	private String orgaoEmissor;
-	private String naturalidade;
-	private String nacionalidade;
 	private Endereco endereco;
 	private List<Telefone> telefones;
 	private String email;
 	private Boolean status;
 	
 	public Pessoa(Integer idPessoa, EnumTypePessoa tipoPessoa, Date dataCadastro, String nome,
-			String cpf, EnumTypeSexo sexo, Date dataNascimento, String rg,
-			String orgaoEmissor, String naturalidade, String nacionalidade,
+			String cpf, EnumTypeSexo sexo, Date dataNascimento,
 			Endereco endereco, List<Telefone> telefones,
 			String email, Boolean status) {
 		setIdPessoa(idPessoa);
@@ -38,10 +33,6 @@ public class Pessoa {
 		setCpf(cpf);
 		setSexo(sexo);
 		setDataNascimento(dataNascimento);
-		setRg(rg);
-		setOrgaoEmissor(orgaoEmissor);
-		setNaturalidade(naturalidade);
-		setNacionalidade(nacionalidade);
 		setTelefones(telefones);
 		setEndereco(endereco);
 		setEmail(email);
@@ -50,8 +41,7 @@ public class Pessoa {
 	}
 
 	public Pessoa(EnumTypePessoa tipoPessoa, Date dataCadastro, String nome,
-			String cpf, EnumTypeSexo sexo, Date dataNascimento, String rg,
-			String orgaoEmissor, String naturalidade, String nacionalidade,
+			String cpf, EnumTypeSexo sexo, Date dataNascimento,
 			Endereco endereco, List<Telefone> telefones, String email,
 			Boolean status) {
 		setTipoPessoa(tipoPessoa);
@@ -60,10 +50,6 @@ public class Pessoa {
 		setCpf(cpf);
 		setSexo(sexo);
 		setDataNascimento(dataNascimento);
-		setRg(rg);
-		setOrgaoEmissor(orgaoEmissor);
-		setNaturalidade(naturalidade);
-		setNacionalidade(nacionalidade);
 		setTelefones(telefones);
 		setEndereco(endereco);
 		setEmail(email);
@@ -125,38 +111,6 @@ public class Pessoa {
 		this.dataNascimento = dataNascimento;
 	}
 	
-	public String getRg() {
-		return rg;
-	}
-	
-	public void setRg(String rg) {
-		this.rg = rg;
-	}
-	
-	public String getOrgaoEmissor() {
-		return orgaoEmissor;
-	}
-	
-	public void setOrgaoEmissor(String orgaoEmissor) {
-		this.orgaoEmissor = orgaoEmissor;
-	}
-	
-	public String getNaturalidade() {
-		return naturalidade;
-	}
-	
-	public void setNaturalidade(String naturalidade) {
-		this.naturalidade = naturalidade;
-	}
-	
-	public String getNacionalidade() {
-		return nacionalidade;
-	}
-	
-	public void setNacionalidade(String nacionalidade) {
-		this.nacionalidade = nacionalidade;
-	}
-	
 	public Endereco getEndereco() {
 		return endereco;
 	}
@@ -188,7 +142,7 @@ public class Pessoa {
 	public void setStatus(Boolean status) {
 		this.status = status;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -203,14 +157,7 @@ public class Pessoa {
 				+ ((endereco == null) ? 0 : endereco.hashCode());
 		result = prime * result
 				+ ((idPessoa == null) ? 0 : idPessoa.hashCode());
-		result = prime * result
-				+ ((nacionalidade == null) ? 0 : nacionalidade.hashCode());
-		result = prime * result
-				+ ((naturalidade == null) ? 0 : naturalidade.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result
-				+ ((orgaoEmissor == null) ? 0 : orgaoEmissor.hashCode());
-		result = prime * result + ((rg == null) ? 0 : rg.hashCode());
 		result = prime * result + ((sexo == null) ? 0 : sexo.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		result = prime * result
@@ -219,7 +166,7 @@ public class Pessoa {
 				+ ((tipoPessoa == null) ? 0 : tipoPessoa.hashCode());
 		return result;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -259,35 +206,12 @@ public class Pessoa {
 				return false;
 		} else if (!idPessoa.equals(other.idPessoa))
 			return false;
-		if (nacionalidade == null) {
-			if (other.nacionalidade != null)
-				return false;
-		} else if (!nacionalidade.equals(other.nacionalidade))
-			return false;
-		if (naturalidade == null) {
-			if (other.naturalidade != null)
-				return false;
-		} else if (!naturalidade.equals(other.naturalidade))
-			return false;
 		if (nome == null) {
 			if (other.nome != null)
 				return false;
 		} else if (!nome.equals(other.nome))
 			return false;
-		if (orgaoEmissor == null) {
-			if (other.orgaoEmissor != null)
-				return false;
-		} else if (!orgaoEmissor.equals(other.orgaoEmissor))
-			return false;
-		if (rg == null) {
-			if (other.rg != null)
-				return false;
-		} else if (!rg.equals(other.rg))
-			return false;
-		if (sexo == null) {
-			if (other.sexo != null)
-				return false;
-		} else if (!sexo.equals(other.sexo))
+		if (sexo != other.sexo)
 			return false;
 		if (status == null) {
 			if (other.status != null)
@@ -299,24 +223,17 @@ public class Pessoa {
 				return false;
 		} else if (!telefones.equals(other.telefones))
 			return false;
-		if (tipoPessoa == null) {
-			if (other.tipoPessoa != null)
-				return false;
-		} else if (!tipoPessoa.equals(other.tipoPessoa))
+		if (tipoPessoa != other.tipoPessoa)
 			return false;
 		return true;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Pessoa [idPessoa=" + idPessoa + ", tipoPessoa=" + tipoPessoa
 				+ ", dataCadastro=" + dataCadastro + ", nome=" + nome
 				+ ", cpf=" + cpf + ", sexo=" + sexo + ", dataNascimento="
-				+ dataNascimento + ", rg=" + rg + ", orgaoEmissor="
-				+ orgaoEmissor + ", naturalidade=" + naturalidade
-				+ ", nacionalidade=" + nacionalidade + ", endereco=" + endereco
-				+ ", telefones=" + telefones + ", email=" + email + ", status="
-				+ status + "]";
-	}
-		
+				+ dataNascimento + ", endereco=" + endereco + ", telefones="
+				+ telefones + ", email=" + email + ", status=" + status + "]";
+	}		
 }

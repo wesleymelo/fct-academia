@@ -19,8 +19,8 @@ public class PessoaDAOConexao implements PessoaDAO {
 
 	@Override
 	public boolean insert(Pessoa pessoa) throws DAOException {
-		String sql = "INSERT INTO pessoas(idPessoa,tipoPessoa, dataCadastro, nome, cpf, sexo, rg, orgaoEmissor, " +
-				"idEndereco, email, nacionalidade, naturalidade, status) VALUES(null,?,?,?,?,?,?,?,?,?,?,?,?);";
+		String sql = "INSERT INTO pessoas(idPessoa,tipoPessoa, dataCadastro, nome, cpf, sexo, " +
+				"idEndereco, email, status) VALUES(null,?,?,?,?,?,?,?,?);";
 		Connection con = MyConnection.init();
 		int retorno;
 		PreparedStatement ps;
@@ -31,13 +31,9 @@ public class PessoaDAOConexao implements PessoaDAO {
 			ps.setString(3, pessoa.getNome());
 			ps.setString(4, pessoa.getCpf());
 			ps.setString(5, pessoa.getSexo().getCodigo().toString());
-			ps.setString(6, pessoa.getRg());
-			ps.setString(7, pessoa.getOrgaoEmissor());
-			ps.setInt(8, pessoa.getEndereco().getIdEndereco());
-			ps.setString(9, pessoa.getEmail());
-			ps.setString(10, pessoa.getNacionalidade());
-			ps.setString(11, pessoa.getNaturalidade());
-			ps.setBoolean(12, pessoa.getStatus());
+			ps.setInt(6, pessoa.getEndereco().getIdEndereco());
+			ps.setString(7, pessoa.getEmail());
+			ps.setBoolean(8, pessoa.getStatus());
 			retorno = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -65,8 +61,8 @@ public class PessoaDAOConexao implements PessoaDAO {
 
 	@Override
 	public boolean update(Pessoa pessoa, int id) throws DAOException {
-		String sql = "UPDATE pessoas SET idPessoa,tipoPessoa, dataCadastro, nome, cpf, sexo, rg, orgaoEmissor, " +
-				"idEndereco, email, nacionalidade, naturalidade, status) VALUES(null,?,?,?,?,?,?,?,?,?,?,?,?);";
+		String sql = "UPDATE pessoas SET idPessoa,tipoPessoa, dataCadastro, nome, cpf, sexo, " +
+				"idEndereco, email, status) VALUES(null,?,?,?,?,?,?,?,?);";
 		Connection con = MyConnection.init();
 		int retorno;
 		PreparedStatement ps;
@@ -77,13 +73,9 @@ public class PessoaDAOConexao implements PessoaDAO {
 			ps.setString(3, pessoa.getNome());
 			ps.setString(4, pessoa.getCpf());
 			ps.setString(5, pessoa.getSexo().getCodigo().toString());
-			ps.setString(6, pessoa.getRg());
-			ps.setString(7, pessoa.getOrgaoEmissor());
-			ps.setInt(8, pessoa.getEndereco().getIdEndereco());
-			ps.setString(9, pessoa.getEmail());
-			ps.setString(10, pessoa.getNacionalidade());
-			ps.setString(11, pessoa.getNaturalidade());
-			ps.setBoolean(12, pessoa.getStatus());
+			ps.setInt(6, pessoa.getEndereco().getIdEndereco());
+			ps.setString(7, pessoa.getEmail());
+			ps.setBoolean(8, pessoa.getStatus());
 			retorno = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -117,8 +109,7 @@ public class PessoaDAOConexao implements PessoaDAO {
 
 	public Pessoa getPessoa(ResultSet rs) throws SQLException {
 		return new Pessoa(rs.getInt("idPessoa"), EnumTypePessoa.findEmunTypePessoaByNumber(rs.getInt("tipoPessoa")), rs.getDate("dataCadastro"), rs.getString("nome"), 
-						  rs.getString("cpf"), EnumTypeSexo.findByCodigo(rs.getString("sexo").charAt(0)), rs.getDate("dataNascimento"), rs.getString("rg"), rs.getString("orgaoEmissor"), rs.getString("naturalidade"), rs.getString("nacionalidade"),
-						  Factory.initEnderecoDAO().selectById(rs.getInt("idEndereco")), Factory.initTelefoneDAO().selectById(rs.getInt("idPessoa")), rs.getString("email"), rs.getBoolean("status"));
+						  rs.getString("cpf"), EnumTypeSexo.findByCodigo(rs.getString("sexo").charAt(0)), rs.getDate("dataNascimento"), Factory.initEnderecoDAO().selectById(rs.getInt("idEndereco")), Factory.initTelefoneDAO().selectById(rs.getInt("idPessoa")), rs.getString("email"), rs.getBoolean("status"));
 	}
 
 	@Override
