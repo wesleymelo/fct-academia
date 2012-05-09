@@ -15,13 +15,11 @@ public class Professor extends Pessoa{
 	
 	public Professor(Integer idPessoa, EnumTypePessoa tipoPessoa,
 			Date dataCadastro, String nome, String cpf, EnumTypeSexo sexo,
-			Date dataNascimento, String rg, String orgaoEmissor,
-			String naturalidade, String nacionalidade, Endereco endereco,
+			Date dataNascimento, Endereco endereco,
 			List<Telefone> telefones, String email, Boolean status,
 			Date dataAdimissao) {
 		super(idPessoa, tipoPessoa, dataCadastro, nome, cpf, sexo,
-				dataNascimento, rg, orgaoEmissor, naturalidade, nacionalidade,
-				endereco, telefones, email, status);
+				dataNascimento, endereco, telefones, email, status);
 		setDataAdimissao(dataAdimissao);
 	}
 
@@ -58,8 +56,4 @@ public class Professor extends Pessoa{
 			return false;
 		return true;
 	}
-	
-	
-	
-	
 }
