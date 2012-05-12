@@ -87,7 +87,6 @@
 				$.tablesorter.clearTableBody(table);
 				
 				for(var i = s; i < e; i++) {
-					
 					//tableBody.append(rows[i]);
 					
 					var o = rows[i];
@@ -142,7 +141,6 @@
 			this.construct = function(settings) {
 				
 				return this.each(function() {	
-					
 					config = $.extend(this.config, $.tablesorterPager.defaults, settings);
 					
 					var table = this, pager = config.container;
