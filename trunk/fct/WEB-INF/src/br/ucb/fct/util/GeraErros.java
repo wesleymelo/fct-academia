@@ -1,4 +1,4 @@
-package br.ucb.fct.servlets.actions;
+package br.ucb.fct.util;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -6,56 +6,18 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import br.ucb.fct.aluno.Aluno;
 import br.ucb.fct.enuns.EnumTypeFone;
-import br.ucb.fct.enuns.EnumTypePessoa;
 import br.ucb.fct.telefone.Telefone;
-import br.ucb.fct.util.Util;
-import br.ucb.fct.util.Validator;
 
-
-
-public class CadastroAlunoAction implements Action {
-
-	@Override
-	public String execute(HttpServletRequest req, HttpServletResponse resp) {
-
-		int pg = Integer.parseInt(req.getParameter("pg"));
-		String nome = req.getParameter("nome");
-		//String
-
-
-		Map<String, String> erros = Validator.verificaErros(req);
-		HttpSession sessao = req.getSession();
-
-
-
-
-		switch (pg) {
-		case 1:
-			erros.
-			if(!erros.isEmpty()){
-				return "cadastroAluno.jsp";
-			}
-			else{
-				setSessionAluno(sessao, req);
-				return "cadastraAlunoEndereco.jsp";
-			}
-
-			break;
-
-
-		}
-
-
-
-		return null;
-	}
-
-	public void setSessionAluno(HttpSession sessao, HttpServletRequest req){
+public class GeraErros {
+	
+	public static Map<String, String> verificaErrosAlunos(HttpServletRequest req) {
+		
+		if()
+			
+			
+			
 		sessao.setAttribute("nome",req.getParameter("nome"));
 		sessao.setAttribute("dataCadas",Util.formatDateOut(new Date().toString()));
 		sessao.setAttribute("dataNasc",Util.unFormat(req.getParameter("dataNasc")));
@@ -82,9 +44,10 @@ public class CadastroAlunoAction implements Action {
 		sessao.setAttribute("telefones",tel);
 		sessao.setAttribute("altura",req.getParameter("altura"));
 		sessao.setAttribute("peso",req.getParameter("peso"));
+		
+		
+		return null;
 	}
-
-
-
+	
 
 }

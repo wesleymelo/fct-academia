@@ -23,6 +23,16 @@ public class Aluno extends Pessoa{
 		setAltura(altura);
 		setPeso(peso);
 	}
+	
+	public Aluno(EnumTypePessoa tipoPessoa, Date dataCadastro, String nome,
+			String cpf, EnumTypeSexo sexo, Date dataNascimento,
+			Endereco endereco, List<Telefone> telefones,
+			String email, Boolean status, Double peso, Double altura) {
+		
+		super(tipoPessoa,dataCadastro,nome, cpf, sexo, dataNascimento, endereco, telefones,email,  status);
+		setAltura(altura);
+		setPeso(peso);
+	}
 
 	public Double getPeso() {
 		return peso;
