@@ -45,7 +45,7 @@ public class AutenticaLoginAction implements Action{
 		String senha = req.getParameter("senha");
 		String cpf = Util.unFormat(req.getParameter("cpf"));
 		
-		if(!(Validator.isStringValid(senha)) || !Validator.isCPFValid(cpf)){
+		if(!(Validator.isStringValid(senha,100)) || !Validator.isCPFValid(cpf)){
 			req.setAttribute(EnumTypeErro.ERROLOGAR.getChave(), EnumTypeErro.ERROLOGAR.getDescricao());
 			return false;
 		}
