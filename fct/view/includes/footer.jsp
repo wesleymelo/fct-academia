@@ -7,7 +7,7 @@
         	<div class="container_12">
             	<div class="grid_12">
                 	<!-- You can change the copyright line for your own -->
-                	<p>&copy; <fmt:message key="RODAPE"/></p>
+                	<p>&copy; <fmt:message key="rodape"/></p>
         		</div>
             </div>
             <div style="clear:both;"></div>
