@@ -16,14 +16,13 @@ public class GastoDAOConexao implements GastoDAO {
 
 	@Override
 	public boolean insert(Gasto gasto) throws DAOException {
-		String sql="INSERT INTO gastos(idGasto,idDespesa,valor,data,idSecretaria) VALUES (?,?,?,?,?);";
+		String sql="INSERT INTO gastos(idGasto,idDespesa,valor,data,idSecretaria) VALUES (null,?,?,?,?);";
 		Connection con = null;
 		PreparedStatement ps = null;
 		int retorno;
 		try {
 			con=MyConnection.init();
 			ps=con.prepareStatement(sql);
-			ps.setInt(1,gasto.getIdGasto());
 			ps.setInt(2,gasto.getIdDespesa());
 			ps.setDouble(3,gasto.getValor());
 			ps.setDate(4,(java.sql.Date)gasto.getData());
