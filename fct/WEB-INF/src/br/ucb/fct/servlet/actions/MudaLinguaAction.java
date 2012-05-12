@@ -18,9 +18,8 @@ public class MudaLinguaAction implements Action{
         Config.set(req.getSession(), Config.FMT_LOCALE, locale);
         Config.set(req.getSession(), Config.FMT_FALLBACK_LOCALE, locale);
         try {
-			resp.sendRedirect(req.getContextPath()+"view/admin/principal/index.jsp");
+			resp.sendRedirect(req.getContextPath()+"/view/admin/principal/index.jsp");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         return(null);
