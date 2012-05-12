@@ -816,9 +816,19 @@ CREATE  TABLE IF NOT EXISTS `mydb`.`Gastos` (
 
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+
+-- Table `mydb`.`estados`
+
+-- -----------------------------------------------------
 
 
-
+CREATE TABLE estados (
+  codigo INTEGER NOT NULL AUTO_INCREMENT,
+  sigla VARCHAR(2) NOT NULL,
+  descricao VARCHAR(30) NOT NULL,
+  PRIMARY KEY(codigo)
+);
 
 
 
