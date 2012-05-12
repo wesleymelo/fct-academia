@@ -26,7 +26,7 @@ public class Validator {
 	public static boolean isEmailValid(String email){
         final String EMAIL_REGEX = "^[\\w-]+(\\.[\\w-]+)*@([\\w-]+\\.)+[a-zA-Z]{2,7}$";
         
-        if(!isStringValid(email))
+        if(!isStringValid(email,100))
         	return false;
         
         Pattern p = Pattern.compile(EMAIL_REGEX);
@@ -83,14 +83,15 @@ public class Validator {
 	}
 	
 	
-	public static boolean isStringValid(String value){
-		return (value != null && !(value.trim().isEmpty()));
-	}
-
-
-	public static Map<String, String> verificaErros(HttpServletRequest req) {
-		return null;
+	public static boolean isStringValid(String value, int qtde){
+		return (value != null && !(value.trim().isEmpty()) && value.length() <= qtde);
 	}
 	
+	public static boolean verificaTel(String tel){
+		if(!tel.isEmpty() && tel.length() == 10){
+			return true;
+		}
+		return false;
+	}
 	
 }

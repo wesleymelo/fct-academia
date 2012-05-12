@@ -17,6 +17,13 @@ public class Telefone {
 		setDdd(ddd);
 		setTipo(tipo);
 	}
+	
+	public Telefone(String numero, String ddd, EnumTypeFone tipo) {
+		setNumero(numero);
+		setDdd(ddd);
+		setTipo(tipo);
+	}
+	
 	public String getNumero() {
 		return numero;
 	}
