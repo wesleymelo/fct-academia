@@ -68,13 +68,13 @@
 		<div class="grid_login">
 			<div class="module">
 				<h2>
-					<span><center>Realize seu Login</center></span>
+					<span><center><fmt:message key="login"></fmt:message></center></span>
 				</h2>
 
 				<div class="module-body">
 					<form action="autenticaLogin.do" " method="post">
 						<p>
-							<label>CPF:</label> <input class="input-short" type="text"
+							<label><fmt:message key="cpf"></fmt:message></label> <input class="input-short" type="text"
 								name="cpf" id="cpf" size="15" maxlength="14" /> <span
 								class="notification-input ni-correct">This is correct,
 								thanks!</span>
@@ -86,7 +86,7 @@
 						</p>
 
 						<p>
-							<label>Senha:</label> <input class="input-short" type="password"
+							<label><fmt:message key="senha"></fmt:message></label> <input class="input-short" type="password"
 								name="senha" id="senha" /> <span
 								class="notification-input ni-error">Sorry, try again.</span>
 						</p>
