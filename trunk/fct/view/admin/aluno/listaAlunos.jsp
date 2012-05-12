@@ -2,7 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<c:import url="../../includes/header.jsp" />
+<c:import url="${pageContext.request.contextPath}/includes/header.jsp" />
 
 <!-- Header. Main part -->
 <div id="header-main">
@@ -62,7 +62,7 @@
 			<!-- Button -->
 			<div class="float-right">
 				<a href="" class="button"> <span><b>Novo(a) Aluno(a)</b><img
-						src="../../images/plus-small.gif"
+						src="${pageContext.request.contextPath}/view/images/plus-small.gif"
 						tppabs="http://www.xooom.pl/work/magicadmin/images/plus-small.gif"
 						width="12" height="9" alt="Novo" /></span>
 				</a>
@@ -111,16 +111,16 @@
 								<td>nada@algumacoisa.dominio</td>
 								<td>M</td>
 								<td><input type="checkbox" /> <a href=""><img
-										src="../../images/tick-circle.gif"
+										src="${pageContext.request.contextPath}/view/images/tick-circle.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/tick-circle.gif"
 										width="16" height="16" alt="published" /></a> <a href=""><img
-										src="../../images/pencil.gif"
+										src="${pageContext.request.contextPath}/view/images/pencil.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/pencil.gif"
 										width="16" height="16" alt="edit" /></a> <a href=""><img
-										src="../../images/balloon.gif"
+										src="${pageContext.request.contextPath}/view/images/balloon.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/balloon.gif"
 										width="16" height="16" alt="comments" /></a> <a href=""><img
-										src="../../images/bin.gif"
+										src="${pageContext.request.contextPath}/view/images/bin.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/bin.gif"
 										width="16" height="16" alt="delete" /></a></td>
 							</tr>
@@ -132,16 +132,16 @@
 								<td>400</td>
 								<td>$6.95</td>
 								<td><input type="checkbox" /> <a href=""><img
-										src="../../images/minus-circle.gif"
+										src="${pageContext.request.contextPath}/view/images/minus-circle.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/minus-circle.gif"
 										width="16" height="16" alt="not published" /></a> <a href=""><img
-										src="../../images/pencil.gif"
+										src="${pageContext.request.contextPath}/view/images/pencil.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/pencil.gif"
 										width="16" height="16" alt="edit" /></a> <a href=""><img
-										src="../../images/balloon.gif"
+										src="${pageContext.request.contextPath}/view/images/balloon.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/balloon.gif"
 										width="16" height="16" alt="comments" /></a> <a href=""><img
-										src="../../images/bin.gif"
+										src="${pageContext.request.contextPath}/view/images/bin.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/bin.gif"
 										width="16" height="16" alt="delete" /></a></td>
 							</tr>
@@ -153,16 +153,16 @@
 								<td>528</td>
 								<td>$8.76</td>
 								<td><input type="checkbox" /> <a href=""><img
-										src="../../images/minus-circle.gif"
+										src="${pageContext.request.contextPath}/view/images/minus-circle.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/minus-circle.gif"
 										width="16" height="16" alt="not published" /></a> <a href=""><img
-										src="../../images/pencil.gif"
+										src="${pageContext.request.contextPath}/view/images/pencil.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/pencil.gif"
 										width="16" height="16" alt="edit" /></a> <a href=""><img
-										src="../../images/balloon.gif"
+										src="${pageContext.request.contextPath}/view/images/balloon.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/balloon.gif"
 										width="16" height="16" alt="comments" /></a> <a href=""><img
-										src="../../images/bin.gif"
+										src="${pageContext.request.contextPath}/view/images/bin.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/bin.gif"
 										width="16" height="16" alt="delete" /></a></td>
 							</tr>
@@ -174,16 +174,16 @@
 								<td>1024</td>
 								<td>$9.00</td>
 								<td><input type="checkbox" /> <a href=""><img
-										src="../../images/tick-circle.gif"
+										src="${pageContext.request.contextPath}/view/images/tick-circle.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/tick-circle.gif"
 										width="16" height="16" alt="published" /></a> <a href=""><img
-										src="../../images/pencil.gif"
+										src="${pageContext.request.contextPath}/view/images/pencil.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/pencil.gif"
 										width="16" height="16" alt="edit" /></a> <a href=""><img
-										src="../../images/balloon.gif"
+										src="${pageContext.request.contextPath}/view/images/balloon.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/balloon.gif"
 										width="16" height="16" alt="comments" /></a> <a href=""><img
-										src="../../images/bin.gif"
+										src="${pageContext.request.contextPath}/view/images/bin.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/bin.gif"
 										width="16" height="16" alt="delete" /></a></td>
 							</tr>
@@ -195,16 +195,16 @@
 								<td>592</td>
 								<td>$10.85</td>
 								<td><input type="checkbox" /> <a href=""><img
-										src="../../images/tick-circle.gif"
+										src="${pageContext.request.contextPath}/view/images/tick-circle.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/tick-circle.gif"
 										width="16" height="16" alt="published" /></a> <a href=""><img
-										src="../../images/pencil.gif"
+										src="${pageContext.request.contextPath}/view/images/pencil.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/pencil.gif"
 										width="16" height="16" alt="edit" /></a> <a href=""><img
-										src="../../images/balloon.gif"
+										src="${pageContext.request.contextPath}/view/images/balloon.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/balloon.gif"
 										width="16" height="16" alt="comments" /></a> <a href=""><img
-										src="../../images/bin.gif"
+										src="${pageContext.request.contextPath}/view/images/bin.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/bin.gif"
 										width="16" height="16" alt="delete" /></a></td>
 							</tr>
@@ -216,16 +216,16 @@
 								<td>464</td>
 								<td>$5.95</td>
 								<td><input type="checkbox" /> <a href=""><img
-										src="../../images/tick-circle.gif"
+										src="${pageContext.request.contextPath}/view/images/tick-circle.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/tick-circle.gif"
 										width="16" height="16" alt="published" /></a> <a href=""><img
-										src="../../images/pencil.gif"
+										src="${pageContext.request.contextPath}/view/images/pencil.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/pencil.gif"
 										width="16" height="16" alt="edit" /></a> <a href=""><img
-										src="../../images/balloon.gif"
+										src="${pageContext.request.contextPath}/view/images/balloon.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/balloon.gif"
 										width="16" height="16" alt="comments" /></a> <a href=""><img
-										src="../../images/bin.gif"
+										src="${pageContext.request.contextPath}/view/images/bin.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/bin.gif"
 										width="16" height="16" alt="delete" /></a></td>
 							</tr>
@@ -237,16 +237,16 @@
 								<td>190</td>
 								<td>$15.88</td>
 								<td><input type="checkbox" /> <a href=""><img
-										src="../../images/minus-circle.gif"
+										src="${pageContext.request.contextPath}/view/images/minus-circle.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/minus-circle.gif"
 										width="16" height="16" alt="not published" /></a> <a href=""><img
-										src="../../images/pencil.gif"
+										src="${pageContext.request.contextPath}/view/images/pencil.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/pencil.gif"
 										width="16" height="16" alt="edit" /></a> <a href=""><img
-										src="../../images/balloon.gif"
+										src="${pageContext.request.contextPath}/view/images/balloon.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/balloon.gif"
 										width="16" height="16" alt="comments" /></a> <a href=""><img
-										src="../../images/bin.gif"
+										src="${pageContext.request.contextPath}/view/images/bin.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/bin.gif"
 										width="16" height="16" alt="delete" /></a></td>
 							</tr>
@@ -258,16 +258,16 @@
 								<td>304</td>
 								<td>$22.80</td>
 								<td><input type="checkbox" /> <a href=""><img
-										src="../../images/tick-circle.gif"
+										src="${pageContext.request.contextPath}/view/images/tick-circle.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/tick-circle.gif"
 										width="16" height="16" alt="published" /></a> <a href=""><img
-										src="../../images/pencil.gif"
+										src="${pageContext.request.contextPath}/view/images/pencil.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/pencil.gif"
 										width="16" height="16" alt="edit" /></a> <a href=""><img
-										src="../../images/balloon.gif"
+										src="${pageContext.request.contextPath}/view/images/balloon.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/balloon.gif"
 										width="16" height="16" alt="comments" /></a> <a href=""><img
-										src="../../images/bin.gif"
+										src="${pageContext.request.contextPath}/view/images/bin.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/bin.gif"
 										width="16" height="16" alt="delete" /></a></td>
 							</tr>
@@ -279,16 +279,16 @@
 								<td>112</td>
 								<td>$4.63</td>
 								<td><input type="checkbox" /> <a href=""><img
-										src="../../images/minus-circle.gif"
+										src="${pageContext.request.contextPath}/view/images/minus-circle.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/minus-circle.gif"
 										width="16" height="16" alt="not published" /></a> <a href=""><img
-										src="../../images/pencil.gif"
+										src="${pageContext.request.contextPath}/view/images/pencil.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/pencil.gif"
 										width="16" height="16" alt="edit" /></a> <a href=""><img
-										src="../../images/balloon.gif"
+										src="${pageContext.request.contextPath}/view/images/balloon.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/balloon.gif"
 										width="16" height="16" alt="comments" /></a> <a href=""><img
-										src="../../images/bin.gif"
+										src="${pageContext.request.contextPath}/view/images/bin.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/bin.gif"
 										width="16" height="16" alt="delete" /></a></td>
 							</tr>
@@ -300,16 +300,16 @@
 								<td>144</td>
 								<td>$19.00</td>
 								<td><input type="checkbox" /> <a href=""><img
-										src="../../images/tick-circle.gif"
+										src="${pageContext.request.contextPath}/view/images/tick-circle.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/tick-circle.gif"
 										width="16" height="16" alt="published" /></a> <a href=""><img
-										src="../../images/pencil.gif"
+										src="${pageContext.request.contextPath}/view/images/pencil.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/pencil.gif"
 										width="16" height="16" alt="edit" /></a> <a href=""><img
-										src="../../images/balloon.gif"
+										src="${pageContext.request.contextPath}/view/images/balloon.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/balloon.gif"
 										width="16" height="16" alt="comments" /></a> <a href=""><img
-										src="../../images/bin.gif"
+										src="${pageContext.request.contextPath}/view/images/bin.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/bin.gif"
 										width="16" height="16" alt="delete" /></a></td>
 							</tr>
@@ -321,16 +321,16 @@
 								<td>256</td>
 								<td>$10.20</td>
 								<td><input type="checkbox" /> <a href=""><img
-										src="../../images/tick-circle.gif"
+										src="${pageContext.request.contextPath}/view/images/tick-circle.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/tick-circle.gif"
 										width="16" height="16" alt="published" /></a> <a href=""><img
-										src="../../images/pencil.gif"
+										src="${pageContext.request.contextPath}/view/images/pencil.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/pencil.gif"
 										width="16" height="16" alt="edit" /></a> <a href=""><img
-										src="../../images/balloon.gif"
+										src="${pageContext.request.contextPath}/view/images/balloon.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/balloon.gif"
 										width="16" height="16" alt="comments" /></a> <a href=""><img
-										src="../../images/bin.gif"
+										src="${pageContext.request.contextPath}/view/images/bin.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/bin.gif"
 										width="16" height="16" alt="delete" /></a></td>
 							</tr>
@@ -342,16 +342,16 @@
 								<td>94</td>
 								<td>$9.95</td>
 								<td><input type="checkbox" /> <a href=""><img
-										src="../../images/minus-circle.gif"
+										src="${pageContext.request.contextPath}/view/images/minus-circle.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/minus-circle.gif"
 										width="16" height="16" alt="not published" /></a> <a href=""><img
-										src="../../images/pencil.gif"
+										src="${pageContext.request.contextPath}/view/images/pencil.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/pencil.gif"
 										width="16" height="16" alt="edit" /></a> <a href=""><img
-										src="../../images/balloon.gif"
+										src="${pageContext.request.contextPath}/view/images/balloon.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/balloon.gif"
 										width="16" height="16" alt="comments" /></a> <a href=""><img
-										src="../../images/bin.gif"
+										src="${pageContext.request.contextPath}/view/images/bin.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/bin.gif"
 										width="16" height="16" alt="delete" /></a></td>
 							</tr>
@@ -363,16 +363,16 @@
 								<td>288</td>
 								<td>$10.88</td>
 								<td><input type="checkbox" /> <a href=""><img
-										src="../../images/tick-circle.gif"
+										src="${pageContext.request.contextPath}/view/images/tick-circle.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/tick-circle.gif"
 										width="16" height="16" alt="published" /></a> <a href=""><img
-										src="../../images/pencil.gif"
+										src="${pageContext.request.contextPath}/view/images/pencil.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/pencil.gif"
 										width="16" height="16" alt="edit" /></a> <a href=""><img
-										src="../../images/balloon.gif"
+										src="${pageContext.request.contextPath}/view/images/balloon.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/balloon.gif"
 										width="16" height="16" alt="comments" /></a> <a href=""><img
-										src="../../images/bin.gif"
+										src="${pageContext.request.contextPath}/view/images/bin.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/bin.gif"
 										width="16" height="16" alt="delete" /></a></td>
 							</tr>
@@ -384,16 +384,16 @@
 								<td>464</td>
 								<td>$5.00</td>
 								<td><input type="checkbox" /> <a href=""><img
-										src="../../images/minus-circle.gif"
+										src="${pageContext.request.contextPath}/view/images/minus-circle.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/minus-circle.gif"
 										width="16" height="16" alt="not published" /></a> <a href=""><img
-										src="../../images/pencil.gif"
+										src="${pageContext.request.contextPath}/view/images/pencil.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/pencil.gif"
 										width="16" height="16" alt="edit" /></a> <a href=""><img
-										src="../../images/balloon.gif"
+										src="${pageContext.request.contextPath}/view/images/balloon.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/balloon.gif"
 										width="16" height="16" alt="comments" /></a> <a href=""><img
-										src="../../images/bin.gif"
+										src="${pageContext.request.contextPath}/view/images/bin.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/bin.gif"
 										width="16" height="16" alt="delete" /></a></td>
 							</tr>
@@ -405,16 +405,16 @@
 								<td>176</td>
 								<td>$10.01</td>
 								<td><input type="checkbox" /> <a href=""><img
-										src="../../images/tick-circle.gif"
+										src="${pageContext.request.contextPath}/view/images/tick-circle.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/tick-circle.gif"
 										width="16" height="16" alt="published" /></a> <a href=""><img
-										src="../../images/pencil.gif"
+										src="${pageContext.request.contextPath}/view/images/pencil.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/pencil.gif"
 										width="16" height="16" alt="edit" /></a> <a href=""><img
-										src="../../images/balloon.gif"
+										src="${pageContext.request.contextPath}/view/images/balloon.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/balloon.gif"
 										width="16" height="16" alt="comments" /></a> <a href=""><img
-										src="../../images/bin.gif"
+										src="${pageContext.request.contextPath}/view/images/bin.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/bin.gif"
 										width="16" height="16" alt="delete" /></a></td>
 							</tr>
@@ -426,16 +426,16 @@
 								<td>448</td>
 								<td>$12.24</td>
 								<td><input type="checkbox" /> <a href=""><img
-										src="../../images/tick-circle.gif"
+										src="${pageContext.request.contextPath}/view/images/tick-circle.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/tick-circle.gif"
 										width="16" height="16" alt="published" /></a> <a href=""><img
-										src="../../images/pencil.gif"
+										src="${pageContext.request.contextPath}/view/images/pencil.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/pencil.gif"
 										width="16" height="16" alt="edit" /></a> <a href=""><img
-										src="../../images/balloon.gif"
+										src="${pageContext.request.contextPath}/view/images/balloon.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/balloon.gif"
 										width="16" height="16" alt="comments" /></a> <a href=""><img
-										src="../../images/bin.gif"
+										src="${pageContext.request.contextPath}/view/images/bin.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/bin.gif"
 										width="16" height="16" alt="delete" /></a></td>
 							</tr>
@@ -447,16 +447,16 @@
 								<td>512</td>
 								<td>$9.24</td>
 								<td><input type="checkbox" /> <a href=""><img
-										src="../../images/minus-circle.gif"
+										src="${pageContext.request.contextPath}/view/images/minus-circle.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/minus-circle.gif"
 										width="16" height="16" alt="published" /></a> <a href=""><img
-										src="../../images/pencil.gif"
+										src="${pageContext.request.contextPath}/view/images/pencil.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/pencil.gif"
 										width="16" height="16" alt="edit" /></a> <a href=""><img
-										src="../../images/balloon.gif"
+										src="${pageContext.request.contextPath}/view/images/balloon.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/balloon.gif"
 										width="16" height="16" alt="comments" /></a> <a href=""><img
-										src="../../images/bin.gif"
+										src="${pageContext.request.contextPath}/view/images/bin.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/bin.gif"
 										width="16" height="16" alt="delete" /></a></td>
 							</tr>
@@ -468,16 +468,16 @@
 								<td>113</td>
 								<td>$9.85</td>
 								<td><input type="checkbox" /> <a href=""><img
-										src="../../images/minus-circle.gif"
+										src="${pageContext.request.contextPath}/view/images/minus-circle.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/minus-circle.gif"
 										width="16" height="16" alt="published" /></a> <a href=""><img
-										src="../../images/pencil.gif"
+										src="${pageContext.request.contextPath}/view/images/pencil.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/pencil.gif"
 										width="16" height="16" alt="edit" /></a> <a href=""><img
-										src="../../images/balloon.gif"
+										src="${pageContext.request.contextPath}/view/images/balloon.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/balloon.gif"
 										width="16" height="16" alt="comments" /></a> <a href=""><img
-										src="../../images/bin.gif"
+										src="${pageContext.request.contextPath}/view/images/bin.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/bin.gif"
 										width="16" height="16" alt="delete" /></a></td>
 							</tr>
@@ -489,16 +489,16 @@
 								<td>400</td>
 								<td>$5.99</td>
 								<td><input type="checkbox" /> <a href=""><img
-										src="../../images/tick-circle.gif"
+										src="${pageContext.request.contextPath}/view/images/tick-circle.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/tick-circle.gif"
 										width="16" height="16" alt="published" /></a> <a href=""><img
-										src="../../images/pencil.gif"
+										src="${pageContext.request.contextPath}/view/images/pencil.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/pencil.gif"
 										width="16" height="16" alt="edit" /></a> <a href=""><img
-										src="../../images/balloon.gif"
+										src="${pageContext.request.contextPath}/view/images/balloon.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/balloon.gif"
 										width="16" height="16" alt="comments" /></a> <a href=""><img
-										src="../../images/bin.gif"
+										src="${pageContext.request.contextPath}/view/images/bin.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/bin.gif"
 										width="16" height="16" alt="delete" /></a></td>
 							</tr>
@@ -510,16 +510,16 @@
 								<td>288</td>
 								<td>$5.99</td>
 								<td><input type="checkbox" /> <a href=""><img
-										src="../../images/tick-circle.gif"
+										src="${pageContext.request.contextPath}/view/images/tick-circle.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/tick-circle.gif"
 										width="16" height="16" alt="published" /></a> <a href=""><img
-										src="../../images/pencil.gif"
+										src="${pageContext.request.contextPath}/view/images/pencil.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/pencil.gif"
 										width="16" height="16" alt="edit" /></a> <a href=""><img
-										src="../../images/balloon.gif"
+										src="${pageContext.request.contextPath}/view/images/balloon.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/balloon.gif"
 										width="16" height="16" alt="comments" /></a> <a href=""><img
-										src="../../images/bin.gif"
+										src="${pageContext.request.contextPath}/view/images/bin.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/bin.gif"
 										width="16" height="16" alt="delete" /></a></td>
 							</tr>
@@ -531,16 +531,16 @@
 								<td>384</td>
 								<td>$5.99</td>
 								<td><input type="checkbox" /> <a href=""><img
-										src="../../images/tick-circle.gif"
+										src="${pageContext.request.contextPath}/view/images/tick-circle.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/tick-circle.gif"
 										width="16" height="16" alt="published" /></a> <a href=""><img
-										src="../../images/pencil.gif"
+										src="${pageContext.request.contextPath}/view/images/pencil.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/pencil.gif"
 										width="16" height="16" alt="edit" /></a> <a href=""><img
-										src="../../images/balloon.gif"
+										src="${pageContext.request.contextPath}/view/images/balloon.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/balloon.gif"
 										width="16" height="16" alt="comments" /></a> <a href=""><img
-										src="../../images/bin.gif"
+										src="${pageContext.request.contextPath}/view/images/bin.gif"
 										tppabs="http://www.xooom.pl/work/magicadmin/images/bin.gif"
 										width="16" height="16" alt="delete" /></a></td>
 							</tr>
@@ -550,15 +550,15 @@
 				<div class="pager" id="pager">
 					<form action="">
 						<div>
-							<img class="first" src="../../images/arrow-stop-180.gif"
+							<img class="first" src="${pageContext.request.contextPath}/view/images/arrow-stop-180.gif"
 								tppabs="http://www.xooom.pl/work/magicadmin/images/arrow-stop-180.gif"
-								alt="first" /> <img class="prev" src="../../images/arrow-180.gif"
+								alt="first" /> <img class="prev" src="${pageContext.request.contextPath}/view/images/arrow-180.gif"
 								tppabs="http://www.xooom.pl/work/magicadmin/images/arrow-180.gif"
 								alt="prev" /> <input type="text"
 								class="pagedisplay input-short align-center" /> <img
-								class="next" src="../../images/arrow.gif"
+								class="next" src="${pageContext.request.contextPath}/view/images/arrow.gif"
 								tppabs="http://www.xooom.pl/work/magicadmin/images/arrow.gif"
-								alt="next" /> <img class="last" src="../../images/arrow-stop.gif"
+								alt="next" /> <img class="last" src="${pageContext.request.contextPath}/view/images/arrow-stop.gif"
 								tppabs="http://www.xooom.pl/work/magicadmin/images/arrow-stop.gif"
 								alt="last" /> <select class="pagesize input-short align-center">
 								<option value="10" selected="selected">10</option>
@@ -591,11 +591,11 @@
 
 		<div class="pagination">
 			<a href="" class="button"><span><img
-					src="../../images/arrow-stop-180-small.gif"
+					src="${pageContext.request.contextPath}/view/images/arrow-stop-180-small.gif"
 					tppabs="http://www.xooom.pl/work/magicadmin/images/arrow-stop-180-small.gif"
 					height="9" width="12" alt="First" /> First</span></a> <a href=""
 				class="button"><span><img
-					src="../../images/arrow-180-small.gif"
+					src="${pageContext.request.contextPath}/view/images/arrow-180-small.gif"
 					tppabs="http://www.xooom.pl/work/magicadmin/images/arrow-180-small.gif"
 					height="9" width="12" alt="Previous" /> Prev</span></a>
 			<div class="numbers">
@@ -606,10 +606,10 @@
 				<span>|</span> <a href="">99</a>
 			</div>
 			<a href="" class="button"><span>Next <img
-					src="../../images/arrow-000-small.gif"
+					src="${pageContext.request.contextPath}/view/images/arrow-000-small.gif"
 					tppabs="http://www.xooom.pl/work/magicadmin/images/arrow-000-small.gif"
 					height="9" width="12" alt="Next" /></span></a> <a href="" class="button last"><span>Last
-					<img src="../../images/arrow-stop-000-small.gif"
+					<img src="${pageContext.request.contextPath}/view/images/arrow-stop-000-small.gif"
 					tppabs="http://www.xooom.pl/work/magicadmin/images/arrow-stop-000-small.gif"
 					height="9" width="12" alt="Last" />
 			</span></a>
@@ -627,4 +627,4 @@
 	<div style="clear: both;"></div>
 </div>
 <!-- End .container_12 -->
-<c:import url="../../includes/footer.jsp" />
+<c:import url="${pageContext.request.contextPath}/includes/footer.jsp" />
