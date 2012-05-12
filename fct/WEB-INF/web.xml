@@ -6,8 +6,15 @@
 	<display-name>.:: FCT ::.</display-name>
 
 	<welcome-file-list>
-		<welcome-file>/view/login.jsp</welcome-file>
+		<welcome-file>login.jsp</welcome-file>
 	</welcome-file-list>
+
+	<!-- configuração para usar a internacionalização -->
+	<context-param>
+    	<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+    	<param-value>messages</param-value>
+  	</context-param>
+
 
 	<filter>
 		<filter-name>filtro</filter-name>
