@@ -1,7 +1,10 @@
 package br.ucb.fct.util;
 
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import javax.servlet.http.HttpServletRequest;
 
 public class Validator {
 	
@@ -82,6 +85,11 @@ public class Validator {
 	
 	public static boolean isStringValid(String value){
 		return (value != null && !(value.trim().isEmpty()));
+	}
+
+
+	public static Map<String, String> verificaErros(HttpServletRequest req) {
+		return null;
 	}
 	
 	
