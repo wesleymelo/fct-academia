@@ -16,15 +16,15 @@ USE `academia` ;
 
 -- -----------------------------------------------------
 
--- Table `mydb`.`Enderecos`
+-- Table `academia`.`Enderecos`
 
 -- -----------------------------------------------------
 
-DROP TABLE IF EXISTS `mydb`.`Enderecos` ;
+DROP TABLE IF EXISTS `academia`.`Enderecos` ;
 
 
 
-CREATE  TABLE IF NOT EXISTS `mydb`.`Enderecos` (
+CREATE  TABLE IF NOT EXISTS `academia`.`Enderecos` (
 
   `idEndereco` INT(11) NOT NULL AUTO_INCREMENT ,
 
@@ -52,15 +52,15 @@ ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 
--- Table `mydb`.`Pessoas`
+-- Table `academia`.`Pessoas`
 
 -- -----------------------------------------------------
 
-DROP TABLE IF EXISTS `mydb`.`Pessoas` ;
+DROP TABLE IF EXISTS `academia`.`Pessoas` ;
 
 
 
-CREATE  TABLE IF NOT EXISTS `mydb`.`Pessoas` (
+CREATE  TABLE IF NOT EXISTS `academia`.`Pessoas` (
 
   `idPessoa` INT(11) NOT NULL AUTO_INCREMENT ,
 
@@ -90,7 +90,7 @@ CREATE  TABLE IF NOT EXISTS `mydb`.`Pessoas` (
 
     FOREIGN KEY (`idEndereco` )
 
-    REFERENCES `mydb`.`Enderecos` (`idEndereco` )
+    REFERENCES `academia`.`Enderecos` (`idEndereco` )
 
     ON DELETE NO ACTION
 
@@ -104,15 +104,15 @@ ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 
--- Table `mydb`.`Telefones`
+-- Table `academia`.`Telefones`
 
 -- -----------------------------------------------------
 
-DROP TABLE IF EXISTS `mydb`.`Telefones` ;
+DROP TABLE IF EXISTS `academia`.`Telefones` ;
 
 
 
-CREATE  TABLE IF NOT EXISTS `mydb`.`Telefones` (
+CREATE  TABLE IF NOT EXISTS `academia`.`Telefones` (
 
   `idTelefone` INT(11) NOT NULL AUTO_INCREMENT ,
 
@@ -132,7 +132,7 @@ CREATE  TABLE IF NOT EXISTS `mydb`.`Telefones` (
 
     FOREIGN KEY (`idPessoa` )
 
-    REFERENCES `mydb`.`Pessoas` (`idPessoa` )
+    REFERENCES `academia`.`Pessoas` (`idPessoa` )
 
     ON DELETE NO ACTION
 
@@ -146,15 +146,15 @@ ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 
--- Table `mydb`.`Modalidades`
+-- Table `academia`.`Modalidades`
 
 -- -----------------------------------------------------
 
-DROP TABLE IF EXISTS `mydb`.`Modalidades` ;
+DROP TABLE IF EXISTS `academia`.`Modalidades` ;
 
 
 
-CREATE  TABLE IF NOT EXISTS `mydb`.`Modalidades` (
+CREATE  TABLE IF NOT EXISTS `academia`.`Modalidades` (
 
   `idModalidade` INT(11) NOT NULL AUTO_INCREMENT ,
 
@@ -170,15 +170,15 @@ ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 
--- Table `mydb`.`Pacotes`
+-- Table `academia`.`Pacotes`
 
 -- -----------------------------------------------------
 
-DROP TABLE IF EXISTS `mydb`.`Pacotes` ;
+DROP TABLE IF EXISTS `academia`.`Pacotes` ;
 
 
 
-CREATE  TABLE IF NOT EXISTS `mydb`.`Pacotes` (
+CREATE  TABLE IF NOT EXISTS `academia`.`Pacotes` (
 
   `idPacote` INT(11) NOT NULL ,
 
@@ -196,15 +196,15 @@ ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 
--- Table `mydb`.`Professores`
+-- Table `academia`.`Professores`
 
 -- -----------------------------------------------------
 
-DROP TABLE IF EXISTS `mydb`.`Professores` ;
+DROP TABLE IF EXISTS `academia`.`Professores` ;
 
 
 
-CREATE  TABLE IF NOT EXISTS `mydb`.`Professores` (
+CREATE  TABLE IF NOT EXISTS `academia`.`Professores` (
 
   `idProfessor` INT(11) NOT NULL ,
 
@@ -218,7 +218,7 @@ CREATE  TABLE IF NOT EXISTS `mydb`.`Professores` (
 
     FOREIGN KEY (`idProfessor` )
 
-    REFERENCES `mydb`.`Pessoas` (`idPessoa` )
+    REFERENCES `academia`.`Pessoas` (`idPessoa` )
 
     ON DELETE NO ACTION
 
@@ -232,15 +232,15 @@ ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 
--- Table `mydb`.`Secretarias`
+-- Table `academia`.`Secretarias`
 
 -- -----------------------------------------------------
 
-DROP TABLE IF EXISTS `mydb`.`Secretarias` ;
+DROP TABLE IF EXISTS `academia`.`Secretarias` ;
 
 
 
-CREATE  TABLE IF NOT EXISTS `mydb`.`Secretarias` (
+CREATE  TABLE IF NOT EXISTS `academia`.`Secretarias` (
 
   `idSecretaria` INT(11) NOT NULL ,
 
@@ -260,7 +260,7 @@ CREATE  TABLE IF NOT EXISTS `mydb`.`Secretarias` (
 
     FOREIGN KEY (`idSecretaria` )
 
-    REFERENCES `mydb`.`Pessoas` (`idPessoa` )
+    REFERENCES `academia`.`Pessoas` (`idPessoa` )
 
     ON DELETE NO ACTION
 
@@ -274,15 +274,15 @@ ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 
--- Table `mydb`.`Alunos`
+-- Table `academia`.`Alunos`
 
 -- -----------------------------------------------------
 
-DROP TABLE IF EXISTS `mydb`.`Alunos` ;
+DROP TABLE IF EXISTS `academia`.`Alunos` ;
 
 
 
-CREATE  TABLE IF NOT EXISTS `mydb`.`Alunos` (
+CREATE  TABLE IF NOT EXISTS `academia`.`Alunos` (
 
   `idAluno` INT(11) NOT NULL ,
 
@@ -298,7 +298,7 @@ CREATE  TABLE IF NOT EXISTS `mydb`.`Alunos` (
 
     FOREIGN KEY (`idAluno` )
 
-    REFERENCES `mydb`.`Pessoas` (`idPessoa` )
+    REFERENCES `academia`.`Pessoas` (`idPessoa` )
 
     ON DELETE NO ACTION
 
@@ -312,15 +312,15 @@ ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 
--- Table `mydb`.`Turmas`
+-- Table `academia`.`Turmas`
 
 -- -----------------------------------------------------
 
-DROP TABLE IF EXISTS `mydb`.`Turmas` ;
+DROP TABLE IF EXISTS `academia`.`Turmas` ;
 
 
 
-CREATE  TABLE IF NOT EXISTS `mydb`.`Turmas` (
+CREATE  TABLE IF NOT EXISTS `academia`.`Turmas` (
 
   `idTurma` INT(11) NOT NULL ,
 
@@ -342,7 +342,7 @@ CREATE  TABLE IF NOT EXISTS `mydb`.`Turmas` (
 
     FOREIGN KEY (`idProfessor` )
 
-    REFERENCES `mydb`.`Professores` (`idProfessor` )
+    REFERENCES `academia`.`Professores` (`idProfessor` )
 
     ON DELETE NO ACTION
 
@@ -352,7 +352,7 @@ CREATE  TABLE IF NOT EXISTS `mydb`.`Turmas` (
 
     FOREIGN KEY (`idModalidade` )
 
-    REFERENCES `mydb`.`Modalidades` (`idModalidade` )
+    REFERENCES `academia`.`Modalidades` (`idModalidade` )
 
     ON DELETE NO ACTION
 
@@ -366,15 +366,15 @@ ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 
--- Table `mydb`.`Alunos_turmas`
+-- Table `academia`.`Alunos_turmas`
 
 -- -----------------------------------------------------
 
-DROP TABLE IF EXISTS `mydb`.`Alunos_turmas` ;
+DROP TABLE IF EXISTS `academia`.`Alunos_turmas` ;
 
 
 
-CREATE  TABLE IF NOT EXISTS `mydb`.`Alunos_turmas` (
+CREATE  TABLE IF NOT EXISTS `academia`.`Alunos_turmas` (
 
   `idAluno` INT(11) NOT NULL ,
 
@@ -390,7 +390,7 @@ CREATE  TABLE IF NOT EXISTS `mydb`.`Alunos_turmas` (
 
     FOREIGN KEY (`idAluno` )
 
-    REFERENCES `mydb`.`Alunos` (`idAluno` )
+    REFERENCES `academia`.`Alunos` (`idAluno` )
 
     ON DELETE NO ACTION
 
@@ -400,7 +400,7 @@ CREATE  TABLE IF NOT EXISTS `mydb`.`Alunos_turmas` (
 
     FOREIGN KEY (`idTurma` )
 
-    REFERENCES `mydb`.`Turmas` (`idTurma` )
+    REFERENCES `academia`.`Turmas` (`idTurma` )
 
     ON DELETE NO ACTION
 
@@ -414,15 +414,15 @@ ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 
--- Table `mydb`.`Graduacoes`
+-- Table `academia`.`Graduacoes`
 
 -- -----------------------------------------------------
 
-DROP TABLE IF EXISTS `mydb`.`Graduacoes` ;
+DROP TABLE IF EXISTS `academia`.`Graduacoes` ;
 
 
 
-CREATE  TABLE IF NOT EXISTS `mydb`.`Graduacoes` (
+CREATE  TABLE IF NOT EXISTS `academia`.`Graduacoes` (
 
   `idGraduacao` INT(11) NOT NULL ,
 
@@ -438,7 +438,7 @@ CREATE  TABLE IF NOT EXISTS `mydb`.`Graduacoes` (
 
     FOREIGN KEY (`idModalidade` )
 
-    REFERENCES `mydb`.`Modalidades` (`idModalidade` )
+    REFERENCES `academia`.`Modalidades` (`idModalidade` )
 
     ON DELETE NO ACTION
 
@@ -452,15 +452,15 @@ ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 
--- Table `mydb`.`Alunos_graduacoes`
+-- Table `academia`.`Alunos_graduacoes`
 
 -- -----------------------------------------------------
 
-DROP TABLE IF EXISTS `mydb`.`Alunos_graduacoes` ;
+DROP TABLE IF EXISTS `academia`.`Alunos_graduacoes` ;
 
 
 
-CREATE  TABLE IF NOT EXISTS `mydb`.`Alunos_graduacoes` (
+CREATE  TABLE IF NOT EXISTS `academia`.`Alunos_graduacoes` (
 
   `idAluno` INT(11) NOT NULL ,
 
@@ -478,7 +478,7 @@ CREATE  TABLE IF NOT EXISTS `mydb`.`Alunos_graduacoes` (
 
     FOREIGN KEY (`idAluno` )
 
-    REFERENCES `mydb`.`Alunos` (`idAluno` )
+    REFERENCES `academia`.`Alunos` (`idAluno` )
 
     ON DELETE NO ACTION
 
@@ -488,7 +488,7 @@ CREATE  TABLE IF NOT EXISTS `mydb`.`Alunos_graduacoes` (
 
     FOREIGN KEY (`idGraducao` )
 
-    REFERENCES `mydb`.`Graduacoes` (`idGraduacao` )
+    REFERENCES `academia`.`Graduacoes` (`idGraduacao` )
 
     ON DELETE NO ACTION
 
@@ -502,15 +502,15 @@ ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 
--- Table `mydb`.`Pagamentos`
+-- Table `academia`.`Pagamentos`
 
 -- -----------------------------------------------------
 
-DROP TABLE IF EXISTS `mydb`.`Pagamentos` ;
+DROP TABLE IF EXISTS `academia`.`Pagamentos` ;
 
 
 
-CREATE  TABLE IF NOT EXISTS `mydb`.`Pagamentos` (
+CREATE  TABLE IF NOT EXISTS `academia`.`Pagamentos` (
 
   `idPagamento` INT(11) NOT NULL ,
 
@@ -528,15 +528,15 @@ ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 
--- Table `mydb`.`Pacotes_modalidades`
+-- Table `academia`.`Pacotes_modalidades`
 
 -- -----------------------------------------------------
 
-DROP TABLE IF EXISTS `mydb`.`Pacotes_modalidades` ;
+DROP TABLE IF EXISTS `academia`.`Pacotes_modalidades` ;
 
 
 
-CREATE  TABLE IF NOT EXISTS `mydb`.`Pacotes_modalidades` (
+CREATE  TABLE IF NOT EXISTS `academia`.`Pacotes_modalidades` (
 
   `idPacote` INT(11) NOT NULL ,
 
@@ -560,7 +560,7 @@ CREATE  TABLE IF NOT EXISTS `mydb`.`Pacotes_modalidades` (
 
     FOREIGN KEY (`idPacote` )
 
-    REFERENCES `mydb`.`Pacotes` (`idPacote` )
+    REFERENCES `academia`.`Pacotes` (`idPacote` )
 
     ON DELETE NO ACTION
 
@@ -570,7 +570,7 @@ CREATE  TABLE IF NOT EXISTS `mydb`.`Pacotes_modalidades` (
 
     FOREIGN KEY (`idModalidade` )
 
-    REFERENCES `mydb`.`Modalidades` (`idModalidade` )
+    REFERENCES `academia`.`Modalidades` (`idModalidade` )
 
     ON DELETE NO ACTION
 
@@ -580,7 +580,7 @@ CREATE  TABLE IF NOT EXISTS `mydb`.`Pacotes_modalidades` (
 
     FOREIGN KEY (`idAluno` )
 
-    REFERENCES `mydb`.`Alunos` (`idAluno` )
+    REFERENCES `academia`.`Alunos` (`idAluno` )
 
     ON DELETE NO ACTION
 
@@ -590,7 +590,7 @@ CREATE  TABLE IF NOT EXISTS `mydb`.`Pacotes_modalidades` (
 
     FOREIGN KEY (`idPagamento` )
 
-    REFERENCES `mydb`.`Pagamentos` (`idPagamento` )
+    REFERENCES `academia`.`Pagamentos` (`idPagamento` )
 
     ON DELETE NO ACTION
 
@@ -604,15 +604,15 @@ ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 
--- Table `mydb`.`Envelopes`
+-- Table `academia`.`Envelopes`
 
 -- -----------------------------------------------------
 
-DROP TABLE IF EXISTS `mydb`.`Envelopes` ;
+DROP TABLE IF EXISTS `academia`.`Envelopes` ;
 
 
 
-CREATE  TABLE IF NOT EXISTS `mydb`.`Envelopes` (
+CREATE  TABLE IF NOT EXISTS `academia`.`Envelopes` (
 
   `idEnvelope` INT(11) NOT NULL ,
 
@@ -630,7 +630,7 @@ CREATE  TABLE IF NOT EXISTS `mydb`.`Envelopes` (
 
     FOREIGN KEY (`idProfessor` )
 
-    REFERENCES `mydb`.`Professores` (`idProfessor` )
+    REFERENCES `academia`.`Professores` (`idProfessor` )
 
     ON DELETE NO ACTION
 
@@ -640,7 +640,7 @@ CREATE  TABLE IF NOT EXISTS `mydb`.`Envelopes` (
 
     FOREIGN KEY (`idSecretaria` )
 
-    REFERENCES `mydb`.`Secretarias` (`idSecretaria` )
+    REFERENCES `academia`.`Secretarias` (`idSecretaria` )
 
     ON DELETE NO ACTION
 
@@ -654,15 +654,15 @@ ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 
--- Table `mydb`.`Alunos_envelopes`
+-- Table `academia`.`Alunos_envelopes`
 
 -- -----------------------------------------------------
 
-DROP TABLE IF EXISTS `mydb`.`Alunos_envelopes` ;
+DROP TABLE IF EXISTS `academia`.`Alunos_envelopes` ;
 
 
 
-CREATE  TABLE IF NOT EXISTS `mydb`.`Alunos_envelopes` (
+CREATE  TABLE IF NOT EXISTS `academia`.`Alunos_envelopes` (
 
   `idAluno` INT(11) NOT NULL ,
 
@@ -680,7 +680,7 @@ CREATE  TABLE IF NOT EXISTS `mydb`.`Alunos_envelopes` (
 
     FOREIGN KEY (`idEnvelope` )
 
-    REFERENCES `mydb`.`Envelopes` (`idEnvelope` )
+    REFERENCES `academia`.`Envelopes` (`idEnvelope` )
 
     ON DELETE NO ACTION
 
@@ -690,7 +690,7 @@ CREATE  TABLE IF NOT EXISTS `mydb`.`Alunos_envelopes` (
 
     FOREIGN KEY (`idAluno` )
 
-    REFERENCES `mydb`.`Alunos` (`idAluno` )
+    REFERENCES `academia`.`Alunos` (`idAluno` )
 
     ON DELETE NO ACTION
 
@@ -704,15 +704,15 @@ ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 
--- Table `mydb`.`Acessos`
+-- Table `academia`.`Acessos`
 
 -- -----------------------------------------------------
 
-DROP TABLE IF EXISTS `mydb`.`Acessos` ;
+DROP TABLE IF EXISTS `academia`.`Acessos` ;
 
 
 
-CREATE  TABLE IF NOT EXISTS `mydb`.`Acessos` (
+CREATE  TABLE IF NOT EXISTS `academia`.`Acessos` (
 
   `idAcesso` INT(11) NOT NULL AUTO_INCREMENT ,
 
@@ -728,7 +728,7 @@ CREATE  TABLE IF NOT EXISTS `mydb`.`Acessos` (
 
     FOREIGN KEY (`idPessoa` )
 
-    REFERENCES `mydb`.`Pessoas` (`idPessoa` )
+    REFERENCES `academia`.`Pessoas` (`idPessoa` )
 
     ON DELETE NO ACTION
 
@@ -742,15 +742,15 @@ ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 
--- Table `mydb`.`Despesas`
+-- Table `academia`.`Despesas`
 
 -- -----------------------------------------------------
 
-DROP TABLE IF EXISTS `mydb`.`Despesas` ;
+DROP TABLE IF EXISTS `academia`.`Despesas` ;
 
 
 
-CREATE  TABLE IF NOT EXISTS `mydb`.`Despesas` (
+CREATE  TABLE IF NOT EXISTS `academia`.`Despesas` (
 
   `idDespesa` INT(11) NOT NULL ,
 
@@ -768,15 +768,15 @@ ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 
--- Table `mydb`.`Gastos`
+-- Table `academia`.`Gastos`
 
 -- -----------------------------------------------------
 
-DROP TABLE IF EXISTS `mydb`.`Gastos` ;
+DROP TABLE IF EXISTS `academia`.`Gastos` ;
 
 
 
-CREATE  TABLE IF NOT EXISTS `mydb`.`Gastos` (
+CREATE  TABLE IF NOT EXISTS `academia`.`Gastos` (
 
   `idGasto` INT(11) NOT NULL ,
 
@@ -798,7 +798,7 @@ CREATE  TABLE IF NOT EXISTS `mydb`.`Gastos` (
 
     FOREIGN KEY (`idSecretaria` )
 
-    REFERENCES `mydb`.`Secretarias` (`idSecretaria` )
+    REFERENCES `academia`.`Secretarias` (`idSecretaria` )
 
     ON DELETE NO ACTION
 
@@ -808,7 +808,7 @@ CREATE  TABLE IF NOT EXISTS `mydb`.`Gastos` (
 
     FOREIGN KEY (`idDespesa` )
 
-    REFERENCES `mydb`.`Despesas` (`idDespesa` )
+    REFERENCES `academia`.`Despesas` (`idDespesa` )
 
     ON DELETE NO ACTION
 
