@@ -481,7 +481,8 @@ label {
 	display: block; 
 	margin-bottom: 5px; 
 	}
-	
+
+.input-short-short,
 .input-short,
 .input-medium,
 .input-long { 
@@ -507,7 +508,12 @@ textarea {
 .input-long { 
 	width: 75% 
 	}
-	
+
+.input-short-short {
+	width: 8%
+	}
+
+input.input-short-short,
 input.input-short,
 input.input-medium,
 input.input-long, 
@@ -518,9 +524,11 @@ textarea {
 	border: 1px solid #cccccc;
 	}
 
+input.input-short-short:focus,
 input.input-short:focus,
 input.input-medium:focus,
 input.input-long:focus, 
+
 select:focus, 
 textarea:focus {
 	background: url(../images/input-bg-focus.gif) top left repeat-x #ffffff;
