@@ -1,8 +1,18 @@
 
+<<<<<<< .mine
+=======
+INSERT into enderecos VALUES(null, '10A99BF', '', '01', '92AB77', 'RA', '721202B9', 0);
+>>>>>>> .r176
+
+<<<<<<< .mine
 INSERT into enderecos VALUES(null, '10A99BF', '', '01', '92AB77', 'RA', '721202B9', 0);
 
 INSERT into pessoas VALUES(null, 0, '2012-05-07', 'admin', '00000000000', 'A', '2012-05-07',
                           1, 'admin@admin.com', true);
+=======
+INSERT into pessoas VALUES(null, 0, '2012-05-07', 'admin', '00000000000', 'A', '2012-05-07',
+                          1, 'admin@admin.com', true);
+>>>>>>> .r176
                           
 INSERT into secretarias VALUES(1, 0, '00:00', '00:00', '2012-05-07' );
 
@@ -10,6 +20,9 @@ INSERT into acessos VALUES(null, 1, MD5(1212));
 
 INSERT into telefones VALUES (null, 1, '61', '33731526', 1);
 
+<<<<<<< .mine
+INSERT into telefones VALUES (null, 1, '61', '84456902', 2);
+                          =======
 INSERT into telefones VALUES (null, 1, '61', '84456902', 2);
 
 
@@ -43,3 +56,4 @@ INSERT INTO estados ('sigla', 'descricao') VALUES ('SC', 'Santa Catarina');
 INSERT INTO estados ('sigla', 'descricao') VALUES ('SP', 'São Paulo');
 INSERT INTO estados ('sigla', 'descricao') VALUES ('SE', 'Sergipe');
 INSERT INTO estados ('sigla', 'descricao') VALUES ('TO', 'Tocantins');
+>>>>>>> .r176
