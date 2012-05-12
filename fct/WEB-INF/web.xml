@@ -6,7 +6,7 @@
 	<display-name>.:: FCT ::.</display-name>
 
 	<welcome-file-list>
-		<welcome-file>login.jsp</welcome-file>
+		<welcome-file>/view/login.jsp</welcome-file>
 	</welcome-file-list>
 
 	<!-- configuração para usar a internacionalização -->
