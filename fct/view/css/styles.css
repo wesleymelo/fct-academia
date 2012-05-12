@@ -10,6 +10,22 @@ body {
 a:focus {
 	outline: 1px dotted invert;
 	}
+	
+.bandeira {
+	float:left;
+	width:40px;
+	margin:10px;
+	height:40px;
+	
+}
+
+.bandeiras {
+	float:right;
+	width:120px;
+	height:80px;
+	
+}	
+	
 
 hr {
 	border-color: #ccc;
