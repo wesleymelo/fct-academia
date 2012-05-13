@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <c:import url="../../includes/header.jsp" />
             
@@ -54,27 +55,35 @@
                         	<input type="hidden" name="pg" value="2"/>
                    
                             <p>
-                                <label>Endereço </label>
+                                <label><fmt:message key="endereco"/></label>
                                 <input type="text" class="input-medium" name="endereco" id="endereco"/>
-                                <span class="notification-input ni-correct">This is correct, thanks!</span>
+                                <c:if test="${not empty erros['erroendereco'] }">
+									<span class="notification-input ni-correct"><fmt:message key="endereco_invalido"/></span>
+								</c:if>
                             </p>
                             
                             <p>
-                                <label>Cidade</label>
+                                <label><fmt:message key="cidade" /></label>
                                 <input type="text" class="input-short" name="cidade" />
-                                <span class="notification-input ni-error">Sorry, try again.</span>
+                                <c:if test="${not empty erros['errocidade'] }">
+									<span class="notification-input ni-correct"><fmt:message key="cidade_invalida"/></span>
+								</c:if>
                             </p>
                             
                             <p>
-                                <label>Bairro</label>
+                                <label><fmt:message key="bairro"/></label>
                                 <input type="text" class="input-short" name="bairro" />
-                                <span class="notification-input ni-error">Sorry, try again.</span>
+                                <c:if test="${not empty erros['errobairro'] }">
+									<span class="notification-input ni-correct"><fmt:message key="bairro_invalido"/></span>
+								</c:if>
                             </p>
                             
                             <p>
-                                <label>CEP</label>
+                                <label><fmt:message key="cep" /></label>
                                 <input type="text" class="input-short" name="cep" />
-                                <span class="notification-input ni-error">Sorry, try again.</span>
+                                <c:if test="${not empty erros['errocep'] }">
+									<span class="notification-input ni-correct"><fmt:message key="cep_invalido"/></span>
+								</c:if>
                             </p>
   							
   							<label>UF
@@ -87,15 +96,16 @@
 							</label>
                             
                             <p>
-                                <label>Número</label>
+                                <label><fmt:message key="numero"/></label>
                                 <input type="text" class="input-short" name="numero" />
-                                <span class="notification-input ni-error">Sorry, try again.</span>
+                                <c:if test="${not empty erros['erronumero'] }">
+									<span class="notification-input ni-correct"><fmt:message key="numero_invalido"/></span>
+								</c:if>
                             </p>
                                 
                             <p>
-                                <label>Complemento</label>
+                                <label><fmt:message key="complemento"/></label>
                                 <input type="text" class="input-medium" name="complemento" id="cpf" />
-                                <span class="notification-input ni-error">Sorry, try again.</span>
                             </p>
                             
                             <fieldset>

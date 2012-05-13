@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <c:import url="../../includes/header.jsp" />
 
@@ -66,15 +67,20 @@
 					<input type="hidden" name="pg" value="1" />
 
 					<p>
-						<label>Nome</label>
+						<label><fmt:message key="nome"/></label>
 						<input type="text" class="input-short" name="nome" value="${nome}" id="nome" />
-						<span class="notification-input ni-correct">This is	correct, thanks!</span>
+						<c:if test="${not empty erros['erronome'] }">
+							<span class="notification-input ni-correct"><fmt:message key="nome_invalido"/></span>
+						</c:if>
+						
 					</p>
 					
 					<p>
-                        <label>Data de Nascimento</label> 
-                        <input type="text" class="input-short-short" name="dataNasc" id="dataNasc"/> 
-                        <span class="notification-input ni-error">Sorry, try again.</span>
+                        <label><fmt:message key="nascimento"/></label> 
+                        <input type="text" class="input-short-short" name="dataNasc" id="dataNasc"/>
+                        <c:if test="${not empty erros['errodataNasc'] }">
+							<span class="notification-input ni-correct"><fmt:message key="dataNasc_invalido"/></span>
+						</c:if>                        
 					</p>
 					
 					<script>
@@ -85,15 +91,16 @@
 
 					<fieldset>
 						<ul>
-							<li><label>Sexo:&nbsp;&nbsp;&nbsp;<input type="radio" name="sexo"	checked="checked" id="sexo" value="F" />&nbsp;&nbsp;Feminino &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="sexo" id="sexo" value="M" />&nbsp;&nbsp;Masculino</label></li>
+							<li><label><fmt:message key="sexo"/>:&nbsp;&nbsp;&nbsp;<input type="radio" name="sexo"	checked="checked" id="sexo" value="F" />&nbsp;&nbsp;<fmt:message key="feminino"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="sexo" id="sexo" value="M" />&nbsp;&nbsp;<fmt:message key="masculino"/></label></li>
 						</ul>
 					</fieldset>
-
 					<p>
 					
-						<label>CPF</label> 
+						<label><fmt:message key="cpf"/></label> 
 						<input type="text" class="input-short-short" name="cpf" id="cpf" />
-						<span class="notification-input ni-correct">This is correct, thanks!</span>
+						<c:if test="${not empty erros['errocpf'] }">
+							<span class="notification-input ni-correct"><fmt:message key="dataNasc_invalido"/></span>
+						</c:if>                        
 					
 					</p>
 					
@@ -104,15 +111,19 @@
 					</script>
 
 					<p>
-						<label>E-Mail</label> 
+						<label><fmt:message key="email"/></label> 
 						<input type="text" class="input-short" name="email" id="email" />
-						<span class="notification-input ni-correct">This is correct, thanks!</span>
+						<c:if test="${not empty erros['erroemail'] }">
+							<span class="notification-input ni-correct"><fmt:message key="email_invalido"/></span>
+						</c:if>                        
 					<p>
 					
 					<p>	
-						<label>Telefone Celular</label>
+						<label><fmt:message key="celular"/></label>
 						<input type="text" class="input-short-short" name="celular" id="celular" />
-						<span class="notification-input ni-correct">This is	correct, thanks!</span>
+						<c:if test="${not empty erros['errocelular'] }">
+							<span class="notification-input ni-correct"><fmt:message key="telefone_invalido"/></span>
+						</c:if>                        
 					</p>
 					
 					<script>
@@ -122,8 +133,11 @@
 					</script>
 
 					<p>
-						<label>Telefone Residencial</label> <input type="text" class="input-short-short" name="residencial" id="residencial" /> 
-						<span class="notification-input ni-error">Sorry, try again.</span>
+						<label><fmt:message key="residencial"/></label> 
+						<input type="text" class="input-short-short" name="residencial" id="residencial" /> 
+						<c:if test="${not empty erros['errocelular'] }">
+							<span class="notification-input ni-correct"><fmt:message key="telefone_invalido"/></span>
+						</c:if>                        
 					</p>
 					
 					<script>
@@ -133,9 +147,11 @@
 					</script>
 					
 					<p>
-						<label>Telefone Comercial</label> 
+						<label><fmt:message key="comercial"/></label> 
 						<input type="text" class="input-short-short" name="comercial" id="comercial" /> 
-						<span class="notification-input ni-error">Sorry, try again.</span>
+						<c:if test="${not empty erros['errocomercial'] }">
+							<span class="notification-input ni-correct"><fmt:message key="telefone_invalido"/></span>
+						</c:if> 
 					</p>
 					
 					<script>
@@ -145,11 +161,18 @@
 					</script>
 					
 					<p>
-						<label>Altura</label> <input type="text" class="input-short-short" name="altura" id="altura" />
+						<label><fmt:message key="altura"/></label> <input type="text" class="input-short-short" name="altura" id="altura" />
+						<c:if test="${not empty erros['erroaltura'] }">
+							<span class="notification-input ni-correct"><fmt:message key="altura_invalida"/></span>
+						</c:if> 
 					</p>
 
 					<p>
-						<label>Peso</label> <input type="text" class="input-short-short" name="peso" id="peso" />
+						<label><fmt:message key="peso"/></label> 
+						<input type="text" class="input-short-short" name="peso" id="peso" />
+						<c:if test="${not empty erros['erropeso'] }">
+							<span class="notification-input ni-correct"><fmt:message key="peso_invalido"/></span>
+						</c:if>
 					</p>
 
 					<fieldset>
