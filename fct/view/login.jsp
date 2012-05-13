@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>   
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -55,9 +57,13 @@
 <body>
 	<!-- Header -->
 	<div id="header">
-
-
-
+		
+		<div class="bandeiras">
+		<a href="mudaLingua.do?lingua=en&page=login"><img class="bandeira"
+						src="${pageContext.request.contextPath}/view/images/en_us.png" alt="English"/></a> <a
+						href="mudaLingua.do?lingua=pt&page=login"><img class="bandeira"
+						src="${pageContext.request.contextPath}/view/images/pt_br.png" alt="Português"/></a>
+		</div>
 		<div style="clear: both;"></div>
 
 	</div>
@@ -95,8 +101,8 @@
 
 
 						<fieldset>
-							<input class="submit-green" type="submit" value="Entrar" /> <input
-								class="submit-gray" type="reset" value="Limpar" />
+							<input class="submit-green" type="submit" value='<fmt:message key="entrar"/>' /> 
+							<input class="submit-gray" type="reset" value='<fmt:message key="limpar"/>' />
 						</fieldset>
 					</form>
 

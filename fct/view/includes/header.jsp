@@ -49,7 +49,7 @@
 	media="screen" />
 
 <!-- Themes. Below are several color themes. Uncomment the line of your choice to switch to different color. All styles commented out means blue theme. -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}"/view/css/theme.css"
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/view/css/theme.css"
 	tppabs="http://www.xooom.pl/work/magicadmin/css/theme-blue.css"
 	media="screen" />
 <!--<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/view/css/theme-red.css" media="screen" />-->
@@ -58,34 +58,34 @@
 <!--<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/view/css/theme-graphite.css" media="screen" />-->
 
 <!-- JQuery engine script-->
-<script type="text/javascript" src="${pageContext.request.contextPath}"/view/js/jquery-1.3.2.min.js"
+<script type="text/javascript" src="${pageContext.request.contextPath}/view/js/jquery-1.3.2.min.js"
 	tppabs="http://www.xooom.pl/work/magicadmin/js/jquery-1.3.2.min.js"></script>
 
 <!-- JQuery WYSIWYG plugin script -->
-<script type="text/javascript" src="${pageContext.request.contextPath}"/view/js/jquery.wysiwyg.js"
+<script type="text/javascript" src="${pageContext.request.contextPath}/view/js/jquery.wysiwyg.js"
 	tppabs="http://www.xooom.pl/work/magicadmin/js/jquery.wysiwyg.js"></script>
 
 <!-- JQuery tablesorter plugin script-->
-<script type="text/javascript" src="${pageContext.request.contextPath}"/view/js/jquery.tablesorter.min.js"
+<script type="text/javascript" src="${pageContext.request.contextPath}/view/js/jquery.tablesorter.min.js"
 	tppabs="http://www.xooom.pl/work/magicadmin/js/jquery.tablesorter.min.js"></script>
 
 <!-- JQuery pager plugin script for tablesorter tables -->
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}"/view/js/jquery.tablesorter.pager.js"
+	src="${pageContext.request.contextPath}/view/js/jquery.tablesorter.pager.js"
 	tppabs="http://www.xooom.pl/work/magicadmin/js/jquery.tablesorter.pager.js"></script>
 
 <!-- JQuery password strength plugin script -->
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}"/view/js/jquery.pstrength-min.1.2.js"
+	src="${pageContext.request.contextPath}/view/js/jquery.pstrength-min.1.2.js"
 	tppabs="http://www.xooom.pl/work/magicadmin/js/jquery.pstrength-min.1.2.js"></script>
 
 <!-- JQuery thickbox plugin script -->
-<script type="text/javascript" src="${pageContext.request.contextPath}"/view/js/thickbox.js"
+<script type="text/javascript" src="${pageContext.request.contextPath}/view/js/thickbox.js"
 	tppabs="http://www.xooom.pl/work/magicadmin/js/thickbox.js"></script>
 
 <!-- JQuery thickbox plugin script -->
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}"/view/js/jquery.masked-input-plugin.js"></script>
+	src="${pageContext.request.contextPath}/view/js/jquery.masked-input-plugin.js"></script>
 
 <!-- Initiate WYIWYG text area -->
 <script type="text/javascript">
@@ -154,11 +154,11 @@
 			<div class="container_12">
 				<div class="grid_8">&nbsp;</div>
 				<div class="grid_4">
-					<a href="" id="logout"> <fmt:message key="sair"></fmt:message> </a>
-					<a href="mudaLingua.do?lingua=en"><img class="bandeira"
-						src="${pageContext.request.contextPath}"/view/images/en_us.png" alt="English"/></a> <a
-						href="mudaLingua.do?lingua=pt"><img class="bandeira"
-						src="${pageContext.request.contextPath}"/view/images/pt_br.png" alt="Português"/></a>
+					<a href="" id="logout"><fmt:message key="sair"/></a>
+					<a href="mudaLingua.do?lingua=en&page=other"><img class="bandeira"
+						src="${pageContext.request.contextPath}/view/images/en_us.png" alt="English"/></a> <a
+						href="mudaLingua.do?lingua=pt&page=other"><img class="bandeira"
+						src="${pageContext.request.contextPath}/view/images/pt_br.png" alt="Português"/></a>
 				</div>
 
 			</div>
