@@ -23,15 +23,16 @@ public class CadastroAlunoAction implements Action {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) {
-
+		
+		
+		System.out.println("oooooooooooooooooooooooooooooooo");
+		
+		
 		//Declarações
 		
 		int pg = Integer.parseInt(req.getParameter("pg"));
 		Map<String, String> erros;
 		HttpSession sessao = req.getSession();
-
-
-		System.out.println(pg);
 
 		switch (pg) {
 			
@@ -47,12 +48,13 @@ public class CadastroAlunoAction implements Action {
 				}
 			default:
 				erros = GeraErros.verificaErrosAlunoEndereco(req);
+				return "/view/admin/aluno/cadastroAluno.jsp";
 
 		}
 
 
 
-		return "asdas";
+	
 	}
 
 	public void setSessionAluno(HttpSession sessao, HttpServletRequest req){
