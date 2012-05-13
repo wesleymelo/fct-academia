@@ -22,7 +22,6 @@ public class AutenticaLoginAction implements Action{
 				String cpf = Util.unFormat(req.getParameter(EnumAcesso.LOGIN.getChave()));
 				String senha = req.getParameter(EnumAcesso.SENHA.getChave());
 				Acesso acesso = AcessoBO.findByUsuarioAndSenha(cpf, senha);
-				System.out.println("Acesso = "+acesso);
 				if(acesso != null){
 					HttpSession session = req.getSession(true);
 					session.setAttribute(EnumAcesso.ACESSO.getChave(), acesso);
@@ -37,7 +36,6 @@ public class AutenticaLoginAction implements Action{
 				url = "/view/login.jsp";
 			}
 		}
-		System.out.println("url: >>>'"+url+"'<<<");
 		return url;
 	}
 
