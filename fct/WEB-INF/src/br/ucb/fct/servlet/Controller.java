@@ -14,12 +14,14 @@ public class Controller extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		System.out.println("Oiiii");
 		processaRequisicao(req, resp);
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		System.out.println("Eiiii");
 		processaRequisicao(req, resp);
 	}
 	
@@ -31,7 +33,7 @@ public class Controller extends HttpServlet{
 			String nameAction = getNameAction(req);
 			Action action = getAction(nameAction);
 			String proxima = action.execute(req, resp);
-			System.out.println("Proxima: "+proxima);
+			System.out.println("Proxima: asdas "+proxima);
 			if(proxima!=null)
 				req.getRequestDispatcher(proxima).forward(req, resp);
 		}catch ( ServletException e) {
