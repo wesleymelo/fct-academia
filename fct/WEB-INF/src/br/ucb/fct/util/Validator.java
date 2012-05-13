@@ -23,10 +23,10 @@ public class Validator {
     }
 	
 	
-	public static boolean isEmailValid(String email){
+	public static boolean isEmailValid(String email,int min){
         final String EMAIL_REGEX = "^[\\w-]+(\\.[\\w-]+)*@([\\w-]+\\.)+[a-zA-Z]{2,7}$";
         
-        if(!isStringValid(email,100))
+        if(!isStringValid(email,min))
         	return false;
         
         Pattern p = Pattern.compile(EMAIL_REGEX);
@@ -87,11 +87,49 @@ public class Validator {
 		return (value != null && !(value.trim().isEmpty()) && value.length() <= qtde);
 	}
 	
-	public static boolean verificaTel(String tel){
-		if(!tel.isEmpty() && tel.length() == 10){
+	public static boolean verificaTamanho(String value, int min){
+		if(!value.isEmpty() && value.length() == 10){
 			return true;
 		}
 		return false;
 	}
+	
+	public static boolean verificaDouble(String value, double min, double max ){
+		return (isDoubleValid(value) && (Double.parseDouble(value) >= min && Double.parseDouble(value)<=max));
+	}
+	
+	public static boolean verificaInteger(String value, int min, int max ){
+		return verificaDouble(value, min, max);
+	}
+	
+	
+	public static boolean isDoubleValid(String value){
+		try {
+			Double.parseDouble(value);
+		} catch (Exception e) {
+			return true;
+		}
+		return false;
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }
