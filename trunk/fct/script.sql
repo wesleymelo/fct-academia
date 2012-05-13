@@ -84,9 +84,9 @@ CREATE  TABLE IF NOT EXISTS `academia`.`Pessoas` (
 
   PRIMARY KEY (`idPessoa`) ,
 
-  INDEX `fk_Clientes_Endereços1` (`idEndereco` ASC) ,
+  INDEX `fk_Clientes_Enderecos1` (`idEndereco` ASC) ,
 
-  CONSTRAINT `fk_Clientes_Endereços1`
+  CONSTRAINT `fk_Clientes_Enderecos1`
 
     FOREIGN KEY (`idEndereco` )
 
