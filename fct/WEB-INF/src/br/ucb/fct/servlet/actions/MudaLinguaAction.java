@@ -6,8 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.jsp.jstl.core.Config;
 
-import org.omg.CORBA.Request;
-
 public class MudaLinguaAction implements Action{
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) {
@@ -18,7 +16,10 @@ public class MudaLinguaAction implements Action{
         Config.set(req.getSession(), Config.FMT_LOCALE, locale);
         Config.set(req.getSession(), Config.FMT_FALLBACK_LOCALE, locale);
         try {
-			resp.sendRedirect(req.getContextPath()+"/view/admin/principal/index.jsp");
+        	if(req.getParameter("page").equalsIgnoreCase("other"))
+        		resp.sendRedirect(req.getContextPath()+"/view/admin/principal/index.jsp");
+        	else
+        		resp.sendRedirect(req.getContextPath()+"/view/login.jsp");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
