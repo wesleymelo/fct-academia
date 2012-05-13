@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<c:import url="${pageContext.request.contextPath}/includes/header.jsp" />
+
+<c:import url="../../includes/header.jsp" />
             
             <!-- Header. Main part -->
             <div id="header-main">
@@ -112,4 +113,4 @@
         </div> <!-- End .container_12 -->
 		
            
-<c:import url="${pageContext.request.contextPath}/includes/footer.jsp" />
+<c:import url="../../includes/footer.jsp" />
