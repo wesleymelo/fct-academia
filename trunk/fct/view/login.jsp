@@ -57,7 +57,6 @@
 <body>
 	<!-- Header -->
 	<div id="header">
-		
 		<div class="bandeiras">
 		<a href="mudaLingua.do?lingua=en&page=login"><img class="bandeira"
 						src="${pageContext.request.contextPath}/view/images/en_us.png" alt="English"/></a> <a
@@ -65,7 +64,6 @@
 						src="${pageContext.request.contextPath}/view/images/pt_br.png" alt="Português"/></a>
 		</div>
 		<div style="clear: both;"></div>
-
 	</div>
 	<!-- End #header -->
 	<!-- Dashboard icons -->
@@ -96,9 +94,6 @@
 								name="senha" id="senha" /> <span
 								class="notification-input ni-error">Sorry, try again.</span>
 						</p>
-
-
-
 
 						<fieldset>
 							<input class="submit-green" type="submit" value='<fmt:message key="entrar"/>' /> 
