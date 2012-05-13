@@ -2,13 +2,13 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
-<c:import url="${pageContext.request.contextPath}/view/includes/header.jsp" />
+<c:import url="../../includes/header.jsp" />
 <!-- Header. Main part -->
 <div id="header-main">
 	<div class="container_12">
 		<div class="grid_12">
 			<div id="logo">
-				<div id="logo_top">
+				<div id="logo_top">		
 					<ul id="nav">
 						<li id="current"><a href="">Painel de Controle</a></li>
 						<li><a href="">Outro</a></li>
@@ -50,31 +50,31 @@
 <div class="container_12">
 	<div class="grid_7">
 		<a href="" class="dashboard-module"> <img
-			src="${pageContext.request.contextPath}"/view/images/Crystal_Clear_write.gif"
+			src="${pageContext.request.contextPath}/view/images/Crystal_Clear_write.gif"
 			tppabs="http:/www.xooom.pl/work/magicadmin/images/Crystal_Clear_write.gif"
 			width="64" height="64" alt="edit" /> <span>New article</span>
 		</a> <a href="" class="dashboard-module"> <img
-			src="${pageContext.request.contextPath}"/view/images/Crystal_Clear_file.gif"
+			src="${pageContext.request.contextPath}/view/images/Crystal_Clear_file.gif"
 			tppabs="http:/www.xooom.pl/work/magicadmin/images/Crystal_Clear_file.gif"
 			width="64" height="64" alt="edit" /> <span>Upload file</span>
 		</a> <a href="" class="dashboard-module"> <img
-			src="${pageContext.request.contextPath}"/view/images/Crystal_Clear_files.gif"
+			src="${pageContext.request.contextPath}/view/images/Crystal_Clear_files.gif"
 			tppabs="http:/www.xooom.pl/work/magicadmin/images/Crystal_Clear_files.gif"
 			width="64" height="64" alt="edit" /> <span>Articles</span>
 		</a> <a href="" class="dashboard-module"> <img
-			src="${pageContext.request.contextPath}"/view/images/Crystal_Clear_calendar.gif"
+			src="${pageContext.request.contextPath}/view/images/Crystal_Clear_calendar.gif"
 			tppabs="http:/www.xooom.pl/work/magicadmin/images/Crystal_Clear_calendar.gif"
 			width="64" height="64" alt="edit" /> <span>Calendar</span>
 		</a> <a href="" class="dashboard-module"> <img
-			src="${pageContext.request.contextPath}"/view/images/Crystal_Clear_user.gif"
+			src="${pageContext.request.contextPath}/view/images/Crystal_Clear_user.gif"
 			tppabs="http:/www.xooom.pl/work/magicadmin/images/Crystal_Clear_user.gif"
 			width="64" height="64" alt="edit" /> <span>My profile</span>
 		</a> <a href="" class="dashboard-module"> <img
-			src="${pageContext.request.contextPath}"/view/images/Crystal_Clear_stats.gif"
+			src="${pageContext.request.contextPath}/view/images/Crystal_Clear_stats.gif"
 			tppabs="http:/www.xooom.pl/work/magicadmin/images/Crystal_Clear_stats.gif"
 			width="64" height="64" alt="edit" /> <span>Stats</span>
 		</a> <a href="" class="dashboard-module"> <img
-			src="${pageContext.request.contextPath}"/view/images/Crystal_Clear_settings.gif"
+			src="${pageContext.request.contextPath}/view/images/Crystal_Clear_settings.gif"
 			tppabs="http:/www.xooom.pl/work/magicadmin/images/Crystal_Clear_settings.gif"
 			width="64" height="64" alt="edit" /> <span>Settings</span>
 		</a>
@@ -111,7 +111,6 @@
 					<p>Your bandwidth (January): 1 GB out of 1 GB</p>
 				</div>
 
-				<p>
 					Need to switch to a bigger plan?<br /> <a href="">click here</a><br />
 				</p>
 
@@ -123,4 +122,4 @@
 	<div style="clear: both;"></div>
 </div>
 <!-- End .container_12 -->
-<c:import url="${pageContext.request.contextPath}/view/includes/footer.jsp" />
+<c:import url="../../includes/footer.jsp" />
