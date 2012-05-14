@@ -68,18 +68,18 @@
 
 					<p>
 						<label><fmt:message key="nome"/></label>
-						<input type="text" class="input-short" name="nome" value="${nome}" id="nome" />
+						<input type="text" class="input-short" name="nome" id="nome" value="${param.nome }"/>
 						<c:if test="${not empty erros['erronome'] }">
-							<span class="notification-input ni-correct"><fmt:message key="nome_invalido"/></span>
+							<span class="notification-input ni-error"><fmt:message key="nome_invalido"/></span>
 						</c:if>
 						
 					</p>
 					
 					<p>
                         <label><fmt:message key="nascimento"/></label> 
-                        <input type="text" class="input-short-short" name="dataNasc" id="dataNasc"/>
+                        <input type="text" class="input-short-short" name="dataNasc" id="dataNasc" value="${param.dataNasc }" />
                         <c:if test="${not empty erros['errodataNasc'] }">
-							<span class="notification-input ni-correct"><fmt:message key="dataNasc_invalido"/></span>
+							<span class="notification-input ni-error"><fmt:message key="dataNasc_invalido"/></span>
 						</c:if>                        
 					</p>
 					
@@ -97,9 +97,9 @@
 					<p>
 					
 						<label><fmt:message key="cpf"/></label> 
-						<input type="text" class="input-short-short" name="cpf" id="cpf" />
+						<input type="text" class="input-short-short" name="cpf" id="cpf" value="${param.cpf }" />
 						<c:if test="${not empty erros['errocpf'] }">
-							<span class="notification-input ni-correct"><fmt:message key="dataNasc_invalido"/></span>
+							<span class="notification-input ni-error"><fmt:message key="dataNasc_invalido"/></span>
 						</c:if>                        
 					
 					</p>
@@ -112,17 +112,17 @@
 
 					<p>
 						<label><fmt:message key="email"/></label> 
-						<input type="text" class="input-short" name="email" id="email" />
+						<input type="text" class="input-short" name="email" id="email" value="${param.email }"/>
 						<c:if test="${not empty erros['erroemail'] }">
-							<span class="notification-input ni-correct"><fmt:message key="email_invalido"/></span>
+							<span class="notification-input ni-error"><fmt:message key="email_invalido"/></span>
 						</c:if>                        
 					<p>
 					
 					<p>	
 						<label><fmt:message key="celular"/></label>
-						<input type="text" class="input-short-short" name="celular" id="celular" />
+						<input type="text" class="input-short-short" name="celular" id="celular" value="${param.celular }" />
 						<c:if test="${not empty erros['errocelular'] }">
-							<span class="notification-input ni-correct"><fmt:message key="telefone_invalido"/></span>
+							<span class="notification-input ni-error"><fmt:message key="telefone_invalido"/></span>
 						</c:if>                        
 					</p>
 					
@@ -134,9 +134,9 @@
 
 					<p>
 						<label><fmt:message key="residencial"/></label> 
-						<input type="text" class="input-short-short" name="residencial" id="residencial" /> 
+						<input type="text" class="input-short-short" name="residencial" id="residencial" value="${param.residencial }"/> 
 						<c:if test="${not empty erros['errocelular'] }">
-							<span class="notification-input ni-correct"><fmt:message key="telefone_invalido"/></span>
+							<span class="notification-input ni-error"><fmt:message key="telefone_invalido"/></span>
 						</c:if>                        
 					</p>
 					
@@ -148,9 +148,9 @@
 					
 					<p>
 						<label><fmt:message key="comercial"/></label> 
-						<input type="text" class="input-short-short" name="comercial" id="comercial" /> 
+						<input type="text" class="input-short-short" name="comercial" id="comercial" value="${param.comercial }"/> 
 						<c:if test="${not empty erros['errocomercial'] }">
-							<span class="notification-input ni-correct"><fmt:message key="telefone_invalido"/></span>
+							<span class="notification-input ni-error"><fmt:message key="telefone_invalido"/></span>
 						</c:if> 
 					</p>
 					
@@ -161,17 +161,17 @@
 					</script>
 					
 					<p>
-						<label><fmt:message key="altura"/></label> <input type="text" class="input-short-short" name="altura" id="altura" />
+						<label><fmt:message key="altura"/></label> <input type="text" class="input-short-short" name="altura" value="${param.altura }" id="altura" />
 						<c:if test="${not empty erros['erroaltura'] }">
-							<span class="notification-input ni-correct"><fmt:message key="altura_invalida"/></span>
+							<span class="notification-input ni-error"><fmt:message key="altura_invalida"/></span>
 						</c:if> 
 					</p>
 
 					<p>
 						<label><fmt:message key="peso"/></label> 
-						<input type="text" class="input-short-short" name="peso" id="peso" />
+						<input type="text" class="input-short-short" name="peso" id="peso" value="${param.peso }" />
 						<c:if test="${not empty erros['erropeso'] }">
-							<span class="notification-input ni-correct"><fmt:message key="peso_invalido"/></span>
+							<span class="notification-input ni-error"><fmt:message key="peso_invalido"/></span>
 						</c:if>
 					</p>
 
