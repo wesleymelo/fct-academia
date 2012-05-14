@@ -10,9 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import br.ucb.fct.aluno.Aluno;
+import br.ucb.fct.endereco.EnderecoDAO;
 import br.ucb.fct.enuns.EnumTypeFone;
 import br.ucb.fct.enuns.EnumTypePessoa;
 import br.ucb.fct.telefone.Telefone;
+import br.ucb.fct.util.Factory;
 import br.ucb.fct.util.GeraErros;
 import br.ucb.fct.util.Util;
 import br.ucb.fct.util.Validator;
@@ -25,7 +27,7 @@ public class CadastroAlunoAction implements Action {
 	public String execute(HttpServletRequest req, HttpServletResponse resp) {
 		
 		
-		System.out.println("oooooooooooooooooooooooooooooooo");
+		//System.out.println(new Date().toString());
 		
 		
 		//Declarações
@@ -44,11 +46,22 @@ public class CadastroAlunoAction implements Action {
 				}
 				else{
 					setSessionAluno(sessao, req);
-					return "/view/admin/aluno/cadastraAlunoEndereco.jsp";
+					req.getSession().setAttribute("estados", Factory.initEnderecoDAO().selectEstados());
+					return "/view/admin/aluno/cadastroAlunoEndereco.jsp";
 				}
 			default:
 				erros = GeraErros.verificaErrosAlunoEndereco(req);
-				return "/view/admin/aluno/cadastroAluno.jsp";
+				if(!erros.isEmpty()){
+					req.setAttribute("erros",erros);
+					return "/view/admin/aluno/cadastroAlunoEndereco.jsp";
+				}
+				else{
+					
+					Factory.initAlunoDAO().insert(Util.getCadastroAluno(req));
+					
+					return "../../admin/principal/index.jsp";
+				}
+				
 
 		}
 
@@ -59,7 +72,7 @@ public class CadastroAlunoAction implements Action {
 
 	public void setSessionAluno(HttpSession sessao, HttpServletRequest req){
 		sessao.setAttribute("nome",req.getParameter("nome"));
-		sessao.setAttribute("dataCadas",Util.formatDateOut(new Date().toString()));
+		//sessao.setAttribute("dataCadas",Util.formatDateOut(new Date().toString()));
 		sessao.setAttribute("dataNasc",Util.unFormat(req.getParameter("dataNasc")));
 		sessao.setAttribute("sexo",req.getParameter("sexo"));
 		sessao.setAttribute("cpf",req.getParameter("cpf"));

@@ -11,5 +11,6 @@ public interface EnderecoDAO {
 	public boolean update(Endereco endereco, int id) throws DAOException;
 	public List<Endereco> selectAll() throws DAOException;
 	public Endereco selectById(int id) throws DAOException;
+	public List<Estados> selectEstados();
 	
 }

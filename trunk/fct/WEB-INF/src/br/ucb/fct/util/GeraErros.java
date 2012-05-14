@@ -19,7 +19,7 @@ public class GeraErros {
 		
 		if(!Validator.isStringValid(req.getParameter("nome"), 255))
 			erros.put("erronome","nome_invalido");
-		if(!Validator.isStringValid(Util.unFormat(req.getParameter("dataNacs")),8))
+		if(!Validator.isStringValid(Util.unFormat(req.getParameter("dataNasc")),8))
 			erros.put("errodataNasc", "dataNasc_invalido");
 		if(!Validator.isCPFValid(Util.unFormat(req.getParameter("cpf"))))
 			erros.put("errocpf","cpf_invalido");
@@ -50,7 +50,7 @@ public class GeraErros {
 			erros.put("errocidade","cidade_invalida");
 		if(!Validator.isStringValid(req.getParameter("bairro"), 100))
 			erros.put("errobairo", "bairro_invalido");
-		if(!Validator.verificaInteger((Util.unFormat(req.getParameter("cpf"))),0,Integer.MAX_VALUE))
+		if(!Validator.verificaInteger((Util.unFormat(req.getParameter("cep"))),0,Integer.MAX_VALUE))
 			erros.put("errocep", "cep_invalido");
 		if(!Validator.isStringValid(req.getParameter("numero"),20))
 			erros.put("erronumero", "numero_invalido");
