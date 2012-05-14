@@ -56,56 +56,55 @@
                    
                             <p>
                                 <label><fmt:message key="endereco"/></label>
-                                <input type="text" class="input-medium" name="endereco" id="endereco"/>
+                                <input type="text" class="input-medium" name="endereco" id="endereco" value="${param.endereco }" />
                                 <c:if test="${not empty erros['erroendereco'] }">
-									<span class="notification-input ni-correct"><fmt:message key="endereco_invalido"/></span>
+									<span class="notification-input ni-error"><fmt:message key="endereco_invalido"/></span>
 								</c:if>
                             </p>
                             
                             <p>
                                 <label><fmt:message key="cidade" /></label>
-                                <input type="text" class="input-short" name="cidade" />
+                                <input type="text" class="input-short" name="cidade" value="${param.cidade }" />
                                 <c:if test="${not empty erros['errocidade'] }">
-									<span class="notification-input ni-correct"><fmt:message key="cidade_invalida"/></span>
+									<span class="notification-input ni-error"><fmt:message key="cidade_invalida"/></span>
 								</c:if>
                             </p>
                             
                             <p>
                                 <label><fmt:message key="bairro"/></label>
-                                <input type="text" class="input-short" name="bairro" />
+                                <input type="text" class="input-short" name="bairro" value="${param.bairro }" />
                                 <c:if test="${not empty erros['errobairro'] }">
-									<span class="notification-input ni-correct"><fmt:message key="bairro_invalido"/></span>
+									<span class="notification-input ni-error"><fmt:message key="bairro_invalido"/></span>
 								</c:if>
                             </p>
                             
                             <p>
                                 <label><fmt:message key="cep" /></label>
-                                <input type="text" class="input-short" name="cep" />
+                                <input type="text" class="input-short" name="cep" value="${param.cep }" />
                                 <c:if test="${not empty erros['errocep'] }">
-									<span class="notification-input ni-correct"><fmt:message key="cep_invalido"/></span>
+									<span class="notification-input ni-error"><fmt:message key="cep_invalido"/></span>
 								</c:if>
                             </p>
   							
   							<label>UF
-	  							<select class="input">
-										<option value="1">Option 1</option>
-									    <option value="2">Option 2</option>
-										<option value="3">Option 3</option>
-										<option value="4">Option 4</option>
+	  							<select class="input" name="uf">
+										<c:forEach items="${sessionScope.estados }" var="estado" >
+											<option value="${estado.sigla }"><c:out value="${estado.sigla }" /></option>
+										</c:forEach>
 								</select>
 							</label>
                             
                             <p>
                                 <label><fmt:message key="numero"/></label>
-                                <input type="text" class="input-short" name="numero" />
+                                <input type="text" class="input-short" name="numero" value="${param.numero }" />
                                 <c:if test="${not empty erros['erronumero'] }">
-									<span class="notification-input ni-correct"><fmt:message key="numero_invalido"/></span>
+									<span class="notification-input ni-error"><fmt:message key="numero_invalido"/></span>
 								</c:if>
                             </p>
                                 
                             <p>
                                 <label><fmt:message key="complemento"/></label>
-                                <input type="text" class="input-medium" name="complemento" id="cpf" />
+                                <input type="text" class="input-medium" name="complemento" id="cpf" value="${param.complemento }" />
                             </p>
                             
                             <fieldset>
