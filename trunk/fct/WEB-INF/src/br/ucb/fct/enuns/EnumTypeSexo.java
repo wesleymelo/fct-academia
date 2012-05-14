@@ -1,7 +1,7 @@
 package br.ucb.fct.enuns;
 
 public enum EnumTypeSexo {
-	MASCULINO("Masculino",'m'), FEMININO("Feminino",'f');
+	MASCULINO("Masculino",'M'), FEMININO("Feminino",'F');
 	
 	private Character codigo;
 	private String descricao;

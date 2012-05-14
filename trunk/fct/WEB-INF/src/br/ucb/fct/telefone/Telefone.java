@@ -18,7 +18,7 @@ public class Telefone {
 		setTipo(tipo);
 	}
 	
-	public Telefone(String numero, String ddd, EnumTypeFone tipo) {
+	public Telefone(String ddd,String numero,EnumTypeFone tipo) {
 		setNumero(numero);
 		setDdd(ddd);
 		setTipo(tipo);

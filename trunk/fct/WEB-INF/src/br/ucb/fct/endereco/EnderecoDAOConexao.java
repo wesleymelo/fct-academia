@@ -21,8 +21,6 @@ public class EnderecoDAOConexao implements EnderecoDAO {
 		int retorno;
 		PreparedStatement ps = null;
 		
-		
-		
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setString(1,endereco.getEnderecoResidencial());
@@ -31,7 +29,7 @@ public class EnderecoDAOConexao implements EnderecoDAO {
 			ps.setString(4,endereco.getCidade());
 			ps.setString(5,endereco.getUf());
 			ps.setString(6,endereco.getCep());
-			ps.setString(7,endereco.getNumero());
+			ps.setInt(7,endereco.getNumero());
 			retorno = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -134,7 +132,7 @@ public class EnderecoDAOConexao implements EnderecoDAO {
 	}
 	
 	public Endereco getEndereco(ResultSet rs) throws SQLException{
-		return new Endereco(rs.getString("enderecoResidencial"), rs.getString("cidade"),rs.getString("bairro"),rs.getString("complemento"),rs.getString("uf"),rs.getString("cep"),rs.getString("numero"),rs.getInt("idEndereco"));
+		return new Endereco(rs.getString("enderecoResidencial"), rs.getString("cidade"),rs.getString("bairro"),rs.getString("complemento"),rs.getString("uf"),rs.getString("cep"),rs.getInt("numero"),rs.getInt("idEndereco"));
 	}
 	
 	public List<Estados> selectEstados(){
@@ -160,6 +158,25 @@ public class EnderecoDAOConexao implements EnderecoDAO {
 	
 	public Estados getEstados(ResultSet rs) throws SQLException{
 		return new Estados(rs.getString(2),rs.getString(3));
+	}
+	
+	public int findLastId() throws DAOException {
+		String sql = "SELECT MAX(idEndereco) as id FROM enderecos;";
+		Connection con = MyConnection.init();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		int lastId = -1;
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if(rs.first())
+				lastId = rs.getInt("id");
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException(e,"ERRO! FINDLASTID na TABELA ENDERCOS. DATA("+new java.util.Date()+")");
+		}
+		return lastId;
+		
 	}
 	
 	

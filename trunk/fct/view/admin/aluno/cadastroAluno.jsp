@@ -99,14 +99,14 @@
 						<label><fmt:message key="cpf"/></label> 
 						<input type="text" class="input-short-short" name="cpf" id="cpf" value="${param.cpf }" />
 						<c:if test="${not empty erros['errocpf'] }">
-							<span class="notification-input ni-error"><fmt:message key="dataNasc_invalido"/></span>
+							<span class="notification-input ni-error"><fmt:message key="cpf_invalido"/></span>
 						</c:if>                        
 					
 					</p>
 					
 					<script>
 						jQuery(function($){
-      							$("#cpf").mask("999.999.999.99");
+      							$("#cpf").mask("999.999.999-99");
       						});
 					</script>
 

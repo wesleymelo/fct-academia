@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import br.ucb.fct.enuns.EnumTypeFone;
 import br.ucb.fct.exceptions.DAOException;
+import br.ucb.fct.util.Factory;
 import br.ucb.fct.connection.MyConnection;
 
 public class TelefoneDAOConexao implements TelefoneDAO{
@@ -18,9 +19,12 @@ public class TelefoneDAOConexao implements TelefoneDAO{
 		Connection con = MyConnection.init();
 		int retorno;
 		PreparedStatement ps;
+		
+		System.out.println(telefone.getDdd());
+		
 		try {
 			ps = con.prepareStatement(sql);
-			ps.setInt(1,telefone.getIdPessoa());
+			ps.setInt(1,Factory.initPessoaDAO().findLastId());
 			ps.setString(2, telefone.getDdd());
 			ps.setString(3, telefone.getNumero());
 			ps.setInt(4, telefone.getTipo().getNumber());
@@ -31,6 +35,15 @@ public class TelefoneDAOConexao implements TelefoneDAO{
 		}
 		return retorno == 0 ? false: true;
 	}
+	
+	public boolean insert(List<Telefone> telefones) throws DAOException{
+		for (Telefone tel : telefones) {
+			if(!insert(tel))
+				return false;
+		}
+		return true;
+	}
+	
 
 	@Override
 	public boolean delete(int id) throws DAOException {
