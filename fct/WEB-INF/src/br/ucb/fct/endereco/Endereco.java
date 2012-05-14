@@ -2,11 +2,11 @@ package br.ucb.fct.endereco;
 
 public class Endereco {
 	
-	private String enderecoResidencial, cidade, bairro, complemento, uf, cep;
-	private Integer numero, idEndereco;
+	private String enderecoResidencial, cidade, bairro, complemento, uf, cep, numero;
+	private Integer idEndereco, idPessoa;
 	
 	public Endereco(String enderecoResidencial, String cidade, String bairro,
-			String complemento, String uf, String cep, Integer numero,
+			String complemento, String uf, String cep, String numero,
 			Integer idEndereco) {
 		
 		setEnderecoResidencial(enderecoResidencial);
@@ -20,6 +20,20 @@ public class Endereco {
 		
 	}
 	
+	public Endereco(String enderecoResidencial, String cidade, String bairro,
+			String complemento, String uf, String cep, String numero){
+		
+		setEnderecoResidencial(enderecoResidencial);
+		setCidade(cidade);
+		setBairro(bairro);
+		setComplemento(complemento);
+		setUf(uf);
+		setCep(cep);
+		setNumero(numero);
+		setIdEndereco(idEndereco);
+		
+	}
+
 	public Integer getIdEndereco() {
 		return idEndereco;
 	}
@@ -27,6 +41,15 @@ public class Endereco {
 	public void setIdEndereco(Integer idEndereco) {
 		this.idEndereco = idEndereco;
 	}
+	
+	public Integer getIdPessoa() {
+		return idEndereco;
+	}
+
+	public void setIdPessoa(Integer idPessoa) {
+		this.idPessoa = idPessoa;
+	}
+	
 
 	public String getEnderecoResidencial() {
 		return enderecoResidencial;
@@ -52,11 +75,11 @@ public class Endereco {
 		this.bairro = bairro;
 	}
 
-	public Integer getNumero() {
+	public String getNumero() {
 		return numero;
 	}
 
-	public void setNumero(Integer numero) {
+	public void setNumero(String numero) {
 		this.numero = numero;
 	}
 

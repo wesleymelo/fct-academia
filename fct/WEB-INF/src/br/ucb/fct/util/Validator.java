@@ -104,12 +104,15 @@ public class Validator {
 	
 	
 	public static boolean isDoubleValid(String value){
+		if(!isStringValid(value, 100))
+			return false;
+		
 		try {
 			Double.parseDouble(value);
-		} catch (Exception e) {
-			return true;
+		} catch (NumberFormatException e) {
+			return false;
 		}
-		return false;
+		return true;
 		
 		
 	}

@@ -56,7 +56,7 @@ public class Util {
 		Date dataCadas = (Date) req.getSession().getAttribute("dataCadas");
 		String email = (String) req.getSession().getAttribute("email");
 		List<Telefone> telefones = (List<Telefone>) req.getSession().getAttribute("telefones"); 
-		Endereco endereco = (Endereco) req.getSession().getAttribute("endereco");
+		Endereco endereco = getEnderecoCadastro(req);
 		double altura = (Double) req.getSession().getAttribute("altura");
 		double peso = (Double) req.getSession().getAttribute("peso");
 		return new Aluno(EnumTypePessoa.ALUNO, dataCadas, nome, cpf, sexo, dataNasc, endereco, telefones, email, true, peso, altura);
@@ -68,9 +68,20 @@ public class Util {
 		String numero = (String) req.getSession().getAttribute("numero");
 		String ddd = (String) req.getSession().getAttribute("ddd");
 		EnumTypeFone tipo = (EnumTypeFone) req.getSession().getAttribute("tipoTel");
-		
 		return new Telefone(numero, ddd, tipo);
 		
+	}
+	
+	public static Endereco getEnderecoCadastro(HttpServletRequest req){
+		
+		String enderecoResidencial = req.getParameter("endereco");
+		String cidade = req.getParameter("cidade");
+		String bairro = req.getParameter("bairro");
+		String complemento = (req.getParameter("complemento") == null ? "" : req.getParameter("complemento"));
+		String uf = req.getParameter("uf");
+		String cep = req.getParameter("cep");
+		String numero = req.getParameter("numero");
+		return new Endereco(enderecoResidencial, cidade, bairro, complemento, uf, cep, numero);
 	}
 	
 

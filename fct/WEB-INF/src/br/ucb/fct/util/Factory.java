@@ -1,5 +1,7 @@
 package br.ucb.fct.util;
 
+import br.ucb.fct.aluno.AlunoDAO;
+import br.ucb.fct.aluno.AlunoDAOConexao;
 import br.ucb.fct.endereco.EnderecoDAO;
 import br.ucb.fct.endereco.EnderecoDAOConexao;
 import br.ucb.fct.envelope.EnvelopeDAO;
@@ -45,6 +47,10 @@ public class Factory {
 	
 	public static SecretariaDAO initSecretariaDAO(){
 		return new SecretariaDAOConexao();
+	}
+	
+	public static AlunoDAO initAlunoDAO(){
+		return new AlunoDAOConexao();
 	}
 	
 	public static EnvelopeDAO initEnvelopeDAO(){
