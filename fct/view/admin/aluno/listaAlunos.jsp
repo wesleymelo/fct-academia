@@ -61,7 +61,7 @@
 
 			<!-- Button -->
 			<div class="float-right">
-				<a href="" class="button"> <span><b>Novo(a) Aluno(a)</b><img
+				<a href="" class="button"> <span><b><fmt:message key="new" /></b><t
 						src="${pageContext.request.contextPath}/view/images/plus-small.gif"
 						tppabs="http://www.xooom.pl/work/magicadmin/images/plus-small.gif"
 						width="12" height="9" alt="Novo" /></span>
@@ -83,7 +83,7 @@
 		<!-- Example table -->
 		<div class="module">
 			<h2>
-				<span>Tabela de Alunos(as)</span>
+				<span><fmt:message key="alunos"/></span>
 			</h2>
 
 			<div class="module-table-body">
@@ -95,7 +95,7 @@
 								<th style="width: 25%">Nome</th>
 								<th style="width: 10%">CPF</th>
 								<th style="width: 10%">Data Nascimento</th>
-								<th style="width: 10%">Data Nascimento</th>
+								<th style="width: 15%">Telefones</th>
 								<th style="width: 25%">Email</th>
 								<th style="width: 08%">Sexo</th>
 								<th style="width: 10%">A&ccedil;&otilde;es</th>
