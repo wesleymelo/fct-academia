@@ -3,7 +3,6 @@ import java.text.*;
 import java.util.*; 
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import br.ucb.fct.aluno.Aluno;
 import br.ucb.fct.endereco.Endereco;
@@ -14,7 +13,7 @@ import br.ucb.fct.telefone.Telefone;
 
 public class Util {
 	
-	public static Date formatDate(String data){
+	public static Date formatDateOut(String data){
 		DateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");  
 		Date date = null;
 		try {
@@ -29,15 +28,20 @@ public class Util {
         return str.replace(".", "").replace("-", "").replace(" ", "").replace("/", "").replace("(", "").replace(")", "");
 	}
 		
-	public static Date formatDateOut(String data){
-		DateFormat formatador = new SimpleDateFormat("yyyy-MM-dd");  
-		Date date = null;
+	public static Date formatDateIn(String data){
+		SimpleDateFormat formatador = new SimpleDateFormat("yyyy-MM-dd");  
+		System.out.println(data);
+		Date date = new Date();
 		try {
-			date = formatador.parse(data);
+			if(data == null)
+				System.out.println("Data Null");
+			else
+				date = formatador.parse(data);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}  
-		return date;
+		System.out.println(date);
+		return new java.sql.Date(date.getTime());
 	}
 	
 	public static String[] formateTelOut(String tel){
@@ -52,14 +56,16 @@ public class Util {
 		String nome = (String) req.getSession().getAttribute("nome");
 		String cpf = (String) req.getSession().getAttribute("cpf");
 		EnumTypeSexo sexo = (EnumTypeSexo) req.getSession().getAttribute("sexo");
-		Date dataNasc = (Date) req.getSession().getAttribute("dataNasc");
+		Date dataNasc = formatDateIn((String)req.getSession().getAttribute("dataNasc"));
 		Date dataCadas = (Date) req.getSession().getAttribute("dataCadas");
 		String email = (String) req.getSession().getAttribute("email");
 		List<Telefone> telefones = (List<Telefone>) req.getSession().getAttribute("telefones"); 
 		Endereco endereco = getEnderecoCadastro(req);
-		double altura = (Double) req.getSession().getAttribute("altura");
-		double peso = (Double) req.getSession().getAttribute("peso");
-		return new Aluno(EnumTypePessoa.ALUNO, dataCadas, nome, cpf, sexo, dataNasc, endereco, telefones, email, true, peso, altura);
+		double altura = Double.parseDouble((String)req.getSession().getAttribute("altura"));
+		double peso = Double.parseDouble((String)req.getSession().getAttribute("peso"));
+		Aluno aluno = new Aluno(EnumTypePessoa.ALUNO, dataCadas, nome, cpf, sexo, dataNasc, endereco, telefones, email, true, peso, altura);
+		System.out.println(aluno);
+		return aluno;
 		
 	}
 	
@@ -80,7 +86,7 @@ public class Util {
 		String complemento = (req.getParameter("complemento") == null ? "" : req.getParameter("complemento"));
 		String uf = req.getParameter("uf");
 		String cep = req.getParameter("cep");
-		String numero = req.getParameter("numero");
+		int numero = Integer.parseInt(req.getParameter("numero"));
 		return new Endereco(enderecoResidencial, cidade, bairro, complemento, uf, cep, numero);
 	}
 	

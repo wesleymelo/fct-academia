@@ -30,7 +30,7 @@
 	<div class="container_12">
 		<div class="grid_12">
 			<ul>
-				<li><a href="../view/admin/aluno/cadastroAluno.jsp">Alunos</a></li>
+				<li><a href="${pageContext.request.contextPath}/view/admin/aluno/listaAlunos.do">Alunos</a></li>
 				<li><a href="#">Professores</a></li>
 				<li><a href="#">Secret&aacute;ria</a></li>
 				<li><a href="#">Modadidades</a></li>

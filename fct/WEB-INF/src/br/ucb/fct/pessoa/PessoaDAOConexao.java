@@ -1,6 +1,7 @@
 package br.ucb.fct.pessoa;
 
 import java.sql.Connection;
+
 import br.ucb.fct.enuns.EnumTypePessoa;
 import br.ucb.fct.enuns.EnumTypeSexo;
 import br.ucb.fct.exceptions.DAOException;
@@ -19,21 +20,23 @@ public class PessoaDAOConexao implements PessoaDAO {
 
 	@Override
 	public boolean insert(Pessoa pessoa) throws DAOException {
-		String sql = "INSERT INTO pessoas(idPessoa,tipoPessoa, dataCadastro, nome, cpf, sexo, " +
-				"idEndereco, email, status) VALUES(null,?,?,?,?,?,?,?,?);";
+		String sql = "INSERT INTO pessoas(idPessoa,tipoPessoa, dataCadastro, nome, cpf, sexo, dataNascimento,  " +
+				"idEndereco, email, status) VALUES(null,?,?,?,?,?,?,?,?,?);";
 		Connection con = MyConnection.init();
 		int retorno;
+		
 		PreparedStatement ps;
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1,pessoa.getTipoPessoa().getNumber());
-			ps.setDate(2, (Date) pessoa.getDataCadastro());
+			ps.setDate(2, new Date(new java.util.Date().getTime()));
 			ps.setString(3, pessoa.getNome());
 			ps.setString(4, pessoa.getCpf());
 			ps.setString(5, pessoa.getSexo().getCodigo().toString());
-			ps.setInt(6, pessoa.getEndereco().getIdEndereco());
-			ps.setString(7, pessoa.getEmail());
-			ps.setBoolean(8, pessoa.getStatus());
+			ps.setDate(6,(Date) pessoa.getDataNascimento());
+			ps.setInt(7, Factory.initEnderecoDAO().findLastId());
+			ps.setString(8, pessoa.getEmail());
+			ps.setBoolean(9, pessoa.getStatus());
 			retorno = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -61,8 +64,8 @@ public class PessoaDAOConexao implements PessoaDAO {
 
 	@Override
 	public boolean update(Pessoa pessoa, int id) throws DAOException {
-		String sql = "UPDATE pessoas SET idPessoa,tipoPessoa, dataCadastro, nome, cpf, sexo, " +
-				"idEndereco, email, status) VALUES(null,?,?,?,?,?,?,?,?);";
+		String sql = "UPDATE pessoas SET tipoPessoa = ?, dataCadastro = ?, nome = ?, cpf = ?, sexo = ?, dataNascimento = ?,  " +
+				"email = ?, status = ? WHERE id = ?";
 		Connection con = MyConnection.init();
 		int retorno;
 		PreparedStatement ps;
@@ -73,9 +76,10 @@ public class PessoaDAOConexao implements PessoaDAO {
 			ps.setString(3, pessoa.getNome());
 			ps.setString(4, pessoa.getCpf());
 			ps.setString(5, pessoa.getSexo().getCodigo().toString());
-			ps.setInt(6, pessoa.getEndereco().getIdEndereco());
+			ps.setDate(6, (Date) pessoa.getDataNascimento());
 			ps.setString(7, pessoa.getEmail());
-			ps.setBoolean(8, pessoa.getStatus());
+			ps.setBoolean(8 , pessoa.getStatus());
+			ps.setInt(9, id);
 			retorno = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -134,7 +138,7 @@ public class PessoaDAOConexao implements PessoaDAO {
 	}
 	
 	public int findLastId() throws DAOException {
-		String sql = "SELECT MAX(idPessoa)FROM pessoas as id";
+		String sql = "SELECT MAX(idPessoa) as id FROM pessoas;";
 		Connection con = MyConnection.init();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -142,7 +146,8 @@ public class PessoaDAOConexao implements PessoaDAO {
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
-			lastId = rs.getInt("id");
+			if(rs.first())
+				lastId = rs.getInt("id");
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new DAOException(e,"ERRO! FINDLASTID na TABELA PESSOAS. DATA("+new java.util.Date()+")");

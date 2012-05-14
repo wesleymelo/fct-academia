@@ -12,5 +12,6 @@ public interface EnderecoDAO {
 	public List<Endereco> selectAll() throws DAOException;
 	public Endereco selectById(int id) throws DAOException;
 	public List<Estados> selectEstados();
+	public int findLastId() throws DAOException;
 	
 }
