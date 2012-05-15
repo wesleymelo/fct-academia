@@ -49,14 +49,14 @@ public class CadastroAlunoAction implements Action {
 				}
 				else{
 					
-					Aluno aluno = Util.getCadastroAluno(req);
+					Aluno aluno = Util.getCadastroAluno(req);					
 					Endereco endereco = Util.getEnderecoCadastro(req);
 					
 					if(Factory.initEnderecoDAO().insert(endereco)){
 						if(Factory.initAlunoDAO().insert(aluno))
 							Factory.initTelefoneDAO().insert(aluno.getTelefones());
 					}
-					return "../../admin/principal/index.jsp";
+					return "../../admin/aluno/listaAlunos.do";
 				}
 		}
 
