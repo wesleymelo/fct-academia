@@ -1,10 +1,7 @@
 package br.ucb.fct.util;
 
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import javax.servlet.http.HttpServletRequest;
 
 public class Validator {
 	
@@ -44,6 +41,8 @@ public class Validator {
 		int cont,aux2,soma=0;
 		int []dig = new int [11];
 		int [] digVeri = new int[2];
+		
+		
 		
 		if(cpf.length() != 11)
 			return false;

@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
 
 <c:import url="../../includes/header.jsp" />
-
 <!-- Header. Main part -->
 <div id="header-main">
 	<div class="container_12">
@@ -61,7 +61,7 @@
 
 			<!-- Button -->
 			<div class="float-right">
-				<a href="" class="button"> <span><b><fmt:message key="new" /></b><t
+				<a href="${pageContext.request.contextPath}/view/admin/aluno/cadastroAluno.jsp" class="button"> <span><b><fmt:message key="new" /></b><t
 						src="${pageContext.request.contextPath}/view/images/plus-small.gif"
 						tppabs="http://www.xooom.pl/work/magicadmin/images/plus-small.gif"
 						width="12" height="9" alt="Novo" /></span>
