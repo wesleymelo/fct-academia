@@ -12,7 +12,14 @@ import br.ucb.fct.telefone.Telefone;
 
 public class Util {
 
+	
+	
+	
 	public static Date formatDateOut(String data){
+		
+		String dataTmp[] = data.split("-");
+		data = dataTmp[2]+"/"+dataTmp[1]+"/"+dataTmp[0];
+		
 		DateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");  
 		Date date = null;
 		try {
@@ -30,9 +37,12 @@ public class Util {
 	}
 
 	public static Date formatDateIn(String data){
+		
+		String dataTmp[] = data.split("/");
+		data = dataTmp[2]+"-"+dataTmp[1]+"-"+dataTmp[0];
+		
 		SimpleDateFormat formatador = new SimpleDateFormat("yyyy-MM-dd");  
-		System.out.println(data);
-		Date date = new Date();
+		Date date = null;
 		try {
 			date = formatador.parse(data);
 		} catch (ParseException e) {
@@ -82,7 +92,7 @@ public class Util {
 		String bairro = req.getParameter("bairro");
 		String complemento = (req.getParameter("complemento") == null ? "" : req.getParameter("complemento"));
 		String uf = req.getParameter("uf");
-		String cep = req.getParameter("cep");
+		String cep = Util.unFormat(req.getParameter("cep"));
 		int numero = Integer.parseInt(req.getParameter("numero"));
 		return new Endereco(enderecoResidencial, cidade, bairro, complemento, uf, cep, numero);
 	}
