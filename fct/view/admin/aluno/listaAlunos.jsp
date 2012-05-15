@@ -91,9 +91,9 @@
 					<table id="myTable" class="tablesorter">
 						<thead>
 							<tr>
-								<th style="width: 4%">#</th>
 								<th style="width: 25%">Nome</th>
 								<th style="width: 10%">CPF</th>
+								<th style="width: 10%">Data Nascimento</th>
 								<th style="width: 15%">Telefones</th>
 								<th style="width: 25%">Email</th>
 								<th style="width: 08%">Sexo</th>
@@ -103,13 +103,12 @@
 						<tbody>
 							<c:forEach var="aluno" items="${alunos}">
 								<tr>
-									<td class="align-center">${aluno.idPessoa}</td>
 									<td><a href="">${aluno.nome}</a></td>
 									<td>${aluno.cpf}</td>
-									
+									<td>${aluno.dataNascimento}</td>
 									<td>
 										<c:forEach var="telefone" items="${aluno.telefones}">
-											(${telefone.ddd}) ${telefone.telefone} 
+											(${telefone.ddd}) ${telefone.numero} <br/>
 										</c:forEach>
 									</td>
 									
