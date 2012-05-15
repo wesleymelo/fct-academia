@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <c:import url="../../includes/header.jsp" />
+
 <!-- Header. Main part -->
 <div id="header-main">
 	<div class="container_12">
@@ -49,22 +50,19 @@
 <!-- End #header -->
 <div class="container_12">
 
-
-
-
-
-
-
 	<div class="grid_12">
 
 		<div class="bottom-spacing">
 
 			<!-- Button -->
 			<div class="float-right">
-				<a href="${pageContext.request.contextPath}/view/admin/aluno/cadastroAluno.jsp" class="button"> <span><b><fmt:message key="new" /></b><t
+				<a
+					href="${pageContext.request.contextPath}/view/admin/aluno/cadastroAluno.jsp"
+					class="button"> <span><b><fmt:message key="new" /></b>
+						<img
 						src="${pageContext.request.contextPath}/view/images/plus-small.gif"
 						tppabs="http://www.xooom.pl/work/magicadmin/images/plus-small.gif"
-						width="12" height="9" alt="Novo" /></span>
+						width="12" height="9" alt="<fmt:message key="new" />" /> </span>
 				</a>
 			</div>
 
@@ -83,7 +81,7 @@
 		<!-- Example table -->
 		<div class="module">
 			<h2>
-				<span><fmt:message key="alunos"/></span>
+				<span><fmt:message key="alunos" /></span>
 			</h2>
 
 			<div class="module-table-body">
@@ -97,7 +95,7 @@
 								<th style="width: 15%">Telefones</th>
 								<th style="width: 25%">Email</th>
 								<th style="width: 08%">Sexo</th>
-								<th style="width: 10%">A&ccedil;&otilde;es</th>								
+								<th style="width: 10%">A&ccedil;&otilde;es</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -106,12 +104,10 @@
 									<td><a href="">${aluno.nome}</a></td>
 									<td>${aluno.cpf}</td>
 									<td>${aluno.dataNascimento}</td>
-									<td>
-										<c:forEach var="telefone" items="${aluno.telefones}">
-											(${telefone.ddd}) ${telefone.numero} <br/>
-										</c:forEach>
-									</td>
-									
+									<td><c:forEach var="telefone" items="${aluno.telefones}">
+											(${telefone.ddd}) ${telefone.numero} <br />
+										</c:forEach></td>
+
 									<td>${aluno.email}</td>
 									<td>${aluno.sexo.descricao}</td>
 									<td><input type="checkbox" /> <a href=""><img
@@ -135,15 +131,19 @@
 				<div class="pager" id="pager">
 					<form action="">
 						<div>
-							<img class="first" src="${pageContext.request.contextPath}/view/images/arrow-stop-180.gif"
+							<img class="first"
+								src="${pageContext.request.contextPath}/view/images/arrow-stop-180.gif"
 								tppabs="http://www.xooom.pl/work/magicadmin/images/arrow-stop-180.gif"
-								alt="first" /> <img class="prev" src="${pageContext.request.contextPath}/view/images/arrow-180.gif"
+								alt="first" /> <img class="prev"
+								src="${pageContext.request.contextPath}/view/images/arrow-180.gif"
 								tppabs="http://www.xooom.pl/work/magicadmin/images/arrow-180.gif"
 								alt="prev" /> <input type="text"
 								class="pagedisplay input-short align-center" /> <img
-								class="next" src="${pageContext.request.contextPath}/view/images/arrow.gif"
+								class="next"
+								src="${pageContext.request.contextPath}/view/images/arrow.gif"
 								tppabs="http://www.xooom.pl/work/magicadmin/images/arrow.gif"
-								alt="next" /> <img class="last" src="${pageContext.request.contextPath}/view/images/arrow-stop.gif"
+								alt="next" /> <img class="last"
+								src="${pageContext.request.contextPath}/view/images/arrow-stop.gif"
 								tppabs="http://www.xooom.pl/work/magicadmin/images/arrow-stop.gif"
 								alt="last" /> <select class="pagesize input-short align-center">
 								<option value="10" selected="selected">10</option>
@@ -194,7 +194,8 @@
 					src="${pageContext.request.contextPath}/view/images/arrow-000-small.gif"
 					tppabs="http://www.xooom.pl/work/magicadmin/images/arrow-000-small.gif"
 					height="9" width="12" alt="Next" /></span></a> <a href="" class="button last"><span>Last
-					<img src="${pageContext.request.contextPath}/view/images/arrow-stop-000-small.gif"
+					<img
+					src="${pageContext.request.contextPath}/view/images/arrow-stop-000-small.gif"
 					tppabs="http://www.xooom.pl/work/magicadmin/images/arrow-stop-000-small.gif"
 					height="9" width="12" alt="Last" />
 			</span></a>
