@@ -36,7 +36,7 @@
 				<li><a href="#">Alunos</a></li>
 				<li><a href="#">Professores</a></li>
 				<li><a href="#">Secret&aacute;ria</a></li>
-				<li><a href="#">Modadidades</a></li>
+				<li><a href="#">Modalidades</a></li>
 				<li><a href="#">Turmas</a></li>
 			</ul>
 
