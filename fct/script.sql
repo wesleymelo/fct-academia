@@ -823,7 +823,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 
 
-CREATE TABLE estados (
+CREATE TABLE if not exists estados (
   codigo INTEGER NOT NULL AUTO_INCREMENT,
   sigla VARCHAR(2) NOT NULL,
   descricao VARCHAR(30) NOT NULL,
