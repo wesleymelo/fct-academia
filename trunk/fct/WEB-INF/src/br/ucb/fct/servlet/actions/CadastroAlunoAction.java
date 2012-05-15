@@ -24,12 +24,6 @@ public class CadastroAlunoAction implements Action {
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) {
 		
-		
-		//System.out.println(new Date().toString());
-		
-		
-		//Declarações
-		
 		int pg = Integer.parseInt(req.getParameter("pg"));
 		Map<String, String> erros;
 		HttpSession sessao = req.getSession();
