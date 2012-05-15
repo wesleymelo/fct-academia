@@ -7,5 +7,5 @@
     <updateXml>true</updateXml>
     <warLocation></warLocation>
     <extraInfo></extraInfo>
-    <webPath>/Ftc-Academia</webPath>
+    <webPath>/fct</webPath>
 </tomcatProjectProperties>
