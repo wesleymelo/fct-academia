@@ -57,7 +57,7 @@ public class DespesaDAOConexao implements DespesaDAO{
 
 	@Override
 	public boolean update(Despesa despesas, int id) throws DAOException {
-		String sql="UPDATE despesas SET quantidade=?,descricao=?;";
+		String sql="UPDATE despesas SET quantidade=?,descricao=? WHERE id=?;";
 		Connection con=null;
 		PreparedStatement ps=null;
 		int retorno=0;
@@ -66,6 +66,7 @@ public class DespesaDAOConexao implements DespesaDAO{
 			ps=con.prepareStatement(sql);
 			ps.setInt(1,despesas.getQuantidade());
 			ps.setString(2,despesas.getDescricao());
+			ps.setInt(3,id);
 			retorno=ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
