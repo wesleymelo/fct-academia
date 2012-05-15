@@ -33,7 +33,8 @@ public class PessoaDAOConexao implements PessoaDAO {
 			ps.setString(3, pessoa.getNome());
 			ps.setString(4, pessoa.getCpf());
 			ps.setString(5, pessoa.getSexo().getCodigo().toString());
-			ps.setDate(6,(Date) pessoa.getDataNascimento());
+			Date date = new Date(pessoa.getDataNascimento().getTime()); 
+			ps.setDate(6, date);
 			ps.setInt(7, Factory.initEnderecoDAO().findLastId());
 			ps.setString(8, pessoa.getEmail());
 			ps.setBoolean(9, pessoa.getStatus());
