@@ -1,5 +1,5 @@
 
-<!-- ${sessionScope.acesso.pessoa.idPessoa} // pegar idSecretaria... -->
+
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -41,9 +41,7 @@
 	<div class="grid_12">
 
 		<div class="module">
-			<h2>
-				<span>Cadastro Gasto</span>
-			</h2>
+			<h2><span><fmt:message key="cadastroGasto" /></span></h2>
 					
 			<div class="module-body">
 
@@ -51,19 +49,35 @@
 
 					<p>
 						<!-- id da secretaria, sem a opção de alterar -->
+						<label><fmt:message key="pessoaResp"/></label>
+						<input type='text' name='nomeSecretaria' value="${sessionScope.acesso.pessoa.nome }" readonly="readonly">
+						<!-- ${sessionScope.acesso.pessoa.idPessoa} // pegar idSecretaria... -->
 					</p>
-					
+
 					<p>
 						<!-- lightbox com todas as despesas, para gerar os gastos -->
+						
+						
 					</p>
 					
 					<p>
 						<!-- data -->
+						<label><fmt:message key="dataPag"/></label> 
+                        <input type="text" class="input-short-short" name="dataPag" id="dataPag" value="${param.dataPag }" />
+                        <c:if test="${not empty erros['errodataPag'] }">
+							<span class="notification-input ni-error"><fmt:message key="dataPag_invalido"/></span>
+						</c:if>
 					</p>
+
+					<script>
+						jQuery(function($){
+      							$("#dataPag").mask("99/99/9999");
+      						});
+					</script>					
 					
 					<fieldset>
-						<input class="submit-green" type="submit" value="Próximo" /> <input
-						class="submit-gray" type="submit" value="Cancelar" />
+						<input class="submit-green" type="submit" value="<fmt:message key="cadastrar"/>" /> 
+						<input class="submit-gray" type="submit" value="<fmt:message key="bt_cancelar"/>" />
 					</fieldset>
 
 				</form>
