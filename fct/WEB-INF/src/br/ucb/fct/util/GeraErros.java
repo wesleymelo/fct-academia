@@ -50,7 +50,7 @@ public static Map<String, String> verificaErrosModalidades(HttpServletRequest re
 	
 	}
 
-	public static Map<String, String> verificaErrosAlunoEndereco(HttpServletRequest req) {
+	public static Map<String, String> verificaErrosEndereco(HttpServletRequest req) {
 		
 		Map<String, String> erros = new HashMap<String, String>();
 		
