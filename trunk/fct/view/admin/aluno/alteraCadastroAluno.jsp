@@ -53,6 +53,22 @@
 	<!-- Form elements -->
 	<div class="grid_12">
 		
+		<div class="bottom-spacing">
+			<!-- Button -->
+			<div class="float-right">
+				<a
+					href="${pageContext.request.contextPath}/view/admin/aluno/cadastroAluno.jsp"
+					class="button"> <span><b><fmt:message key="new" /></b>
+						<img
+						src="${pageContext.request.contextPath}/view/images/plus-small.gif"
+						tppabs="http://www.xooom.pl/work/magicadmin/images/plus-small.gif"
+						width="12" height="9" alt="<fmt:message key="new" />" /> </span>
+				</a>
+			</div>
+			<div style="clear: both;"></div>
+		</div>
+		<div style="clear: both;"></div>	
+		
 		<div class="module">
 			<h2>
 				<span>Cadastro Aluno</span>
@@ -120,7 +136,7 @@
 					
 					<p>	
 						<label><fmt:message key="celular"/></label>
-						<input type="text" class="input-short-short" name="celular" id="celular" value="${aluno.celular }" />
+						<input type="text" class="input-short-short" name="celular" id="celular" value="" />
 						<c:if test="${not empty erros['errocelular'] }">
 							<span class="notification-input ni-error"><fmt:message key="telefone_invalido"/></span>
 						</c:if>                        
