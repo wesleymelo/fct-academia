@@ -42,7 +42,7 @@ public class CadastroAlunoAction implements Action {
 					return "/view/admin/aluno/cadastroAlunoEndereco.jsp";
 				}
 			default:
-				erros = GeraErros.verificaErrosAlunoEndereco(req);
+				erros = GeraErros.verificaErrosEndereco(req);
 				if(!erros.isEmpty()){
 					req.setAttribute("erros",erros);
 					return "/view/admin/aluno/cadastroAlunoEndereco.jsp";
