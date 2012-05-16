@@ -72,6 +72,7 @@ public class GeraErros {
 		String senha = req.getParameter("senha");
 		String cpf = Util.unFormat(req.getParameter("cpf"));
 		Map<String, String> erros = new HashMap<String, String>();
+
 		if(!Validator.isCPFValid(cpf))
 			erros.put("errocpf","logar_erro");
 		if(!Validator.isStringValid(senha,100))
@@ -79,23 +80,63 @@ public class GeraErros {
 		
 		return erros;
 	}
-	
-	public static Map<String, String> verificaExisteAluno(HttpServletRequest req) {
-		
+
+	public static Map<String, String> verificaErrosSecretarias(
+			HttpServletRequest req) {
 		Map<String, String> erros = new HashMap<String, String>();
-		
-		if(Validator.isExisteAluno(Factory.initAlunoDAO().selectById(Integer.parseInt(req.getParameter("id")))))
-			erros.put("erroaluno", "aluno_nao_existe");
-		
+
+		if(!Validator.isStringValid(req.getParameter("nome"), 255))
+			erros.put("erronome","nome_invalido");
+		if(!Validator.isStringValid(Util.unFormat(req.getParameter("dataNasc")),8))
+			erros.put("errodataNasc", "dataNasc_invalido");
+		if(!Validator.isCPFValid(Util.unFormat(req.getParameter("cpf"))))
+			erros.put("errocpf","cpf_invalido");
+		if(!Validator.isEmailValid(req.getParameter("email"),100))
+			erros.put("erroemail","email_invalido");
+		if(!Validator.verificaTamanho(Util.unFormat(req.getParameter("celular")),10))
+			erros.put("errocelular", "telefone_invalido");
+		if(!Validator.verificaTamanho(Util.unFormat(req.getParameter("residencial")),10))
+			erros.put("erroresidencial", "telefone_invalido");
+		if(!Validator.verificaTamanho(Util.unFormat(req.getParameter("comercial")),10))
+			erros.put("errocomercial", "telefone_invalido");
+		if(!Validator.verificaDouble(req.getParameter("salario"),1))
+			erros.put("errosalario", "salario_invalida");
+		if(!Validator.isStringValid(Util.unFormat(req.getParameter("dataAdmissao")),8))
+			erros.put("errodataAdmissao", "dataAdmissao_invalido");
+		if(!Validator.isStringValid(Util.unFormat(req.getParameter("horarioFinal")),4))
+			erros.put("errohorarioFinal", "horarioFinal_invalido");		
+		if(!Validator.isStringValid(Util.unFormat(req.getParameter("horarioInicial")),4))
+			erros.put("errohorarioInicial", "horarioInicial_invalido");	
 		return erros;
 	}
-		
-			
-		
-		
-}
+
+	public static Map<String, String> verificaErrosProfessors(
+			HttpServletRequest req) {
+		Map<String, String> erros = new HashMap<String, String>();
+
+		if(!Validator.isStringValid(req.getParameter("nome"), 255))
+			erros.put("erronome","nome_invalido");
+		if(!Validator.isStringValid(Util.unFormat(req.getParameter("dataNasc")),8))
+			erros.put("errodataNasc", "dataNasc_invalido");
+		if(!Validator.isCPFValid(Util.unFormat(req.getParameter("cpf"))))
+			erros.put("errocpf","cpf_invalido");
+		if(!Validator.isEmailValid(req.getParameter("email"),100))
+			erros.put("erroemail","email_invalido");
+		if(!Validator.verificaTamanho(Util.unFormat(req.getParameter("celular")),10))
+			erros.put("errocelular", "telefone_invalido");
+		if(!Validator.verificaTamanho(Util.unFormat(req.getParameter("residencial")),10))
+			erros.put("erroresidencial", "telefone_invalido");
+		if(!Validator.verificaTamanho(Util.unFormat(req.getParameter("comercial")),10))
+			erros.put("errocomercial", "telefone_invalido");
+		if(!Validator.verificaDouble(req.getParameter("salario"),1))
+			erros.put("errosalario", "salario_invalida");
+		if(!Validator.isStringValid(Util.unFormat(req.getParameter("dataAdmissao")),8))
+			erros.put("errodataAdmissao", "dataAdmissao_invalido");
+
+		return erros;
+	}
 	 
 
+}
 
-
-
+//AFOI?

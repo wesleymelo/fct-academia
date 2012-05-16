@@ -20,7 +20,7 @@ public class SecretariaDAOConexao implements SecretariaDAO {
 	//É NECESSÁRIO ARRUMAR ESSAS QUERYS, POIS NÃO PODEREMOS EXCLUIR SECRETARIA, ALUNO OU PROFESSOR.
 	@Override
 	public boolean insert(Secretaria secretaria) throws DAOException {
-		String sql = "INSERT INTO secretarias(idSecretaria, dataAdimissao, horaInicial, horaFinal) VALUES (?,?,?,?);";
+		String sql = "INSERT INTO secretarias(idSecretaria,dataAdmissao , horarioInicial, horarioFinal) VALUES (?,?,?,?);";
 		Connection con = null;
 		PreparedStatement ps = null;
 		PessoaDAO dao = Factory.initPessoaDAO();
@@ -31,7 +31,7 @@ public class SecretariaDAOConexao implements SecretariaDAO {
 			con = MyConnection.init();
 			ps = con.prepareStatement(sql);
 			ps.setInt(1,dao.findLastId());
-			ps.setDate(2,(java.sql.Date)secretaria.getDataAdimissao());
+			ps.setDate(2,(java.sql.Date)secretaria.getDataAdmissao());
 			ps.setString(3, secretaria.getHoraInicial());
 			ps.setString(4, secretaria.getHoraFinal());
 			retorno = ps.executeUpdate();
@@ -66,14 +66,14 @@ public class SecretariaDAOConexao implements SecretariaDAO {
 
 	@Override
 	public boolean update(Secretaria secretaria, int id) throws DAOException {
-		String sql = "UPDATE secretarias SET dataAdimissao = ?, horaInicial = ?, horaFinal = ?;";
+		String sql = "UPDATE secretarias SET dataAdmissao = ?, horarioInicial = ?, horarioFinal = ?;";
 		Connection con = null;
 		PreparedStatement ps = null;
 		int retorno = 0;
 		try {
 			con = MyConnection.init();
 			ps = con.prepareStatement(sql);
-			ps.setObject(1,secretaria.getDataAdimissao());
+			ps.setObject(1,secretaria.getDataAdmissao());
 			ps.setObject(2,secretaria.getHoraInicial());
 			ps.setObject(3,secretaria.getHoraFinal());
 			ps.executeUpdate();
@@ -89,7 +89,7 @@ public class SecretariaDAOConexao implements SecretariaDAO {
 
 	@Override
 	public List<Secretaria> selectAll() throws DAOException {
-		String sql = "SELECT * FROM secretarias, pessoas WHERE idProfessor = idPessoa";
+		String sql = "SELECT * FROM secretarias, pessoas WHERE idSecretaria = idPessoa";
 		List<Secretaria> secretarias = new ArrayList<Secretaria>();
 		Connection con = MyConnection.init();		
 		Statement stm = null;
@@ -131,7 +131,7 @@ public class SecretariaDAOConexao implements SecretariaDAO {
 	
 	public static Secretaria getSecretaria(ResultSet rs) throws SQLException{
 		return new Secretaria(rs.getInt("idPessoa"), EnumTypePessoa.findEmunTypePessoaByNumber(rs.getInt("tipoPessoa")), rs.getDate("dataCadastro"), rs.getString("nome"), 
-				  rs.getString("cpf"), EnumTypeSexo.findByCodigo(rs.getString("sexo").charAt(0)), rs.getDate("dataNascimento"), Factory.initEnderecoDAO().selectById(rs.getInt("idPessoa")), Factory.initTelefoneDAO().selectById(rs.getInt("idPessoa")), rs.getString("email"), rs.getBoolean("status"), rs.getDate("dataAdimissao"), rs.getString("horaInicial"), rs.getString("horaFinal"));
+				  rs.getString("cpf"), EnumTypeSexo.findByCodigo(rs.getString("sexo").charAt(0)), rs.getDate("dataNascimento"), Factory.initEnderecoDAO().selectById(rs.getInt("idPessoa")), Factory.initTelefoneDAO().selectById(rs.getInt("idPessoa")), rs.getString("email"), rs.getBoolean("status"), rs.getDate("dataAdmissao"), rs.getString("horarioInicial"), rs.getString("horarioFinal"));
 	}
 	
 	public static Pessoa getPessoaBySecretaria(Secretaria secretaria){
