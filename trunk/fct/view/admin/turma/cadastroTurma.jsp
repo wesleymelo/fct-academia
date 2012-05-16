@@ -5,19 +5,54 @@
 
 <c:import url="../../includes/header.jsp" />
 
+<!-- janela modal -->
 <div id="boxes">
-
-
 
 <div id="dialog" class="window">
 	<a href="#" class="close"><fmt:message key="fechar"/></a>
-			
+	
+			<h2>
+				<fmt:message key="professores"/>
+			</h2>
+
+				<form action="">
+					<table>
+						<thead>
+							<tr>
+								<th style="width: 4%">#</th>
+								<th style="width: 25%"><fmt:message key="nome"/></th>
+								<th style="width: 10%"><fmt:message key="cpf"/></th>
+								<th style="width: 15%"><fmt:message key="telefones"/></th>
+								<th style="width: 25%"><fmt:message key="email"/></th>
+								<th style="width: 08%"><fmt:message key="sexo"/></th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="professor" items="${professores}">
+								<tr>
+									<td class="align-center">${professor.idPessoa}</td>
+									<td><a href="">${professor.nome}</a></td>
+									<td>${professor.cpf}</td>
+									
+									<td>
+										<c:forEach var="telefone" items="${professor.telefones}">
+											(${telefone.ddd}) ${telefone.telefone} 
+										</c:forEach>
+									</td>
+									
+									<td>${professor.email}</td>
+									<td>${professor.sexo.descricao}</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</form>	
 </div>
 
 <div id="mask"></div>
 
 </div>
-
+<!-- end janela modal -->
 <div class="container_12">
 	
 	<div class="grid_12">
