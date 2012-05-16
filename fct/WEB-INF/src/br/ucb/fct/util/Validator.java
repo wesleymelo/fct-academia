@@ -3,6 +3,8 @@ package br.ucb.fct.util;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import br.ucb.fct.aluno.Aluno;
+
 public class Validator {
 	
 	public static boolean isDDDValido(String ddd){
@@ -120,6 +122,11 @@ public class Validator {
 		
 	}
 	
+	public static boolean isExisteAluno(Aluno aluno){
+		
+		return Factory.initAlunoDAO().selectAll().contains(aluno);
+		
+	}
 	
 	
 	
