@@ -14,7 +14,7 @@
 			<!-- Button -->
 			<div class="float-right">
 				<a
-					href="${pageContext.request.contextPath}/view/admin/turma/cadastroTurma.jsp"
+					href="${pageContext.request.contextPath}/view/admin/turma/buscaProfessor.do"
 					class="button"> <span><b><fmt:message key="new" /></b>
 						<img
 						src="${pageContext.request.contextPath}/view/images/plus-small.gif"

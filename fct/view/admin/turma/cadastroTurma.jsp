@@ -128,7 +128,7 @@
 					</script>
 
 					<p>
-                        <label><fmt:message key="professor"/></label>
+                        <label><fmt:message key="professor"/></label>	
                         <input type="text" class="input-short-short" name="professor" id="professor" readonly="readonly" value="${param.professor}" /><a href="#dialog" name="modal"> <fmt:message key="buscar"/></a>
                         <c:if test="${not empty erros['erroProfessor'] }">
 							<span class="notification-input ni-error"><fmt:message key="professor_invalido"/></span>
