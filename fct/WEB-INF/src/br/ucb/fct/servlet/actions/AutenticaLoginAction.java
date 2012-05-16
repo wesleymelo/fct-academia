@@ -24,6 +24,7 @@ public class AutenticaLoginAction implements Action{
 				Acesso acesso = AcessoBO.findByUsuarioAndSenha(cpf, senha);
 				if(acesso != null){
 					HttpSession session = req.getSession(true);
+					
 					session.setAttribute(EnumAcesso.ACESSO.getChave(), acesso);
 					url = "/view/admin/principal/index.jsp";
 				}
