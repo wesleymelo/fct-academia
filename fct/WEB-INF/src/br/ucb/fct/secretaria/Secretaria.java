@@ -11,9 +11,9 @@ import br.ucb.fct.telefone.Telefone;
 
 public class Secretaria extends Pessoa{
 	
-	private Date dataAdimissao;
-	private String horaInicial;
-	private String horaFinal;
+	private Date dataAdmissao;
+	private String horarioInicial;
+	private String horarioFinal;
 
 	
 
@@ -21,48 +21,48 @@ public class Secretaria extends Pessoa{
 			Date dataCadastro, String nome, String cpf, EnumTypeSexo sexo,
 			Date dataNascimento, Endereco endereco,
 			List<Telefone> telefones, String email, Boolean status,
-			Date dataAdimissao, String horaInicial, String horaFinal) {
+			Date dataAdmissao, String horarioInicial, String horarioFinal) {
 		super( tipoPessoa, dataCadastro, nome, cpf, sexo,
 				dataNascimento, endereco, telefones, email, status);
-		setDataAdimissao(dataAdimissao);
-		setHoraInicial(horaInicial);
-		setHoraFinal(horaFinal);
+		setDataAdmissao(dataAdmissao);
+		setHoraInicial(horarioInicial);
+		setHoraFinal(horarioFinal);
 	}
 
 	public Secretaria(Integer idPessoa, EnumTypePessoa tipoPessoa,
 			Date dataCadastro, String nome, String cpf, EnumTypeSexo sexo,
 			Date dataNascimento, Endereco endereco,
 			List<Telefone> telefones, String email, Boolean status,
-			Date dataAdimissao, String horaInicial, String horaFinal) {
+			Date dataAdmissao, String horarioInicial, String horarioFinal) {
 		super(idPessoa, tipoPessoa, dataCadastro, nome, cpf, sexo,
 				dataNascimento, endereco, telefones, email, status);
-		setDataAdimissao(dataAdimissao);
-		setHoraInicial(horaInicial);
-		setHoraFinal(horaFinal);
+		setDataAdmissao(dataAdmissao);
+		setHoraInicial(horarioInicial);
+		setHoraFinal(horarioFinal);
 	}
 
-	public Date getDataAdimissao() {
-		return dataAdimissao;
+	public Date getDataAdmissao() {
+		return dataAdmissao;
 	}
 
-	public void setDataAdimissao(Date dataAdimissao) {
-		this.dataAdimissao = dataAdimissao;
+	public void setDataAdmissao(Date dataAdmissao) {
+		this.dataAdmissao = dataAdmissao;
 	}
 	
 	public String getHoraInicial() {
-		return horaInicial;
+		return horarioInicial;
 	}
 
-	public void setHoraInicial(String horaInicial) {
-		this.horaInicial = horaInicial;
+	public void setHoraInicial(String horarioInicial) {
+		this.horarioInicial = horarioInicial;
 	}
 
 	public String getHoraFinal() {
-		return horaFinal;
+		return horarioFinal;
 	}
 
-	public void setHoraFinal(String horaFinal) {
-		this.horaFinal = horaFinal;
+	public void setHoraFinal(String horarioFinal) {
+		this.horarioFinal = horarioFinal;
 	}
 
 	@Override
@@ -70,11 +70,11 @@ public class Secretaria extends Pessoa{
 		final int prime = 31;
 		int result = super.hashCode();
 		result = prime * result
-				+ ((dataAdimissao == null) ? 0 : dataAdimissao.hashCode());
+				+ ((dataAdmissao == null) ? 0 : dataAdmissao.hashCode());
 		result = prime * result
-				+ ((horaFinal == null) ? 0 : horaFinal.hashCode());
+				+ ((horarioFinal == null) ? 0 : horarioFinal.hashCode());
 		result = prime * result
-				+ ((horaInicial == null) ? 0 : horaInicial.hashCode());
+				+ ((horarioInicial == null) ? 0 : horarioInicial.hashCode());
 		return result;
 	}
 
@@ -87,10 +87,10 @@ public class Secretaria extends Pessoa{
 		if (getClass() != obj.getClass())
 			return false;
 		Secretaria other = (Secretaria) obj;
-		if (getDataAdimissao() == null) {
-			if (other.getDataAdimissao() != null)
+		if (getDataAdmissao() == null) {
+			if (other.getDataAdmissao() != null)
 				return false;
-		} else if (!getDataAdimissao().equals(other.getDataAdimissao()))
+		} else if (!getDataAdmissao().equals(other.getDataAdmissao()))
 			return false;
 		if (getHoraFinal() == null) {
 			if (other.getHoraFinal() != null)

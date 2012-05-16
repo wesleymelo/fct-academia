@@ -20,10 +20,12 @@
 
 			<!-- Button -->
 			<div class="float-right">
-				<a href="" class="button"> <span><b><fmt:message key="new" /></b><t
+				<a href="${pageContext.request.contextPath}/view/admin/secretaria/cadastroSecretaria.jsp"
+					class="button"> <span><b><fmt:message key="new" /></b>
+						<img
 						src="${pageContext.request.contextPath}/view/images/plus-small.gif"
 						tppabs="http://www.xooom.pl/work/magicadmin/images/plus-small.gif"
-						width="12" height="9" alt="Novo" /></span>
+						width="12" height="9" alt="<fmt:message key="new" />" /> </span>
 				</a>
 			</div>
 
@@ -62,22 +64,19 @@
 						<tbody>
 							<c:forEach var="secretaria" items="${secretarias}">
 								<tr>
-									<td class="align-center">${secretaria.idPessoa}</td>
 									<td><a href="">${secretaria.nome}</a></td>
 									<td>${secretaria.cpf}</td>
-									
-									<td>
-										<c:forEach var="telefone" items="${secretaria.telefones}">
-											(${telefone.ddd}) ${telefone.telefone} 
-										</c:forEach>
-									</td>
-									
+									<td>${secretaria.dataNascimento}</td>
+									<td><c:forEach var="telefone" items="${secretaria.telefones}">
+											(${telefone.ddd}) ${telefone.numero} <br />
+										</c:forEach></td>
+
 									<td>${secretaria.email}</td>
 									<td>${secretaria.sexo.descricao}</td>
 									<td><input type="checkbox" /> <a href=""><img
 											src="${pageContext.request.contextPath}/view/images/tick-circle.gif"
 											tppabs="http://www.xooom.pl/work/magicadmin/images/tick-circle.gif"
-											width="16" height="16" alt="published" /></a> <a href=""><img
+											width="16" height="16" alt="published" /></a> <a href="${pageContext.request.contextPath}/view/admin/secretaria/alteraSecretaria.do?codigo=${secretaria.idPessoa }"><img
 											src="${pageContext.request.contextPath}/view/images/pencil.gif"
 											tppabs="http://www.xooom.pl/work/magicadmin/images/pencil.gif"
 											width="16" height="16" alt="edit" /></a> <a href=""><img
