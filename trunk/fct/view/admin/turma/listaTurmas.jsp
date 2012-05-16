@@ -14,7 +14,7 @@
 			<!-- Button -->
 			<div class="float-right">
 				<a
-					href="${pageContext.request.contextPath}/view/admin/modalidade/cadastroModalidade.jsp"
+					href="${pageContext.request.contextPath}/view/admin/aluno/cadastroAluno.jsp"
 					class="button"> <span><b><fmt:message key="new" /></b>
 						<img
 						src="${pageContext.request.contextPath}/view/images/plus-small.gif"
@@ -33,12 +33,25 @@
 			</select>
 
 		</div>
-
+		
+		<c:choose>
+			<c:when test="${param.status == true}">
+				<span class="notification n-success">Success notification.</span>
+			</c:when>
+			<c:otherwise>
+				<c:choose>
+					<c:when test="${param.status == false }">
+						<span class="notification n-error">Error notification.</span>
+					</c:when>
+				</c:choose>
+			</c:otherwise>			
+		</c:choose>
+		
 
 		<!-- Example table -->
 		<div class="module">
 			<h2>
-				<span><fmt:message key="modalidades" /></span>
+				<span><fmt:message key="alunos" /></span>
 			</h2>
 
 			<div class="module-table-body">
@@ -46,20 +59,31 @@
 					<table id="myTable" class="tablesorter">
 						<thead>
 							<tr>
-								<th style="width: 5%"><c:out value="#"></c:out></th>
-								<th style="width: 30%"><fmt:message key="desc"/></th>
-								<th style="width: 8%"><fmt:message key="acoes"/></th>
+								<th style="width: 25%">Nome</th>
+								<th style="width: 10%">CPF</th>
+								<th style="width: 10%">Data Nascimento</th>
+								<th style="width: 15%">Telefones</th>
+								<th style="width: 25%">Email</th>
+								<th style="width: 08%">Sexo</th>
+								<th style="width: 10%">A&ccedil;&otilde;es</th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="modalidade" items="${modalidades}">
+							<c:forEach var="aluno" items="${alunos}">
 								<tr>
-									<td>${modalidade.idModalidade}</td>
-									<td><a href="">${modalidade.descricao}</a></td>
+									<td><a href="">${aluno.nome}</a></td>
+									<td>${aluno.cpf}</td>
+									<td>${aluno.dataNascimento}</td>
+									<td><c:forEach var="telefone" items="${aluno.telefones}">
+											(${telefone.ddd}) ${telefone.numero} <br />
+										</c:forEach></td>
+
+									<td>${aluno.email}</td>
+									<td>${aluno.sexo.descricao}</td>
 									<td><input type="checkbox" /> <a href=""><img
 											src="${pageContext.request.contextPath}/view/images/tick-circle.gif"
 											tppabs="http://www.xooom.pl/work/magicadmin/images/tick-circle.gif"
-											width="16" height="16" alt="published" /></a> <a href=""><img
+											width="16" height="16" alt="published" /></a> <a href="${pageContext.request.contextPath}/view/admin/aluno/alteraAluno.do?codigo=${aluno.idPessoa }"><img
 											src="${pageContext.request.contextPath}/view/images/pencil.gif"
 											tppabs="http://www.xooom.pl/work/magicadmin/images/pencil.gif"
 											width="16" height="16" alt="edit" /></a> <a href=""><img
