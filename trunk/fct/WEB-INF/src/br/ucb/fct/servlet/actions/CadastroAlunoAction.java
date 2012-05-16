@@ -41,7 +41,7 @@ public class CadastroAlunoAction implements Action {
 					req.getSession().setAttribute("estados", Factory.initEnderecoDAO().selectEstados());
 					return "/view/admin/aluno/cadastroAlunoEndereco.jsp";
 				}
-			default:
+			case 2:
 				erros = GeraErros.verificaErrosEndereco(req);
 				if(!erros.isEmpty()){
 					req.setAttribute("erros",erros);
@@ -58,16 +58,21 @@ public class CadastroAlunoAction implements Action {
 					}
 					return "../../admin/aluno/listaAlunos.do?status="+retorno+"";
 				}
+			case 3:
+				erros = GeraErros.verificaErrosAlunos(req);
+				System.out.println(req.getParameter("codigo"));
+				/*if(!erros.isEmpty()){
+					req.setAttribute("erros", erros);
+					return "/alteraAluno.do?codigo="+req.getParameter("codigo");
+				}*/
 		}
-
-
-
+		return null;
 	
 	}
 
 	public void setSessionAluno(HttpSession sessao, HttpServletRequest req){
 		sessao.setAttribute("nome",req.getParameter("nome"));
-		//sessao.setAttribute("dataCadas",Util.formatDateOut(new Date().toString()));
+	//	sessao.setAttribute("dataCadas",Util.formatDateOut(new Date().toString()));
 		sessao.setAttribute("dataNasc",req.getParameter("dataNasc"));
 		
 		System.out.println(req.getParameter("dataNasc"));
