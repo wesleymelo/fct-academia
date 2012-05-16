@@ -4,49 +4,8 @@
 
 <c:import url="../../includes/header.jsp" />
 
-<!-- Header. Main part -->
-<div id="header-main">
-	<div class="container_12">
-		<div class="grid_12">
-			<div id="logo">
-				<div id="logo_top">
-					<ul id="nav">
-						<li id="current"><a href="">Painel de Controle</a></li>
-						<li><a href="">Outro</a></li>
-					</ul>
-				</div>
-				<div id="logo_bottom"></div>
-			</div>
-			<!-- End. #Logo -->
-		</div>
-		<!-- End. .grid_12-->
-		<div style="clear: both;"></div>
-	</div>
-	<!-- End. .container_12 -->
-</div>
-<!-- End #header-main -->
-<div style="clear: both;"></div>
-<!-- Sub navigation -->
-<div id="subnav">
-	<div class="container_12">
-		<div class="grid_12">
-			<ul>
-				<li id="current"><a href="#">Alunos</a></li>
-				<li><a href="#">Professores</a></li>
-				<li><a href="#">Secret&aacute;ria</a></li>
-				<li><a href="#">Modadidades</a></li>
-				<li><a href="#">Turmas</a></li>
-			</ul>
 
-		</div>
-		<!-- End. .grid_12-->
-	</div>
-	<!-- End. .container_12 -->
-	<div style="clear: both;"></div>
-</div>
-<!-- End #subnav -->
-</div>
-<!-- End #header -->
+
 <div class="container_12">
 
 

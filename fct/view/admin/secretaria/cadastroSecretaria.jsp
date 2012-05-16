@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-
 <c:import url="../../includes/header.jsp" />
-
 
 
 
@@ -15,16 +13,17 @@
 
 		<div class="module">
 			<h2>
-				<span><fmt:message key="cadastroProfessor"/></span>
+				<fmt:message key = "cadastraSecretaria"/>
 			</h2>
 
 			<div class="module-body">
 
-				<form action="cadastroProfessor.do" method="post">
+				<form action="cadastroSecretaria.do" method="post">
 
 					<input type="hidden" name="pg" value="1" />
 
-					<p>
+								
+							<p>
 						<label><fmt:message key="nome"/></label>
 						<input type="text" class="input-short" name="nome" id="nome" value="${param.nome }"/>
 						<c:if test="${not empty erros['erronome'] }">
@@ -97,6 +96,7 @@
 							<span class="notification-input ni-error"><fmt:message key="telefone_invalido"/></span>
 						</c:if>                        
 					</p>
+					
 					<script>
 						jQuery(function($){
       							$("#residencial").mask("(99)9999-9999");
@@ -116,30 +116,59 @@
       							$("#comercial").mask("(99)9999-9999");
       						});
 					</script>
-					<p>
-					<label><fmt:message key="dataAdmissao" /></label> <input type="text"
-							class="input-short" name="dataAdmissao" id="dataAdmissao"
-							value="${param.dataAdmissao }" />
-						<c:if test="${not empty erros['dataAdmissao'] }">
-							<span class="notification-input ni-error"><fmt:message
-									key="dataAdmissao_invalido" /></span>
-						</c:if>
-					</p>
-					<script>
+					
+
+							<label><fmt:message key="salario" /></label> <input type="text" class="input-short"
+								name="salario" value="${salario}" id="salario" /> <span
+								class="notification-input ni-correct">This is correct,
+								thanks!</span>
+							</p>
+							
+							<p>
+								<label><fmt:message key="horarioInicial" /></label> <input type="text"
+									class="input-short" name="horarioInicial"
+									value="${horarioInicial}" id="horarioInicial" /> <span
+									class="notification-input ni-correct">This is correct,
+									thanks!</span>
+							</p>
+							<script>
+								jQuery(function($) {
+									$("#horarioInicial").mask("99:99");
+								});
+							</script>
+							<p>
+								<label><fmt:message key="horarioFinal" /></label> <input type="text" class="input-short"
+									name="horarioFinal" value="${horarioFinal}" id="horarioFinal" />
+								<span class="notification-input ni-correct">This is
+									correct, thanks!</span>
+							</p>
+							<script>
+								jQuery(function($) {
+									$("#horarioFinal").mask("99:99");
+								});
+							</script>
+							<p>
+								<label><fmt:message key="dataAdmissao" /></label> <input type="text"
+									class="input-short" name="dataAdmissao" value="${dataAdmissao}"
+									id="dataAdmissao" /> <span
+									class="notification-input ni-correct">This is correct,
+									thanks!</span>
+							</p>
+							<script>
 								jQuery(function($) {
 									$("#dataAdmissao").mask("99/99/9999");
 								});
 							</script>
+							<fieldset>
+								<input class="submit-green" type="submit" value= "<fmt:message key="botao.proximo "/>"> 
+								<input class="submit-gray" type="submit" value= " <fmt:message key="botao.cancelar " />" />
+							</fieldset>
 
-					<fieldset>
-						<input class="submit-green" type="submit" value="<fmt:message key="bt_proximo"/>" /> <input
-						class="submit-gray" type="submit" value="<fmt:message key="bt_cancelar"/>" />
-					</fieldset>
-
-				</form>
+						</form>
 			</div>
 			<!-- End .module-body -->
 
+		
 		</div>
 		<!-- End .module -->
 		<div style="clear: both;"></div>

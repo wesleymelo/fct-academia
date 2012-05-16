@@ -17,6 +17,18 @@ public class Secretaria extends Pessoa{
 
 	
 
+	public Secretaria( EnumTypePessoa tipoPessoa,
+			Date dataCadastro, String nome, String cpf, EnumTypeSexo sexo,
+			Date dataNascimento, Endereco endereco,
+			List<Telefone> telefones, String email, Boolean status,
+			Date dataAdimissao, String horaInicial, String horaFinal) {
+		super( tipoPessoa, dataCadastro, nome, cpf, sexo,
+				dataNascimento, endereco, telefones, email, status);
+		setDataAdimissao(dataAdimissao);
+		setHoraInicial(horaInicial);
+		setHoraFinal(horaFinal);
+	}
+
 	public Secretaria(Integer idPessoa, EnumTypePessoa tipoPessoa,
 			Date dataCadastro, String nome, String cpf, EnumTypeSexo sexo,
 			Date dataNascimento, Endereco endereco,

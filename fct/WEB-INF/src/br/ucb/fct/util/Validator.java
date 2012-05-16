@@ -97,6 +97,10 @@ public class Validator {
 		return (isDoubleValid(value) && (Double.parseDouble(value) >= min && Double.parseDouble(value)<=max));
 	}
 	
+	public static boolean verificaDouble(String value, double min ){
+		return (isDoubleValid(value) && (Double.parseDouble(value) >= min ));
+	}
+	
 	public static boolean verificaInteger(String value, int min, int max ){
 		return verificaDouble(value, min, max);
 	}

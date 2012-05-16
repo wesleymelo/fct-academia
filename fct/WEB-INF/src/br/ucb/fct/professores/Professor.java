@@ -22,6 +22,15 @@ public class Professor extends Pessoa{
 				dataNascimento, endereco, telefones, email, status);
 		setDataAdimissao(dataAdimissao);
 	}
+	public Professor( EnumTypePessoa tipoPessoa,
+			Date dataCadastro, String nome, String cpf, EnumTypeSexo sexo,
+			Date dataNascimento, Endereco endereco,
+			List<Telefone> telefones, String email, Boolean status,
+			Date dataAdimissao) {
+		super( tipoPessoa, dataCadastro, nome, cpf, sexo,
+				dataNascimento, endereco, telefones, email, status);
+		setDataAdimissao(dataAdimissao);
+	}
 
 	public Date getDataAdimissao() {
 		return dataAdimissao;

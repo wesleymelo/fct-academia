@@ -38,9 +38,8 @@
 	<div class="grid_12">
 
 		<div class="module">
-			<h2>
-				<span>Cadastro Aluno</span>
-			</h2>
+			 <h2><span><fmt:message key="cadastroAluno" /></span></h2>
+                    
 					
 			<div class="module-body">
 
@@ -158,8 +157,8 @@
 					</p>
 
 					<fieldset>
-						<input class="submit-green" type="submit" value="Próximo" /> <input
-						class="submit-gray" type="submit" value="Cancelar" />
+						<input class="submit-green" type="submit" value="<fmt:message key="bt_proximo"/>" /> <input
+						class="submit-gray" type="submit" value="<fmt:message key="bt_cancelar"/>" />
 					</fieldset>
 
 				</form>

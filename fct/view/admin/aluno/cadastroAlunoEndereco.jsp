@@ -23,20 +23,14 @@
             <div class="grid_12">
             
                 <div class="module">
-                     <h2><span>Cadastro Aluno</span></h2>
+                     <h2><span><fmt:message key="cadastroAluno" /></span></h2>
                         
                      <div class="module-body">
                         <form action="cadastroAluno.do" method="post">
                    
                         	<input type="hidden" name="pg" value="2"/>
                    
-                            <p>
-                                <label><fmt:message key="endereco"/></label>
-                                <input type="text" class="input-medium" name="endereco" id="endereco" value="${param.endereco }" />
-                                <c:if test="${not empty erros['erroendereco'] }">
-									<span class="notification-input ni-error"><fmt:message key="endereco_invalido"/></span>
-								</c:if>
-                            </p>
+                           
                             
                             <p>
                                 <label><fmt:message key="cidade" /></label>
@@ -70,6 +64,16 @@
 								</select>
 							</label>
                             
+                            
+                             <p>
+                                <label><fmt:message key="endereco"/></label>
+                                <input type="text" class="input-medium" name="endereco" id="endereco" value="${param.endereco }" />
+                                <c:if test="${not empty erros['erroendereco'] }">
+									<span class="notification-input ni-error"><fmt:message key="endereco_invalido"/></span>
+								</c:if>
+                            </p>
+                            
+                            
                             <p>
                                 <label><fmt:message key="numero"/></label>
                                 <input type="text" class="input-short" name="numero" value="${param.numero }" />
@@ -84,8 +88,8 @@
                             </p>
                             
                             <fieldset>
-                                <input class="submit-green" type="submit" value="Enviar" /> 
-                                <input class="submit-gray" type="submit" value="Cancelar" />
+                                <input class="submit-green" type="submit" value="<fmt:message key="bt_enviar"/>" /> 
+                                <input class="submit-gray" type="submit" value="<fmt:message key="bt_cancelar"/>" />
                             </fieldset>
                             
                         </form>

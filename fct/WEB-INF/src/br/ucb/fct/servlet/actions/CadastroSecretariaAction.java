@@ -45,7 +45,7 @@ public class CadastroSecretariaAction implements Action {
 				return "/view/admin/secretaria/cadastroSecretariaEndereco.jsp";
 			}
 		default:
-			erros = GeraErros.verificaErrosSecretariaEndereco(req);
+			erros = GeraErros.verificaErrosEndereco(req);
 			if(!erros.isEmpty()){
 				req.setAttribute("erros",erros);
 				return "/view/admin/secretaria/cadastroSecretariaEndereco.jsp";
