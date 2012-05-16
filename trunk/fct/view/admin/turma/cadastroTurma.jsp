@@ -11,7 +11,7 @@
 
 <div id="dialog" class="window">
 	<a href="#" class="close"><fmt:message key="fechar"/></a>
-		
+			
 </div>
 
 <div id="mask"></div>
