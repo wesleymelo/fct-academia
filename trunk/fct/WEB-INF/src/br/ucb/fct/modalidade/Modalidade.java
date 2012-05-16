@@ -2,14 +2,15 @@ package br.ucb.fct.modalidade;
 
 public class Modalidade {
 	
-	private Integer id;
+	private Integer idModalidade;
 	private String descricao;
 	
-	public Integer getId() {
-		return id;
+	
+	public Integer getIdModalidade() {
+		return idModalidade;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setIdModalidade(Integer idModalidade) {
+		this.idModalidade = idModalidade;
 	}
 	public String getDescricao() {
 		return descricao;
@@ -18,8 +19,8 @@ public class Modalidade {
 		this.descricao = descricao;
 	}
 	
-	public Modalidade(Integer id, String descricao) {
-		setId(id);
+	public Modalidade(Integer idModalidade, String descricao) {
+		setIdModalidade(idModalidade);
 		setDescricao(descricao);
 	}
 	
