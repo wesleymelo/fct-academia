@@ -328,9 +328,11 @@ CREATE  TABLE IF NOT EXISTS `academia`.`Turmas` (
 
   `idModalidade` INT(11) NOT NULL ,
 
-  `nomeTurma` VARCHAR(50) NOT NULL ,
+  `nome` VARCHAR(50) NOT NULL ,
 
-  `horario` TIME NOT NULL ,
+  `horarioInicial` TIME NOT NULL ,
+
+  `horarioFinal` TIME NOT NULL ,
 
   PRIMARY KEY (`idTurma`) ,
 
