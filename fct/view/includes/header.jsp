@@ -11,18 +11,20 @@
 <!-- CSS Reset -->
 <!--
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/view/css/reset.css"
-	tppabs="http://www.xooom.pl/work/magicadmin/css/reset.css"
 	media="screen" />
   -->
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/view/css/reset.css"
-	tppabs="http://www.xooom.pl/work/magicadmin/css/reset.css"
 	media="screen" />
+	
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/view/css/modal.css"
+	media="screen" />
+	
 
 <!-- Fluid 960 Grid System - CSS framework -->
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/view/css/grid.css"
-	tppabs="http://www.xooom.pl/work/magicadmin/css/grid.css"
 	media="screen" />
 
 <!-- IE Hacks for the Fluid 960 Grid System -->
@@ -77,6 +79,9 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/view/js/jquery-1.3.2.min.js"
 	tppabs="http://www.xooom.pl/work/magicadmin/js/jquery-1.3.2.min.js"></script>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js"></script> 
+
 
 <!-- JQuery WYSIWYG plugin script -->
 <script type="text/javascript"
@@ -196,6 +201,52 @@
 		});
 	});
 </script>
+
+<!-- Initiate modal script -->
+<script type="text/javascript">
+
+$(document).ready(function() {	
+
+	$('a[name=modal]').click(function(e) {
+		e.preventDefault();
+		
+		var id = $(this).attr('href');
+	
+		var maskHeight = $(document).height();
+		var maskWidth = $(window).width();
+	
+		$('#mask').css({'width':maskWidth,'height':maskHeight});
+
+		$('#mask').fadeIn(1000);	
+		$('#mask').fadeTo("slow",0.8);	
+	
+		//Get the window height and width
+		var winH = $(window).height();
+		var winW = $(window).width();
+              
+		$(id).css('top',  winH/2-$(id).height()/2);
+		$(id).css('left', winW/2-$(id).width()/2);
+	
+		$(id).fadeIn(2000); 
+	
+	});
+	
+	$('.window .close').click(function (e) {
+		e.preventDefault();
+		
+		$('#mask').hide();
+		$('.window').hide();
+	});		
+	
+	$('#mask').click(function () {
+		$(this).hide();
+		$('.window').hide();
+	});			
+	
+});
+
+</script>
+
 
 <!-- Initiate password strength script -->
 <script type="text/javascript">

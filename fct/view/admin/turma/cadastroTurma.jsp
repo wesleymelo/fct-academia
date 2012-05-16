@@ -5,6 +5,19 @@
 
 <c:import url="../../includes/header.jsp" />
 
+<div id="boxes">
+
+
+
+<div id="dialog" class="window">
+	<a href="#" class="close"><fmt:message key="fechar"/></a>
+		
+</div>
+
+<div id="mask"></div>
+
+</div>
+
 <div class="container_12">
 	
 	<div class="grid_12">
@@ -56,18 +69,37 @@
 					</p>
 					
 					<p>
-                        <label><fmt:message key="nascimento"/></label> 
-                        <input type="text" class="input-short-short" name="dataNasc" id="dataNasc" value="${param.dataNasc }" />
-                        <c:if test="${not empty erros['errodataNasc'] }">
-							<span class="notification-input ni-error"><fmt:message key="dataNasc_invalido"/></span>
+                        <label><fmt:message key="horarioInicial"/></label> 
+                        <input type="text" class="input-short-short" name="horarioInicial" id="horarioInicial" value="${param.horarioInicial }" />
+                        <c:if test="${not empty erros['erroHorarioInicial'] }">
+							<span class="notification-input ni-error"><fmt:message key="horarioInicial_invalido"/></span>
+						</c:if>                        
+					</p>
+					
+					
+					<p>
+                        <label><fmt:message key="horarioFinal"/></label>
+                        <input type="text" class="input-short-short" name="horarioFinal" id="horarioFinal" value="${param.horarioFinal }" />
+                        <c:if test="${not empty erros['erroHorarioFinal'] }">
+							<span class="notification-input ni-error"><fmt:message key="horarioFinal_invalido"/></span>
 						</c:if>                        
 					</p>
 					
 					<script>
 						jQuery(function($){
-      							$("#dataNasc").mask("99/99/9999");
+      							$("#horarioInicial").mask("99:99");
+      							$("#horarioFinal").mask("99:99");
       						});
 					</script>
+
+					<p>
+                        <label><fmt:message key="professor"/></label>
+                        <input type="text" class="input-short-short" name="professor" id="professor" readonly="readonly" value="${param.professor}" /><a href="#dialog" name="modal"> <fmt:message key="buscar"/></a>
+                        <c:if test="${not empty erros['erroProfessor'] }">
+							<span class="notification-input ni-error"><fmt:message key="professor_invalido"/></span>
+						</c:if>                        
+					</p>
+
 
 					<fieldset>
 						<ul>
