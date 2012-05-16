@@ -1,7 +1,5 @@
 package br.ucb.fct.turma;
 
-
-
 import java.sql.Time;
 
 public class Turma {
@@ -9,17 +7,8 @@ public class Turma {
 	private Integer idProfessor;
 	private Integer idModalidade;
 	private String  nomeTurma;
-	private Time	horario;
-
+	private Time horario;
 	
-	
-	
-	public Time getHorario() {
-		return horario;
-	}
-	public void setHorario(Time horario) {
-		this.horario = horario;
-	}
 	public Turma(Integer idTurma, Integer idProfessor, Integer idModalidade,
 			String nomeTurma, Time horario) {
 		setHorario(horario);
@@ -28,27 +17,43 @@ public class Turma {
 		setIdTurma(idTurma);
 		setNomeTurma(nomeTurma);
 	}
+	
+	public Time getHorario() {
+		return horario;
+	}
+	
+	public void setHorario(Time horario) {
+		this.horario = horario;
+	}
+	
 	public Integer getIdTurma() {
 		return idTurma;
 	}
+	
 	public void setIdTurma(Integer idTurma) {
 		this.idTurma = idTurma;
 	}
+	
 	public Integer getIdProfessor() {
 		return idProfessor;
 	}
+	
 	public void setIdProfessor(Integer idProfessor) {
 		this.idProfessor = idProfessor;
 	}
+	
 	public Integer getIdModalidade() {
 		return idModalidade;
 	}
+	
 	public void setIdModalidade(Integer idModalidade) {
 		this.idModalidade = idModalidade;
 	}
+	
 	public String getNomeTurma() {
 		return nomeTurma;
 	}
+	
 	public void setNomeTurma(String nomeTurma) {
 		this.nomeTurma = nomeTurma;
 	}
@@ -67,6 +72,7 @@ public class Turma {
 				+ ((nomeTurma == null) ? 0 : nomeTurma.hashCode());
 		return result;
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -103,9 +109,4 @@ public class Turma {
 			return false;
 		return true;
 	}
-	
-	
-	
-	
-	
 }
