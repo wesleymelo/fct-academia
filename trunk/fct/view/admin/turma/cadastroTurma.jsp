@@ -5,14 +5,15 @@
 
 <c:import url="../../includes/header.jsp" />
 
-<!-- janela modal -->
 <div id="boxes">
+
+
 
 <div id="dialog" class="window">
 	<a href="#" class="close"><fmt:message key="fechar"/></a>
 	
 			<h2>
-				<fmt:message key="professores"/>
+				<span><fmt:message key="professores"/></span>
 			</h2>
 
 				<form action="">
@@ -24,7 +25,7 @@
 								<th style="width: 10%"><fmt:message key="cpf"/></th>
 								<th style="width: 15%"><fmt:message key="telefones"/></th>
 								<th style="width: 25%"><fmt:message key="email"/></th>
-								<th style="width: 08%"><fmt:message key="sexo"/></th>
+								<th style="width: 08%"><fmt:message key="sexo"/></th>						
 							</tr>
 						</thead>
 						<tbody>
@@ -46,13 +47,13 @@
 							</c:forEach>
 						</tbody>
 					</table>
-				</form>	
+				</form>		
 </div>
 
 <div id="mask"></div>
 
 </div>
-<!-- end janela modal -->
+
 <div class="container_12">
 	
 	<div class="grid_12">
@@ -128,7 +129,7 @@
 					</script>
 
 					<p>
-                        <label><fmt:message key="professor"/></label>	
+                        <label><fmt:message key="professor"/></label>
                         <input type="text" class="input-short-short" name="professor" id="professor" readonly="readonly" value="${param.professor}" /><a href="#dialog" name="modal"> <fmt:message key="buscar"/></a>
                         <c:if test="${not empty erros['erroProfessor'] }">
 							<span class="notification-input ni-error"><fmt:message key="professor_invalido"/></span>
