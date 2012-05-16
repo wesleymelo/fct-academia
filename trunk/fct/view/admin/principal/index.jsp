@@ -13,19 +13,19 @@
 		</a> <a href="${pageContext.request.contextPath}/view/admin/professor/listaProfessores.do" class="dashboard-module"> <img
 			src="${pageContext.request.contextPath}/view/images/professor.png"
 			width="64" height="64" alt="edit" /> <span><fmt:message key="professores"/></span>
-		</a> <a href="${pageContext.request.contextPath}/view/admin/professor/listaSecretarias.do" class="dashboard-module"> <img
+		</a> <a href="${pageContext.request.contextPath}/view/admin/secretaria/listaSecretarias.do" class="dashboard-module"> <img
 			src="${pageContext.request.contextPath}/view/images/secretaria.png"
 			width="64" height="64" alt="edit" /> <span><fmt:message key="secretarias"/></span>
 		</a> <a href="${pageContext.request.contextPath}/view/admin/turma/listaTurmas.do" class="dashboard-module"> <img
 			src="${pageContext.request.contextPath}/view/images/turma.png"
 			width="64" height="64" alt="edit" /> <span><fmt:message key="turmas"/></span>
-		</a> <a href="${pageContext.request.contextPath}/view/admin/turma/listaPacotes.do" class="dashboard-module"> <img
+		</a> <a href="${pageContext.request.contextPath}/view/admin/pacote/listaPacotes.do" class="dashboard-module"> <img
 			src="${pageContext.request.contextPath}/view/images/pacote.png"
 			width="64" height="64" alt="edit" /> <span><fmt:message key="pacotes"/></span>
-		</a> <a href="${pageContext.request.contextPath}/view/admin/turma/listaModalidades.do" class="dashboard-module"> <img
+		</a> <a href="${pageContext.request.contextPath}/view/admin/modalidade/listaModalidades.do" class="dashboard-module"> <img
 			src="${pageContext.request.contextPath}/view/images/modalidade.png"
 			width="64" height="64" alt="edit" /> <span><fmt:message key="modalidades"/></span>
-		</a> <a href="${pageContext.request.contextPath}/view/admin/turma/listaGraduacoes.do" class="dashboard-module"> <img
+		</a> <a href="${pageContext.request.contextPath}/view/admin/graduacao/listaGraduacoes.do" class="dashboard-module"> <img
 			src="${pageContext.request.contextPath}/view/images/graduacao.png"
 			width="64" height="64" alt="edit" /> <span><fmt:message key="graduacoes"/></span>
 		</a>

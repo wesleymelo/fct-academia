@@ -8,6 +8,9 @@ import br.ucb.fct.endereco.Endereco;
 import br.ucb.fct.enuns.EnumTypeFone;
 import br.ucb.fct.enuns.EnumTypePessoa;
 import br.ucb.fct.enuns.EnumTypeSexo;
+import br.ucb.fct.professores.Professor;
+import br.ucb.fct.secretaria.Secretaria;
+
 import br.ucb.fct.telefone.Telefone;
 
 public class Util {
@@ -95,6 +98,42 @@ public class Util {
 		String cep = Util.unFormat(req.getParameter("cep"));
 		int numero = Integer.parseInt(req.getParameter("numero"));
 		return new Endereco(enderecoResidencial, cidade, bairro, complemento, uf, cep, numero);
+	}
+
+	public static Secretaria getCadastroSecretaria(HttpServletRequest req) {
+		String nome = (String) req.getSession().getAttribute("nome");
+		String cpf = (String) req.getSession().getAttribute("cpf");
+		EnumTypeSexo sexo = (EnumTypeSexo) req.getSession().getAttribute("sexo");
+		Date dataNasc = formatDateIn((String)req.getSession().getAttribute("dataNasc"));
+		Date dataCadas = (Date) req.getSession().getAttribute("dataCadas");
+		String email = (String) req.getSession().getAttribute("email");
+		List<Telefone> telefones = (List<Telefone>) req.getSession().getAttribute("telefones"); 
+		Endereco endereco = getEnderecoCadastro(req);
+		Double salario = (Double) req.getSession().getAttribute("salario");
+		String horarioInicial = (String) req.getSession().getAttribute("horarioInicial");
+		String horarioFinal = (String) req.getSession().getAttribute("horarioFinal");
+		Date dataAdmissao = (Date) req.getSession().getAttribute("dataAdmissao");
+		Secretaria secretaria = new Secretaria(EnumTypePessoa.SECRETARIA, dataCadas, nome, cpf, sexo, dataNasc, endereco, telefones, email, true, dataAdmissao, horarioInicial, horarioFinal) ;
+		System.out.println(secretaria);
+		return secretaria;
+	}
+
+	public static Professor getCadastroProfessor(HttpServletRequest req) {
+		String nome = (String) req.getSession().getAttribute("nome");
+		String cpf = (String) req.getSession().getAttribute("cpf");
+		EnumTypeSexo sexo = (EnumTypeSexo) req.getSession().getAttribute("sexo");
+		Date dataNasc = formatDateIn((String)req.getSession().getAttribute("dataNasc"));
+		Date dataCadas = (Date) req.getSession().getAttribute("dataCadas");
+		String email = (String) req.getSession().getAttribute("email");
+		List<Telefone> telefones = (List<Telefone>) req.getSession().getAttribute("telefones"); 
+		Endereco endereco = getEnderecoCadastro(req);
+		Double salario = (Double) req.getSession().getAttribute("salario");
+		String horarioInicial = (String) req.getSession().getAttribute("horarioInicial");
+		String horarioFinal = (String) req.getSession().getAttribute("horarioFinal");
+		Date dataAdmissao = (Date) req.getSession().getAttribute("dataAdmissao");
+		Professor professor = new Professor(EnumTypePessoa.PROFESSOR, dataCadas, nome, cpf, sexo, dataNasc, endereco, telefones, email, true, dataAdmissao); 
+		System.out.println(professor);
+		return professor;
 	}
 
 
