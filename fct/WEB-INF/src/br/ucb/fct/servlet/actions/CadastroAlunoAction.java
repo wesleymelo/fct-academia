@@ -48,15 +48,15 @@ public class CadastroAlunoAction implements Action {
 					return "/view/admin/aluno/cadastroAlunoEndereco.jsp";
 				}
 				else{
-					
+					boolean retorno = false;
 					Aluno aluno = Util.getCadastroAluno(req);					
 					Endereco endereco = Util.getEnderecoCadastro(req);
 					
 					if(Factory.initEnderecoDAO().insert(endereco)){
 						if(Factory.initAlunoDAO().insert(aluno))
-							Factory.initTelefoneDAO().insert(aluno.getTelefones());
+							retorno = Factory.initTelefoneDAO().insert(aluno.getTelefones());
 					}
-					return "../../admin/aluno/listaAlunos.do";
+					return "../../admin/aluno/listaAlunos.do?status="+retorno+"";
 				}
 		}
 
