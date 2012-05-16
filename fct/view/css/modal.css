@@ -27,9 +27,9 @@ a:hover {color:#ccc; text-decoration:none}
 }
 
 #boxes #dialog {
-  width:375px; 
-  height:203px;
-  padding:10px;
+  width:750px; 
+  height:550px;
+  padding:20px;
   background-color:#ffffff;
 }
 
