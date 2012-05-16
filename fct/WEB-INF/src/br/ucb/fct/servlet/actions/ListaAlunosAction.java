@@ -22,8 +22,12 @@ public class ListaAlunosAction implements Action {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) {
-		req.setAttribute("alunos", Factory.initAlunoDAO().selectAll());
+		
+		List<Aluno> alunos = Factory.initAlunoDAO().selectAll();
+		req.setAttribute("alunos", alunos);
+	
 		return "/view/admin/aluno/listaAlunos.jsp";
+
 	}
 
 }
