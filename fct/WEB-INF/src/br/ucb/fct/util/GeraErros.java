@@ -39,6 +39,16 @@ public class GeraErros {
 		return erros;
 	
 	}
+	
+public static Map<String, String> verificaErrosModalidades(HttpServletRequest req) {
+		
+		Map<String, String> erros = new HashMap<String, String>();
+		
+		if(!Validator.isStringValid(req.getParameter("desc"), 255))
+			erros.put("errodesc","desc_invalida");
+		return erros;
+	
+	}
 
 	public static Map<String, String> verificaErrosAlunoEndereco(HttpServletRequest req) {
 		
