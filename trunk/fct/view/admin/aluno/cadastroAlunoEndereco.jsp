@@ -42,6 +42,18 @@
         </div> <!-- End #header -->
         
 		<div class="container_12">
+        	
+		<!-- Button -->
+		<div class="float-right">
+			<a
+				href="${pageContext.request.contextPath}/view/admin/listaAlunos.jsp"
+				class="button"> <span><b><fmt:message key="new" /></b>
+					<img
+					src="${pageContext.request.contextPath}/view/images/plus-small.gif"
+					tppabs="http://www.xooom.pl/work/magicadmin/images/plus-small.gif"
+					width="12" height="9" alt="<fmt:message key="new" />" /> </span>
+			</a>
+		</div>
         
           <!-- Form elements -->    
             <div class="grid_12">
