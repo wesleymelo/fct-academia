@@ -117,6 +117,6 @@ public class ModalidadeDAOConexao implements ModalidadeDAO{
 	}
 	
 	public Modalidade getModalidade(ResultSet rs) throws SQLException{
-		return new Modalidade(rs.getInt(1), rs.getString(2));
+		return new Modalidade(rs.getInt("idModalidade"), rs.getString("descricao"));
 	}
 }
