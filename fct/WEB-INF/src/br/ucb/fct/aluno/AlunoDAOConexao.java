@@ -15,6 +15,7 @@ import br.ucb.fct.exceptions.*;
 import br.ucb.fct.pessoa.Pessoa;
 import br.ucb.fct.pessoa.PessoaDAO;
 import br.ucb.fct.util.Factory;
+import br.ucb.fct.util.Util;
 
 public class AlunoDAOConexao implements AlunoDAO {
 
@@ -131,7 +132,7 @@ public class AlunoDAOConexao implements AlunoDAO {
 	}
 	
 	public static Aluno getAluno(ResultSet rs) throws SQLException{
-		return new Aluno(rs.getInt("idPessoa"), EnumTypePessoa.findEmunTypePessoaByNumber(rs.getInt("tipoPessoa")), rs.getDate("dataCadastro"), rs.getString("nome"), 
+		return new Aluno(rs.getInt("idPessoa"), EnumTypePessoa.findEmunTypePessoaByNumber(rs.getInt("tipoPessoa")), Util.formatDateOut(rs.getDate("dataCadastro").toString()), rs.getString("nome"), 
 				  rs.getString("cpf"), EnumTypeSexo.findByCodigo(rs.getString("sexo").charAt(0)), rs.getDate("dataNascimento"), Factory.initEnderecoDAO().selectById(rs.getInt("idPessoa")), Factory.initTelefoneDAO().selectById(rs.getInt("idPessoa")), rs.getString("email"), rs.getBoolean("status"), rs.getDouble("peso"), rs.getDouble("altura"));
 	}
 	
