@@ -86,8 +86,8 @@ public class Validator {
 		return (value != null && !(value.trim().isEmpty()) && value.length() <= qtde);
 	}
 	
-	public static boolean verificaTamanho(String value, int min){
-		if(!value.isEmpty() && value.length() == 10){
+	public static boolean verificaTamanho(String value, int max){
+		if(!value.isEmpty() && value.length() <= max){
 			return true;
 		}
 		return false;
