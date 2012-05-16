@@ -76,7 +76,20 @@
 			</select>
 
 		</div>
-
+		
+		<c:choose>
+			<c:when test="${param.status == true}">
+				<span class="notification n-success">Success notification.</span>
+			</c:when>
+			<c:otherwise>
+				<c:choose>
+					<c:when test="${param.status == false }">
+						<span class="notification n-error">Error notification.</span>
+					</c:when>
+				</c:choose>
+			</c:otherwise>			
+		</c:choose>
+		
 
 		<!-- Example table -->
 		<div class="module">
@@ -113,7 +126,7 @@
 									<td><input type="checkbox" /> <a href=""><img
 											src="${pageContext.request.contextPath}/view/images/tick-circle.gif"
 											tppabs="http://www.xooom.pl/work/magicadmin/images/tick-circle.gif"
-											width="16" height="16" alt="published" /></a> <a href=""><img
+											width="16" height="16" alt="published" /></a> <a href="${pageContext.request.contextPath}/view/admin/aluno/alteraAluno.do?codigo=${aluno.idPessoa }"><img
 											src="${pageContext.request.contextPath}/view/images/pencil.gif"
 											tppabs="http://www.xooom.pl/work/magicadmin/images/pencil.gif"
 											width="16" height="16" alt="edit" /></a> <a href=""><img
