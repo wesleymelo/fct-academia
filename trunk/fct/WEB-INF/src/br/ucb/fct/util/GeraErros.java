@@ -8,15 +8,16 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import br.ucb.fct.enuns.EnumTypeErro;
 import br.ucb.fct.enuns.EnumTypeFone;
 import br.ucb.fct.telefone.Telefone;
 
 public class GeraErros {
-	
+
 	public static Map<String, String> verificaErrosAlunos(HttpServletRequest req) {
-		
+
 		Map<String, String> erros = new HashMap<String, String>();
-		
+
 		if(!Validator.isStringValid(req.getParameter("nome"), 255))
 			erros.put("erronome","nome_invalido");
 		if(!Validator.isStringValid(Util.unFormat(req.getParameter("dataNasc")),8))
@@ -35,25 +36,25 @@ public class GeraErros {
 			erros.put("erroaltura", "altura_invalida");
 		if(!Validator.verificaDouble(req.getParameter("peso"),0.40,600))
 			erros.put("erropeso", "peso_invalido");	
-		
+
 		return erros;
-	
+
 	}
-	
-public static Map<String, String> verificaErrosModalidades(HttpServletRequest req) {
-		
+
+	public static Map<String, String> verificaErrosModalidades(HttpServletRequest req) {
+
 		Map<String, String> erros = new HashMap<String, String>();
-		
+
 		if(!Validator.isStringValid(req.getParameter("desc"), 255))
 			erros.put("errodesc","desc_invalida");
 		return erros;
-	
+
 	}
 
 	public static Map<String, String> verificaErrosEndereco(HttpServletRequest req) {
-		
+
 		Map<String, String> erros = new HashMap<String, String>();
-		
+
 		if(!Validator.isStringValid(req.getParameter("endereco"), 255))
 			erros.put("erroendereco","endereco_invalido");
 		if(!Validator.isStringValid(req.getParameter("cidade"),100))
@@ -66,6 +67,21 @@ public static Map<String, String> verificaErrosModalidades(HttpServletRequest re
 			erros.put("erronumero", "numero_invalido");
 		return erros;
 	}
-	
+
+	public static Map<String,String> verificaLogar(HttpServletRequest req) {
+		String senha = req.getParameter("senha");
+		String cpf = Util.unFormat(req.getParameter("cpf"));
+		Map<String, String> erros = new HashMap<String, String>();
+
+		if(!Validator.isCPFValid(cpf))
+			erros.put("errocpf","logar_erro");
+		if(!Validator.isStringValid(senha,100))
+			erros.put("errosenha", "logar_erro");
+		
+		return erros;
+	}
+	 
 
 }
+
+
