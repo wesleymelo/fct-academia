@@ -1,15 +1,18 @@
 package br.ucb.fct.servlet.actions;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.ucb.fct.gasto.Gasto;
 import br.ucb.fct.util.Factory;
 
-public class ListaGastos implements Action{
+public class ListaGastosAction implements Action{
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) {
-		req.setAttribute("gastos", Factory.initGastoDAO().selectAll());
+		List<Gasto> gastos = Factory.initGastoDAO().selectAll();
+		req.setAttribute("gastos", gastos);
 		return "/view/admin/gasto/listaGasto.jsp";
 	}
-
 }
