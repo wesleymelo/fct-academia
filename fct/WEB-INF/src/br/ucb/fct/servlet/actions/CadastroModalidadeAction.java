@@ -1,10 +1,8 @@
 package br.ucb.fct.servlet.actions;
 
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import br.ucb.fct.modalidade.Modalidade;
 import br.ucb.fct.util.Factory;
 import br.ucb.fct.util.GeraErros;
@@ -18,7 +16,7 @@ public class CadastroModalidadeAction implements Action {
 		
 		Map<String, String> erros;
 		boolean retorno = false;
-		erros = GeraErros.verificaErrosAlunos(req);
+		erros = GeraErros.verificaErrosModalidades(req);
 		if(!erros.isEmpty()){
 			req.setAttribute("erros",erros);
 			return "/view/admin/modalidade/cadastroModalidade.jsp";
