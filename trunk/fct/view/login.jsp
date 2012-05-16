@@ -78,21 +78,24 @@
 				<div class="module-body">
 					<form action="autenticaLogin.do" " method="post">
 						<p>
-							<label><fmt:message key="cpf"></fmt:message></label> <input class="input-short" type="text"
-								name="cpf" id="cpf" size="15" maxlength="14" /> <span
-								class="notification-input ni-correct">This is correct,
-								thanks!</span>
+							<label><fmt:message key="cpf"></fmt:message></label> 
+							<input class="input-short" type="text" name="cpf" id="cpf" size="15" maxlength="14" /> 
+							<c:if test="${not empty erros['errocpf'] }"> 
+								<span class="notification-input ni-error"><fmt:message key="logar_erro"/></span>
+							</c:if>
 							<script>
-									jQuery(function($){
-		       							$("#cpf").mask("999.999.999-99");
-		       						});
-								</script>
+								jQuery(function($){
+	       							$("#cpf").mask("999.999.999-99");
+	       						});
+							</script>
 						</p>
 
 						<p>
-							<label><fmt:message key="senha"></fmt:message></label> <input class="input-short" type="password"
-								name="senha" id="senha" /> <span
-								class="notification-input ni-error">Sorry, try again.</span>
+							<label><fmt:message key="senha"></fmt:message></label> 
+							<input class="input-short" type="password" name="senha" id="senha" />
+							<c:if test="${not empty erros['errosenha'] }"> 
+								<span class="notification-input ni-error"><fmt:message key="logar_erro"/></span>
+							</c:if>
 						</p>
 
 						<fieldset>
