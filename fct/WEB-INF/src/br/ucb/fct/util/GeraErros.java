@@ -1,16 +1,8 @@
 package br.ucb.fct.util;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
-
-import br.ucb.fct.enuns.EnumTypeErro;
-import br.ucb.fct.enuns.EnumTypeFone;
-import br.ucb.fct.telefone.Telefone;
 
 public class GeraErros {
 
@@ -77,7 +69,7 @@ public class GeraErros {
 			erros.put("errocpf","logar_erro");
 		if(!Validator.isStringValid(senha,100))
 			erros.put("errosenha", "logar_erro");
-		
+
 		return erros;
 	}
 
@@ -135,8 +127,16 @@ public class GeraErros {
 
 		return erros;
 	}
-	 
 
+	public static Map<String, String> verificaErrosGastos(HttpServletRequest req) {
+		
+		return null;
+	}
 }
 
-//AFOI?
+
+
+
+
+
+
