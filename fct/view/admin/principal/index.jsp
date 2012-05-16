@@ -3,80 +3,39 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
 <c:import url="../../includes/header.jsp" />
-<!-- Header. Main part -->
-<div id="header-main">
-	<div class="container_12">
-		<div class="grid_12">
-			<div id="logo">
-				<div id="logo_top">		
-					<ul id="nav">
-						<li id="current"><a href="">Painel de Controle</a></li>
-						<li><a href="">Outro</a></li>
-					</ul>
-				</div>
-				<div id="logo_bottom"></div>
-			</div>
-			<!-- End. #Logo -->
-		</div>
-		<!-- End. .grid_12-->
-		<div style="clear: both;"></div>
-	</div>
-	<!-- End. .container_12 -->
-</div>
-<!-- End #header-main -->
-<div style="clear: both;"></div>
-<!-- Sub navigation -->
-<div id="subnav">
-	<div class="container_12">
-		<div class="grid_12">
-			<ul>
-				<li><a href="${pageContext.request.contextPath}/view/admin/aluno/listaAlunos.do">Alunos</a></li>
-				<li><a href="#">Professores</a></li>
-				<li><a href="#">Secret&aacute;ria</a></li>
-				<li><a href="#">Modadidades</a></li>
-				<li><a href="#">Turmas</a></li>
-			</ul>
 
-		</div>
-		<!-- End. .grid_12-->
-	</div>
-	<!-- End. .container_12 -->
-	<div style="clear: both;"></div>
-</div>
-<!-- End #subnav -->
-</div>
-<!-- End #header -->
 <!-- Dashboard icons -->
 <div class="container_12">
 	<div class="grid_7">
-		<a href="" class="dashboard-module"> <img
-			src="${pageContext.request.contextPath}/view/images/Crystal_Clear_write.gif"
-			tppabs="http:/www.xooom.pl/work/magicadmin/images/Crystal_Clear_write.gif"
-			width="64" height="64" alt="edit" /> <span>New article</span>
-		</a> <a href="" class="dashboard-module"> <img
-			src="${pageContext.request.contextPath}/view/images/Crystal_Clear_file.gif"
-			tppabs="http:/www.xooom.pl/work/magicadmin/images/Crystal_Clear_file.gif"
-			width="64" height="64" alt="edit" /> <span>Upload file</span>
-		</a> <a href="" class="dashboard-module"> <img
-			src="${pageContext.request.contextPath}/view/images/Crystal_Clear_files.gif"
-			tppabs="http:/www.xooom.pl/work/magicadmin/images/Crystal_Clear_files.gif"
-			width="64" height="64" alt="edit" /> <span>Articles</span>
-		</a> <a href="" class="dashboard-module"> <img
-			src="${pageContext.request.contextPath}/view/images/Crystal_Clear_calendar.gif"
-			tppabs="http:/www.xooom.pl/work/magicadmin/images/Crystal_Clear_calendar.gif"
-			width="64" height="64" alt="edit" /> <span>Calendar</span>
-		</a> <a href="" class="dashboard-module"> <img
-			src="${pageContext.request.contextPath}/view/images/Crystal_Clear_user.gif"
-			tppabs="http:/www.xooom.pl/work/magicadmin/images/Crystal_Clear_user.gif"
-			width="64" height="64" alt="edit" /> <span>My profile</span>
-		</a> <a href="" class="dashboard-module"> <img
-			src="${pageContext.request.contextPath}/view/images/Crystal_Clear_stats.gif"
-			tppabs="http:/www.xooom.pl/work/magicadmin/images/Crystal_Clear_stats.gif"
-			width="64" height="64" alt="edit" /> <span>Stats</span>
-		</a> <a href="" class="dashboard-module"> <img
-			src="${pageContext.request.contextPath}/view/images/Crystal_Clear_settings.gif"
-			tppabs="http:/www.xooom.pl/work/magicadmin/images/Crystal_Clear_settings.gif"
-			width="64" height="64" alt="edit" /> <span>Settings</span>
+		<a href="${pageContext.request.contextPath}/view/admin/aluno/listaAlunos.do" class="dashboard-module"> <img
+			src="${pageContext.request.contextPath}/view/images/aluno.png"
+			width="64" height="64" alt="edit" /> <span><fmt:message key="alunos"/></span>
+		</a> <a href="${pageContext.request.contextPath}/view/admin/professor/listaProfessores.do" class="dashboard-module"> <img
+			src="${pageContext.request.contextPath}/view/images/professor.png"
+			width="64" height="64" alt="edit" /> <span><fmt:message key="professores"/></span>
+		</a> <a href="${pageContext.request.contextPath}/view/admin/professor/listaSecretarias.do" class="dashboard-module"> <img
+			src="${pageContext.request.contextPath}/view/images/secretaria.png"
+			width="64" height="64" alt="edit" /> <span><fmt:message key="secretarias"/></span>
+		</a> <a href="${pageContext.request.contextPath}/view/admin/turma/listaTurmas.do" class="dashboard-module"> <img
+			src="${pageContext.request.contextPath}/view/images/turma.png"
+			width="64" height="64" alt="edit" /> <span><fmt:message key="turmas"/></span>
+		</a> <a href="${pageContext.request.contextPath}/view/admin/turma/listaPacotes.do" class="dashboard-module"> <img
+			src="${pageContext.request.contextPath}/view/images/pacote.png"
+			width="64" height="64" alt="edit" /> <span><fmt:message key="pacotes"/></span>
+		</a> <a href="${pageContext.request.contextPath}/view/admin/turma/listaModalidades.do" class="dashboard-module"> <img
+			src="${pageContext.request.contextPath}/view/images/modalidade.png"
+			width="64" height="64" alt="edit" /> <span><fmt:message key="modalidades"/></span>
+		</a> <a href="${pageContext.request.contextPath}/view/admin/turma/listaGraduacoes.do" class="dashboard-module"> <img
+			src="${pageContext.request.contextPath}/view/images/graduacao.png"
+			width="64" height="64" alt="edit" /> <span><fmt:message key="graduacoes"/></span>
+		</a>
+		</a> <a href="${pageContext.request.contextPath}/view/admin/pagamento/listaPagamentos.do" class="dashboard-module"> <img
+			src="${pageContext.request.contextPath}/view/images/pagamento.png"
+			width="64" height="64" alt="edit" /> <span><fmt:message key="pagamentos"/></span>
+		</a>
+		</a> <a href="${pageContext.request.contextPath}/view/admin/envelope/listaEnvelopes.do" class="dashboard-module"> <img
+			src="${pageContext.request.contextPath}/view/images/envelope.png"
+			width="64" height="64" alt="edit" /> <span><fmt:message key="envelopes"/></span>
 		</a>
 		<div style="clear: both"></div>
 	</div>
@@ -85,33 +44,13 @@
 	<div class="grid_5">
 		<div class="module">
 			<h2>
-				<span>Account overview</span>
+				<span><fmt:message key="conta"/></span>
 			</h2>
 
 			<div class="module-body">
 
 				<p>
-					<strong>User: </strong>User X<br /> <strong>Your last
-						visit was on: </strong>20 January 2010,<br /> <strong>From IP: </strong>000.000.00.00
-				</p>
-
-				<div>
-					<div class="indicator">
-						<div style="width: 23%;"></div>
-						<!-- change the width value (23%) to dynamically control your indicator -->
-					</div>
-					<p>Your storage space: 23 MB out of 100MB</p>
-				</div>
-
-				<div>
-					<div class="indicator">
-						<div style="width: 100%;"></div>
-						<!-- change the width value (100%) to dynamically control your indicator -->
-					</div>
-					<p>Your bandwidth (January): 1 GB out of 1 GB</p>
-				</div>
-
-					Need to switch to a bigger plan?<br /> <a href="">click here</a><br />
+					<strong><fmt:message key="usuario"/></strong>: ${sessionScope.acesso.pessoa.nome}<br /> 
 				</p>
 
 			</div>
