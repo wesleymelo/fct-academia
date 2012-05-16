@@ -20,10 +20,9 @@ public class AutenticaLoginAction implements Action{
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp){
+		
 		String url = "";
-		
 		Map<String, String> erros = GeraErros.verificaLogar(req);
-		
 		
 		if(erros.isEmpty()){
 			try{
