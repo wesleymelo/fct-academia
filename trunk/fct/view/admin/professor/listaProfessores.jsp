@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <c:import url="../../includes/header.jsp" />
 
@@ -25,7 +26,6 @@
 					class="button"> <span><b><fmt:message key="new" /></b>
 						<img
 						src="${pageContext.request.contextPath}/view/images/plus-small.gif"
-						tppabs="http://www.xooom.pl/work/magicadmin/images/plus-small.gif"
 						width="12" height="9" alt="<fmt:message key="new" />" /> </span>
 				</a>
 			</div>
