@@ -17,7 +17,7 @@
 			src="${pageContext.request.contextPath}/view/images/secretaria.png"
 			width="64" height="64" alt="edit" /> <span><fmt:message key="secretarias"/></span>
 		</a> <a href="${pageContext.request.contextPath}/view/admin/turma/listaTurmas.do" class="dashboard-module"> <img
-			src="${pageContext.request.contextPath}/view/images/turma_.png"
+			src="${pageContext.request.contextPath}/view/images/turma.png"
 			width="64" height="64" alt="edit" /> <span><fmt:message key="turmas"/></span>
 		</a> <a href="${pageContext.request.contextPath}/view/admin/pacote/listaPacotes.do" class="dashboard-module"> <img
 			src="${pageContext.request.contextPath}/view/images/pacote.png"
