@@ -65,22 +65,21 @@ public class PessoaDAOConexao implements PessoaDAO {
 
 	@Override
 	public boolean update(Pessoa pessoa, int id) throws DAOException {
-		String sql = "UPDATE pessoas SET tipoPessoa = ?, dataCadastro = ?, nome = ?, cpf = ?, sexo = ?, dataNascimento = ?,  " +
-				"email = ?, status = ? WHERE id = ?";
+		String sql = "UPDATE pessoas SET tipoPessoa = ?, nome = ?, cpf = ?, sexo = ?, dataNascimento = ?, email = ? WHERE id = ?";
+		
 		Connection con = MyConnection.init();
 		int retorno;
 		PreparedStatement ps;
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1,pessoa.getTipoPessoa().getNumber());
-			ps.setDate(2, (Date) pessoa.getDataCadastro());
-			ps.setString(3, pessoa.getNome());
-			ps.setString(4, pessoa.getCpf());
-			ps.setString(5, pessoa.getSexo().getCodigo().toString());
-			ps.setDate(6, (Date) pessoa.getDataNascimento());
-			ps.setString(7, pessoa.getEmail());
-			ps.setBoolean(8 , pessoa.getStatus());
-			ps.setInt(9, id);
+			ps.setString(2, pessoa.getNome());
+			ps.setString(3, pessoa.getCpf());
+			ps.setString(4, pessoa.getSexo().getCodigo().toString());
+			Date date = new Date(pessoa.getDataNascimento().getTime());
+			ps.setDate(5, date);
+			ps.setString(6, pessoa.getEmail());
+			ps.setInt(7, id);
 			retorno = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
