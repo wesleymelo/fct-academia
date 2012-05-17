@@ -20,7 +20,7 @@ public class ProfessorDAOConexao implements ProfessorDAO {
 
 	@Override
 	public boolean insert(Professor professor) throws DAOException {
-		String sql = "INSERT INTO professores(idProfessor, dataAdimissao) VALUES (?,?);";
+		String sql = "INSERT INTO professores(idProfessor, dataAdmissao) VALUES (?,?);";
 		Connection con = null;
 		PreparedStatement ps = null;
 		PessoaDAO dao = Factory.initPessoaDAO();
@@ -31,7 +31,7 @@ public class ProfessorDAOConexao implements ProfessorDAO {
 			con = MyConnection.init();
 			ps = con.prepareStatement(sql);
 			ps.setInt(1,dao.findLastId());
-			ps.setDate(2,(java.sql.Date)professor.getDataAdimissao());
+			ps.setDate(2,(java.sql.Date)professor.getdataAdmissao());
 			retorno = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -64,14 +64,14 @@ public class ProfessorDAOConexao implements ProfessorDAO {
 
 	@Override
 	public boolean update(Professor professor, int id) throws DAOException {
-		String sql = "UPDATE professores SET dataAdimissao = ?;";
+		String sql = "UPDATE professores SET dataAdmissao = ?;";
 		Connection con = null;
 		PreparedStatement ps = null;
 		int retorno = 0;
 		try {
 			con = MyConnection.init();
 			ps = con.prepareStatement(sql);
-			ps.setObject(1,professor.getDataAdimissao());
+			ps.setObject(1,professor.getdataAdmissao());
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -127,7 +127,7 @@ public class ProfessorDAOConexao implements ProfessorDAO {
 	
 	public static Professor getProfessor(ResultSet rs) throws SQLException{
 		return new Professor(rs.getInt("idPessoa"), EnumTypePessoa.findEmunTypePessoaByNumber(rs.getInt("tipoPessoa")), rs.getDate("dataCadastro"), rs.getString("nome"), 
-				  rs.getString("cpf"), EnumTypeSexo.findByCodigo(rs.getString("sexo").charAt(0)), rs.getDate("dataNascimento"), Factory.initEnderecoDAO().selectById(rs.getInt("idPessoa")), Factory.initTelefoneDAO().selectById(rs.getInt("idPessoa")), rs.getString("email"), rs.getBoolean("status"), rs.getDate("dataAdimissao"));
+				  rs.getString("cpf"), EnumTypeSexo.findByCodigo(rs.getString("sexo").charAt(0)), rs.getDate("dataNascimento"), Factory.initEnderecoDAO().selectById(rs.getInt("idPessoa")), Factory.initTelefoneDAO().selectById(rs.getInt("idPessoa")), rs.getString("email"), rs.getBoolean("status"), rs.getDate("dataAdmissao"));
 	}
 	
 	public static Pessoa getPessoaByProfessor(Professor professor){
