@@ -288,7 +288,7 @@ $(document).ready(function() {
 					<div id="logo">
 						<div id="logo_top">
 							<ul id="nav">
-								<li id="current"><a href="">Painel de Controle</a></li>
+								<li id="current"><a href="${pageContext.request.contextPath}/view/principal/index.jsp">Painel de Controle</a></li>
 								<li><a href="">Outro</a></li>
 							</ul>
 						</div>
