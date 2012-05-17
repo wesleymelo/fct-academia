@@ -247,7 +247,6 @@ $(document).ready(function() {
 
 </script>
 
-
 <!-- Initiate password strength script -->
 <script type="text/javascript">
 	$(function() {
