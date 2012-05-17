@@ -20,10 +20,13 @@
 
 			<!-- Button -->
 			<div class="float-right">
-				<a href="" class="button"> <span><b><fmt:message key="new" /></b><t
+				<a
+					href="${pageContext.request.contextPath}/view/admin/professor/cadastroProfessor.jsp"
+					class="button"> <span><b><fmt:message key="new" /></b>
+						<img
 						src="${pageContext.request.contextPath}/view/images/plus-small.gif"
 						tppabs="http://www.xooom.pl/work/magicadmin/images/plus-small.gif"
-						width="12" height="9" alt="Novo" /></span>
+						width="12" height="9" alt="<fmt:message key="new" />" /> </span>
 				</a>
 			</div>
 
