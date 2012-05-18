@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import br.ucb.fct.aluno.Aluno;
+import br.ucb.fct.aluno.AlunoDAO;
 import br.ucb.fct.endereco.Endereco;
 import br.ucb.fct.enuns.EnumTypeFone;
 import br.ucb.fct.enuns.EnumTypeSexo;
@@ -51,6 +52,7 @@ public class CadastroAlunoAction implements Action {
 					boolean retorno = false;
 					Aluno aluno = Util.getCadastroAluno(req);					
 					Endereco endereco = Util.getEnderecoCadastro(req);
+					aluno.setEndereco(endereco);
 					
 					if(Factory.initEnderecoDAO().insert(endereco)){
 						if(Factory.initAlunoDAO().insert(aluno))
@@ -61,10 +63,19 @@ public class CadastroAlunoAction implements Action {
 			case 3:
 				erros = GeraErros.verificaErrosAlunos(req);
 				System.out.println(req.getParameter("codigo"));
-				/*if(!erros.isEmpty()){
+				if(!erros.isEmpty()){
 					req.setAttribute("erros", erros);
 					return "/alteraAluno.do?codigo="+req.getParameter("codigo");
-				}*/
+				}
+				else{
+					
+					Aluno aluno = Util.getCadastroAluno(req);
+					
+				//	if(Factory.initAlunoDAO().update(aluno, id))
+					
+				}
+				
+				
 		}
 		return null;
 	
