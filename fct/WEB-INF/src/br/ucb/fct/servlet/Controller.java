@@ -21,9 +21,7 @@ public class Controller extends HttpServlet{
 		String next = action.execute(req, resp);
 		if(next != null)
 			req.getRequestDispatcher(next).forward(req, resp);
-		
 	}
-	
 	
 	public String getNameAction(String uri) {
 		return uri.substring(uri.lastIndexOf("/") + 1,uri.lastIndexOf(".do"));
@@ -43,7 +41,5 @@ public class Controller extends HttpServlet{
 			e.printStackTrace();
 		}
 		return action;
-		
-		
 	}
 }
