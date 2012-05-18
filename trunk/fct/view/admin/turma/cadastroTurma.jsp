@@ -34,11 +34,7 @@
 									<td><a href="">${professor.nome}</a></td>
 									<td>${professor.cpf}</td>
 									
-									<td>
-										<c:forEach var="telefone" items="${professor.telefones}">
-											(${telefone.ddd}) ${telefone.telefone} 
-										</c:forEach>
-									</td>
+	
 									
 									<td>${professor.email}</td>
 									<td>${professor.sexo.descricao}</td>
