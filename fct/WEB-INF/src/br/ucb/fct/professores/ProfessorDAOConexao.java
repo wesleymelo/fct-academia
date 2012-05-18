@@ -32,7 +32,7 @@ public class ProfessorDAOConexao implements ProfessorDAO {
 			con = MyConnection.init();
 			ps = con.prepareStatement(sql);
 			ps.setInt(1,dao.findLastId());
-			java.sql.Date date = new java.sql.Date(professor.getDataAdmissao().getTime()).;
+			java.sql.Date date = new java.sql.Date(professor.getDataAdmissao().getTime());
 			ps.setDate(2, date);
 			retorno = ps.executeUpdate();
 		} catch (SQLException e) {
