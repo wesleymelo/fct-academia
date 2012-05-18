@@ -29,15 +29,15 @@
 			src="${pageContext.request.contextPath}/view/images/graduacao_.png"
 			width="64" height="64" alt="edit" /> <span><fmt:message key="graduacoes"/></span>
 		</a>
-		</a> <a href="${pageContext.request.contextPath}/view/admin/pagamento/listaPagamentos.do" class="dashboard-module"> <img
+		<a href="${pageContext.request.contextPath}/view/admin/pagamento/listaPagamentos.do" class="dashboard-module"> <img
 			src="${pageContext.request.contextPath}/view/images/pagamento.png"
 			width="64" height="64" alt="edit" /> <span><fmt:message key="pagamentos"/></span>
 		</a>
-		</a> <a href="${pageContext.request.contextPath}/view/admin/envelope/listaEnvelopes.do" class="dashboard-module"> <img
+		<a href="${pageContext.request.contextPath}/view/admin/envelope/listaEnvelopes.do" class="dashboard-module"> <img
 			src="${pageContext.request.contextPath}/view/images/envelope.png"
 			width="64" height="64" alt="edit" /> <span><fmt:message key="envelopes"/></span>
 		</a>
-		</a> <a href="${pageContext.request.contextPath}/view/admin/gasto/listaGastos.do" class="dashboard-module"> <img
+		<a href="${pageContext.request.contextPath}/view/admin/gasto/listaGastos.do" class="dashboard-module"> <img
 			src="${pageContext.request.contextPath}/view/images/gastos.png"
 			width="64" height="64" alt="edit" /> <span><fmt:message key="gastos"/></span>
 		</a>

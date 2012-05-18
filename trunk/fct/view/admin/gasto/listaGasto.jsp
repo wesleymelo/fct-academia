@@ -14,7 +14,7 @@
 			<!-- Button -->
 			<div class="float-right">
 				<a
-					href="${pageContext.request.contextPath}/view/admin/aluno/cadastroAluno.jsp"
+					href="${pageContext.request.contextPath}/view/admin/gasto/cadastroGasto.jsp"
 					class="button"> <span><b><fmt:message key="new" /></b>
 						<img
 						src="${pageContext.request.contextPath}/view/images/plus-small.gif"
@@ -51,7 +51,7 @@
 		<!-- Example table -->
 		<div class="module">
 			<h2>
-				<span><fmt:message key="alunos" /></span>
+				<span><fmt:message key="gastos" /></span>
 			</h2>
 
 			<div class="module-table-body">
@@ -59,26 +59,21 @@
 					<table id="myTable" class="tablesorter">
 						<thead>
 							<tr>
-								<th style="width: 25%">Nome</th>
-								<th style="width: 10%">CPF</th>
-								<th style="width: 10%">Data Nascimento</th>
-								<th style="width: 15%">Telefones</th>
-								<th style="width: 25%">Email</th>
-								<th style="width: 08%">Sexo</th>
-								<th style="width: 10%">A&ccedil;&otilde;es</th>
+								<th style="width: 25%"><fmt:message key="codGasto"/></th>
+								<th style="width: 25%"><fmt:message key="pessoaResp"/></th>
+								<th style="width: 10%"><fmt:message key="produto"/></th>
+								<th style="width: 10%"><fmt:message key="dataPag"/></th>
+								<th style="width: 15%"><fmt:message key="quant"/></th>
+								<th style="width: 15%"><fmt:message key="valor"/></th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="aluno" items="${alunos}">
+							<c:forEach var="gasto" items="${gastos}">
 								<tr>
-									<td><a href="">${aluno.nome}</a></td>
-									<td>${aluno.cpf}</td>
-									<td>${aluno.dataNascimento}</td>
-									<td><c:forEach var="telefone" items="${aluno.telefones}">
-											(${telefone.ddd}) ${telefone.numero} <br />
-										</c:forEach></td>
-
-									<td>${aluno.email}</td>
+									<td><a href="">${gasto.idGasto}</a></td>
+									<td>${gasto.idSecretaria}</td>
+									<td>${gasto.idDespesa.descricao}</td>
+									<td>${gasto.m}</td>
 									<td>${aluno.sexo.descricao}</td>
 									<td><input type="checkbox" /> <a href=""><img
 											src="${pageContext.request.contextPath}/view/images/tick-circle.gif"
