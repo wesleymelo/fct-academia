@@ -17,15 +17,14 @@ import br.ucb.fct.telefone.Telefone;
 
 public class Util {
 
-	
-	
-	
 	public static Date formatDateOut(String data){
 		
 		String dataTmp[] = data.split("-");
 		data = dataTmp[2]+"/"+dataTmp[1]+"/"+dataTmp[0];
 		
-		DateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");  
+		System.out.println("Data 2: "+data);
+		
+		SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");  
 		Date date = null;
 		try {
 			date = formatador.parse(data);
@@ -34,6 +33,14 @@ public class Util {
 		}  
 		return date;
 	}
+	
+	public static Object formatDateView(String data){
+		
+		String dataTmp[] = data.split("-");
+		return  dataTmp[2]+dataTmp[1]+dataTmp[0];
+	
+	}
+	
 
 	public static String unFormat(String str)  {
 		if(str != null)
@@ -72,11 +79,9 @@ public class Util {
 		Date dataCadas = (Date) req.getSession().getAttribute("dataCadas");
 		String email = (String) req.getSession().getAttribute("email");
 		List<Telefone> telefones = (List<Telefone>) req.getSession().getAttribute("telefones"); 
-		Endereco endereco = getEnderecoCadastro(req);
 		double altura = Double.parseDouble((String)req.getSession().getAttribute("altura"));
 		double peso = Double.parseDouble((String)req.getSession().getAttribute("peso"));
-		Aluno aluno = new Aluno(EnumTypePessoa.ALUNO, dataCadas, nome, cpf, sexo, dataNasc, endereco, telefones, email, true, peso, altura);
-		System.out.println(aluno);
+		Aluno aluno = new Aluno(EnumTypePessoa.ALUNO, dataCadas, nome, cpf, sexo, dataNasc, null, telefones, email, true, peso, altura);
 		return aluno;
 
 	}
@@ -102,6 +107,30 @@ public class Util {
 		return new Endereco(enderecoResidencial, cidade, bairro, complemento, uf, cep, numero);
 	}
 
+	public static Map<String,String> separaTelefones(List<Telefone> telefones) {
+		
+		Map<String, String> tels = new HashMap<String, String>();
+		
+		for (Telefone telefone : telefones) {
+			
+			if(telefone.getTipo().getNumber() == 1){
+				tels.put("celular",telefone.getDdd()+telefone.getNumero());
+			}
+			
+			if(telefone.getTipo().getNumber() == 2){
+				tels.put("residencial",telefone.getDdd()+telefone.getNumero());
+			}
+			
+			if(telefone.getTipo().getNumber() == 3){
+				tels.put("comercial",telefone.getDdd()+telefone.getNumero());
+			}
+		}
+		
+		return tels;
+		
+		
+	}
+	
 	public static Secretaria getCadastroSecretaria(HttpServletRequest req) {
 		String nome = (String) req.getSession().getAttribute("nome");
 		String cpf = (String) req.getSession().getAttribute("cpf");
@@ -121,7 +150,6 @@ public class Util {
 	}
 
 	public static Professor getCadastroProfessor(HttpServletRequest req) {
-		
 		String nome = (String) req.getSession().getAttribute("nome");
 		String cpf = (String) req.getSession().getAttribute("cpf");
 		EnumTypeSexo sexo = (EnumTypeSexo) req.getSession().getAttribute("sexo");
@@ -133,9 +161,10 @@ public class Util {
 		JOptionPane.showInputDialog("133");
 		Date dataAdmissao = formatDateIn((String) req.getSession().getAttribute("dataAdmissao"));
 		Professor professor = new Professor(EnumTypePessoa.PROFESSOR, dataCadas, nome, cpf, sexo, dataNasc, endereco, telefones, email, true, dataAdmissao); 
-		System.out.println("Professor:"+professor);
+		System.out.println(professor);
 		return professor;
 	}
-
+	
+	
 
 }
