@@ -2,7 +2,7 @@
 INSERT into enderecos VALUES(null, '10A99BF', '', '01', '92AB77', 'RA', '721202B9', 0);
 
 
-INSERT into pessoas VALUES(null, 0, '2012-05-07', 'admin', '00000000000', 'A', '2012-05-07',
+INSERT into pessoas VALUES(null, 0, '2012-05-07', 'admin', '00000000000', 'M', '2012-05-07',
                           1, 'admin@admin.com', true);
                           
 INSERT into secretarias VALUES(1, 0, '00:00', '00:00', '2012-05-07' );

@@ -63,7 +63,7 @@
 									
 									<td>
 										<c:forEach var="telefone" items="${professor.telefones}">
-											(${telefone.ddd}) ${telefone.telefone} 
+											(${telefone.ddd}) ${telefone.numero} <br />
 										</c:forEach>
 									</td>
 									
