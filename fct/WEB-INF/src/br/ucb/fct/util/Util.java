@@ -3,6 +3,8 @@ package br.ucb.fct.util;
 import java.text.*; 
 import java.util.*; 
 import javax.servlet.http.HttpServletRequest;
+import javax.swing.JOptionPane;
+
 import br.ucb.fct.aluno.Aluno;
 import br.ucb.fct.endereco.Endereco;
 import br.ucb.fct.enuns.EnumTypeFone;
@@ -119,6 +121,7 @@ public class Util {
 	}
 
 	public static Professor getCadastroProfessor(HttpServletRequest req) {
+		
 		String nome = (String) req.getSession().getAttribute("nome");
 		String cpf = (String) req.getSession().getAttribute("cpf");
 		EnumTypeSexo sexo = (EnumTypeSexo) req.getSession().getAttribute("sexo");
@@ -127,12 +130,10 @@ public class Util {
 		String email = (String) req.getSession().getAttribute("email");
 		List<Telefone> telefones = (List<Telefone>) req.getSession().getAttribute("telefones"); 
 		Endereco endereco = getEnderecoCadastro(req);
-		Double salario = (Double) req.getSession().getAttribute("salario");
-		String horarioInicial = (String) req.getSession().getAttribute("horarioInicial");
-		String horarioFinal = (String) req.getSession().getAttribute("horarioFinal");
-		Date dataAdmissao = (Date) req.getSession().getAttribute("dataAdmissao");
+		JOptionPane.showInputDialog("133");
+		Date dataAdmissao = formatDateIn((String) req.getSession().getAttribute("dataAdmissao"));
 		Professor professor = new Professor(EnumTypePessoa.PROFESSOR, dataCadas, nome, cpf, sexo, dataNasc, endereco, telefones, email, true, dataAdmissao); 
-		System.out.println(professor);
+		System.out.println("Professor:"+professor);
 		return professor;
 	}
 
