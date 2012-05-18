@@ -6,11 +6,11 @@ public enum EnumTypeSexo {
 	private Character codigo;
 	private String descricao;
 	
-	private EnumTypeSexo(String descricao,char codigo) {
+	private EnumTypeSexo(String descricao,Character codigo) {
 		setCodigo(codigo);
 		setDescricao(descricao);
 	}
-	public static EnumTypeSexo findByCodigo(char codigo){
+	public static EnumTypeSexo findByCodigo(Character codigo){
 		for (EnumTypeSexo e : values()) {
 			if(e.getCodigo()==codigo)
 				return e;
