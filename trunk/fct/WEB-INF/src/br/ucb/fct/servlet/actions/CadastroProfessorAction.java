@@ -7,7 +7,11 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.JOptionPane;
 
+import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
+
+import br.ucb.fct.connection.MyConnection;
 import br.ucb.fct.endereco.Endereco;
 import br.ucb.fct.enuns.EnumTypeFone;
 import br.ucb.fct.enuns.EnumTypeSexo;
@@ -31,11 +35,13 @@ public class CadastroProfessorAction implements Action {
 		int pg = Integer.parseInt(req.getParameter("pg"));
 		Map<String, String> erros;
 		HttpSession sessao = req.getSession();
-
+       
 		switch (pg) {
 
 		case 1:
+			
 			erros = GeraErros.verificaErrosProfessors(req);
+			System.out.println(erros);
 			if(!erros.isEmpty()){
 				req.setAttribute("erros",erros);
 				return "/view/admin/professor/cadastroProfessor.jsp";
@@ -52,10 +58,10 @@ public class CadastroProfessorAction implements Action {
 				return "/view/admin/professor/cadastroProfessorEndereco.jsp";
 			}
 			else{
-
+				JOptionPane.showInputDialog("61");
 				Professor professor = Util.getCadastroProfessor(req);
 				Endereco endereco = Util.getEnderecoCadastro(req);
-
+				JOptionPane.showInputDialog("64");	
 				if(Factory.initEnderecoDAO().insert(endereco)){
 					if(Factory.initProfessorDAO().insert(professor))
 						Factory.initTelefoneDAO().insert(professor.getTelefones());
