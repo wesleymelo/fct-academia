@@ -1,6 +1,7 @@
 package br.ucb.fct.professores;
 
 import java.sql.Connection;
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -31,7 +32,8 @@ public class ProfessorDAOConexao implements ProfessorDAO {
 			con = MyConnection.init();
 			ps = con.prepareStatement(sql);
 			ps.setInt(1,dao.findLastId());
-			ps.setDate(2,(java.sql.Date)professor.getDataAdmissao());
+			java.sql.Date date = new java.sql.Date(professor.getDataAdmissao().getTime()).;
+			ps.setDate(2, date);
 			retorno = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -67,11 +69,13 @@ public class ProfessorDAOConexao implements ProfessorDAO {
 		String sql = "UPDATE professores SET dataAdmissao = ?;";
 		Connection con = null;
 		PreparedStatement ps = null;
+		Date dataAdmissao = new Date(professor.getDataAdmissao().getTime()); 
 		int retorno = 0;
 		try {
 			con = MyConnection.init();
 			ps = con.prepareStatement(sql);
-			ps.setObject(1,professor.getDataAdmissao());
+			ps.setInt(1,1 );
+			ps.setObject(2,dataAdmissao);
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
