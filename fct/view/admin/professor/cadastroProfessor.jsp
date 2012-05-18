@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <c:import url="../../includes/header.jsp" />
 
@@ -15,7 +15,7 @@
 
 		<div class="module">
 			<h2>
-				<span><fmt:message key="cadastroProfessor"/></span>
+				<span><fmt:message key="cadastroProfessor" /></span>
 			</h2>
 
 			<div class="module-body">
@@ -25,22 +25,25 @@
 					<input type="hidden" name="pg" value="1" />
 
 					<p>
-						<label><fmt:message key="nome"/></label>
-						<input type="text" class="input-short" name="nome" id="nome" value="${param.nome }"/>
+						<label><fmt:message key="nome" /></label> <input type="text"
+							class="input-short" name="nome" id="nome" value="${param.nome }" />
 						<c:if test="${not empty erros['erronome'] }">
-							<span class="notification-input ni-error"><fmt:message key="nome_invalido"/></span>
+							<span class="notification-input ni-error"><fmt:message
+									key="nome_invalido" /></span>
 						</c:if>
-						
+
 					</p>
-					
+
 					<p>
-                        <label><fmt:message key="nascimento"/></label> 
-                        <input type="text" class="input-short-short" name="dataNasc" id="dataNasc" value="${param.dataNasc }" />
-                        <c:if test="${not empty erros['errodataNasc'] }">
-							<span class="notification-input ni-error"><fmt:message key="dataNasc_invalido"/></span>
-						</c:if>                        
+						<label><fmt:message key="nascimento" /></label> <input type="text"
+							class="input-short-short" name="dataNasc" id="dataNasc"
+							value="${param.dataNasc }" />
+						<c:if test="${not empty erros['errodataNasc'] }">
+							<span class="notification-input ni-error"><fmt:message
+									key="dataNasc_invalido" /></span>
+						</c:if>
 					</p>
-					
+
 					<script>
 						jQuery(function($){
       							$("#dataNasc").mask("99/99/9999");
@@ -49,19 +52,25 @@
 
 					<fieldset>
 						<ul>
-							<li><label><fmt:message key="sexo"/>:&nbsp;&nbsp;&nbsp;<input type="radio" name="sexo"	checked="checked" id="sexo" value="F" />&nbsp;&nbsp;<fmt:message key="feminino"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="sexo" id="sexo" value="M" />&nbsp;&nbsp;<fmt:message key="masculino"/></label></li>
+							<li><label><fmt:message key="sexo" />:&nbsp;&nbsp;&nbsp;<input
+									type="radio" name="sexo" checked="checked" id="sexo" value="F" />&nbsp;&nbsp;<fmt:message
+										key="feminino" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio"
+									name="sexo" id="sexo" value="M" />&nbsp;&nbsp;<fmt:message
+										key="masculino" /></label></li>
 						</ul>
 					</fieldset>
 					<p>
-					
-						<label><fmt:message key="cpf"/></label> 
-						<input type="text" class="input-short-short" name="cpf" id="cpf" value="${param.cpf }" />
+
+						<label><fmt:message key="cpf" /></label> <input type="text"
+							class="input-short-short" name="cpf" id="cpf"
+							value="${param.cpf }" />
 						<c:if test="${not empty erros['errocpf'] }">
-							<span class="notification-input ni-error"><fmt:message key="cpf_invalido"/></span>
-						</c:if>                        
-					
+							<span class="notification-input ni-error"><fmt:message
+									key="cpf_invalido" /></span>
+						</c:if>
+
 					</p>
-					
+
 					<script>
 						jQuery(function($){
       							$("#cpf").mask("999.999.999-99");
@@ -69,21 +78,24 @@
 					</script>
 
 					<p>
-						<label><fmt:message key="email"/></label> 
-						<input type="text" class="input-short" name="email" id="email" value="${param.email }"/>
+						<label><fmt:message key="email" /></label> <input type="text"
+							class="input-short" name="email" id="email"
+							value="${param.email }" />
 						<c:if test="${not empty erros['erroemail'] }">
-							<span class="notification-input ni-error"><fmt:message key="email_invalido"/></span>
-						</c:if>                        
+							<span class="notification-input ni-error"><fmt:message
+									key="email_invalido" /></span>
+						</c:if>
 					<p>
-					
-					<p>	
-						<label><fmt:message key="celular"/></label>
-						<input type="text" class="input-short-short" name="celular" id="celular" value="${param.celular }" />
+					<p>
+						<label><fmt:message key="celular" /></label> <input type="text"
+							class="input-short-short" name="celular" id="celular"
+							value="${param.celular }" />
 						<c:if test="${not empty erros['errocelular'] }">
-							<span class="notification-input ni-error"><fmt:message key="telefone_invalido"/></span>
-						</c:if>                        
+							<span class="notification-input ni-error"><fmt:message
+									key="telefone_invalido" /></span>
+						</c:if>
 					</p>
-					
+
 					<script>
 						jQuery(function($){
       							$("#celular").mask("(99)9999-9999");
@@ -91,35 +103,39 @@
 					</script>
 
 					<p>
-						<label><fmt:message key="residencial"/></label> 
-						<input type="text" class="input-short-short" name="residencial" id="residencial" value="${param.residencial }"/> 
+						<label><fmt:message key="residencial" /></label> <input
+							type="text" class="input-short-short" name="residencial"
+							id="residencial" value="${param.residencial }" />
 						<c:if test="${not empty erros['errocelular'] }">
-							<span class="notification-input ni-error"><fmt:message key="telefone_invalido"/></span>
-						</c:if>                        
+							<span class="notification-input ni-error"><fmt:message
+									key="telefone_invalido" /></span>
+						</c:if>
 					</p>
 					<script>
 						jQuery(function($){
       							$("#residencial").mask("(99)9999-9999");
       						});
 					</script>
-					
+
 					<p>
-						<label><fmt:message key="comercial"/></label> 
-						<input type="text" class="input-short-short" name="comercial" id="comercial" value="${param.comercial }"/> 
+						<label><fmt:message key="comercial" /></label> <input type="text"
+							class="input-short-short" name="comercial" id="comercial"
+							value="${param.comercial }" />
 						<c:if test="${not empty erros['errocomercial'] }">
-							<span class="notification-input ni-error"><fmt:message key="telefone_invalido"/></span>
-						</c:if> 
+							<span class="notification-input ni-error"><fmt:message
+									key="telefone_invalido" /></span>
+						</c:if>
 					</p>
-					
+
 					<script>
 						jQuery(function($){
       							$("#comercial").mask("(99)9999-9999");
       						});
 					</script>
 					<p>
-					<label><fmt:message key="dataAdmissao" /></label> <input type="text"
-							class="input-short" name="dataAdmissao" id="dataAdmissao"
-							value="${param.dataAdmissao }" />
+						<label><fmt:message key="dataAdmissao" /></label> <input
+							type="text" class="input-short" name="dataAdmissao"
+							id="dataAdmissao" value="${param.dataAdmissao }" />
 						<c:if test="${not empty erros['dataAdmissao'] }">
 							<span class="notification-input ni-error"><fmt:message
 									key="dataAdmissao_invalido" /></span>
@@ -132,8 +148,10 @@
 							</script>
 
 					<fieldset>
-						<input class="submit-green" type="submit" value="<fmt:message key="bt_proximo"/>" /> <input
-						class="submit-gray" type="submit" value="<fmt:message key="bt_cancelar"/>" />
+						<input class="submit-green" type="submit"
+							value="<fmt:message key="bt_proximo"/>" /> <input
+							class="submit-gray" type="submit"
+							value="<fmt:message key="bt_cancelar"/>" />
 					</fieldset>
 
 				</form>
