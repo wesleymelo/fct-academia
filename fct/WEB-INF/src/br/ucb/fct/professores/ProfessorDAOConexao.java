@@ -31,7 +31,7 @@ public class ProfessorDAOConexao implements ProfessorDAO {
 			con = MyConnection.init();
 			ps = con.prepareStatement(sql);
 			ps.setInt(1,dao.findLastId());
-			ps.setDate(2,(java.sql.Date)professor.getdataAdmissao());
+			ps.setDate(2,(java.sql.Date)professor.getDataAdmissao());
 			retorno = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -71,7 +71,7 @@ public class ProfessorDAOConexao implements ProfessorDAO {
 		try {
 			con = MyConnection.init();
 			ps = con.prepareStatement(sql);
-			ps.setObject(1,professor.getdataAdmissao());
+			ps.setObject(1,professor.getDataAdmissao());
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
