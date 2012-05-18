@@ -2,6 +2,7 @@ package br.ucb.fct.util;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 public class GeraErros {
@@ -69,7 +70,7 @@ public class GeraErros {
 			erros.put("errocpf","logar_erro");
 		if(!Validator.isStringValid(senha,100))
 			erros.put("errosenha", "logar_erro");
-
+		
 		return erros;
 	}
 
@@ -120,21 +121,24 @@ public class GeraErros {
 			erros.put("erroresidencial", "telefone_invalido");
 		if(!Validator.verificaTamanho(Util.unFormat(req.getParameter("comercial")),10))
 			erros.put("errocomercial", "telefone_invalido");
+		if(!Validator.verificaDouble(req.getParameter("salario"),1))
+			erros.put("errosalario", "salario_invalida");
 		if(!Validator.isStringValid(Util.unFormat(req.getParameter("dataAdmissao")),8))
 			erros.put("errodataAdmissao", "dataAdmissao_invalido");
 
 		return erros;
 	}
-
-	public static Map<String, String> verificaErrosGastos(HttpServletRequest req) {
+	 
+	public static Map<String, String> verificaExisteAluno(HttpServletRequest req) {
 		
-		return null;
+		Map<String, String> erros = new HashMap<String, String>();
+		
+		if(Validator.isExisteAluno(Factory.initAlunoDAO().selectById(Integer.parseInt(req.getParameter("id")))))
+			erros.put("erroaluno", "aluno_nao_existe");
+		
+		return erros;
 	}
+
 }
 
-
-
-
-
-
-
+//AFOI?
