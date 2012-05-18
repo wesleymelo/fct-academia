@@ -11,33 +11,33 @@ import br.ucb.fct.telefone.Telefone;
 
 public class Professor extends Pessoa{
 	
-	private Date dataAdimissao;
+	private Date dataAdmissao;
 	
 	public Professor(Integer idPessoa, EnumTypePessoa tipoPessoa,
 			Date dataCadastro, String nome, String cpf, EnumTypeSexo sexo,
 			Date dataNascimento, Endereco endereco,
 			List<Telefone> telefones, String email, Boolean status,
-			Date dataAdimissao) {
+			Date dataAdmissao) {
 		super(idPessoa, tipoPessoa, dataCadastro, nome, cpf, sexo,
 				dataNascimento, endereco, telefones, email, status);
-		setDataAdimissao(dataAdimissao);
+		setdataAdmissao(dataAdmissao);
 	}
 	public Professor( EnumTypePessoa tipoPessoa,
 			Date dataCadastro, String nome, String cpf, EnumTypeSexo sexo,
 			Date dataNascimento, Endereco endereco,
 			List<Telefone> telefones, String email, Boolean status,
-			Date dataAdimissao) {
+			Date dataAdmissao) {
 		super( tipoPessoa, dataCadastro, nome, cpf, sexo,
 				dataNascimento, endereco, telefones, email, status);
-		setDataAdimissao(dataAdimissao);
+		setdataAdmissao(dataAdmissao);
 	}
 
-	public Date getDataAdimissao() {
-		return dataAdimissao;
+	public Date getDataAdmissao() {
+		return dataAdmissao;
 	}
 
-	public void setDataAdimissao(Date dataAdimissao) {
-		this.dataAdimissao = dataAdimissao;
+	public void setdataAdmissao(Date dataAdmissao) {
+		this.dataAdmissao = dataAdmissao;
 	}
 
 	@Override
@@ -45,7 +45,7 @@ public class Professor extends Pessoa{
 		final int prime = 31;
 		int result = super.hashCode();
 		result = prime * result
-				+ ((getDataAdimissao() == null) ? 0 : getDataAdimissao().hashCode());
+				+ ((getDataAdmissao() == null) ? 0 : getDataAdmissao().hashCode());
 		return result;
 	}
 
@@ -58,10 +58,10 @@ public class Professor extends Pessoa{
 		if (getClass() != obj.getClass())
 			return false;
 		Professor other = (Professor) obj;
-		if (getDataAdimissao() == null) {
-			if (other.getDataAdimissao() != null)
+		if (getDataAdmissao() == null) {
+			if (other.getDataAdmissao() != null)
 				return false;
-		} else if (!getDataAdimissao().equals(other.getDataAdimissao()))
+		} else if (!getDataAdmissao().equals(other.getDataAdmissao()))
 			return false;
 		return true;
 	}
