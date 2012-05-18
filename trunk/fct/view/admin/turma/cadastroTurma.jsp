@@ -22,9 +22,9 @@
 								<th style="width: 4%">#</th>
 								<th style="width: 25%"><fmt:message key="nome"/></th>
 								<th style="width: 10%"><fmt:message key="cpf"/></th>
-								<th style="width: 15%"><fmt:message key="telefones"/></th>
+								<th style="width: 10%"><fmt:message key="telefones"/></th>
 								<th style="width: 25%"><fmt:message key="email"/></th>
-								<th style="width: 08%"><fmt:message key="sexo"/></th>
+								<th style="width: 10%"><fmt:message key="sexo"/></th>
 							</tr>
 						</thead>
 						<tbody>

@@ -75,8 +75,8 @@
 									<td>${aluno.cpf}</td>
 									<td>${aluno.dataNascimento}</td>
 									<td><c:forEach var="telefone" items="${aluno.telefones}">
-											(${telefone.ddd}) ${telefone.numero} <br />
-										</c:forEach></td>
+											${telefone.ddd} ${telefone.numero} <br />
+									</c:forEach></td>
 
 									<td>${aluno.email}</td>
 									<td>${aluno.sexo.descricao}</td>
