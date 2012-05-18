@@ -73,8 +73,8 @@
 									<td><a href="">${gasto.idGasto}</a></td>
 									<td>${gasto.idSecretaria}</td>
 									<td>${gasto.idDespesa.descricao}</td>
-									<td>${gasto.m}</td>
-									<td>${aluno.sexo.descricao}</td>
+									<td>${gasto.data}</td>
+									<td>${gasto.valor}</td>
 									<td><input type="checkbox" /> <a href=""><img
 											src="${pageContext.request.contextPath}/view/images/tick-circle.gif"
 											tppabs="http://www.xooom.pl/work/magicadmin/images/tick-circle.gif"
