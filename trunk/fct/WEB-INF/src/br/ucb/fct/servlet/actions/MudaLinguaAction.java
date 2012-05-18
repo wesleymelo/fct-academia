@@ -2,6 +2,7 @@ package br.ucb.fct.servlet.actions;
 
 import java.io.IOException;
 import java.util.Locale;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.jsp.jstl.core.Config;

@@ -57,7 +57,7 @@ public class DespesaDAOConexao implements DespesaDAO{
 
 	@Override
 	public boolean update(Despesa despesas, int id) throws DAOException {
-		String sql="UPDATE despesas SET quantidade=?,descricao=? WHERE id=?;";
+		String sql="UPDATE despesas SET quantidade=?,descricao=?;";
 		Connection con=null;
 		PreparedStatement ps=null;
 		int retorno=0;
