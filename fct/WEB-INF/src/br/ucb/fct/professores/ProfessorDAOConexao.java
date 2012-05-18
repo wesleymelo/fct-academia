@@ -11,7 +11,7 @@ import java.util.List;
 import br.ucb.fct.connection.MyConnection;
 import br.ucb.fct.enuns.EnumTypePessoa;
 import br.ucb.fct.enuns.EnumTypeSexo;
-import br.ucb.fct.exceptions.*;
+import br.ucb.fct.exceptions.DAOException;
 import br.ucb.fct.pessoa.Pessoa;
 import br.ucb.fct.pessoa.PessoaDAO;
 import br.ucb.fct.util.Factory;
@@ -129,6 +129,7 @@ public class ProfessorDAOConexao implements ProfessorDAO {
 		return new Professor(rs.getInt("idPessoa"), EnumTypePessoa.findEmunTypePessoaByNumber(rs.getInt("tipoPessoa")), rs.getDate("dataCadastro"), rs.getString("nome"), 
 				  rs.getString("cpf"), EnumTypeSexo.findByCodigo(rs.getString("sexo").charAt(0)), rs.getDate("dataNascimento"), Factory.initEnderecoDAO().selectById(rs.getInt("idPessoa")), Factory.initTelefoneDAO().selectById(rs.getInt("idPessoa")), rs.getString("email"), rs.getBoolean("status"), rs.getDate("dataAdmissao"));
 	}
+	
 	
 	public static Pessoa getPessoaByProfessor(Professor professor){
 		return new Pessoa(professor.getTipoPessoa(), professor.getDataCadastro(), professor.getNome(), professor.getCpf(), professor.getSexo(), professor.getDataNascimento(), professor.getEndereco(), professor.getTelefones(), professor.getEmail(), professor.getStatus());
