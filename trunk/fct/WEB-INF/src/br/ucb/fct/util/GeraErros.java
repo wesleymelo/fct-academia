@@ -120,8 +120,6 @@ public class GeraErros {
 			erros.put("erroresidencial", "telefone_invalido");
 		if(!Validator.verificaTamanho(Util.unFormat(req.getParameter("comercial")),10))
 			erros.put("errocomercial", "telefone_invalido");
-		if(!Validator.verificaDouble(req.getParameter("salario"),1))
-			erros.put("errosalario", "salario_invalida");
 		if(!Validator.isStringValid(Util.unFormat(req.getParameter("dataAdmissao")),8))
 			erros.put("errodataAdmissao", "dataAdmissao_invalido");
 
