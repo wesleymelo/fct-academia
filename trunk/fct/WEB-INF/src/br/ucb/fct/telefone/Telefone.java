@@ -57,13 +57,6 @@ public class Telefone {
 	public void setTipo(EnumTypeFone tipo) {
 		this.tipo = tipo;
 	}
-
-	@Override
-	public String toString() {
-		return "Telefone [idTelefone=" + idTelefone + ", idPessoa=" + idPessoa
-				+ ", numero=" + numero + ", ddd=" + ddd + ", tipo=" + tipo
-				+ "]";
-	}
 	
 	
 	
