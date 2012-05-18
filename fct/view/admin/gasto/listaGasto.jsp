@@ -59,12 +59,13 @@
 					<table id="myTable" class="tablesorter">
 						<thead>
 							<tr>
-								<th style="width: 25%"><fmt:message key="codGasto"/></th>
+								<th style="width: 5%"><fmt:message key="codGasto"/></th>
 								<th style="width: 25%"><fmt:message key="pessoaResp"/></th>
-								<th style="width: 10%"><fmt:message key="produto"/></th>
+								<th style="width: 25%"><fmt:message key="produto"/></th>
 								<th style="width: 10%"><fmt:message key="dataPag"/></th>
-								<th style="width: 15%"><fmt:message key="quant"/></th>
-								<th style="width: 15%"><fmt:message key="valor"/></th>
+								<th style="width: 10%"><fmt:message key="quant"/></th>
+								<th style="width: 10%"><fmt:message key="valor"/></th>
+								<th style="width: 10%"><fmt:message key="acoes"/></th>
 							</tr>
 						</thead>
 						<tbody>
