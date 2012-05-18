@@ -139,6 +139,10 @@ public class GeraErros {
 		return erros;
 	}
 
-}
+	public static Map<String, String> verificaErrosGastos(HttpServletRequest req) {
+		
+		
+		return null;
+	}
 
-//AFOI?
+}
