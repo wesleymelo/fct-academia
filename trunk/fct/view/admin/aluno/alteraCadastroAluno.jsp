@@ -5,49 +5,6 @@
 
 <c:import url="../../includes/header.jsp" />
 
-<!-- Header. Main part -->
-<div id="header-main">
-	<div class="container_12">
-		<div class="grid_12">
-			<div id="logo">
-				<div id="logo_top">
-					<ul id="nav">
-						<li id="current"><a href="">Painel de Controle</a></li>
-						<li><a href="">Outro</a></li>
-					</ul>
-				</div>
-				<div id="logo_bottom"></div>
-			</div>
-			<!-- End. #Logo -->
-		</div>
-		<!-- End. .grid_12-->
-		<div style="clear: both;"></div>
-	</div>
-	<!-- End. .container_12 -->
-</div>
-<!-- End #header-main -->
-<div style="clear: both;"></div>
-<!-- Sub navigation -->
-
-<div id="subnav">
-	<div class="container_12">
-		<div class="grid_12">
-			<ul>
-				<li><a href="#">Alunos</a></li>
-				<li><a href="#">Professores</a></li>
-				<li><a href="#">Secret&aacute;ria</a></li>
-				<li><a href="#">Modalidades</a></li>
-				<li><a href="#">Turmas</a></li>
-			</ul>
-		</div>
-		<!-- End. .grid_12-->
-	</div>
-	<!-- End. .container_12 -->
-	<div style="clear: both;"></div>
-</div>
-<!-- End #subnav -->
-<!-- End #header -->
-
 <div class="container_12">
 	
 	<!-- Form elements -->
@@ -77,7 +34,7 @@
 			
 			<div class="module-body">
 
-				<form action="cadastroAluno.do" method="post">
+				<form action="cadastroAluno.do?codigo=${param.codigo }" method="post">
 
 					<input type="hidden" name="pg" value="3" />
 
@@ -92,11 +49,11 @@
 					<p>
                         <label><fmt:message key="nascimento"/></label> 
                         
-                        <input type="text" class="input-short-short" name="dataNasc" id="dataNasc" value="${aluno.dataNascimento }" />
+                        <input type="text" class="input-short-short" name="dataNasc" id="dataNasc" value="${nascimento }" />
                         <c:if test="${not empty erros['errodataNasc'] }">
 							<span class="notification-input ni-error"><fmt:message key="dataNasc_invalido"/></span>
 						</c:if>
-						                        
+						
 					</p>
 					
 					<script>
@@ -107,13 +64,13 @@
 
 					<fieldset>
 						<ul>
-							<li><label><fmt:message key="sexo"/>:&nbsp;&nbsp;&nbsp;<input type="radio" name="sexo"	checked="checked" id="sexo" value="F" />&nbsp;&nbsp;<fmt:message key="feminino"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="sexo" id="sexo" value="M" />&nbsp;&nbsp;<fmt:message key="masculino"/></label></li>
+							<li><label><fmt:message key="sexo"/>:&nbsp;&nbsp;&nbsp;<input type="radio" name="sexo"	checked="checked" id="sexo" value="F" <c:if test="${aluno.sexo.codigo == 'F'}">checked="checked"</c:if> />&nbsp;&nbsp;<fmt:message key="feminino"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="sexo" id="sexo" value="M" <c:if test="${aluno.sexo.codigo == 'M'}"> checked="checked"</c:if>/>&nbsp;&nbsp;<fmt:message key="masculino"/></label></li>
 						</ul>
 					</fieldset>
 					<p>
 					
 						<label><fmt:message key="cpf"/></label> 
-						<input type="text" class="input-short-short" name="cpf" id="cpf" value="" />
+						<input type="text" class="input-short-short" name="cpf" id="cpf" value="${aluno.cpf }" />
 						<c:if test="${not empty erros['errocpf'] }">
 							<span class="notification-input ni-error"><fmt:message key="cpf_invalido"/></span>
 						</c:if>                        
@@ -128,7 +85,7 @@
 
 					<p>
 						<label><fmt:message key="email"/></label> 
-						<input type="text" class="input-short" name="email" id="email" value=""/>
+						<input type="text" class="input-short" name="email" id="email" value="${aluno.email }"/>
 						<c:if test="${not empty erros['erroemail'] }">
 							<span class="notification-input ni-error"><fmt:message key="email_invalido"/></span>
 						</c:if>                        
@@ -136,7 +93,7 @@
 					
 					<p>	
 						<label><fmt:message key="celular"/></label>
-						<input type="text" class="input-short-short" name="celular" id="celular" value="" />
+						<input type="text" class="input-short-short" name="celular" id="celular" value="${tel['celular']}" />
 						<c:if test="${not empty erros['errocelular'] }">
 							<span class="notification-input ni-error"><fmt:message key="telefone_invalido"/></span>
 						</c:if>                        
@@ -150,7 +107,7 @@
 
 					<p>
 						<label><fmt:message key="residencial"/></label> 
-						<input type="text" class="input-short-short" name="residencial" id="residencial" value=""/> 
+						<input type="text" class="input-short-short" name="residencial" id="residencial" value="${tel['residencial']}"/> 
 						<c:if test="${not empty erros['errocelular'] }">
 							<span class="notification-input ni-error"><fmt:message key="telefone_invalido"/></span>
 						</c:if>                        
@@ -164,7 +121,7 @@
 					
 					<p>
 						<label><fmt:message key="comercial"/></label> 
-						<input type="text" class="input-short-short" name="comercial" id="comercial" value=""/> 
+						<input type="text" class="input-short-short" name="comercial" id="comercial" value="${tel['comercial']}"/> 
 						<c:if test="${not empty erros['errocomercial'] }">
 							<span class="notification-input ni-error"><fmt:message key="telefone_invalido"/></span>
 						</c:if> 
@@ -178,7 +135,7 @@
 					
 					<p>
 						<label><fmt:message key="altura"/></label> 
-						<input type="text" class="input-short-short" name="altura" value="$" id="altura" />
+						<input type="text" class="input-short-short" name="altura" value="${aluno.altura }" id="altura" />
 						<c:if test="${not empty erros['erroaltura'] }">
 							<span class="notification-input ni-error"><fmt:message key="altura_invalida"/></span>
 						</c:if> 
@@ -186,7 +143,7 @@
 
 					<p>
 						<label><fmt:message key="peso"/></label> 
-						<input type="text" class="input-short-short" name="peso" id="peso" value="" />
+						<input type="text" class="input-short-short" name="peso" id="peso" value="${aluno.peso }" />
 						<c:if test="${not empty erros['erropeso'] }">
 							<span class="notification-input ni-error"><fmt:message key="peso_invalido"/></span>
 						</c:if>
