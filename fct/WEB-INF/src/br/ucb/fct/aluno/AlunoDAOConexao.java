@@ -61,7 +61,6 @@ public class AlunoDAOConexao implements AlunoDAO {
 			MyConnection.closeConnection(con, ps);
 		}
 		return retorno == 0 ? false: Factory.initPessoaDAO().delete(id);
-		
 	}
 
 	@Override
@@ -69,15 +68,16 @@ public class AlunoDAOConexao implements AlunoDAO {
 		String sql = "UPDATE alunos SET peso = ?, altura = ?";
 		Connection con = null;
 		PreparedStatement ps = null;
+		PessoaDAO dao = Factory.initPessoaDAO();
 		int retorno = 0;
+		
+		if(!dao.update(getPessoaByAluno(aluno),aluno.getIdPessoa()))
+			return false;
 		try {
 			con = MyConnection.init();
 			ps = con.prepareStatement(sql);
-			ps.setObject(2,aluno.getNome());
-			ps.setObject(3,aluno.getCpf());
-			ps.setObject(6,aluno.getStatus());
-			ps.setObject(7,aluno.getAltura());
-			ps.setObject(8,aluno.getPeso());
+			ps.setObject(1,aluno.getAltura());
+			ps.setObject(2,aluno.getPeso());
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
