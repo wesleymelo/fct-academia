@@ -96,9 +96,9 @@ public class GeraErros {
 			erros.put("errosalario", "salario_invalida");
 		if(!Validator.isStringValid(Util.unFormat(req.getParameter("dataAdmissao")),8))
 			erros.put("errodataAdmissao", "dataAdmissao_invalido");
-		if(!Validator.isStringValid(Util.unFormat(req.getParameter("horarioFinal")),4))
+		if(!Validator.isStringValid(Util.unFormat(req.getParameter("horarioFinal")),5))
 			erros.put("errohorarioFinal", "horarioFinal_invalido");		
-		if(!Validator.isStringValid(Util.unFormat(req.getParameter("horarioInicial")),4))
+		if(!Validator.isStringValid(Util.unFormat(req.getParameter("horarioInicial")),5))
 			erros.put("errohorarioInicial", "horarioInicial_invalido");	
 		return erros;
 	}
@@ -121,8 +121,7 @@ public class GeraErros {
 			erros.put("erroresidencial", "telefone_invalido");
 		if(!Validator.verificaTamanho(Util.unFormat(req.getParameter("comercial")),10))
 			erros.put("errocomercial", "telefone_invalido");
-		if(!Validator.verificaDouble(req.getParameter("salario"),1))
-			erros.put("errosalario", "salario_invalida");
+
 		if(!Validator.isStringValid(Util.unFormat(req.getParameter("dataAdmissao")),8))
 			erros.put("errodataAdmissao", "dataAdmissao_invalido");
 
