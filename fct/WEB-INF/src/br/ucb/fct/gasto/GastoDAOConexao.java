@@ -23,10 +23,10 @@ public class GastoDAOConexao implements GastoDAO {
 		try {
 			con=MyConnection.init();
 			ps=con.prepareStatement(sql);
-			ps.setInt(2,gasto.getIdDespesa());
-			ps.setDouble(3,gasto.getValor());
-			ps.setDate(4,(java.sql.Date)gasto.getData());
-			ps.setInt(5,gasto.getIdSecretaria());
+			ps.setInt(1,gasto.getIdDespesa());
+			ps.setDouble(2,gasto.getValor());
+			ps.setDate(3,(java.sql.Date)gasto.getData());
+			ps.setInt(4,gasto.getIdSecretaria());
 			retorno=ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
