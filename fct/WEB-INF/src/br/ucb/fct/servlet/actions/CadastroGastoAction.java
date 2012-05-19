@@ -18,5 +18,9 @@ public class CadastroGastoAction implements Action{
 		return null;
 	}
 	
+	public void setSessionGasto(HttpServletRequest req, HttpServletResponse resp){
+		
+	}
+	
 
 }
