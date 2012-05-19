@@ -73,6 +73,7 @@ public class Util {
 		return  fone; 
 	}
 
+	@SuppressWarnings("unchecked")
 	public static Aluno getCadastroAluno(HttpServletRequest req){
 
 		String nome = (String) req.getSession().getAttribute("nome");
@@ -152,9 +153,7 @@ public class Util {
 		return secretaria;
 	}
 
-	
 	public static Professor getCadastroProfessor(HttpServletRequest req) {
-		
 		String nome = (String) req.getSession().getAttribute("nome");
 		String cpf = (String) req.getSession().getAttribute("cpf");
 		EnumTypeSexo sexo = (EnumTypeSexo) req.getSession().getAttribute("sexo");
@@ -199,6 +198,7 @@ public class Util {
 	private static void putAtribuRequisicaoPessoa(HttpServletRequest req){
 		req.setAttribute("nome", req.getParameter("nome"));
 		req.setAttribute("dataNasc", req.getParameter("dataNasc"));
+		req.setAttribute("sexo", req.getParameter("sexo"));
 		req.setAttribute("cpf", req.getParameter("cpf"));
 		req.setAttribute("email", req.getParameter("email"));
 		req.setAttribute("celular", req.getParameter("celular"));
@@ -208,11 +208,36 @@ public class Util {
 	}
 	
 	private static void putAtribuRequisicaoPessoa(HttpServletRequest req, Pessoa pessoa){
+		
+		System.out.println(Util.unFormat(pessoa.getDateNascimentoString()));
 		req.setAttribute("nome", pessoa.getNome());
-		req.setAttribute("dataNasc", pessoa.getDateNascimentoString());
+		req.setAttribute("dataNasc", Util.unFormat(pessoa.getDateNascimentoString()));
+		req.setAttribute("sexo", pessoa.getSexo().getCodigo());
 		req.setAttribute("cpf", pessoa.getCpf());
 		req.setAttribute("email", pessoa.getEmail());
 		Map<String,String> tels = separaTelefones(pessoa.getTelefones());
 		req.setAttribute("tel",tels);
 	}
+	
+	public static void putAtribuRequisicaoPessoaEndereco(HttpServletRequest req){
+		req.setAttribute("cidade", req.getParameter("cidade"));
+		req.setAttribute("bairro", req.getParameter("bairro"));
+		req.setAttribute("cep", req.getParameter("cep"));
+		req.setAttribute("endereco", req.getParameter("endereco"));
+		req.setAttribute("uf", req.getParameter("uf"));
+		req.setAttribute("estados", Factory.initEnderecoDAO().selectEstados());
+		req.setAttribute("numero", req.getParameter("numero"));
+		req.setAttribute("complemento", req.getParameter("complemento"));
+		
+	}
+	
+	private static void putAtribuRequisicaoEndereco(HttpServletRequest req, Endereco endereco){
+		req.setAttribute("cidade", endereco.getCidade());
+		req.setAttribute("bairro", endereco.getBairro());
+		req.setAttribute("cep", endereco.getCep());
+		req.setAttribute("endereco", endereco.getEnderecoResidencial() );
+		req.setAttribute("uf", endereco.getUf());
+		req.setAttribute("numero", endereco.getNumero());
+		req.setAttribute("complemento", endereco.getComplemento());
+	}	
 }
