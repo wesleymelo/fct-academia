@@ -89,13 +89,7 @@
 						</c:if>                        
 					
 					</p>
-					
-					<script>
-						jQuery(function($){
-      							$("#cpf").mask("999.999.999-99");
-      						});
-					</script>
-
+				
 					<p>
 						<label><fmt:message key="email"/></label> 
 						<input type="text" class="input-short" name="email" id="email" value="${param.email }"/>
@@ -112,11 +106,7 @@
 						</c:if>                        
 					</p>
 					
-					<script>
-						jQuery(function($){
-      							$("#celular").mask("(99)9999-9999");
-      						});
-					</script>
+					
 
 					<p>
 						<label><fmt:message key="residencial"/></label> 
@@ -126,11 +116,7 @@
 						</c:if>                        
 					</p>
 					
-					<script>
-						jQuery(function($){
-      							$("#residencial").mask("(99)9999-9999");
-      						});
-					</script>
+					
 					
 					<p>
 						<label><fmt:message key="comercial"/></label> 
@@ -142,7 +128,10 @@
 					
 					<script>
 						jQuery(function($){
-      							$("#comercial").mask("(99)9999-9999");
+							$("#cpf").mask("999.999.999-99");
+							$("#celular").mask("(99)9999-9999");
+  							$("#residencial").mask("(99)9999-9999");
+      						$("#comercial").mask("(99)9999-9999");
       						});
 					</script>
 					
