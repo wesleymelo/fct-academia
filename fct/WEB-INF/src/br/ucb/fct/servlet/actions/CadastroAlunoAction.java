@@ -25,10 +25,18 @@ public class CadastroAlunoAction implements Action {
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) {
 		
+
+		
+		
+		
+		
+		
+		
+		
 		int pg = Integer.parseInt(req.getParameter("pg"));
 		Map<String, String> erros;
 		HttpSession sessao = req.getSession();
-
+		boolean retorno = false;
 		switch (pg) {
 			
 			case 1:
@@ -39,7 +47,7 @@ public class CadastroAlunoAction implements Action {
 				}
 				else{
 					setSessionAluno(sessao, req);
-					req.getSession().setAttribute("estados", Factory.initEnderecoDAO().selectEstados());
+					req.setAttribute("estados", Factory.initEnderecoDAO().selectEstados());
 					return "/view/admin/aluno/cadastroAlunoEndereco.jsp";
 				}
 			case 2:
@@ -49,7 +57,6 @@ public class CadastroAlunoAction implements Action {
 					return "/view/admin/aluno/cadastroAlunoEndereco.jsp";
 				}
 				else{
-					boolean retorno = false;
 					Aluno aluno = Util.getCadastroAluno(req);					
 					Endereco endereco = Util.getEnderecoCadastro(req);
 					aluno.setEndereco(endereco);
@@ -65,13 +72,13 @@ public class CadastroAlunoAction implements Action {
 				System.out.println(req.getParameter("codigo"));
 				if(!erros.isEmpty()){
 					req.setAttribute("erros", erros);
-					return "/alteraAluno.do?codigo="+req.getParameter("codigo");
+					return "/view/admin/aluno/alteraCadastroAluno.jsp";
 				}
 				else{
-					
+					setSessionAluno(sessao, req);
 					Aluno aluno = Util.getCadastroAluno(req);
-					
-				//	if(Factory.initAlunoDAO().update(aluno, id))
+					retorno = Factory.initAlunoDAO().update(aluno, Integer.parseInt(req.getParameter("codigo")));
+					return "../../admin/aluno/listaAlunos.do?status="+retorno+"";
 					
 				}
 				
@@ -82,26 +89,18 @@ public class CadastroAlunoAction implements Action {
 	}
 
 	public void setSessionAluno(HttpSession sessao, HttpServletRequest req){
+
 		sessao.setAttribute("nome",req.getParameter("nome"));
-	//	sessao.setAttribute("dataCadas",Util.formatDateOut(new Date().toString()));
-		sessao.setAttribute("dataNasc",req.getParameter("dataNasc"));
-		
-		System.out.println(req.getParameter("dataNasc"));
-		
+		sessao.setAttribute("dataCadas", new java.sql.Date(new java.util.Date().getTime()));
+		sessao.setAttribute("dataNasc",Util.formatDateIn(req.getParameter("dataNasc")));
 		sessao.setAttribute("sexo",EnumTypeSexo.findByCodigo(req.getParameter("sexo").charAt(0)));
-		
-		
-		
 		sessao.setAttribute("cpf",Util.unFormat(req.getParameter("cpf")));
 		sessao.setAttribute("email",req.getParameter("email"));
 		
 		// telefone
 		
 		List<Telefone> tel = new ArrayList<Telefone>();		
-		String [] fone = Util.formateTelOut(Util.unFormat(req.getParameter("celular")));
-		
-		System.out.println(fone[0]);
-		
+		String [] fone = Util.formateTelOut(Util.unFormat(req.getParameter("celular")));		
 		tel.add(new Telefone(fone[0], fone[1], EnumTypeFone.CELULAR));		
 		fone = Util.formateTelOut(Util.unFormat(req.getParameter("residencial")));
 		tel.add(new Telefone(fone[0], fone[1], EnumTypeFone.RESIDENCIAL));
