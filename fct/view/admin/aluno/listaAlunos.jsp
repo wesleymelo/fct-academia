@@ -5,85 +5,6 @@
 
 <c:import url="../../includes/header.jsp" />
 
-<script type="text/javascript">
-$(document).ready(function() {	
-	$('a[name=modal]').click(function(e) {
-		e.preventDefault();
-		var id = $(this).attr('href');
-		var maskHeight = $(document).height();
-		var maskWidth = $(window).width();
-
-		$('#mask').css({'width':maskWidth,'height':maskHeight});
-		$('#mask').fadeIn(1000);	
-		$('#mask').fadeTo("slow",0.8);	
-
-		//Get the window height and width
-		var winH = $(window).height();
-		var winW = $(window).width();
-		$(id).css('top',  winH/2-$(id).height()/2);
-		$(id).css('left', winW/2-$(id).width()/2);
-		$(id).fadeIn(2000); 
-
-	});
-
-	$('.window .close').click(function (e) {
-		e.preventDefault();
-		$('#mask').hide();
-		$('.window').hide();
-	});		
-
-	$('#mask').click(function () {
-		$(this).hide();
-		$('.window').hide();
-	});			
-
-});
-
-</script>
-
-
-<!-- janela modal -->
-<div id="boxes">
-
-<div id="dialog" class="window">
-	<a href="#" class="close"><fmt:message key="fechar"/></a>
-	
-			<h2>
-				<fmt:message key="visualizaAluno"/>
-			</h2>
-					<table>
-						<thead>
-							<tr>
-								
-								<td><fmt:message key="nome"/></td><td>${aluno.nome}</td>
-								<td><fmt:message key="cpf"/></td><td>${aluno.cpf}</td>
-								<td><fmt:message key="sexo"/></td><td>${aluno.sexo}</td>
-								<td><fmt:message key="altura"/></td><td>${aluno.altura}</td>
-								<td><fmt:message key="peso"/></td><td>${aluno.peso}</td>
-								<td><fmt:message key="telefones"/></td>
-								
-										<td>
-										
-											<c:forEach var="telefone" items="${aluno.telefones}">
-												(${telefone.ddd}) ${telefone.numero} <br />
-											</c:forEach>
-											
-										
-										</td>
-								<td><fmt:message key="email"/></td><td>${aluno.email}</td>
-								<td><fmt:message key="dataCadastro"/></td><td>${aluno.dataCadastro}</td>
-								<td><fmt:message key="status"/></td><td>${aluno.status}</td>
-								
-							</tr>
-						</thead>
-					</table>
-</div>
-
-<div id="mask"></div>
-
-
-
-
 <div class="container_12">
 
 	<div class="grid_12">
@@ -152,38 +73,26 @@ $(document).ready(function() {
 								<tr>
 									<td><a href="">${aluno.nome}</a></td>
 									<td>${aluno.cpf}</td>
-									<td>${aluno.dataNascimento}</td>
+									<td>${aluno.dateNascimentoString}</td>
 									<td><c:forEach var="telefone" items="${aluno.telefones}">
 											(${telefone.ddd}) ${telefone.numero} <br />
 										</c:forEach></td>
 
 									<td>${aluno.email}</td>
 									<td>${aluno.sexo.descricao}</td>
-									<td><input type="checkbox" /> 
-											<a href=""><img src="${pageContext.request.contextPath}/view/images/tick-circle.gif"
-											width="16" height="16" alt="published" />
-											
-											</a> <a href="${pageContext.request.contextPath}/view/admin/aluno/alteraAluno.do?codigo=${aluno.idPessoa }"><img
+									<td><input type="checkbox" /> <a href=""><img
+											src="${pageContext.request.contextPath}/view/images/tick-circle.gif"
+											tppabs="http://www.xooom.pl/work/magicadmin/images/tick-circle.gif"
+											width="16" height="16" alt="published" /></a> <a href="${pageContext.request.contextPath}/view/admin/aluno/alteraAluno.do?codigo=${aluno.idPessoa }"><img
 											src="${pageContext.request.contextPath}/view/images/pencil.gif"
-											width="16" height="16" alt="edit" /></a>
-											
-											
-											 <a href=""><img
+											tppabs="http://www.xooom.pl/work/magicadmin/images/pencil.gif"
+											width="16" height="16" alt="edit" /></a> <a href=""><img
 											src="${pageContext.request.contextPath}/view/images/balloon.gif"
-											width="16" height="16" alt="comments" /></a>
-											
-											
-											 <a href=""><img
+											tppabs="http://www.xooom.pl/work/magicadmin/images/balloon.gif"
+											width="16" height="16" alt="comments" /></a> <a href=""><img
 											src="${pageContext.request.contextPath}/view/images/bin.gif"
-											width="16" height="16" alt="delete" /></a>
-											
-											 <a href="${pageContext.request.contextPath}/view/admin/aluno/visualizaAluno.do?id=${aluno.idPessoa}"><img
-											src="${pageContext.request.contextPath}/view/images/view.png"
-											width="16" height="16" alt="<fmt:message key="view" />" /></a>
-											
-											
-											
-											</td>
+											tppabs="http://www.xooom.pl/work/magicadmin/images/bin.gif"
+											width="16" height="16" alt="delete" /></a></td>
 								</tr>
 							</c:forEach>
 						</tbody>
