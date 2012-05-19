@@ -1,6 +1,6 @@
 package br.ucb.fct.pessoa;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 import br.ucb.fct.endereco.Endereco;
@@ -21,11 +21,14 @@ public class Pessoa {
 	private List<Telefone> telefones;
 	private String email;
 	private Boolean status;
+	private String dateNascimentoString;
+	private String dateCadastroString;
+	
 	
 	public Pessoa(Integer idPessoa, EnumTypePessoa tipoPessoa, Date dataCadastro, String nome,
 			String cpf, EnumTypeSexo sexo, Date dataNascimento,
 			Endereco endereco, List<Telefone> telefones,
-			String email, Boolean status) {
+			String email, Boolean status, String dataNascimentoString, String dateCadastroString) {
 		setIdPessoa(idPessoa);
 		setTipoPessoa(tipoPessoa);
 		setDataCadastro(dataCadastro);
@@ -37,7 +40,9 @@ public class Pessoa {
 		setEndereco(endereco);
 		setEmail(email);
 		setStatus(status);
-
+		setDateNascimentoString(dataNascimentoString);
+		setDateNascimentoString(dataNascimentoString);
+		
 	}
 
 	public Pessoa(EnumTypePessoa tipoPessoa, Date dataCadastro, String nome,
@@ -59,6 +64,22 @@ public class Pessoa {
 		return idPessoa;
 	}
 	
+	public String getDateNascimentoString() {
+		return dateNascimentoString;
+	}
+
+	public void setDateNascimentoString(String dateNascimentoString) {
+		this.dateNascimentoString = dateNascimentoString;
+	}
+
+	public String getDateCadastroString() {
+		return dateCadastroString;
+	}
+
+	public void setDateCadastroString(String dateCadastroString) {
+		this.dateCadastroString = dateCadastroString;
+	}
+
 	public void setIdPessoa(Integer idPessoa) {
 		this.idPessoa = idPessoa;
 	}

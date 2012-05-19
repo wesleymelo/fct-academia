@@ -2,10 +2,13 @@ package br.ucb.fct.pessoa;
 
 import java.sql.Connection;
 
+import br.ucb.fct.enuns.EnumTypeMask;
 import br.ucb.fct.enuns.EnumTypePessoa;
 import br.ucb.fct.enuns.EnumTypeSexo;
 import br.ucb.fct.exceptions.DAOException;
 import br.ucb.fct.util.Factory;
+import br.ucb.fct.util.Util;
+
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,12 +32,14 @@ public class PessoaDAOConexao implements PessoaDAO {
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1,pessoa.getTipoPessoa().getNumber());
-			ps.setDate(2, new Date(new java.util.Date().getTime()));
+			
+			System.out.println(pessoa.getDataNascimento()+" C"+ pessoa.getDataCadastro());
+			
+			ps.setDate(2, pessoa.getDataCadastro());
 			ps.setString(3, pessoa.getNome());
 			ps.setString(4, pessoa.getCpf());
-			ps.setString(5, pessoa.getSexo().getCodigo().toString());
-			Date date = new Date(pessoa.getDataNascimento().getTime()); 
-			ps.setDate(6, date);
+			ps.setString(5, pessoa.getSexo().getCodigo().toString()); 
+			ps.setDate(6, pessoa.getDataNascimento());
 			ps.setInt(7, Factory.initEnderecoDAO().findLastId());
 			ps.setString(8, pessoa.getEmail());
 			ps.setBoolean(9, pessoa.getStatus());
@@ -65,7 +70,7 @@ public class PessoaDAOConexao implements PessoaDAO {
 
 	@Override
 	public boolean update(Pessoa pessoa, int id) throws DAOException {
-		String sql = "UPDATE pessoas SET tipoPessoa = ?, nome = ?, cpf = ?, sexo = ?, dataNascimento = ?, email = ? WHERE id = ?";
+		String sql = "UPDATE pessoas SET tipoPessoa = ?, nome = ?, cpf = ?, sexo = ?, dataNascimento = ?, email = ? WHERE idPessoa = ?";
 		
 		Connection con = MyConnection.init();
 		int retorno;
@@ -83,7 +88,7 @@ public class PessoaDAOConexao implements PessoaDAO {
 			retorno = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DAOException(e,"ERRO! INSERT na TABELA PESSOAS. DATA("+new java.util.Date()+")");
+			throw new DAOException(e,"ERRO! UPDATE na TABELA PESSOAS. DATA("+new java.util.Date()+")");
 		}
 		return retorno == 0 ? false: true;
 		
@@ -112,8 +117,18 @@ public class PessoaDAOConexao implements PessoaDAO {
 	}
 
 	public Pessoa getPessoa(ResultSet rs) throws SQLException {
-		return new Pessoa(rs.getInt("idPessoa"), EnumTypePessoa.findEmunTypePessoaByNumber(rs.getInt("tipoPessoa")), rs.getDate("dataCadastro"), rs.getString("nome"), 
-						  rs.getString("cpf"), EnumTypeSexo.findByCodigo(rs.getString("sexo").charAt(0)), rs.getDate("dataNascimento"), Factory.initEnderecoDAO().selectById(rs.getInt("idEndereco")), Factory.initTelefoneDAO().selectById(rs.getInt("idPessoa")), rs.getString("email"), rs.getBoolean("status"));
+		return new Pessoa(rs.getInt("idPessoa"), 
+				          EnumTypePessoa.findEmunTypePessoaByNumber(rs.getInt("tipoPessoa")),
+				          rs.getDate("dataCadastro"), 
+				          rs.getString("nome"), 
+						  rs.getString("cpf"), 
+						  EnumTypeSexo.findByCodigo(rs.getString("sexo").charAt(0)),
+						  rs.getDate("dataNascimento"), 
+						  Factory.initEnderecoDAO().selectById(rs.getInt("idEndereco")), 
+						  Factory.initTelefoneDAO().selectById(rs.getInt("idPessoa")), 
+						  rs.getString("email"), rs.getBoolean("status"), 
+						  Util.getDateView(rs.getDate("dataNascimento").toString(),"/"),
+						  Util.getDateView(rs.getDate("dataCadastro").toString(),"/"));
 	}
 
 	@Override
