@@ -152,7 +152,9 @@ public class Util {
 		return secretaria;
 	}
 
+	
 	public static Professor getCadastroProfessor(HttpServletRequest req) {
+		
 		String nome = (String) req.getSession().getAttribute("nome");
 		String cpf = (String) req.getSession().getAttribute("cpf");
 		EnumTypeSexo sexo = (EnumTypeSexo) req.getSession().getAttribute("sexo");
@@ -160,14 +162,25 @@ public class Util {
 		Date dataCadas = (Date) req.getSession().getAttribute("dataCadas");
 		String email = (String) req.getSession().getAttribute("email");
 		List<Telefone> telefones = (List<Telefone>) req.getSession().getAttribute("telefones"); 
-		Endereco endereco = getEnderecoCadastro(req);
-		JOptionPane.showInputDialog("133");
+		Endereco endereco = null;
 		Date dataAdmissao = formatDateIn((String) req.getSession().getAttribute("dataAdmissao"));
 		Professor professor = new Professor(EnumTypePessoa.PROFESSOR, dataCadas, nome, cpf, sexo, dataNasc, endereco, telefones, email, true, dataAdmissao); 
 		System.out.println(professor);
 		return professor;
 	}
 	
+	
+  public static void putAtribuRequisicaoProfessor(HttpServletRequest req){
+		
+		putAtribuRequisicaoPessoa(req);
+		req.setAttribute("dataAdmissao", req.getParameter("dataAdmissao"));
+	}
+	
+	public static void putAtribuRequisicaoProfessor(HttpServletRequest req, Professor professor){
+		
+		putAtribuRequisicaoPessoa(req,professor);
+		req.setAttribute("dataAdmissao", professor.getDataAdmissao());
+	}
 	public static void putAtribuRequisicaoAluno(HttpServletRequest req){
 		
 		putAtribuRequisicaoPessoa(req);
