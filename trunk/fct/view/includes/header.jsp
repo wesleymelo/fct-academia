@@ -4,7 +4,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
+
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>.:: FCT - Fl&aacute;vio Carvalho Team ::.</title>
 
@@ -39,7 +41,7 @@
 
 <!-- Table sorter stylesheet -->
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/view/css/tablesorter.css"
+	href="${pageContext.request.contextPath}/view/css/tablesorter.css" 
 	media="screen" />
 
 <!-- Thickbox stylesheet -->
@@ -48,28 +50,23 @@
 	media="screen" />
 
 <!-- Themes. Below are several color themes. Uncomment the line of your choice to switch to different color. All styles commented out means blue theme. -->
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/view/css/theme.css"
+<link rel="stylesheet" type="text/css"  href="${pageContext.request.contextPath}/view/css/theme.css"
 	media="screen" />
+	
 <!--<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/view/css/theme-red.css" media="screen" />-->
 <!--<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/view/css/theme-yellow.css" media="screen" />-->
 <!--<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/view/css/theme-green.css" media="screen" />-->
 <!--<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/view/css/theme-graphite.css" media="screen" />-->
 
 <!--  CSS  datepicked-->
-<link rel="stylesheet" href="css/jquery.ui.all.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/view/css/jquery.ui.all.css" media="screen"/>
 
 <!-- JQuery datepicked-->
-	<script src="js/jquery-1.7.2.js"></script>
-	<script src="js/datepicker/jquery.ui.core.js"></script>
-	<script src="js/datepicker/jquery.ui.widget.js"></script>
-	<script src="js/datepicker/jquery.ui.datepicker.js"></script>
 
-
-<!-- JQuery engine script-->
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/view/js/jquery-1.3.2.min.js"
-	tppabs="http://www.xooom.pl/work/magicadmin/js/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/view/js/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/view/js/datepicker/jquery.ui.core.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/view/js/datepicker/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/view/js/datepicker/jquery.ui.datepicker.js"></script>
 
 <!-- JQuery WYSIWYG plugin script -->
 <script type="text/javascript"
@@ -196,6 +193,7 @@
 		$('.password').pstrength();
 	});
 </script>
+
 </head>
 <body>
 	<!-- Header -->
@@ -231,7 +229,7 @@
 					<div id="logo">
 						<div id="logo_top">
 							<ul id="nav">
-								<li id="current"><a href="">Painel de Controle</a></li>
+								<li id="current"><a href="${pageContext.request.contextPath}/view/admin/principal/index.jsp">Painel de Controle</a></li>
 								<li><a href="">Outro</a></li>
 							</ul>
 						</div>
