@@ -22,8 +22,8 @@ public class DespesaDAOConexao implements DespesaDAO{
 		try {
 			con=MyConnection.init();
 			ps=con.prepareStatement(sql);
-			ps.setString(2,despesa.getDescricao());
-			ps.setInt(3,despesa.getQuantidade());
+			ps.setString(1,despesa.getDescricao());
+			ps.setInt(2,despesa.getQuantidade());
 			retorno=ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

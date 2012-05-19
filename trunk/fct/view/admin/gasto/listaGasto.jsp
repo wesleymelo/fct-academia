@@ -69,13 +69,15 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="gasto" items="${gastos}">
+						<!-- idGasto,idDespesa,valor,data,idSecretaria -->
+							<c:forEach var="gasto" items="${gastos}" var="despesa" items="${despesas}">
 								<tr>
 									<td><a href="">${gasto.idGasto}</a></td>
 									<td>${gasto.idSecretaria}</td>
-									<td>${gasto.idDespesa.descricao}</td>
+									<td>${despesa.descricao}</td>
 									<td>${gasto.data}</td>
-									<td>${gasto.valor}</td>
+									<td>${gasto.quant}</td>	<!-- TEM QUE SER ADICIONADO AO BANCO DE DADOS -->								
+									<td>${gasto.valor}</td> <!-- SERÁ UM ATRIBUTO CALCULADO -->
 									<td><input type="checkbox" /> <a href=""><img
 											src="${pageContext.request.contextPath}/view/images/tick-circle.gif"
 											tppabs="http://www.xooom.pl/work/magicadmin/images/tick-circle.gif"
