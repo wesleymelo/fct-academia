@@ -756,14 +756,13 @@ CREATE  TABLE IF NOT EXISTS `academia`.`Despesas` (
 
   `descricao` VARCHAR(255) NOT NULL ,
 
-  `quantidade` INT(11) NOT NULL ,
+   `valor` DOUBLE NOT NULL ,
 
   PRIMARY KEY (`idDespesa`) )
 
 ENGINE = InnoDB;
 
-
-
+SHOW WARNINGS;
 
 
 -- -----------------------------------------------------
@@ -782,7 +781,7 @@ CREATE  TABLE IF NOT EXISTS `academia`.`Gastos` (
 
   `idDespesa` INT(11) NOT NULL ,
 
-  `valor` DOUBLE NOT NULL ,
+  `quantidade` INT(11) NOT NULL ,
 
   `data` DATETIME NOT NULL ,
 
@@ -815,6 +814,8 @@ CREATE  TABLE IF NOT EXISTS `academia`.`Gastos` (
     ON UPDATE NO ACTION)
 
 ENGINE = InnoDB;
+
+SHOW WARNINGS;
 
 -- -----------------------------------------------------
 
