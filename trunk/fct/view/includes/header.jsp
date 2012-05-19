@@ -16,13 +16,11 @@
   -->
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/view/css/reset.css"
-	tppabs="http://www.xooom.pl/work/magicadmin/css/reset.css"
 	media="screen" />
 
 <!-- Fluid 960 Grid System - CSS framework -->
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/view/css/grid.css"
-	tppabs="http://www.xooom.pl/work/magicadmin/css/grid.css"
 	media="screen" />
 
 <!-- IE Hacks for the Fluid 960 Grid System -->
@@ -32,46 +30,41 @@
 <!-- Main stylesheet -->
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/view/css/styles.css"
-	tppabs="http://www.xooom.pl/work/magicadmin/css/styles.css"
 	media="screen" />
 
 <!-- WYSIWYG editor stylesheet -->
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/view/css/jquery.wysiwyg.css"
-	tppabs="http://www.xooom.pl/work/magicadmin/css/jquery.wysiwyg.css"
 	media="screen" />
 
 <!-- Table sorter stylesheet -->
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/view/css/tablesorter.css"
-	tppabs="http://www.xooom.pl/work/magicadmin/css/tablesorter.css"
 	media="screen" />
 
 <!-- Thickbox stylesheet -->
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/view/css/thickbox.css"
-	tppabs="http://www.xooom.pl/work/magicadmin/css/thickbox.css"
 	media="screen" />
 
 <!-- Themes. Below are several color themes. Uncomment the line of your choice to switch to different color. All styles commented out means blue theme. -->
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/view/css/theme.css"
-	tppabs="http://www.xooom.pl/work/magicadmin/css/theme-blue.css"
 	media="screen" />
 <!--<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/view/css/theme-red.css" media="screen" />-->
 <!--<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/view/css/theme-yellow.css" media="screen" />-->
 <!--<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/view/css/theme-green.css" media="screen" />-->
 <!--<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/view/css/theme-graphite.css" media="screen" />-->
 
-
+<!--  CSS  datepicked-->
+<link rel="stylesheet" href="css/jquery.ui.all.css">
 
 <!-- JQuery datepicked-->
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
-<style type="text/css">
-@import "css/jquery.datepick.css";
-</style>
-<script type="text/javascript" src="js/jquery.datepick.js"></script>
+	<script src="js/jquery-1.7.2.js"></script>
+	<script src="js/datepicker/jquery.ui.core.js"></script>
+	<script src="js/datepicker/jquery.ui.widget.js"></script>
+	<script src="js/datepicker/jquery.ui.datepicker.js"></script>
+
 
 <!-- JQuery engine script-->
 <script type="text/javascript"
