@@ -1,6 +1,3 @@
-
-
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -63,18 +60,19 @@
 					<p>
 						<!-- data -->
 						<label><fmt:message key="dataPag"/></label> 
-                        <input type="text" class="input-short-short" name="dataPag" id="dataPag" value="${param.dataPag }" />
+                        <input type="text" class="input-short-short" readonly="readonly" name="dataPag" id="dataPag" value="${param.dataPag }" />
                         <c:if test="${not empty erros['errodataPag'] }">
 							<span class="notification-input ni-error"><fmt:message key="dataPag_invalido"/></span>
 						</c:if>
 					</p>
-
 					<script>
-						jQuery(function($){
-      							$("#dataPag").mask("99/99/9999");
-      						});
-					</script>					
-					
+							$(function() {
+								$("#dataPag").datepicker({
+									changeMonth: true,
+									changeYear: true
+								});
+							});
+					</script>
 					<fieldset>
 						<input class="submit-green" type="submit" value="<fmt:message key="cadastrar"/>" /> 
 						<input class="submit-gray" type="submit" value="<fmt:message key="bt_cancelar"/>" />

@@ -53,7 +53,6 @@
 						</c:if>
 						
 					</p>					
-					
 					<p>
                         <label><fmt:message key="nascimento"/></label> 
                         <input type="text" class="input-short-short" readonly="readonly" name="dataNasc" id="dataNasc" value="${param.dataNasc }" />
