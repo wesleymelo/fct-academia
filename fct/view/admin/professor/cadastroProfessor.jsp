@@ -26,7 +26,7 @@
 
 					<p>
 						<label><fmt:message key="nome" /></label> <input type="text"
-							class="input-short" name="nome" id="nome" value="${param.nome }" />
+							class="input-short" name="nome" id="nome" value="${nome }" />
 						<c:if test="${not empty erros['erronome'] }">
 							<span class="notification-input ni-error"><fmt:message
 									key="nome_invalido" /></span>
@@ -37,18 +37,23 @@
 					<p>
 						<label><fmt:message key="nascimento" /></label> <input type="text"
 							class="input-short-short" name="dataNasc" id="dataNasc"
-							value="${param.dataNasc }" />
+							value="${dataNasc }" />
 						<c:if test="${not empty erros['errodataNasc'] }">
 							<span class="notification-input ni-error"><fmt:message
 									key="dataNasc_invalido" /></span>
 						</c:if>
 					</p>
 
-					<script>
-						jQuery(function($){
-      							$("#dataNasc").mask("99/99/9999");
-      						});
-					</script>
+					<<!--  -->
+						<script>
+							$(function() {
+								$( "#dataNasc").datepicker({
+									changeMonth: true,
+									changeYear: true
+								});
+							});
+						</script>
+						    
 
 					<fieldset>
 						<ul>
@@ -63,7 +68,7 @@
 
 						<label><fmt:message key="cpf" /></label> <input type="text"
 							class="input-short-short" name="cpf" id="cpf"
-							value="${param.cpf }" />
+							value="${cpf }" />
 						<c:if test="${not empty erros['errocpf'] }">
 							<span class="notification-input ni-error"><fmt:message
 									key="cpf_invalido" /></span>
@@ -80,7 +85,7 @@
 					<p>
 						<label><fmt:message key="email" /></label> <input type="text"
 							class="input-short" name="email" id="email"
-							value="${param.email }" />
+							value="${email }" />
 						<c:if test="${not empty erros['erroemail'] }">
 							<span class="notification-input ni-error"><fmt:message
 									key="email_invalido" /></span>
@@ -89,7 +94,7 @@
 					<p>
 						<label><fmt:message key="celular" /></label> <input type="text"
 							class="input-short-short" name="celular" id="celular"
-							value="${param.celular }" />
+							value="${celular }" />
 						<c:if test="${not empty erros['errocelular'] }">
 							<span class="notification-input ni-error"><fmt:message
 									key="telefone_invalido" /></span>
@@ -105,7 +110,7 @@
 					<p>
 						<label><fmt:message key="residencial" /></label> <input
 							type="text" class="input-short-short" name="residencial"
-							id="residencial" value="${param.residencial }" />
+							id="residencial" value="${residencial }" />
 						<c:if test="${not empty erros['errocelular'] }">
 							<span class="notification-input ni-error"><fmt:message
 									key="telefone_invalido" /></span>
@@ -120,7 +125,7 @@
 					<p>
 						<label><fmt:message key="comercial" /></label> <input type="text"
 							class="input-short-short" name="comercial" id="comercial"
-							value="${param.comercial }" />
+							value="${comercial }" />
 						<c:if test="${not empty erros['errocomercial'] }">
 							<span class="notification-input ni-error"><fmt:message
 									key="telefone_invalido" /></span>
@@ -135,17 +140,21 @@
 					<p>
 						<label><fmt:message key="dataAdmissao" /></label> <input
 							type="text" class="input-short" name="dataAdmissao"
-							id="dataAdmissao" value="${param.dataAdmissao }" />
+							id="dataAdmissao" value="${dataAdmissao }" />
 						<c:if test="${not empty erros['dataAdmissao'] }">
 							<span class="notification-input ni-error"><fmt:message
 									key="dataAdmissao_invalido" /></span>
 						</c:if>
 					</p>
-					<script>
-								jQuery(function($) {
-									$("#dataAdmissao").mask("99/99/9999");
+				<<!--  -->
+						<script>
+							$(function() {
+								$( "#dataAdmissao").datepicker({
+									changeMonth: true,
+									changeYear: true
 								});
-							</script>
+							});
+						</script>
 
 					<fieldset>
 						<input class="submit-green" type="submit"
