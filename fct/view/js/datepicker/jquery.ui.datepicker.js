@@ -41,17 +41,17 @@ function Datepicker() {
 	this._dayOverClass = 'ui-datepicker-days-cell-over'; // The name of the day hover marker class
 	this.regional = []; // Available regional settings, indexed by language code
 	this.regional[''] = { // Default regional settings
-		closeText: 'Done', // Display text for close link
-		prevText: 'Prev', // Display text for previous month link
-		nextText: 'Next', // Display text for next month link
+		closeText: 'Ok', // Display text for close link
+		prevText: 'Ant', // Display text for previous month link
+		nextText: 'Prox', // Display text for next month link
 		currentText: 'Today', // Display text for current month link
-		monthNames: ['January','February','March','April','May','June',
-			'July','August','September','October','November','December'], // Names of months for drop-down and formatting
-		monthNamesShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], // For formatting
-		dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], // For formatting
-		dayNamesShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], // For formatting
-		dayNamesMin: ['Su','Mo','Tu','We','Th','Fr','Sa'], // Column headings for days starting at Sunday
-		weekHeader: 'Wk', // Column header for week of the year
+		monthNames: ['Janeiro','Fevereiro','Marco','Abril','Maio','Junho',
+			'Julhio','Agosto','Setembro','Outubro','Novembro','Dezembro'], // Names of months for drop-down and formatting
+		monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'], // For formatting
+		dayNames: ['Domingo', 'Segunda', 'Terca', 'Quarta', 'Quinta', 'Sexta', 'Sabado'], // For formatting
+		dayNamesShort: ['Do', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'], // For formatting
+		dayNamesMin: ['Do','Se','Te','Qa','Qi','Se','Sa'], // Column headings for days starting at Sunday
+		weekHeader: 'Sem', // Column header for week of the year
 		dateFormat: 'dd/mm/yy', // See format options on parseDate
 		firstDay: 0, // The first day of the week, Sun = 0, Mon = 1, ...
 		isRTL: false, // True if right-to-left language, false if left-to-right
@@ -145,7 +145,7 @@ $.extend(Datepicker.prototype, {
 		// check for settings on the control itself - in namespace 'date:'
 		var inlineSettings = null;
 		for (var attrName in this._defaults) {
-			var attrValue = target.getAttribute('date:' + attrName);
+			var attrValue = target.getAttribute('data:' + attrName);
 			if (attrValue) {
 				inlineSettings = inlineSettings || {};
 				try {
@@ -212,7 +212,7 @@ $.extend(Datepicker.prototype, {
 			inst.append.remove();
 		if (appendText) {
 			inst.append = $('<span class="' + this._appendClass + '">' + appendText + '</span>');
-			input[isRTL ? 'before' : 'after'](inst.append);
+			input[isRTL ? 'antes' : 'depois'](inst.append);
 		}
 		input.unbind('focus', this._showDatepicker);
 		if (inst.trigger)
@@ -229,7 +229,7 @@ $.extend(Datepicker.prototype, {
 				$('<button type="button"></button>').addClass(this._triggerClass).
 					html(buttonImage == '' ? buttonText : $('<img/>').attr(
 					{ src:buttonImage, alt:buttonText, title:buttonText })));
-			input[isRTL ? 'before' : 'after'](inst.trigger);
+			input[isRTL ? 'antes' : 'depois'](inst.trigger);
 			inst.trigger.click(function() {
 				if ($.datepicker._datepickerShowing && $.datepicker._lastInput == input[0])
 					$.datepicker._hideDatepicker();
@@ -247,7 +247,7 @@ $.extend(Datepicker.prototype, {
 	_autoSize: function(inst) {
 		if (this._get(inst, 'autoSize') && !inst.inline) {
 			var date = new Date(2009, 12 - 1, 20); // Ensure double digits
-			var dateFormat = this._get(inst, 'dateFormat');
+			var dateFormat = this._get(inst, 'dataFormato');
 			if (dateFormat.match(/[DM]/)) {
 				var findMax = function(names) {
 					var max = 0;
