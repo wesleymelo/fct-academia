@@ -111,7 +111,7 @@ public class Util {
 		return new Endereco(enderecoResidencial, cidade, bairro, complemento, uf, cep, numero);
 	}
 
-	public static Map<String,String> separaTelefones(List<Telefone> telefones) {
+	public static Map<String,String> separaTelefones(List<Telefone> telefones, HttpServletRequest req) {
 		
 		Map<String, String> tels = new HashMap<String, String>();
 		
@@ -119,14 +119,17 @@ public class Util {
 			
 			if(telefone.getTipo().getNumber() == 1){
 				tels.put("celular",telefone.getDdd()+telefone.getNumero());
+				req.setAttribute("celular", telefone.getDdd()+telefone.getNumero());
 			}
 			
 			if(telefone.getTipo().getNumber() == 2){
 				tels.put("residencial",telefone.getDdd()+telefone.getNumero());
+				req.setAttribute("residencial", telefone.getDdd()+telefone.getNumero());
 			}
 			
 			if(telefone.getTipo().getNumber() == 3){
 				tels.put("comercial",telefone.getDdd()+telefone.getNumero());
+				req.setAttribute("comercial", telefone.getDdd()+telefone.getNumero());
 			}
 		}
 		
@@ -169,7 +172,7 @@ public class Util {
 	}
 	
 	
-  public static void putAtribuRequisicaoProfessor(HttpServletRequest req){
+	public static void putAtribuRequisicaoProfessor(HttpServletRequest req){
 		
 		putAtribuRequisicaoPessoa(req);
 		req.setAttribute("dataAdmissao", req.getParameter("dataAdmissao"));
@@ -214,7 +217,7 @@ public class Util {
 		req.setAttribute("sexo", pessoa.getSexo().getCodigo());
 		req.setAttribute("cpf", pessoa.getCpf());
 		req.setAttribute("email", pessoa.getEmail());
-		Map<String,String> tels = separaTelefones(pessoa.getTelefones());
+		Map<String,String> tels = separaTelefones(pessoa.getTelefones(),req);
 		req.setAttribute("tel",tels);
 	}
 	
@@ -236,6 +239,7 @@ public class Util {
 		req.setAttribute("cep", endereco.getCep());
 		req.setAttribute("endereco", endereco.getEnderecoResidencial() );
 		req.setAttribute("uf", endereco.getUf());
+		req.setAttribute("estados", Factory.initEnderecoDAO().selectEstados());
 		req.setAttribute("numero", endereco.getNumero());
 		req.setAttribute("complemento", endereco.getComplemento());
 	}	
