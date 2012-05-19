@@ -209,9 +209,8 @@ public class Util {
 	
 	private static void putAtribuRequisicaoPessoa(HttpServletRequest req, Pessoa pessoa){
 		
-		System.out.println(Util.unFormat(pessoa.getDateNascimentoString()));
 		req.setAttribute("nome", pessoa.getNome());
-		req.setAttribute("dataNasc", Util.unFormat(pessoa.getDateNascimentoString()));
+		req.setAttribute("dataNasc", pessoa.getDateNascimentoString());
 		req.setAttribute("sexo", pessoa.getSexo().getCodigo());
 		req.setAttribute("cpf", pessoa.getCpf());
 		req.setAttribute("email", pessoa.getEmail());
@@ -231,7 +230,7 @@ public class Util {
 		
 	}
 	
-	private static void putAtribuRequisicaoEndereco(HttpServletRequest req, Endereco endereco){
+	public static void putAtribuRequisicaoPessoaEndereco(HttpServletRequest req, Endereco endereco){
 		req.setAttribute("cidade", endereco.getCidade());
 		req.setAttribute("bairro", endereco.getBairro());
 		req.setAttribute("cep", endereco.getCep());
