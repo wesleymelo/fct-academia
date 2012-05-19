@@ -74,10 +74,6 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/view/js/datepicker/jquery.ui.widget.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/view/js/datepicker/jquery.ui.datepicker.js"></script>
 
-
-
-
-
 <!-- JQuery WYSIWYG plugin script -->
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/view/js/jquery.wysiwyg.js"
