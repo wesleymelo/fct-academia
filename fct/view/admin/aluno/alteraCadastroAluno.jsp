@@ -34,7 +34,7 @@
 			
 			<div class="module-body">
 
-				<form action="cadastroAluno.do?codigo=${param.codigo }" method="post">
+				<form action="cadastroAluno.do?codigo=${codigo }" method="post">
 
 					<input type="hidden" name="pg" value="3" />
 
@@ -113,7 +113,7 @@
 					
 					<p>	
 						<label><fmt:message key="celular"/></label>
-						<input type="text" class="input-short-short" name="celular" id="celular" value="${tel['celular']}" />
+						<input type="text" class="input-short-short" name="celular" id="celular" value="${celular}" />
 						<c:if test="${not empty erros['errocelular'] }">
 							<span class="notification-input ni-error"><fmt:message key="telefone_invalido"/></span>
 						</c:if>                        
@@ -127,7 +127,7 @@
 
 					<p>
 						<label><fmt:message key="residencial"/></label> 
-						<input type="text" class="input-short-short" name="residencial" id="residencial" value="${tel['residencial']}"/> 
+						<input type="text" class="input-short-short" name="residencial" id="residencial" value="${residencial}"/> 
 						<c:if test="${not empty erros['errocelular'] }">
 							<span class="notification-input ni-error"><fmt:message key="telefone_invalido"/></span>
 						</c:if>                        
@@ -141,7 +141,7 @@
 					
 					<p>
 						<label><fmt:message key="comercial"/></label> 
-						<input type="text" class="input-short-short" name="comercial" id="comercial" value="${tel['comercial']}"/> 
+						<input type="text" class="input-short-short" name="comercial" id="comercial" value="${comercial}"/> 
 						<c:if test="${not empty erros['errocomercial'] }">
 							<span class="notification-input ni-error"><fmt:message key="telefone_invalido"/></span>
 						</c:if> 
