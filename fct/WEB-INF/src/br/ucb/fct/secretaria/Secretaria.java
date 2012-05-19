@@ -1,6 +1,6 @@
 package br.ucb.fct.secretaria;	
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 import br.ucb.fct.endereco.Endereco;
@@ -33,9 +33,9 @@ public class Secretaria extends Pessoa{
 			Date dataCadastro, String nome, String cpf, EnumTypeSexo sexo,
 			Date dataNascimento, Endereco endereco,
 			List<Telefone> telefones, String email, Boolean status,
-			Date dataAdmissao, String horarioInicial, String horarioFinal) {
+			Date dataAdmissao, String horarioInicial, String horarioFinal,String dataNascimentoString, String dateCadastroString) {
 		super(idPessoa, tipoPessoa, dataCadastro, nome, cpf, sexo,
-				dataNascimento, endereco, telefones, email, status);
+				dataNascimento, endereco, telefones, email, status, dataNascimentoString, dateCadastroString);
 		setDataAdmissao(dataAdmissao);
 		setHoraInicial(horarioInicial);
 		setHoraFinal(horarioFinal);
