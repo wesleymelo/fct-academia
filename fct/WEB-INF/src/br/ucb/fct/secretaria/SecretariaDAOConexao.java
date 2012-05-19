@@ -15,6 +15,7 @@ import br.ucb.fct.exceptions.*;
 import br.ucb.fct.pessoa.Pessoa;
 import br.ucb.fct.pessoa.PessoaDAO;
 import br.ucb.fct.util.Factory;
+import br.ucb.fct.util.Util;
 
 public class SecretariaDAOConexao implements SecretariaDAO {
 	//É NECESSÁRIO ARRUMAR ESSAS QUERYS, POIS NÃO PODEREMOS EXCLUIR SECRETARIA, ALUNO OU PROFESSOR.
@@ -130,8 +131,21 @@ public class SecretariaDAOConexao implements SecretariaDAO {
 	}
 	
 	public static Secretaria getSecretaria(ResultSet rs) throws SQLException{
-		return new Secretaria(rs.getInt("idPessoa"), EnumTypePessoa.findEmunTypePessoaByNumber(rs.getInt("tipoPessoa")), rs.getDate("dataCadastro"), rs.getString("nome"), 
-				  rs.getString("cpf"), EnumTypeSexo.findByCodigo(rs.getString("sexo").charAt(0)), rs.getDate("dataNascimento"), Factory.initEnderecoDAO().selectById(rs.getInt("idPessoa")), Factory.initTelefoneDAO().selectById(rs.getInt("idPessoa")), rs.getString("email"), rs.getBoolean("status"), rs.getDate("dataAdmissao"), rs.getString("horarioInicial"), rs.getString("horarioFinal"));
+		return new Secretaria(rs.getInt("idPessoa"), 
+				              EnumTypePessoa.findEmunTypePessoaByNumber(rs.getInt("tipoPessoa")),
+				              rs.getDate("dataCadastro"), 
+				              rs.getString("nome"), 
+				              rs.getString("cpf"), 
+				              EnumTypeSexo.findByCodigo(rs.getString("sexo").charAt(0)), 
+				              rs.getDate("dataNascimento"), 
+				              Factory.initEnderecoDAO().selectById(rs.getInt("idPessoa")), 
+				              Factory.initTelefoneDAO().selectById(rs.getInt("idPessoa")), 
+				              rs.getString("email"), rs.getBoolean("status"), 
+				              rs.getDate("dataAdmissao"), 
+				              rs.getString("horarioInicial"), 
+				              rs.getString("horarioFinal"),
+				              Util.getDateView(rs.getDate("dataNascimento").toString(),"/"),
+						      Util.getDateView(rs.getDate("dataCadastro").toString(),"/"));
 	}
 	
 	public static Pessoa getPessoaBySecretaria(Secretaria secretaria){
