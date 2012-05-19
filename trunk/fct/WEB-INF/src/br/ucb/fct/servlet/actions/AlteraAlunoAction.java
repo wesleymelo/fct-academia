@@ -16,16 +16,7 @@ public class AlteraAlunoAction implements Action {
 	public String execute(HttpServletRequest req, HttpServletResponse resp) {		
 		
 		Aluno aluno = Factory.initAlunoDAO().selectById(Integer.parseInt(req.getParameter("codigo")));
-		
-		System.out.println(aluno.getIdPessoa());
-		
-		//Aluno aluno = Factory.initAlunoDAO().selectById(Integer.parseInt(req.getParameter("codigo")));
-		Map<String, String> tel = Util.separaTelefones(aluno.getTelefones());
-		
-		req.setAttribute("nascimento", Util.formatDateView(aluno.getDataNascimento().toString()));
-		req.setAttribute("tel",tel);
-		req.setAttribute("aluno",aluno);
-		System.out.println("/view/admin/aluno/alteraCadastroAluno.jsp?codigo="+aluno.getIdPessoa());
+		Util.putAtribuRequisicaoAluno(req, aluno);
 		return "/view/admin/aluno/alteraCadastroAluno.jsp?codigo="+aluno.getIdPessoa();
 		
 	}
