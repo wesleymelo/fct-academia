@@ -24,21 +24,13 @@ public class CadastroAlunoAction implements Action {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) {
-		
 
-		
-		
-		
-		
-		
-		
-		
 		int pg = Integer.parseInt(req.getParameter("pg"));
 		Map<String, String> erros;
 		HttpSession sessao = req.getSession();
-		boolean retorno = false;
+		boolean retorno = true;
 		switch (pg) {
-			
+	
 			case 1:
 				erros = GeraErros.verificaErrosAlunos(req);
 				if(!erros.isEmpty()){
@@ -60,32 +52,51 @@ public class CadastroAlunoAction implements Action {
 					Aluno aluno = Util.getCadastroAluno(req);					
 					Endereco endereco = Util.getEnderecoCadastro(req);
 					aluno.setEndereco(endereco);
-					
 					if(Factory.initEnderecoDAO().insert(endereco)){
 						if(Factory.initAlunoDAO().insert(aluno))
 							retorno = Factory.initTelefoneDAO().insert(aluno.getTelefones());
 					}
-					return "../../admin/aluno/listaAlunos.do?status="+retorno+"";
+					return "../../admin/aluno/listaAlunos.do?status="+retorno;
 				}
-			case 3:
+			case 3:				
 				erros = GeraErros.verificaErrosAlunos(req);
-				System.out.println(req.getParameter("codigo"));
 				if(!erros.isEmpty()){
 					req.setAttribute("erros", erros);
+					req.setAttribute("codigo",req.getParameter("codigo"));
 					return "/view/admin/aluno/alteraCadastroAluno.jsp";
 				}
 				else{
 					setSessionAluno(sessao, req);
-					Aluno aluno = Util.getCadastroAluno(req);
-					retorno = Factory.initAlunoDAO().update(aluno, Integer.parseInt(req.getParameter("codigo")));
-					return "../../admin/aluno/listaAlunos.do?status="+retorno+"";
-					
+					Aluno aluno = Util.getCadastroAluno(req);				
+					if(Factory.initAlunoDAO().update(aluno, Integer.parseInt(req.getParameter("codigo")))){
+						if(Factory.initTelefoneDAO().insert(aluno.getTelefones())){
+							Endereco endereco = Factory.initEnderecoDAO().selectById(Integer.parseInt(req.getParameter("codigo").toString()));
+							Util.putAtribuRequisicaoPessoaEndereco(req,endereco);
+							req.setAttribute("codigo",endereco.getIdEndereco());
+						}
+					}
+					return "../../admin/aluno/alteraCadastroAlunoEndereco.jsp";
 				}
+			case 4:
+				erros = GeraErros.verificaErrosEndereco(req);
 				
 				
+				System.out.println("codigo "+req.getParameter("codigo"));
+				
+				if(!erros.isEmpty()){
+					req.setAttribute("erros", erros);
+					req.setAttribute("codigo",req.getParameter("codigo"));
+					return "/view/admin/aluno/alteraCadastroAlunoEndereco.jsp";
+				}
+				else{
+					System.out.println("codigo "+req.getParameter("codigo"));
+					Endereco endereco = Util.getEnderecoCadastro(req);
+					retorno = Factory.initEnderecoDAO().update(endereco,Integer.parseInt(req.getParameter("codigo")));
+					return "../../admin/aluno/listaAlunos.do?status="+retorno;
+				}
 		}
 		return null;
-	
+
 	}
 
 	public void setSessionAluno(HttpSession sessao, HttpServletRequest req){
@@ -96,9 +107,9 @@ public class CadastroAlunoAction implements Action {
 		sessao.setAttribute("sexo",EnumTypeSexo.findByCodigo(req.getParameter("sexo").charAt(0)));
 		sessao.setAttribute("cpf",Util.unFormat(req.getParameter("cpf")));
 		sessao.setAttribute("email",req.getParameter("email"));
-		
+
 		// telefone
-		
+
 		List<Telefone> tel = new ArrayList<Telefone>();		
 		String [] fone = Util.formateTelOut(Util.unFormat(req.getParameter("celular")));		
 		tel.add(new Telefone(fone[0], fone[1], EnumTypeFone.CELULAR));		
@@ -106,15 +117,12 @@ public class CadastroAlunoAction implements Action {
 		tel.add(new Telefone(fone[0], fone[1], EnumTypeFone.RESIDENCIAL));
 		fone = Util.formateTelOut(Util.unFormat(req.getParameter("comercial")));
 		tel.add(new Telefone(fone[0], fone[1], EnumTypeFone.COMERCIAL));
-		
+
 		// fim telefone
-		
+
 		sessao.setAttribute("telefones",tel);
 		sessao.setAttribute("altura",req.getParameter("altura"));
 		sessao.setAttribute("peso",req.getParameter("peso"));
 	}
-
-
-
 
 }
