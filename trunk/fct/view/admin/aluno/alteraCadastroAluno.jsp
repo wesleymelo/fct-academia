@@ -14,7 +14,7 @@
 			<!-- Button -->
 			<div class="float-right">
 				<a
-					href="${pageContext.request.contextPath}/view/admin/aluno/cadastroAluno.jsp"
+					href="${pageContext.request.contextPath}/view/admin/aluno/cadastrojsp"
 					class="button"> <span><b><fmt:message key="new" /></b>
 						<img
 						src="${pageContext.request.contextPath}/view/images/plus-small.gif"
@@ -40,7 +40,7 @@
 
 					<p>
 						<label><fmt:message key="nome"/></label>
-						<input type="text" class="input-short" name="nome" id="nome" value="${aluno.nome }"/>
+						<input type="text" class="input-short" name="nome" id="nome" value="${nome }"/>
 						<c:if test="${not empty erros['erronome'] }">
 							<span class="notification-input ni-error"><fmt:message key="nome_invalido"/></span>
 						</c:if>
@@ -49,7 +49,7 @@
 					<p>
                         <label><fmt:message key="nascimento"/></label> 
                         
-                        <input type="text" class="input-short-short" name="dataNasc" id="dataNasc" value="${nascimento }" />
+                        <input type="text" class="input-short-short" name="dataNasc" id="dataNasc" readonly="readonly" value="${dataNasc }" />
                         <c:if test="${not empty erros['errodataNasc'] }">
 							<span class="notification-input ni-error"><fmt:message key="dataNasc_invalido"/></span>
 						</c:if>
@@ -57,20 +57,40 @@
 					</p>
 					
 					<script>
-						jQuery(function($){
-      							$("#dataNasc").mask("99/99/9999");
-      						});
+						$(function() {
+							$( "#dataNasc").datepicker({
+								changeMonth: true,
+								changeYear: true
+							});
+						});
 					</script>
 
 					<fieldset>
 						<ul>
-							<li><label><fmt:message key="sexo"/>:&nbsp;&nbsp;&nbsp;<input type="radio" name="sexo"	checked="checked" id="sexo" value="F" <c:if test="${aluno.sexo.codigo == 'F'}">checked="checked"</c:if> />&nbsp;&nbsp;<fmt:message key="feminino"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="sexo" id="sexo" value="M" <c:if test="${aluno.sexo.codigo == 'M'}"> checked="checked"</c:if>/>&nbsp;&nbsp;<fmt:message key="masculino"/></label></li>
+							<li><label><fmt:message key="sexo"/>:&nbsp;&nbsp;&nbsp;
+							
+							<input type="radio" name="sexo"	
+								<c:if test="${empty sexo or (sexo == 'F') }">
+									checked="checked"
+								</c:if>
+								
+							 id="sexo" value="F" />
+							
+							&nbsp;&nbsp;<fmt:message key="feminino"/>&nbsp;&nbsp;&nbsp;&nbsp;
+							
+							<input type="radio" 
+							
+							<c:if test="${(sexo == 'M') }">
+									checked="checked"
+							</c:if>
+							name="sexo" id="sexo" value="M" />
+							&nbsp;&nbsp;<fmt:message key="masculino"/></label></li>
 						</ul>
 					</fieldset>
 					<p>
 					
 						<label><fmt:message key="cpf"/></label> 
-						<input type="text" class="input-short-short" name="cpf" id="cpf" value="${aluno.cpf }" />
+						<input type="text" class="input-short-short" name="cpf" id="cpf" value="${cpf }" />
 						<c:if test="${not empty erros['errocpf'] }">
 							<span class="notification-input ni-error"><fmt:message key="cpf_invalido"/></span>
 						</c:if>                        
@@ -85,7 +105,7 @@
 
 					<p>
 						<label><fmt:message key="email"/></label> 
-						<input type="text" class="input-short" name="email" id="email" value="${aluno.email }"/>
+						<input type="text" class="input-short" name="email" id="email" value="${email }"/>
 						<c:if test="${not empty erros['erroemail'] }">
 							<span class="notification-input ni-error"><fmt:message key="email_invalido"/></span>
 						</c:if>                        
@@ -135,7 +155,7 @@
 					
 					<p>
 						<label><fmt:message key="altura"/></label> 
-						<input type="text" class="input-short-short" name="altura" value="${aluno.altura }" id="altura" />
+						<input type="text" class="input-short-short" name="altura" value="${altura }" id="altura" />
 						<c:if test="${not empty erros['erroaltura'] }">
 							<span class="notification-input ni-error"><fmt:message key="altura_invalida"/></span>
 						</c:if> 
@@ -143,15 +163,15 @@
 
 					<p>
 						<label><fmt:message key="peso"/></label> 
-						<input type="text" class="input-short-short" name="peso" id="peso" value="${aluno.peso }" />
+						<input type="text" class="input-short-short" name="peso" id="peso" value="${peso }" />
 						<c:if test="${not empty erros['erropeso'] }">
 							<span class="notification-input ni-error"><fmt:message key="peso_invalido"/></span>
 						</c:if>
 					</p>
 
 					<fieldset>
-						<input class="submit-green" type="submit" value="Próximo" /> <input
-						class="submit-gray" type="submit" value="Cancelar" />
+						<input class="submit-green" type="submit" value="<fmt:message key="bt_alterar_endereco"/>" /> 
+						<input class="submit-gray" type="submit" value="<fmt:message key="bt_cancelar"/>" />
 					</fieldset>
 
 				</form>
