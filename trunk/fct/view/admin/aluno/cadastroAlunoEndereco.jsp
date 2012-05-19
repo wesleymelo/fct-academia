@@ -26,9 +26,9 @@
                      <h2><span><fmt:message key="cadastroAluno" /></span></h2>
                         
                      <div class="module-body">
-                        <form action="cadastroAluno.do" method="post">
+                        <form action="cadastroAluno.do?codigo=${param.codigo }" method="post">
                    
-                        	<input type="hidden" name="pg" value="4"/>
+                        	<input type="hidden" name="pg" value="2"/>
                    
                            
                             
