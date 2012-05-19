@@ -1,7 +1,12 @@
 package br.ucb.fct.util;
 
-import java.text.*; 
-import java.util.*; 
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.swing.JOptionPane;
 
@@ -10,9 +15,9 @@ import br.ucb.fct.endereco.Endereco;
 import br.ucb.fct.enuns.EnumTypeFone;
 import br.ucb.fct.enuns.EnumTypePessoa;
 import br.ucb.fct.enuns.EnumTypeSexo;
+import br.ucb.fct.pessoa.Pessoa;
 import br.ucb.fct.professores.Professor;
 import br.ucb.fct.secretaria.Secretaria;
-
 import br.ucb.fct.telefone.Telefone;
 
 public class Util {
@@ -22,23 +27,22 @@ public class Util {
 		String dataTmp[] = data.split("-");
 		data = dataTmp[2]+"/"+dataTmp[1]+"/"+dataTmp[0];
 		
-		System.out.println("Data 2: "+data);
-		
 		SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");  
 		Date date = null;
 		try {
-			date = formatador.parse(data);
+			date = (Date) formatador.parse(data);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}  
 		return date;
 	}
 	
-	public static Object formatDateView(String data){
-		
-		String dataTmp[] = data.split("-");
-		return  dataTmp[2]+dataTmp[1]+dataTmp[0];
 	
+	public static String getDateView(String data, String symbol){
+		
+		String [] d = data.split("-");
+		return d[2]	+ symbol +	d[1] + symbol +d[0];
+				
 	}
 	
 
@@ -48,15 +52,14 @@ public class Util {
 		return str;
 	}
 
-	public static Date formatDateIn(String data){
+	public static java.sql.Date formatDateIn(String data){
 		
-		String dataTmp[] = data.split("/");
-		data = dataTmp[2]+"-"+dataTmp[1]+"-"+dataTmp[0];
+		data = data.substring(6, 10) + "-" + data.substring(3, 5) + "-" + data.substring(0, 2);
 		
 		SimpleDateFormat formatador = new SimpleDateFormat("yyyy-MM-dd");  
-		Date date = null;
+		java.sql.Date date = null;
 		try {
-			date = formatador.parse(data);
+			date = new java.sql.Date(formatador.parse(data).getTime());
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}  
@@ -70,13 +73,13 @@ public class Util {
 		return  fone; 
 	}
 
-	public static Aluno getCadastroAluno(HttpServletRequest req){		
+	public static Aluno getCadastroAluno(HttpServletRequest req){
 
 		String nome = (String) req.getSession().getAttribute("nome");
 		String cpf = (String) req.getSession().getAttribute("cpf");
 		EnumTypeSexo sexo = (EnumTypeSexo) req.getSession().getAttribute("sexo");
-		Date dataNasc = formatDateIn((String)req.getSession().getAttribute("dataNasc"));
-		Date dataCadas = (Date) req.getSession().getAttribute("dataCadas");
+		java.sql.Date dataNasc = (java.sql.Date) req.getSession().getAttribute("dataNasc");
+		java.sql.Date dataCadas = (java.sql.Date) req.getSession().getAttribute("dataCadas");
 		String email = (String) req.getSession().getAttribute("email");
 		List<Telefone> telefones = (List<Telefone>) req.getSession().getAttribute("telefones"); 
 		double altura = Double.parseDouble((String)req.getSession().getAttribute("altura"));
@@ -165,6 +168,38 @@ public class Util {
 		return professor;
 	}
 	
+	public static void putAtribuRequisicaoAluno(HttpServletRequest req){
+		
+		putAtribuRequisicaoPessoa(req);
+		req.setAttribute("altura", req.getParameter("altura"));
+		req.setAttribute("peso", req.getParameter("peso"));
+	}
 	
-
+	public static void putAtribuRequisicaoAluno(HttpServletRequest req, Aluno aluno){
+		
+		putAtribuRequisicaoPessoa(req,aluno);
+		req.setAttribute("altura", aluno.getAltura());
+		req.setAttribute("peso", aluno.getPeso());
+	}
+	
+	
+	private static void putAtribuRequisicaoPessoa(HttpServletRequest req){
+		req.setAttribute("nome", req.getParameter("nome"));
+		req.setAttribute("dataNasc", req.getParameter("dataNasc"));
+		req.setAttribute("cpf", req.getParameter("cpf"));
+		req.setAttribute("email", req.getParameter("email"));
+		req.setAttribute("celular", req.getParameter("celular"));
+		req.setAttribute("residencial", req.getParameter("residencial"));
+		req.setAttribute("comercial", req.getParameter("comercial"));
+		
+	}
+	
+	private static void putAtribuRequisicaoPessoa(HttpServletRequest req, Pessoa pessoa){
+		req.setAttribute("nome", pessoa.getNome());
+		req.setAttribute("dataNasc", pessoa.getDateNascimentoString());
+		req.setAttribute("cpf", pessoa.getCpf());
+		req.setAttribute("email", pessoa.getEmail());
+		Map<String,String> tels = separaTelefones(pessoa.getTelefones());
+		req.setAttribute("tel",tels);
+	}
 }
