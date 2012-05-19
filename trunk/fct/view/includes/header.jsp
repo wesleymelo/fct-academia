@@ -256,11 +256,11 @@
 			<div class="container_12">
 				<div class="grid_12">
 					<ul>
-						<li><a href="#">Alunos</a></li>
-						<li><a href="#">Professores</a></li>
-						<li><a href="#">Secret&aacute;ria</a></li>
-						<li><a href="#">Modalidades</a></li>
-						<li><a href="#">Turmas</a></li>
+						<li><a href="${pageContext.request.contextPath}/view/admin/aluno/listaAlunos.do" ><fmt:message key="alunos"/></a></li>
+						<li><a href="${pageContext.request.contextPath}/view/admin/professor/listaProfessores.do"><fmt:message key="professores"/></a></li>
+						<li><a href="${pageContext.request.contextPath}/view/admin/secretaria/listaSecretarias.do" ><fmt:message key="secretarias"/></a></li>
+						<li><a href="${pageContext.request.contextPath}/view/admin/modalidade/listaModalidades.do"><fmt:message key="modalidades"/></a></li>
+						<li><a href="${pageContext.request.contextPath}/view/admin/turma/listaTurmas.do"><fmt:message key="turmas"/></a></li>
 					</ul>
 
 				</div>
