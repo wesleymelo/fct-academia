@@ -25,8 +25,8 @@ public class ListaAlunosAction implements Action {
 		
 		List<Aluno> alunos = Factory.initAlunoDAO().selectAll();
 		req.setAttribute("alunos", alunos);
-		
 		return "/view/admin/aluno/listaAlunos.jsp";
+
 	}
 
 }
