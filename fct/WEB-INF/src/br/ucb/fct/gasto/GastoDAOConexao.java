@@ -55,7 +55,7 @@ public class GastoDAOConexao implements GastoDAO {
 		}finally{
 			MyConnection.closeConnection(con,ps);
 		}
-		return retorno ==0?false:true;//AJUSTAR AO FACTORY???
+		return retorno ==0?false:true;
 	}
 
 	@Override
@@ -128,8 +128,6 @@ public class GastoDAOConexao implements GastoDAO {
 	private Gasto getGasto(ResultSet rs) throws SQLException {
 		return new Gasto(rs.getInt("idGasto"),rs.getInt("idDespesa"),rs.getDouble("valor"),rs.getDate("data"),rs.getInt("idSecretaria"));
 	}
-
-	
 	
 	
 
