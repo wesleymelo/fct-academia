@@ -1,6 +1,6 @@
 package br.ucb.fct.professores;	
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 import br.ucb.fct.endereco.Endereco;
@@ -17,9 +17,9 @@ public class Professor extends Pessoa{
 			Date dataCadastro, String nome, String cpf, EnumTypeSexo sexo,
 			Date dataNascimento, Endereco endereco,
 			List<Telefone> telefones, String email, Boolean status,
-			Date dataAdmissao) {
+			Date dataAdmissao,String dataNascimentoString, String dateCadastroString) {
 		super(idPessoa, tipoPessoa, dataCadastro, nome, cpf, sexo,
-				dataNascimento, endereco, telefones, email, status);
+				dataNascimento, endereco, telefones, email, status, dataNascimentoString, dateCadastroString);
 		setdataAdmissao(dataAdmissao);
 	}
 	public Professor( EnumTypePessoa tipoPessoa,
