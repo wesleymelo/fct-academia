@@ -58,9 +58,9 @@ public class GeraErros {
 			erros.put("errocidade","cidade_invalida");
 		if(!Validator.isStringValid(req.getParameter("bairro"), 100))
 			erros.put("errobairro", "bairro_invalido");
-		if(!Validator.verificaInteger((Util.unFormat(req.getParameter("cep"))),0,Integer.MAX_VALUE))
+		if(!Validator.verificaTamanho((Util.unFormat(req.getParameter("cep"))),8))
 			erros.put("errocep", "cep_invalido");
-		if(!Validator.verificaInteger(req.getParameter("numero"),0,Integer.MAX_VALUE))
+		if(!Validator.verificaTamanho(req.getParameter("numero"),8))
 			erros.put("erronumero", "numero_invalido");
 		
 		if(!erros.isEmpty())
