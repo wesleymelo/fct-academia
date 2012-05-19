@@ -1,6 +1,6 @@
 package br.ucb.fct.aluno;	
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 import br.ucb.fct.endereco.Endereco;
@@ -17,9 +17,9 @@ public class Aluno extends Pessoa{
 	public Aluno(Integer idPessoa, EnumTypePessoa tipoPessoa, Date dataCadastro, String nome,
 			String cpf, EnumTypeSexo sexo, Date dataNascimento,
 			Endereco endereco, List<Telefone> telefones,
-			String email, Boolean status, Double peso, Double altura) {
+			String email, Boolean status, Double peso, Double altura, String dataNascimentoString, String dateCadastroString) {
 		
-		super(idPessoa,tipoPessoa,dataCadastro,nome, cpf, sexo, dataNascimento, endereco, telefones,email,  status);
+		super(idPessoa,tipoPessoa,dataCadastro,nome, cpf, sexo, dataNascimento, endereco, telefones,email,  status, dataNascimentoString, dateCadastroString);
 		setAltura(altura);
 		setPeso(peso);
 	}
