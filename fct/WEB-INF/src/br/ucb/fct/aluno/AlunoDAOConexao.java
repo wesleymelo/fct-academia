@@ -65,19 +65,22 @@ public class AlunoDAOConexao implements AlunoDAO {
 
 	@Override
 	public boolean update(Aluno aluno, int id) throws DAOException {
-		String sql = "UPDATE alunos SET peso = ?, altura = ?";
+		String sql = "UPDATE alunos SET peso = ?, altura = ? WHERE idAluno = ?";
 		Connection con = null;
 		PreparedStatement ps = null;
 		PessoaDAO dao = Factory.initPessoaDAO();
 		int retorno = 0;
 		
-		if(!dao.update(getPessoaByAluno(aluno),aluno.getIdPessoa()))
+		boolean flag = dao.update(getPessoaByAluno(aluno),id); 
+		
+		if(!flag)
 			return false;
 		try {
 			con = MyConnection.init();
 			ps = con.prepareStatement(sql);
-			ps.setObject(1,aluno.getAltura());
-			ps.setObject(2,aluno.getPeso());
+			ps.setDouble(1,aluno.getAltura());
+			ps.setDouble(2,aluno.getPeso());
+			ps.setInt(3, id);
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -85,7 +88,7 @@ public class AlunoDAOConexao implements AlunoDAO {
 		}finally{
 			MyConnection.closeConnection(con, ps);
 		}
-		return retorno == 0 ? false: Factory.initPessoaDAO().update(getPessoaByAluno(aluno), id);
+		return retorno == 0 ? false: flag;
 		
 	}
 
@@ -132,8 +135,21 @@ public class AlunoDAOConexao implements AlunoDAO {
 	}
 	
 	public static Aluno getAluno(ResultSet rs) throws SQLException{
-		return new Aluno(rs.getInt("idPessoa"), EnumTypePessoa.findEmunTypePessoaByNumber(rs.getInt("tipoPessoa")), Util.formatDateOut(rs.getDate("dataCadastro").toString()), rs.getString("nome"), 
-				  rs.getString("cpf"), EnumTypeSexo.findByCodigo(rs.getString("sexo").charAt(0)), rs.getDate("dataNascimento"), Factory.initEnderecoDAO().selectById(rs.getInt("idPessoa")), Factory.initTelefoneDAO().selectById(rs.getInt("idPessoa")), rs.getString("email"), rs.getBoolean("status"), rs.getDouble("peso"), rs.getDouble("altura"));
+		return new Aluno(rs.getInt("idPessoa"), 
+				         EnumTypePessoa.findEmunTypePessoaByNumber(rs.getInt("tipoPessoa")), 
+				         rs.getDate("dataCadastro"),
+				         rs.getString("nome"), 
+				         rs.getString("cpf"), 
+				         EnumTypeSexo.findByCodigo(rs.getString("sexo").charAt(0)), 
+				         rs.getDate("dataNascimento"),
+				         Factory.initEnderecoDAO().selectById(rs.getInt("idPessoa")), 
+				         Factory.initTelefoneDAO().selectById(rs.getInt("idPessoa")), 
+                         rs.getString("email"), 
+                         rs.getBoolean("status"),
+                         rs.getDouble("peso"),
+                         rs.getDouble("altura"),
+                         Util.getDateView(rs.getDate("dataNascimento").toString(),"/"),
+						 Util.getDateView(rs.getDate("dataCadastro").toString(),"/"));
 	}
 	
 	public static Pessoa getPessoaByAluno(Aluno aluno){
