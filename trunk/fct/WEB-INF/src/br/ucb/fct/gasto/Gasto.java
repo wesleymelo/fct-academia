@@ -3,16 +3,15 @@ package br.ucb.fct.gasto;
 import java.util.Date;
 
 public class Gasto {
-	private Integer idGasto, idDespesa,idSecretaria;
-	private Double valor;
+	private Integer idGasto, idDespesa,idSecretaria,quantidade;
 	private Date data;
 	
 	public Gasto(Integer idGasto, Integer idDespesa,
-			Double valor, Date data, Integer idSecretaria) {
+			Integer quantidade, Date data, Integer idSecretaria) {
 		setIdGasto(idGasto);
 		setIdDespesa(idDespesa);
 		setIdSecretaria(idSecretaria);
-		setValor(valor);
+		setQuantidade(quantidade);		
 		setData(data);
 	}
 	public Integer getIdGasto() {
@@ -33,11 +32,12 @@ public class Gasto {
 	public void setIdSecretaria(Integer idSecretaria) {
 		this.idSecretaria = idSecretaria;
 	}
-	public Double getValor() {
-		return valor;
+	
+	public Integer getQuantidade() {
+		return quantidade;
 	}
-	public void setValor(Double valor) {
-		this.valor = valor;
+	public void setQuantidade(Integer quantidade) {
+		this.quantidade = quantidade;
 	}
 	public Date getData() {
 		return data;
@@ -45,8 +45,6 @@ public class Gasto {
 	public void setData(Date data) {
 		this.data = data;
 	}
-	
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -57,7 +55,8 @@ public class Gasto {
 		result = prime * result + ((idGasto == null) ? 0 : idGasto.hashCode());
 		result = prime * result
 				+ ((idSecretaria == null) ? 0 : idSecretaria.hashCode());
-		result = prime * result + ((valor == null) ? 0 : valor.hashCode());
+		result = prime * result
+				+ ((quantidade == null) ? 0 : quantidade.hashCode());
 		return result;
 	}
 	@Override
@@ -89,14 +88,13 @@ public class Gasto {
 				return false;
 		} else if (!idSecretaria.equals(other.idSecretaria))
 			return false;
-		if (valor == null) {
-			if (other.valor != null)
+		if (quantidade == null) {
+			if (other.quantidade != null)
 				return false;
-		} else if (!valor.equals(other.valor))
+		} else if (!quantidade.equals(other.quantidade))
 			return false;
 		return true;
 	}
-	
 	
 	
 }

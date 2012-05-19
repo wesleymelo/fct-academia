@@ -15,7 +15,7 @@ public class DespesaDAOConexao implements DespesaDAO{
 
 	@Override
 	public boolean insert(Despesa despesa) throws DAOException {
-		String sql="INSERT INTO DESPESAS(idDespesa, descricao, quantidade) VALUES(null,?,?);";
+		String sql="INSERT INTO DESPESAS(idDespesa, descricao, valor) VALUES(null,?,?);";
 		Connection con = null;
 		PreparedStatement ps = null;
 		int retorno;
@@ -23,7 +23,7 @@ public class DespesaDAOConexao implements DespesaDAO{
 			con=MyConnection.init();
 			ps=con.prepareStatement(sql);
 			ps.setString(1,despesa.getDescricao());
-			ps.setInt(2,despesa.getQuantidade());
+			ps.setDouble(2,despesa.getValor());
 			retorno=ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -57,14 +57,14 @@ public class DespesaDAOConexao implements DespesaDAO{
 
 	@Override
 	public boolean update(Despesa despesas, int id) throws DAOException {
-		String sql="UPDATE despesas SET quantidade=?,descricao=?;";
+		String sql="UPDATE despesas SET valor=?,descricao=?;";
 		Connection con=null;
 		PreparedStatement ps=null;
 		int retorno=0;
 		try {
 			con=MyConnection.init();
 			ps=con.prepareStatement(sql);
-			ps.setInt(1,despesas.getQuantidade());
+			ps.setDouble(1,despesas.getValor());
 			ps.setString(2,despesas.getDescricao());
 			ps.setInt(3,id);
 			retorno=ps.executeUpdate();
@@ -121,7 +121,7 @@ public class DespesaDAOConexao implements DespesaDAO{
 	}
 	
 	private Despesa getDespesa(ResultSet rs) throws SQLException {
-		return new Despesa(rs.getInt("idDespesa"),rs.getString("descricao"),rs.getInt("quantidade"));
+		return new Despesa(rs.getInt("idDespesa"),rs.getString("descricao"),rs.getDouble("valor"));
 	}
 	
 

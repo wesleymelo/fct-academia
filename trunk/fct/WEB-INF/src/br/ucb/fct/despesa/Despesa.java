@@ -1,13 +1,14 @@
 package br.ucb.fct.despesa;
 
 public class Despesa {
-	private Integer idDespesa,quantidade;
+	private Integer idDespesa;
+	private Double valor;
 	private String descricao;
 	
 	
-	public Despesa(Integer idDespesa, String descricao, Integer quantidade) {
+	public Despesa(Integer idDespesa, String descricao, Double valor) {
 		setIdDespesa(idDespesa);
-		setQuantidade(quantidade);
+		setValor(valor);
 		setDescricao(descricao);
 	}
 	public Integer getIdDespesa() {
@@ -16,11 +17,12 @@ public class Despesa {
 	public void setIdDespesa(Integer idDespesa) {
 		this.idDespesa = idDespesa;
 	}
-	public Integer getQuantidade() {
-		return quantidade;
+	
+	public Double getValor() {
+		return valor;
 	}
-	public void setQuantidade(Integer quantidade) {
-		this.quantidade = quantidade;
+	public void setValor(Double valor) {
+		this.valor = valor;
 	}
 	public String getDescricao() {
 		return descricao;
@@ -36,8 +38,7 @@ public class Despesa {
 				+ ((descricao == null) ? 0 : descricao.hashCode());
 		result = prime * result
 				+ ((idDespesa == null) ? 0 : idDespesa.hashCode());
-		result = prime * result
-				+ ((quantidade == null) ? 0 : quantidade.hashCode());
+		result = prime * result + ((valor == null) ? 0 : valor.hashCode());
 		return result;
 	}
 	@Override
@@ -59,13 +60,14 @@ public class Despesa {
 				return false;
 		} else if (!idDespesa.equals(other.idDespesa))
 			return false;
-		if (quantidade == null) {
-			if (other.quantidade != null)
+		if (valor == null) {
+			if (other.valor != null)
 				return false;
-		} else if (!quantidade.equals(other.quantidade))
+		} else if (!valor.equals(other.valor))
 			return false;
 		return true;
 	}
+	
 	
 	
 }

@@ -16,7 +16,7 @@ public class GastoDAOConexao implements GastoDAO {
 
 	@Override
 	public boolean insert(Gasto gasto) throws DAOException {
-		String sql="INSERT INTO gastos(idGasto,idDespesa,valor,data,idSecretaria) VALUES (null,?,?,?,?);";
+		String sql="INSERT INTO gastos(idGasto,idDespesa,quantidade,data,idSecretaria) VALUES (null,?,?,?,?);";
 		Connection con = null;
 		PreparedStatement ps = null;
 		int retorno;
@@ -24,7 +24,7 @@ public class GastoDAOConexao implements GastoDAO {
 			con=MyConnection.init();
 			ps=con.prepareStatement(sql);
 			ps.setInt(1,gasto.getIdDespesa());
-			ps.setDouble(2,gasto.getValor());
+			ps.setInt(2,gasto.getQuantidade());
 			ps.setDate(3,(java.sql.Date)gasto.getData());
 			ps.setInt(4,gasto.getIdSecretaria());
 			retorno=ps.executeUpdate();
@@ -68,7 +68,7 @@ public class GastoDAOConexao implements GastoDAO {
 			con=MyConnection.init();
 			ps=con.prepareStatement(sql);
 			ps.setInt(1,gasto.getIdDespesa());
-			ps.setDouble(2,gasto.getValor());
+			ps.setInt(2,gasto.getQuantidade());
 			ps.setDate(3,(java.sql.Date)gasto.getData());
 			ps.setInt(4,gasto.getIdSecretaria());
 			ps.setInt(5,id);
@@ -126,7 +126,7 @@ public class GastoDAOConexao implements GastoDAO {
 	}
 	
 	private Gasto getGasto(ResultSet rs) throws SQLException {
-		return new Gasto(rs.getInt("idGasto"),rs.getInt("idDespesa"),rs.getDouble("valor"),rs.getDate("data"),rs.getInt("idSecretaria"));
+		return new Gasto(rs.getInt("idGasto"),rs.getInt("idDespesa"),rs.getInt("quantidade"),rs.getDate("data"),rs.getInt("idSecretaria"));
 	}
 	
 	
