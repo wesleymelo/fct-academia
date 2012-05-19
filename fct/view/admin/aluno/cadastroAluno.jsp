@@ -37,8 +37,7 @@
 	<div class="grid_12">
 
 		<div class="module">
-			 <h2><span><fmt:message key="cadastroAluno" /></span></h2>
-                    
+			 <h2><span><fmt:message key="cadastroAluno" /></span></h2>         
 					
 			<div class="module-body">
 
@@ -80,7 +79,6 @@
 							<li><label><fmt:message key="sexo"/>:&nbsp;&nbsp;&nbsp;<input type="radio" name="sexo"	checked="checked" id="sexo" value="F" />&nbsp;&nbsp;<fmt:message key="feminino"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="sexo" id="sexo" value="M" />&nbsp;&nbsp;<fmt:message key="masculino"/></label></li>
 						</ul>
 					</fieldset>
-					
 					<p>
 					
 						<label><fmt:message key="cpf"/></label> 
@@ -170,4 +168,3 @@
 <!-- End .container_12 -->
 
 <c:import url="../../includes/footer.jsp" />
-

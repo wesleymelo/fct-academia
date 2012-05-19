@@ -57,18 +57,19 @@ $(document).ready(function() {
 						<thead>
 							<tr>
 								<th style="width: 4%">#</th>
-								<th style="width: 25%"><fmt:message key="nome"/></th>
+								<th style="width: 20%"><fmt:message key="nome"/></th>
 								<th style="width: 10%"><fmt:message key="cpf"/></th>
 								<th style="width: 10%"><fmt:message key="telefones"/></th>
-								<th style="width: 25%"><fmt:message key="email"/></th>
+								<th style="width: 15%"><fmt:message key="email"/></th>
 								<th style="width: 10%"><fmt:message key="sexo"/></th>
+								<th style="width: 10%"><fmt:message key="dataAdmissao"/></th>
 							</tr>
 						</thead>
 						<tbody>
 							<c:forEach var="professor" items="${professores}">
 								<tr>
 									<td class="align-center">${professor.idPessoa}</td>
-									<td><a href="">${professor.nome}</a></td>
+									<td><a href="?id=${professor.idPessoa}&professor=${professor.nome}">${professor.nome}</a></td>
 									<td>${professor.cpf}</td>
 									
 									<td>
@@ -79,6 +80,7 @@ $(document).ready(function() {
 									
 									<td>${professor.email}</td>
 									<td>${professor.sexo.descricao}</td>
+									<td>${professor.dataAdmissao}</td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -130,7 +132,9 @@ $(document).ready(function() {
 			<div class="module-body">
 
 				<form action="cadastroTurma.do" method="post">
-
+					
+					<input type="hidden" name="idProfessor" value="${param.id}" />
+					
 					<p>
 						<label><fmt:message key="nome"/></label>
 						<input type="text" class="input-short" name="nome" id="nome" value="${param.nome }"/>
@@ -172,7 +176,7 @@ $(document).ready(function() {
 						</c:if>                        
 					</p>
 
-
+	
 					<fieldset>
 						<ul>
 							<li><label><fmt:message key="sexo"/>:&nbsp;&nbsp;&nbsp;<input type="radio" name="sexo"	checked="checked" id="sexo" value="F" />&nbsp;&nbsp;<fmt:message key="feminino"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="sexo" id="sexo" value="M" />&nbsp;&nbsp;<fmt:message key="masculino"/></label></li>
