@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <c:import url="../../includes/header.jsp" />
@@ -8,7 +8,6 @@
 <div class="container_12">
 	
 	<div class="grid_12">
-		
 		
 		<!-- Button -->
 		<div class="float-right">
@@ -54,21 +53,27 @@
 							<span class="notification-input ni-error"><fmt:message key="nome_invalido"/></span>
 						</c:if>
 						
-					</p>
+					</p>					
 					
 					<p>
                         <label><fmt:message key="nascimento"/></label> 
-                        <input type="text" class="input-short-short" name="dataNasc" id="dataNasc" value="${param.dataNasc }" />
+                        <input type="text" class="input-short-short" readonly="readonly" name="dataNasc" id="dataNasc" value="${param.dataNasc }" />
                         <c:if test="${not empty erros['errodataNasc'] }">
 							<span class="notification-input ni-error"><fmt:message key="dataNasc_invalido"/></span>
-						</c:if>                        
+						</c:if>  
+						
+						
+						<!--  -->
+						<script>
+							$(function() {
+								$( "#dataNasc").datepicker({
+									changeMonth: true,
+									changeYear: true
+								});
+							});
+						</script>
+						                      
 					</p>
-					
-					<script>
-						jQuery(function($){
-      							$("#dataNasc").mask("99/99/9999");
-      						});
-					</script>
 
 					<fieldset>
 						<ul>
