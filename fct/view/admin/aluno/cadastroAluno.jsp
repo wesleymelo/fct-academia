@@ -61,6 +61,17 @@
                         <c:if test="${not empty erros['errodataNasc'] }">
 							<span class="notification-input ni-error"><fmt:message key="dataNasc_invalido"/></span>
 						</c:if>  
+						
+						
+						<!--  -->
+						<script>
+							$(function() {
+								$( "#dataNasc").datepicker({
+									changeMonth: true,
+									changeYear: true
+								});
+							});
+						</script>
 						                      
 					</p>
 
@@ -69,6 +80,7 @@
 							<li><label><fmt:message key="sexo"/>:&nbsp;&nbsp;&nbsp;<input type="radio" name="sexo"	checked="checked" id="sexo" value="F" />&nbsp;&nbsp;<fmt:message key="feminino"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="sexo" id="sexo" value="M" />&nbsp;&nbsp;<fmt:message key="masculino"/></label></li>
 						</ul>
 					</fieldset>
+					
 					<p>
 					
 						<label><fmt:message key="cpf"/></label> 
@@ -78,12 +90,7 @@
 						</c:if>                        
 					
 					</p>
-<<<<<<< .mine
-					
-					
-=======
 				
->>>>>>> .r370
 					<p>
 						<label><fmt:message key="email"/></label> 
 						<input type="text" class="input-short" name="email" id="email" value="${param.email }"/>
@@ -99,11 +106,8 @@
 							<span class="notification-input ni-error"><fmt:message key="telefone_invalido"/></span>
 						</c:if>                        
 					</p>
-<<<<<<< .mine
-=======
 					
 					
->>>>>>> .r370
 
 					<p>
 						<label><fmt:message key="residencial"/></label> 
@@ -113,10 +117,7 @@
 						</c:if>                        
 					</p>
 					
-<<<<<<< .mine
-=======
 					
->>>>>>> .r370
 					
 					<p>
 						<label><fmt:message key="comercial"/></label> 
@@ -127,26 +128,12 @@
 					</p>
 					
 					<script>
-					
-						//var $j = JQuery.noConflict();
-					
 						jQuery(function($){
-<<<<<<< .mine
-								$( "#dataNasc").datepicker({
-									changeMonth: true,
-									changeYear: true
-								});
-								$("#cpf").mask("999.999.999-99");
-								$("#celular").mask("(99)9999-9999");	
-								$("#residencial").mask("(99)9999-9999");
-      							$("#comercial").mask("(99)9999-9999");
-=======
 							$("#cpf").mask("999.999.999-99");
 							$("#celular").mask("(99)9999-9999");
   							$("#residencial").mask("(99)9999-9999");
       						$("#comercial").mask("(99)9999-9999");
->>>>>>> .r370
-      					});
+      						});
 					</script>
 					
 					<p>
@@ -183,3 +170,4 @@
 <!-- End .container_12 -->
 
 <c:import url="../../includes/footer.jsp" />
+
