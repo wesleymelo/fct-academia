@@ -16,7 +16,7 @@ import br.ucb.fct.endereco.Endereco;
 import br.ucb.fct.enuns.EnumTypeFone;
 import br.ucb.fct.enuns.EnumTypeSexo;
 
-import br.ucb.fct.professores.Professor;
+import br.ucb.fct.professor.Professor;
 import br.ucb.fct.telefone.Telefone;
 import br.ucb.fct.util.Factory;
 import br.ucb.fct.util.GeraErros;
