@@ -103,11 +103,19 @@ public class GeraErros {
 			erros.put("errosalario", "salario_invalida");
 		if(!Validator.isStringValid(Util.unFormat(req.getParameter("dataAdmissao")),8))
 			erros.put("errodataAdmissao", "dataAdmissao_invalido");
-		if(!Validator.isStringValid(Util.unFormat(req.getParameter("horarioFinal")),5))
-			erros.put("errohorarioFinal", "horarioFinal_invalido");		
-		if(!Validator.isStringValid(Util.unFormat(req.getParameter("horarioInicial")),5))
-			erros.put("errohorarioInicial", "horarioInicial_invalido");
-	
+		
+		
+		if(!(erros.containsKey("errodataNasc")||erros.containsKey("errodataAdmissao")))
+		{
+		
+			if(!(Validator.verificaPeriodoData(req.getParameter("dataNasc").toString(),req.getParameter("dataAdmissao").toString() )<0))
+				erros.put("errodataAdmIguaNasc", "dataAdmissaoIgualDataNasc_invalido");
+		}
+		
+		
+		
+		if(!erros.isEmpty())
+			Util.putAtribuRequisicaoSecretaria(req);
 		
 		return erros;
 	}
@@ -133,6 +141,12 @@ public class GeraErros {
 
 		if(!Validator.isStringValid(Util.unFormat(req.getParameter("dataAdmissao")),8))
 			erros.put("errodataAdmissao", "dataAdmissao_invalido");
+		if(!(erros.containsKey("errodataNasc")||erros.containsKey("errodataAdmissao")))
+			{
+			
+				if(!(Validator.verificaPeriodoData(req.getParameter("dataNasc").toString(),req.getParameter("dataAdmissao").toString() )<0))
+					erros.put("errodataAdmIguaNasc", "dataAdmissaoIgualDataNasc_invalido");
+			}
 		
 		if(!erros.isEmpty()){
 			Util.putAtribuRequisicaoProfessor(req);
@@ -167,16 +181,3 @@ public class GeraErros {
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
