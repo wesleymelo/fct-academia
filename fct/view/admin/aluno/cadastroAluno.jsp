@@ -47,15 +47,16 @@
 
 					<p>
 						<label><fmt:message key="nome"/></label>
-						<input type="text" class="input-short" name="nome" id="nome" value="${nome }"/>
+						<input type="text" class="input-short" name="nome" id="nome" value="${nome}"/>
 						<c:if test="${not empty erros['erronome'] }">
 							<span class="notification-input ni-error"><fmt:message key="nome_invalido"/></span>
 						</c:if>
 						
 					</p>					
+					
 					<p>
                         <label><fmt:message key="nascimento"/></label> 
-                        <input type="text" class="input-short-short" readonly="readonly" name="dataNasc" id="dataNasc" value="${dataNasc }" />
+                        <input type="text" class="input-short-short" readonly="readonly" name="dataNasc" id="dataNasc" value="${dataNasc}" />
                         <c:if test="${not empty erros['errodataNasc'] }">
 							<span class="notification-input ni-error"><fmt:message key="dataNasc_invalido"/></span>
 						</c:if>  
@@ -77,26 +78,24 @@
 						<ul>
 							<li><label><fmt:message key="sexo"/>:&nbsp;&nbsp;&nbsp;
 							
-							<input type="radio" name="sexo"	
-								<c:if test="${empty sexo or (sexo == 'F') }">
+								<input type="radio" name="sexo"	
+									 <c:if test="${empty sexo or (sexo == 'F') }">
+										checked="checked"
+									</c:if> 
+									 id="sexo" value="F" />
+									&nbsp;&nbsp;<fmt:message key="feminino"/>&nbsp;&nbsp;&nbsp;&nbsp;
+							
+								<input type="radio" 
+							
+							 <c:if test="${(sexo == 'M') }">
 									checked="checked"
-								</c:if>
-								
-							 id="sexo" value="F" />
-							
-							&nbsp;&nbsp;<fmt:message key="feminino"/>&nbsp;&nbsp;&nbsp;&nbsp;
-							
-							<input type="radio" 
-							
-							<c:if test="${(sexo == 'M') }">
-									checked="checked"
-							</c:if>
+							</c:if> 
 							name="sexo" id="sexo" value="M" />
-							&nbsp;&nbsp;<fmt:message key="masculino"/></label></li>
+							&nbsp;&nbsp;<fmt:message key="masculino"/></label></li> 
 						</ul>
 					</fieldset>
 					
-					<p>
+					 <p>
 					
 						<label><fmt:message key="cpf"/></label> 
 						<input type="text" class="input-short-short" name="cpf" id="cpf" value="${cpf }" />
@@ -157,7 +156,7 @@
 							<span class="notification-input ni-error"><fmt:message key="altura_invalida"/></span>
 						</c:if> 
 					</p>
-
+ 
 					<p>
 						<label><fmt:message key="peso"/></label> 
 						<input type="text" class="input-short-short" name="peso" id="peso" value="${peso }" />
