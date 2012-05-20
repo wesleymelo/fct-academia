@@ -12,24 +12,30 @@ import br.ucb.fct.telefone.Telefone;
 public class Professor extends Pessoa{
 	
 	private Date dataAdmissao;
+	private String dataAdmissaoString;
 	
 	public Professor(Integer idPessoa, EnumTypePessoa tipoPessoa,
 			Date dataCadastro, String nome, String cpf, EnumTypeSexo sexo,
 			Date dataNascimento, Endereco endereco,
 			List<Telefone> telefones, String email, Boolean status,
 			Date dataAdmissao,String dataNascimentoString, String dateCadastroString) {
-		super(idPessoa, tipoPessoa, dataCadastro, nome, cpf, sexo,
-				dataNascimento, endereco, telefones, email, status, dataNascimentoString, dateCadastroString);
+		super(idPessoa, tipoPessoa, dataCadastro, 
+			  nome, cpf, sexo,
+			  dataNascimento, endereco, telefones, 
+			  email, status, dataNascimentoString, 
+			  dateCadastroString);
 		setdataAdmissao(dataAdmissao);
+		setDateCadastroString(dateCadastroString);
 	}
 	public Professor( EnumTypePessoa tipoPessoa,
 			Date dataCadastro, String nome, String cpf, EnumTypeSexo sexo,
 			Date dataNascimento, Endereco endereco,
 			List<Telefone> telefones, String email, Boolean status,
-			Date dataAdmissao) {
+			Date dataAdmissao,String dateCadastroString) {
 		super( tipoPessoa, dataCadastro, nome, cpf, sexo,
 				dataNascimento, endereco, telefones, email, status);
 		setdataAdmissao(dataAdmissao);
+		setDateCadastroString(dateCadastroString);
 	}
 
 	public Date getDataAdmissao() {
@@ -64,5 +70,11 @@ public class Professor extends Pessoa{
 		} else if (!getDataAdmissao().equals(other.getDataAdmissao()))
 			return false;
 		return true;
+	}
+	public String getDataAdmissaoString() {
+		return dataAdmissaoString;
+	}
+	public void setDataAdmissaoString(String dataAdmissaoString) {
+		this.dataAdmissaoString = dataAdmissaoString;
 	}
 }
