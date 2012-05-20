@@ -54,7 +54,7 @@
 
 					<p>
 						<label><fmt:message key="nome" /></label> <input type="text"
-							class="input-short" name="nome" id="nome" value="${nome }" />
+							class="input-short" name="nome" id="nome" value="${param.nome }" />
 						<c:if test="${not empty erros['erronome'] }">
 							<span class="notification-input ni-error"><fmt:message
 									key="nome_invalido" /></span>
@@ -81,7 +81,6 @@
 						</script>
 						                      
 					</p>
-
 					<fieldset>
 						<ul>
 							<li><label><fmt:message key="sexo"/>:&nbsp;&nbsp;&nbsp;
@@ -121,8 +120,7 @@
 						<c:if test="${not empty erros['erroemail'] }">
 							<span class="notification-input ni-error"><fmt:message key="email_invalido"/></span>
 						</c:if>                        
-					<p>
-					
+					<p>					
 					<p>	
 						<label><fmt:message key="celular"/></label>
 						<input type="text" class="input-short-short" name="celular" id="celular" value="${celular }" />
@@ -161,7 +159,7 @@
 					</script>
 					
 					<p>
-						
+
 					</p>
 					
 					<label><fmt:message key="dataAdmissao"/></label> 
