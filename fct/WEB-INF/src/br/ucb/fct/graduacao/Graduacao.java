@@ -4,9 +4,15 @@ public class Graduacao {
 	
 	private Integer idGraduacao;
 	private Integer idModalidade;
-	private String descricao;
+	private String descricao, modalidadeString;
 	
 	
+	public String getModalidadeString() {
+		return modalidadeString;
+	}
+	public void setModalidadeString(String modalidadeString) {
+		this.modalidadeString = modalidadeString;
+	}
 	public Integer getIdGraduacao() {
 		return idGraduacao;
 	}
@@ -30,10 +36,11 @@ public class Graduacao {
 	}
 	
 	public Graduacao(Integer idGraduacao, Integer idModalidade,
-			String descricao) {
+			String descricao, String modalidadeString ) {
 		setDescricao(descricao);
 		setIdGraduacao(idGraduacao);
 		setIdModalidade(idModalidade);
+		setModalidadeString(modalidadeString);
 	}
 	
 	public Graduacao(Integer idModalidade,
@@ -46,7 +53,7 @@ public class Graduacao {
 	public boolean equals(Object obj) {
 		if(obj instanceof Graduacao){
 			Graduacao graducao = (Graduacao) obj;
-			return getDescricao().equalsIgnoreCase(graducao.getDescricao());
+			return getDescricao().equalsIgnoreCase(graducao.getDescricao()) && getIdModalidade() == graducao.getIdModalidade();
 		}
 		return false;
 		
