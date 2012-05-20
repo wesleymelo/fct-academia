@@ -41,7 +41,7 @@ public class Pessoa {
 		setEmail(email);
 		setStatus(status);
 		setDateNascimentoString(dataNascimentoString);
-		setDateCadastroString(dataNascimentoString);
+		setDateCadastroString(dateCadastroString);
 		
 	}
 
