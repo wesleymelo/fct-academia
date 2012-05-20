@@ -6,92 +6,14 @@
 <c:import url="../../includes/header.jsp" />
 
 <script type="text/javascript">
-$(document).ready(function() {	
-	$('a[name=modal]').click(function(e) {
-		e.preventDefault();
-		var id = $(this).attr('href');
-		var maskHeight = $(document).height();
-		var maskWidth = $(window).width();
-
-		$('#mask').css({'width':maskWidth,'height':maskHeight});
-		$('#mask').fadeIn(1000);	
-		$('#mask').fadeTo("slow",0.8);	
-
-		//Get the window height and width
-		var winH = $(window).height();
-		var winW = $(window).width();
-		$(id).css('top',  winH/2-$(id).height()/2);
-		$(id).css('left', winW/2-$(id).width()/2);
-		$(id).fadeIn(2000); 
-
-	});
-
-	$('.window .close').click(function (e) {
-		e.preventDefault();
-		$('#mask').hide();
-		$('.window').hide();
-	});		
-
-	$('#mask').click(function () {
-		$(this).hide();
-		$('.window').hide();
-	});			
-
-});
-
+	function abrir(programa,janela)
+	{
+   		if(janela=="") janela = "janela";
+   			window.open(programa,janela,'height=350,width=640');
+	}
 </script>
 
 
-<!-- janela modal -->
-<div id="boxes">
-
-<div id="dialog" class="window">
-	<a href="#" class="close"><fmt:message key="fechar"/></a>
-	
-			<h2>
-				<fmt:message key="professores"/>
-			</h2>
-
-				<form action='' method="post">
-					<table>
-						<thead>
-							<tr>
-								<th style="width: 4%">#</th>
-								<th style="width: 15%"><fmt:message key="nome"/></th>
-								<th style="width: 10%"><fmt:message key="cpf"/></th>
-								<th style="width: 15%"><fmt:message key="telefones"/></th>
-								<th style="width: 15%"><fmt:message key="email"/></th>
-								<th style="width: 10%"><fmt:message key="sexo"/></th>
-								<th style="width: 10%"><fmt:message key="dataAdmissao"/></th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="professor" items="${professores}">
-								<tr>
-									<td class="align-center">${professor.idPessoa}</td>
-									<td >${professor.nome}</td>
-									<td>${professor.cpf}</td>
-									
-									<td>
-										<c:forEach var="telefone" items="${professor.telefones}">
-											(${telefone.ddd}) ${telefone.numero} <br />
-										</c:forEach>
-									</td>
-									
-									<td>${professor.email}</td>
-									<td>${professor.sexo.descricao}</td>
-									<td>${professor.dataAdmissao}</td>
-								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
-				</form>	
-</div>
-
-<div id="mask"></div>
-
-</div>
-<!-- end janela modal -->
 <div class="container_12">
 	
 	<div class="grid_12">
@@ -133,7 +55,7 @@ $(document).ready(function() {
 
 				<form action="cadastroTurma.do" method="post">
 					
-					<input type="hidden" name="idProfessor" value="${param.id}" />
+					<input type="hidden" name="idProfessor" id="idProfessor" value="${param.id}" />
 					
 					<p>
 						<label><fmt:message key="nome"/></label>
@@ -170,7 +92,7 @@ $(document).ready(function() {
 
 					<p>
                         <label><fmt:message key="professor"/></label>
-                        <input type="text" class="input-short-short" name="professor" id="professor" readonly="readonly" value="${param.professor}" /><a href="#dialog" name="modal"> <fmt:message key="buscar"/></a>
+                        <input type="text" class="input-short-short" name="professor" id="professor" readonly="readonly" value="${param.professor}" /><a href="javascript:abrir('buscaProfessor.do')"> <fmt:message key="buscar"/> </a>
                         <c:if test="${not empty erros['erroProfessor'] }">
 							<span class="notification-input ni-error"><fmt:message key="professor_invalido"/></span>
 						</c:if>                        
@@ -264,7 +186,7 @@ $(document).ready(function() {
 					</p>
 
 					<fieldset>
-						<input class="submit-green" type="submit" value="Próximo" /> <input
+						<input class="submit-green" type="submit" value="PrÃ³ximo" /> <input
 						class="submit-gray" type="submit" value="Cancelar" />
 					</fieldset>
 
