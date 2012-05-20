@@ -131,10 +131,9 @@ public class GeraErros {
 		if(!Validator.verificaTamanho(Util.unFormat(req.getParameter("comercial")),10))
 			erros.put("errocomercial", "telefone_invalido");
 
-		if(!Validator.isStringValid(Util.unFormat(req.getParameter("dataAdmissao")),8)){
+		if(!Validator.isStringValid(Util.unFormat(req.getParameter("dataAdmissao")),8))
 			erros.put("errodataAdmissao", "dataAdmissao_invalido");
-			System.out.println("if(!Validator.isStringValid(Util.unFormat(req.getParameter('dataAdmissao')),8)){erros.put('errodataAdmissao', 'dataAdmissao_invalido');");
-		}
+		
 		if(!erros.isEmpty()){
 			Util.putAtribuRequisicaoProfessor(req);
 		}	
