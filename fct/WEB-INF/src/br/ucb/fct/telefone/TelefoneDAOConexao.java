@@ -37,6 +37,7 @@ public class TelefoneDAOConexao implements TelefoneDAO{
 	}
 	
 	public boolean insert(List<Telefone> telefones) throws DAOException{
+	
 		for (Telefone tel : telefones) {
 			if(!insert(tel))
 				return false;
@@ -44,7 +45,6 @@ public class TelefoneDAOConexao implements TelefoneDAO{
 		return true;
 	}
 	
-
 	@Override
 	public boolean delete(int id) throws DAOException {
 		String sql = "DELETE FROM telefones WHERE idTelefones = ?";
@@ -63,8 +63,8 @@ public class TelefoneDAOConexao implements TelefoneDAO{
 	}
 
 	@Override
-	public boolean update(Telefone telefone, int id) throws DAOException {
-		String sql = "UPDATE telefones SET ddd = ?, numero = ?, tipo = ?";
+	public boolean update(Telefone telefone, int id, int tipo) throws DAOException {
+		String sql = "UPDATE telefones SET ddd = ?, numero = ? WHERE idPessoa = ? AND tipo = ?";
 		Connection con = MyConnection.init();
 		int retorno;
 		PreparedStatement ps;
@@ -72,7 +72,8 @@ public class TelefoneDAOConexao implements TelefoneDAO{
 			ps = con.prepareStatement(sql);
 			ps.setString(1,telefone.getDdd());
 			ps.setString(2, telefone.getNumero());
-			ps.setInt(3, telefone.getTipo().getNumber());
+			ps.setInt(3, id);
+			ps.setInt(4,tipo);
 			retorno = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -81,6 +82,17 @@ public class TelefoneDAOConexao implements TelefoneDAO{
 		return retorno == 0 ? false: true;
 		
 	}
+	
+	@Override
+	public boolean update(List<Telefone> telefones, int id) throws DAOException {
+		
+		for (Telefone tel : telefones) {
+			if(!update(tel, id, tel.getTipo().getNumber()))
+				return false;
+		}
+		return true;
+	}
+	
 
 	@Override
 	public List<Telefone> selectById(int id) throws DAOException {
