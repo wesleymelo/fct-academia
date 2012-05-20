@@ -17,7 +17,7 @@ import br.ucb.fct.enuns.EnumTypePessoa;
 import br.ucb.fct.enuns.EnumTypeSexo;
 import br.ucb.fct.graduacao.Graduacao;
 import br.ucb.fct.pessoa.Pessoa;
-import br.ucb.fct.professores.Professor;
+import br.ucb.fct.professor.Professor;
 import br.ucb.fct.secretaria.Secretaria;
 import br.ucb.fct.telefone.Telefone;
 
