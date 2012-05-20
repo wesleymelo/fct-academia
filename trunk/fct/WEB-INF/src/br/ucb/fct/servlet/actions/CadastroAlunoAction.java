@@ -56,7 +56,7 @@ public class CadastroAlunoAction implements Action {
 						if(Factory.initAlunoDAO().insert(aluno))
 							retorno = Factory.initTelefoneDAO().insert(aluno.getTelefones());
 					}
-					return "../../admin/aluno/listaAlunos.do?status="+retorno;
+					return "/view/admin/aluno/listaAlunos.do?status="+retorno;
 				}
 			case 3:				
 				erros = GeraErros.verificaErrosAlunos(req);
@@ -69,19 +69,17 @@ public class CadastroAlunoAction implements Action {
 					setSessionAluno(sessao, req);
 					Aluno aluno = Util.getCadastroAluno(req);				
 					if(Factory.initAlunoDAO().update(aluno, Integer.parseInt(req.getParameter("codigo")))){
-						if(Factory.initTelefoneDAO().insert(aluno.getTelefones())){
+						if(Factory.initTelefoneDAO().update(aluno.getTelefones(),Integer.parseInt(req.getParameter("codigo")))){
 							Endereco endereco = Factory.initEnderecoDAO().selectById(Integer.parseInt(req.getParameter("codigo").toString()));
 							Util.putAtribuRequisicaoPessoaEndereco(req,endereco);
 							req.setAttribute("codigo",endereco.getIdEndereco());
+							return "/view/admin/aluno/alteraCadastroAlunoEndereco.jsp";
 						}
 					}
-					return "../../admin/aluno/alteraCadastroAlunoEndereco.jsp";
 				}
+				break;
 			case 4:
 				erros = GeraErros.verificaErrosEndereco(req);
-				
-				
-				System.out.println("codigo "+req.getParameter("codigo"));
 				
 				if(!erros.isEmpty()){
 					req.setAttribute("erros", erros);
@@ -92,7 +90,7 @@ public class CadastroAlunoAction implements Action {
 					System.out.println("codigo "+req.getParameter("codigo"));
 					Endereco endereco = Util.getEnderecoCadastro(req);
 					retorno = Factory.initEnderecoDAO().update(endereco,Integer.parseInt(req.getParameter("codigo")));
-					return "../../admin/aluno/listaAlunos.do?status="+retorno;
+					return "/view/admin/aluno/listaAlunos.do?status="+retorno;
 				}
 		}
 		return null;
@@ -109,7 +107,7 @@ public class CadastroAlunoAction implements Action {
 		sessao.setAttribute("email",req.getParameter("email"));
 
 		// telefone
-
+		
 		List<Telefone> tel = new ArrayList<Telefone>();		
 		String [] fone = Util.formateTelOut(Util.unFormat(req.getParameter("celular")));		
 		tel.add(new Telefone(fone[0], fone[1], EnumTypeFone.CELULAR));		
