@@ -63,23 +63,24 @@ public class EnderecoDAOConexao implements EnderecoDAO {
 
 	@Override
 	public boolean update(Endereco endereco, int id) throws DAOException {
-		String sql = "UPDATE enderecos  SET enderecoResidencial = ?, complemento = ?, bairro = ?, cidade = ?, uf = ?, cep = ?, numero = ? WHERE = ? ;";
+		String sql = "UPDATE enderecos  SET enderecoResidencial = ?, complemento = ?, bairro = ?, cidade = ?, uf = ?, cep = ?, numero = ? WHERE idEndereco= ? ;";
 		Connection con = MyConnection.init();
 		PreparedStatement ps = null;
 		int retorno;
 		try {
 			ps = con.prepareStatement(sql);
-			ps.setObject(1,endereco.getEnderecoResidencial());
-			ps.setObject(2,endereco.getComplemento());
-			ps.setObject(3,endereco.getBairro());
-			ps.setObject(4,endereco.getCidade());
-			ps.setObject(5,endereco.getUf());
-			ps.setObject(6,endereco.getCep());
-			ps.setObject(7,endereco.getNumero());
+			ps.setString(1,endereco.getEnderecoResidencial());
+			ps.setString(2,endereco.getComplemento());
+			ps.setString(3,endereco.getBairro());
+			ps.setString(4,endereco.getCidade());
+			ps.setString(5,endereco.getUf());
+			ps.setString(6,endereco.getCep());
+			ps.setInt(7,endereco.getNumero());
+			ps.setInt(8,id);
 			retorno = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DAOException(e,"ERRO! DELETE na TABELA ENDERECOS. DATA("+new Date()+")");
+			throw new DAOException(e,"ERRO! UPDATE na TABELA ENDERECOS. DATA("+new Date()+")");
 		}finally{
 			MyConnection.closeConnection(con, ps);
 		}
