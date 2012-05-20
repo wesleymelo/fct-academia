@@ -48,12 +48,6 @@
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/view/css/thickbox.css"
 	media="screen" />
-	
-<!-- Modal stylesheet -->
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/view/css/modal.css"
-	media="screen" />	
-	
 
 <!-- Themes. Below are several color themes. Uncomment the line of your choice to switch to different color. All styles commented out means blue theme. -->
 <link rel="stylesheet" type="text/css"  href="${pageContext.request.contextPath}/view/css/theme.css"
@@ -77,7 +71,6 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/view/js/datepicker/jquery.ui.widget.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/view/js/datepicker/jquery.ui.datepicker.js"></script>
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/view/js/jquery-1.5.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/view/js/jquery.ui.core.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/view/js/jquery.ui.widget.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/view/js/jquery.ui.tabs.min.js"></script>
