@@ -144,7 +144,6 @@ public class GeraErros {
 	public static Map<String, String> verificaExisteAluno(HttpServletRequest req) {
 		
 		Map<String, String> erros = new HashMap<String, String>();
-		
 		if(Validator.isExisteAluno(Factory.initAlunoDAO().selectById(Integer.parseInt(req.getParameter("id")))))
 			erros.put("erroaluno", "aluno_nao_existe");
 		
@@ -157,4 +156,27 @@ public class GeraErros {
 		return null;
 	}
 
+	public static Map<String, String> verificaErrosGraduacao(HttpServletRequest req) {
+		
+		Map<String, String> erros = new HashMap<String, String>();
+		if(!Validator.isStringValid(req.getParameter("descricao"), 100))
+			erros.put("errodescricao","decricao_invalido");
+		if(!erros.isEmpty())
+			Util.putAtribuRequisicaoGraducao(req);
+		return erros;
+	}
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

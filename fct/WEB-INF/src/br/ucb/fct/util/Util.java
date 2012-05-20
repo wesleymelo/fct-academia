@@ -15,6 +15,7 @@ import br.ucb.fct.endereco.Endereco;
 import br.ucb.fct.enuns.EnumTypeFone;
 import br.ucb.fct.enuns.EnumTypePessoa;
 import br.ucb.fct.enuns.EnumTypeSexo;
+import br.ucb.fct.graduacao.Graduacao;
 import br.ucb.fct.pessoa.Pessoa;
 import br.ucb.fct.professores.Professor;
 import br.ucb.fct.secretaria.Secretaria;
@@ -242,5 +243,20 @@ public class Util {
 		req.setAttribute("estados", Factory.initEnderecoDAO().selectEstados());
 		req.setAttribute("numero", endereco.getNumero());
 		req.setAttribute("complemento", endereco.getComplemento());
-	}	
+	}
+
+
+	public static Graduacao getCadastroGraduacao(HttpServletRequest req) {
+		return new Graduacao(Integer.parseInt(req.getParameter("modali")), req.getParameter("descricao"));
+	}
+	
+	public static void putAtribuRequisicaoGraducao(HttpServletRequest req){
+		req.setAttribute("descricao", req.getParameter("descricao"));
+		req.setAttribute("modali", req.getParameter("modali"));
+	}
+	
+	public static void putAtribuRequisicaoGraducao(HttpServletRequest req, Graduacao graduacao){
+		req.setAttribute("descricao", graduacao.getDescricao());
+		req.setAttribute("modali", graduacao.getIdModalidade());
+	}
 }
