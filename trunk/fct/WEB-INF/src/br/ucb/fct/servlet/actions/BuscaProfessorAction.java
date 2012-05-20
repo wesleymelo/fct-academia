@@ -9,8 +9,12 @@ public class BuscaProfessorAction implements Action {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) {
-		req.setAttribute("professores", Factory.initProfessorDAO().selectAll());
-		return "/view/admin/turma/cadastroTurma.jsp";
+		
+		if(req.getParameter("busca") != null && !req.getParameter("busca").isEmpty())
+			req.setAttribute("professores", Factory.initProfessorDAO().selectByNome(req.getParameter("busca")));
+		else
+			req.setAttribute("professores", Factory.initProfessorDAO().selectAll());
+		return "/view/admin/turma/popupListaProfessores.jsp";
 	}
 
 }

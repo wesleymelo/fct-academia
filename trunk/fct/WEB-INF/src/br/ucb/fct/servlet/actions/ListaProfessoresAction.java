@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.ucb.fct.aluno.Aluno;
-import br.ucb.fct.professores.Professor;
+import br.ucb.fct.professor.Professor;
 import br.ucb.fct.util.Factory;
 
 public class ListaProfessoresAction  implements Action{
