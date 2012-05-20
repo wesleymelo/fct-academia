@@ -167,7 +167,8 @@ public class Util {
 		List<Telefone> telefones = (List<Telefone>) req.getSession().getAttribute("telefones"); 
 		Endereco endereco = null;
 		Date dataAdmissao = formatDateIn((String) req.getSession().getAttribute("dataAdmissao"));
-		Professor professor = new Professor(EnumTypePessoa.PROFESSOR, dataCadas, nome, cpf, sexo, dataNasc, endereco, telefones, email, true, dataAdmissao); 
+		String dataAdmissaoString = (String) req.getSession().getAttribute("dataAdmissao");
+		Professor professor = new Professor(EnumTypePessoa.PROFESSOR, dataCadas, nome, cpf, sexo, dataNasc, endereco, telefones, email, true, dataAdmissao,dataAdmissaoString); 
 		System.out.println(professor);
 		return professor;
 	}
@@ -184,6 +185,24 @@ public class Util {
 		putAtribuRequisicaoPessoa(req,professor);
 		req.setAttribute("dataAdmissao", professor.getDataAdmissao());
 	}
+	
+	public static void putAtribuRequisicaoSecretaria(HttpServletRequest req){
+		
+		putAtribuRequisicaoPessoa(req);
+		req.setAttribute("salario", req.getParameter("salario"));
+		req.setAttribute("dataAdmissao", req.getParameter("dataAdmissao"));
+		req.setAttribute("horarioFinal", req.getParameter("horarioFinal"));
+		req.setAttribute("horarioInicial", req.getParameter("horarioInicial"));
+	}
+	
+	public static void putAtribuRequisicaoSecretaria(HttpServletRequest req, Professor professor){
+		
+		putAtribuRequisicaoPessoa(req,professor);
+		req.setAttribute("dataAdmissao", professor.getDataAdmissao());
+		req.setAttribute("horarioFinal", professor.getDataAdmissao());
+		req.setAttribute("horarioInicial", professor.getDataAdmissao());
+	}
+	
 	public static void putAtribuRequisicaoAluno(HttpServletRequest req){
 		
 		putAtribuRequisicaoPessoa(req);
@@ -243,20 +262,7 @@ public class Util {
 		req.setAttribute("estados", Factory.initEnderecoDAO().selectEstados());
 		req.setAttribute("numero", endereco.getNumero());
 		req.setAttribute("complemento", endereco.getComplemento());
-	}
-
-
-	public static Graduacao getCadastroGraduacao(HttpServletRequest req) {
-		return new Graduacao(Integer.parseInt(req.getParameter("modali")), req.getParameter("descricao"));
-	}
 	
-	public static void putAtribuRequisicaoGraducao(HttpServletRequest req){
-		req.setAttribute("descricao", req.getParameter("descricao"));
-		req.setAttribute("modali", req.getParameter("modali"));
-	}
+	}	
 	
-	public static void putAtribuRequisicaoGraducao(HttpServletRequest req, Graduacao graduacao){
-		req.setAttribute("descricao", graduacao.getDescricao());
-		req.setAttribute("modali", graduacao.getIdModalidade());
-	}
 }
