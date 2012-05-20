@@ -32,9 +32,6 @@ public class PessoaDAOConexao implements PessoaDAO {
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1,pessoa.getTipoPessoa().getNumber());
-			
-			System.out.println(pessoa.getDataNascimento()+" C"+ pessoa.getDataCadastro());
-			
 			ps.setDate(2, pessoa.getDataCadastro());
 			ps.setString(3, pessoa.getNome());
 			ps.setString(4, pessoa.getCpf());
