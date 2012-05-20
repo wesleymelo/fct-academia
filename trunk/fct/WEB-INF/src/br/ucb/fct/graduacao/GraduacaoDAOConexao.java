@@ -11,6 +11,7 @@ import java.util.List;
 
 import br.ucb.fct.connection.MyConnection;
 import br.ucb.fct.exceptions.DAOException;
+import br.ucb.fct.util.Factory;
 
 public class GraduacaoDAOConexao implements GraduacaoDAO {
 
@@ -116,6 +117,6 @@ public class GraduacaoDAOConexao implements GraduacaoDAO {
 	}
 	
 	public Graduacao getGraduacao(ResultSet rs) throws SQLException{
-		return new Graduacao(rs.getInt("idGraduacao"), rs.getInt("idModalidade"), rs.getString("descricao"));
+		return new Graduacao(rs.getInt("idGraduacao"), rs.getInt("idModalidade"), rs.getString("descricao"), Factory.initModalidadeDAO().selectById(rs.getInt("idModalidade")).getDescricao());
 	}
 }
