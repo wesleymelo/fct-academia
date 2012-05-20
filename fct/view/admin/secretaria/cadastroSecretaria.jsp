@@ -6,6 +6,7 @@
 
 
 
+
 <div class="container_12">
 
 	<!-- Form elements -->
@@ -13,7 +14,7 @@
 
 		<div class="module">
 			<h2>
-				<fmt:message key = "cadastraSecretaria"/>
+				<fmt:message key="cadastroSecretaria" />
 			</h2>
 
 			<div class="module-body">
@@ -22,139 +23,203 @@
 
 					<input type="hidden" name="pg" value="1" />
 
-								
-							<p>
-						<label><fmt:message key="nome"/></label>
-						<input type="text" class="input-short" name="nome" id="nome" value="${param.nome }"/>
-						<c:if test="${not empty erros['erronome'] }">
-							<span class="notification-input ni-error"><fmt:message key="nome_invalido"/></span>
-						</c:if>
-						
-					</p>
-					
+
+
 					<p>
-                        <label><fmt:message key="nascimento"/></label> 
-                        <input type="text" class="input-short-short" name="dataNasc" id="dataNasc" value="${param.dataNasc }" />
-                        <c:if test="${not empty erros['errodataNasc'] }">
-							<span class="notification-input ni-error"><fmt:message key="dataNasc_invalido"/></span>
-						</c:if>                        
+						<label><fmt:message key="nome" /></label> <input type="text"
+							class="input-short" name="nome" id="nome" value="${nome }" />
+						<c:if test="${not empty erros['erronome'] }">
+							<span class="notification-input ni-error"><fmt:message
+									key="nome_invalido" /></span>
+						</c:if>
+
 					</p>
-					
-					<script>
-							jQuery(function($){
-      							$("#dataNasc").mask("99/99/9999");
-      						});
-					</script>
+
+					<p>
+						<label><fmt:message key="nascimento" /></label> <input type="text"
+							class="input-short-short" readonly="readonly" name="dataNasc"
+							id="dataNasc" value="${dataNasc }" />
+						<c:if test="${not empty erros['errodataNasc'] }">
+							<span class="notification-input ni-error"><fmt:message
+									key="dataNasc_invalido" /></span>
+						</c:if>
+
+
+						<!--  -->
+						<script>
+								$("#dataNasc").datepicker({
+									changeMonth: true,
+									changeYear: true
+								});
+							
+						</script>
+
+					</p>
 
 					<fieldset>
 						<ul>
-							<li><label><fmt:message key="sexo"/>:&nbsp;&nbsp;&nbsp;<input type="radio" name="sexo"	checked="checked" id="sexo" value="F" />&nbsp;&nbsp;<fmt:message key="feminino"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="sexo" id="sexo" value="M" />&nbsp;&nbsp;<fmt:message key="masculino"/></label></li>
+							<li><label><fmt:message key="sexo" />:&nbsp;&nbsp;&nbsp;
+
+									<input type="radio" name="sexo"
+									<c:if test="${empty sexo or (sexo == 'F') }">
+									checked="checked"
+								</c:if>
+									id="sexo" value="F" /> &nbsp;&nbsp;<fmt:message key="feminino" />&nbsp;&nbsp;&nbsp;&nbsp;
+
+									<input type="radio"
+									<c:if test="${(sexo == 'M') }">
+									checked="checked"
+							</c:if>
+									name="sexo" id="sexo" value="M" /> &nbsp;&nbsp;<fmt:message
+										key="masculino" /></label></li>
 						</ul>
 					</fieldset>
+
 					<p>
-					
-						<label><fmt:message key="cpf"/></label> 
-						<input type="text" class="input-short-short" name="cpf" id="cpf" value="${param.cpf }" />
+
+						<label><fmt:message key="cpf" /></label> <input type="text"
+							class="input-short-short" name="cpf" id="cpf" value="${cpf }" />
 						<c:if test="${not empty erros['errocpf'] }">
-							<span class="notification-input ni-error"><fmt:message key="cpf_invalido"/></span>
-						</c:if>                        
-					
+							<span class="notification-input ni-error"><fmt:message
+									key="cpf_invalido" /></span>
+						</c:if>
+
 					</p>
-					
-					<script>
-						jQuery(function($){
-      							$("#cpf").mask("999.999.999-99");
-      						});
-					</script>
 
 					<p>
-						<label><fmt:message key="email"/></label> 
-						<input type="text" class="input-short" name="email" id="email" value="${param.email }"/>
+						<label><fmt:message key="email" /></label> <input type="text"
+							class="input-short" name="email" id="email" value="${email }" />
 						<c:if test="${not empty erros['erroemail'] }">
-							<span class="notification-input ni-error"><fmt:message key="email_invalido"/></span>
-						</c:if>                        
-					<p>
-					
-					<p>	
-						<label><fmt:message key="celular"/></label>
-						<input type="text" class="input-short-short" name="celular" id="celular" value="${param.celular }" />
+							<span class="notification-input ni-error"><fmt:message
+									key="email_invalido" /></span>
+						</c:if>
+						<p><p>	
+						<label><fmt:message key="celular" /></label>
+						<input type="text" class="input-short-short" name="celular"
+							id="celular" value="${celular }" />
 						<c:if test="${not empty erros['errocelular'] }">
-							<span class="notification-input ni-error"><fmt:message key="telefone_invalido"/></span>
+							<span class="notification-input ni-error"><fmt:message
+									key="telefone_invalido" /></span>
 						</c:if>                        
 					</p>
 					
-					<script>
-						jQuery(function($){
-      							$("#celular").mask("(99)9999-9999");
-      						});
-					</script>
+					
 
 					<p>
-						<label><fmt:message key="residencial"/></label> 
-						<input type="text" class="input-short-short" name="residencial" id="residencial" value="${param.residencial }"/> 
-						<c:if test="${not empty erros['errocelular'] }">
-							<span class="notification-input ni-error"><fmt:message key="telefone_invalido"/></span>
+						<label><fmt:message key="residencial" /></label> 
+						<input type="text" class="input-short-short" name="residencial"
+							id="residencial" value="${residencial }" /> 
+						<c:if test="${not empty erros['erroresidencial'] }">
+							<span class="notification-input ni-error"><fmt:message
+									key="telefone_invalido" /></span>
 						</c:if>                        
 					</p>
 					
-					<script>
-						jQuery(function($){
-      							$("#residencial").mask("(99)9999-9999");
-      						});
-					</script>
+					
 					
 					<p>
-						<label><fmt:message key="comercial"/></label> 
-						<input type="text" class="input-short-short" name="comercial" id="comercial" value="${param.comercial }"/> 
+						<label><fmt:message key="comercial" /></label> 
+						<input type="text" class="input-short-short" name="comercial"
+							id="comercial" value="${comercial }" /> 
 						<c:if test="${not empty erros['errocomercial'] }">
-							<span class="notification-input ni-error"><fmt:message key="telefone_invalido"/></span>
+							<span class="notification-input ni-error"><fmt:message
+									key="telefone_invalido" /></span>
 						</c:if> 
 					</p>
 					
 					<script>
-						jQuery(function($){
-      							$("#comercial").mask("(99)9999-9999");
-      						});
+						
+							$("#cpf").mask("999.999.999-99");
+							$("#celular").mask("(99)9999-9999");
+  							$("#residencial").mask("(99)9999-9999");
+      						$("#comercial").mask("(99)9999-9999");
+      					
 					</script>
 					
+					<p>
+						
+					</p>
+					
+					<label><fmt:message key="dataAdmissao" /></label> 
+                        <input type="text" class="input-short-short"
+						readonly="readonly" name="dataAdmissao" id="dataAdmissao"
+						value="${dataAdmissao }" />
+                    <c:if test="${not empty erros['errodataAdmissao'] }">
+                    		<span class="notification-input ni-error"><fmt:message
+								key="dataAdmissao_invalido" /></span>
+					</c:if>
+					<c:if test="${not empty erros['errodataAdmIguaNasc'] }">
+                    		<span class="notification-input ni-error"><fmt:message
+								key="dataAdmissaoIgualDataNasc_invalido" /></span>
+					</c:if>
+				<!--  -->
+						<script>
+							$( "#dataAdmissao ").datepicker({
+									changeMonth: true,
+									changeYear: true
+								});
+						</script>
 
-							<label><fmt:message key="salario" /></label> <input type="text" class="input-short"
-								name="salario" value="${salario}" id="salario" /> <span
-								class="notification-input ni-correct">This is correct,
-								thanks!</span>
-							</p>
+							
+							<label><fmt:message key="salario" /></label> <input type="text"
+							class="input-short" name="salario" value="${salario}"
+							id="salario" /> 
+							<c:if test="${not empty erros['errosalario'] }">
+                    		<span class="notification-input ni-error"><fmt:message
+								key="salario_invalido" /></span>
+						  </c:if>
+							
+					</p>
+					
+					
+					
+					
+					
+					
+					
+					
+					<p>
+								<label><fmt:message key="horarioInicial" /></label> <input
+							type="text" class="input-short" name="horarioInicial"
+							value="${horarioInicial}" id="horarioInicial" readonly="readonly" />
+							
+							 <c:if test="${not empty erros['errohorarioInicial'] }">
+                    		<span class="notification-input ni-error"><fmt:message
+								key="horarioInicial_invalido" /></span>
+						  </c:if>
+					
+					</p>
 							
 							<p>
-								<label><fmt:message key="horarioInicial" /></label> <input type="text"
-									class="input-short-short" name="horarioInicial"
-									value="${horarioInicial}" readonly="readonly" id="horarioInicial" /> <span
-									class="notification-input ni-correct">This is correct,
-									thanks!</span>
+								<label><fmt:message key="horarioFinal" /></label> <input
+							type="time" class="input-short" name="horarioFinal"
+							value="${horarioFinal}" id="horarioFinal" readonly="readonly" />
+						<c:if test="${not empty erros['errohorarioFinal'] }">
+                    		<span class="notification-input ni-error"><fmt:message
+								key="horarioFinal_invalido" /></span>								
+						  </c:if>
+						  <c:if test="${not empty erros['erroHorInIguaHorFi'] }">
+                    		<span class="notification-input ni-error"><fmt:message
+								key="horaInicioIgualHoraFim_invalido" /></span>
+						  </c:if>
 							</p>
-							
-							<p>
-								<label><fmt:message key="horarioFinal" /></label> <input type="text" class="input-short-short"
-									name="horarioFinal" readonly="readonly" value="${horarioFinal}" id="horarioFinal" />
-								<span class="notification-input ni-correct">This is
-									correct, thanks!</span>
-							</p>
-							
-							
 							<script>
 							
-							$(document).ready(function() {
-							    $('#horarioInicial').timepicker({
-							        showLeadingZero: false,
-							        onHourShow: tpStartOnHourShowCallback,
-							        onMinuteShow: tpStartOnMinuteShowCallback
-							    });
-							    $('#horarioFinal').timepicker({
-							        showLeadingZero: false,
-							        onHourShow: tpEndOnHourShowCallback,
-							        onMinuteShow: tpEndOnMinuteShowCallback
-							    });
-							});
-
+							$('#horarioInicial').timepicker({
+						        showLeadingZero: false,
+						        onHourShow: tpStartOnHourShowCallback,
+						        onMinuteShow: tpStartOnMinuteShowCallback,
+						        defaultTime: '12:25'
+						    });
+						    $('#horarioFinal').timepicker({
+						        showLeadingZero: false,
+						        onHourShow: tpEndOnHourShowCallback,
+						        onMinuteShow: tpEndOnMinuteShowCallback,
+						        defaultTime: '12:30'
+						    });
+							    
+							  
+		
 							function tpStartOnHourShowCallback(hour) {
 							    var tpEndHour = $('#horarioFinal').timepicker('getHour');
 							    // Check if proposed hour is prior or equal to selected end time hour
@@ -192,26 +257,16 @@
 							}
 							
 							
-							
 							</script>
 														
 							
-							<p>
-								<label><fmt:message key="dataAdmissao" /></label> <input type="text"
-									class="input-short" name="dataAdmissao" value="${dataAdmissao}"
-									id="dataAdmissao" /> <span
-									class="notification-input ni-correct">This is correct,
-									thanks!</span>
-							</p>
-							<script>
-								jQuery(function($) {
-									$("#dataAdmissao").mask("99/99/9999");
-								});
-							</script>
+
 							<fieldset>
-								<input class="submit-green" type="submit" value= "<fmt:message key="botao.proximo "/>"> 
-								<input class="submit-gray" type="submit" value= " <fmt:message key="botao.cancelar " />" />
-							</fieldset>
+						<input class="submit-green" type="submit"
+							value="<fmt:message key="bt_proximo" />" /> <input
+							class="submit-gray" type="submit"
+							value="<fmt:message key="bt_cancelar" />" />
+					</fieldset>
 
 						</form>
 			</div>
