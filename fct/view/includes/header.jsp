@@ -74,6 +74,17 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/view/js/datepicker/jquery.ui.widget.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/view/js/datepicker/jquery.ui.datepicker.js"></script>
 
+
+	<script src="${pageContext.request.contextPath}/view/js/jquery.bgiframe-2.1.2.js"></script>
+	<script src="${pageContext.request.contextPath}/view/js/jquery.ui.core.js"></script>
+	<script src="${pageContext.request.contextPath}/view/js/jquery.ui.widget.js"></script>
+	<script src="${pageContext.request.contextPath}/view/js/jquery.ui.mouse.js"></script>
+	<script src="${pageContext.request.contextPath}/view/js/jquery.ui.button.js"></script>
+	<script src="${pageContext.request.contextPath}/view/js/jquery.ui.draggable.js"></script>
+	<script src="${pageContext.request.contextPath}/view/js/jquery.ui.position.js"></script>
+	<script src="${pageContext.request.contextPath}/view/js/jquery.ui.resizable.js"></script>
+	<script src="${pageContext.request.contextPath}/view/js/jquery.ui.dialog.js"></script>
+
 <!-- JQuery WYSIWYG plugin script -->
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/view/js/jquery.wysiwyg.js"

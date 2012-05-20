@@ -117,7 +117,7 @@ public class EnderecoDAOConexao implements EnderecoDAO {
 		Endereco endereco = null;
 		try {
 			ps = con.prepareStatement(sql);
-			ps.setObject(1, id);
+			ps.setInt(1, id);
 			rs = ps.executeQuery();
 			if(rs.first())
 				endereco = getEndereco(rs);

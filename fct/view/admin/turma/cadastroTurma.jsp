@@ -52,14 +52,14 @@ $(document).ready(function() {
 				<fmt:message key="professores"/>
 			</h2>
 
-				<form action="">
+				<form action='' method="post">
 					<table>
 						<thead>
 							<tr>
 								<th style="width: 4%">#</th>
-								<th style="width: 20%"><fmt:message key="nome"/></th>
+								<th style="width: 15%"><fmt:message key="nome"/></th>
 								<th style="width: 10%"><fmt:message key="cpf"/></th>
-								<th style="width: 10%"><fmt:message key="telefones"/></th>
+								<th style="width: 15%"><fmt:message key="telefones"/></th>
 								<th style="width: 15%"><fmt:message key="email"/></th>
 								<th style="width: 10%"><fmt:message key="sexo"/></th>
 								<th style="width: 10%"><fmt:message key="dataAdmissao"/></th>
@@ -69,7 +69,7 @@ $(document).ready(function() {
 							<c:forEach var="professor" items="${professores}">
 								<tr>
 									<td class="align-center">${professor.idPessoa}</td>
-									<td><a href="?id=${professor.idPessoa}&professor=${professor.nome}">${professor.nome}</a></td>
+									<td >${professor.nome}</td>
 									<td>${professor.cpf}</td>
 									
 									<td>
