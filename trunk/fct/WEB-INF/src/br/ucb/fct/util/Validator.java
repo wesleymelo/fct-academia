@@ -127,6 +127,10 @@ public class Validator {
 		return Factory.initAlunoDAO().selectAll().contains(aluno);
 		
 	}
+
+
+
+
 	
 	
 	
