@@ -5,6 +5,117 @@
 
 <c:import url="../../includes/header.jsp" />
 
+
+	<script>
+		$(function() {
+			// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
+			$( "#dialog:ui-dialog" ).dialog( "destroy" );
+		
+			$( "#dialog-message" ).dialog({
+				modal: true,
+				height: 700,
+				width: 750,
+				buttons: {
+					Ok: function() {
+						$( this ).dialog( "close" );
+					}
+				}
+			});
+		});
+	</script>
+
+<c:if test="${! empty param.show && param.show == true}">
+<div id="dialog-message" title="<fmt:message key="visualizaAluno"/>">
+		
+					<h4>
+						<fmt:message key="dadosPessoais"/>
+					</h4>
+					
+					<b> <fmt:message key="nome"/>: </b>${aluno.nome} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+					<b><fmt:message key="nascimento"/>: </b>${aluno.dateNascimentoString}<br/>
+                    <b> <fmt:message key="cpf"/>: </b>${aluno.cpf} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                    <b><fmt:message key="sexo"/>: </b>${aluno.sexo.descricao}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <b> <fmt:message key="dataCadastro"/>: </b>${aluno.dateCadastroString}<br/>
+                    <b><fmt:message key="status"/>: </b>${aluno.situacao}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <b> <fmt:message key="altura"/>: </b>${aluno.altura} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                    <b><fmt:message key="peso"/>: </b>${aluno.peso} kg<br/>
+                           
+                
+                	<h4>
+						<fmt:message key="endereco"/>
+					</h4>
+					
+					<table>
+						<thead>
+							<tr>
+								<td><fmt:message key="logradouro"/></td><td>${aluno.endereco.enderecoResidencial}</td>
+                            </tr>
+                            
+                            <tr>
+								<td><fmt:message key="cidade"/></td><td>${aluno.endereco.cidade}</td>
+                            </tr>
+                            
+                            <tr>
+								<td><fmt:message key="bairro"/></td><td>${aluno.endereco.bairro}</td>
+                            </tr>
+                            
+                            <tr>
+								<td><fmt:message key="complemento"/></td> <td> <c:out value="${aluno.endereco.complemento}: " default="vazio"/></td>
+                            </tr>
+                            
+                            
+                            <tr>
+								<td><fmt:message key="uf"/></td><td>${aluno.endereco.uf}</td>
+                            </tr>
+                            
+                            <tr>
+								<td><fmt:message key="cep"/></td><td>${aluno.endereco.cep}</td>
+                            </tr>
+                            
+                            <tr>
+								<td><fmt:message key="numero"/></td><td>${aluno.endereco.numero}</td>
+                            </tr>
+                                                        
+                		</thead>
+                	</table>
+                
+                	
+                	<h4>
+						<fmt:message key="contatos"/>
+					</h4>
+                
+                
+                	<table>
+                		<thead>
+                			<c:forEach var="telefone" items="${aluno.telefones}">
+	                			<tr>
+	                					<td><fmt:message key="numero"/></td>
+										<td>	
+											(${telefone.ddd}) ${telefone.numero} <br />
+										</td>
+										<td>${telefone.tipo.descricao}</td>
+										
+								</tr>
+							</c:forEach>
+							<tr>
+								<td><fmt:message key="email"/>: </td>
+								<td>${aluno.email}</td>
+							</tr>
+							<tr>
+	                							
+		
+                		</thead>
+					</table>
+					
+		                    
+						</thead>
+					</table>
+
+</div>
+</c:if>
+
+
+
 <div class="container_12">
 
 	<div class="grid_12">
@@ -31,6 +142,7 @@
 				<option value="4">Edited last week</option>
 				<option value="5">Edited last month</option>
 			</select>
+
 
 		</div>
 		
@@ -69,7 +181,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="aluno" items="${alunos}">
+							<c:forEach var="aluno" items="${alunos}" varStatus="i">
 								<tr>
 									<td><a href="">${aluno.nome}</a></td>
 									<td>${aluno.cpf}</td>
@@ -89,10 +201,16 @@
 											width="16" height="16" alt="edit" /></a> <a href=""><img
 											src="${pageContext.request.contextPath}/view/images/balloon.gif"
 											tppabs="http://www.xooom.pl/work/magicadmin/images/balloon.gif"
-											width="16" height="16" alt="comments" /></a> <a href=""><img
+											width="16" height="16" alt="comments" /></a>
+											<a href=""><img
 											src="${pageContext.request.contextPath}/view/images/bin.gif"
 											tppabs="http://www.xooom.pl/work/magicadmin/images/bin.gif"
-											width="16" height="16" alt="delete" /></a></td>
+											width="16" height="16" alt="delete" /></a>
+											
+											<a href="visualizaAluno.do?id=${aluno.idPessoa}"><img
+											src="${pageContext.request.contextPath}/view/images/view.png"
+											width="16" height="16" alt="<fmt:message key="viewAluno"/>" /></a></td>
+											
 								</tr>
 							</c:forEach>
 						</tbody>

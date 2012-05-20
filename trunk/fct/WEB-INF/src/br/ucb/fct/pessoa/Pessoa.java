@@ -41,7 +41,7 @@ public class Pessoa {
 		setEmail(email);
 		setStatus(status);
 		setDateNascimentoString(dataNascimentoString);
-		setDateNascimentoString(dataNascimentoString);
+		setDateCadastroString(dataNascimentoString);
 		
 	}
 
@@ -186,6 +186,12 @@ public class Pessoa {
 		result = prime * result
 				+ ((tipoPessoa == null) ? 0 : tipoPessoa.hashCode());
 		return result;
+	}
+	
+	public String getSituacao(){
+		if(getStatus())
+			return "ATIVO(A)";
+		return "INATIVO(A)";
 	}
 
 	@Override
