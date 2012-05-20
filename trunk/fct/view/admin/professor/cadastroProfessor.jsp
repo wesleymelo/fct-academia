@@ -134,7 +134,7 @@
 					<p>
 						<label><fmt:message key="residencial"/></label> 
 						<input type="text" class="input-short-short" name="residencial" id="residencial" value="${residencial }"/> 
-						<c:if test="${not empty erros['errocelular'] }">
+						<c:if test="${not empty erros['erroresidencial'] }">
 							<span class="notification-input ni-error"><fmt:message key="telefone_invalido"/></span>
 						</c:if>                        
 					</p>
@@ -166,6 +166,9 @@
                         <input type="text" class="input-short-short" readonly="readonly" name="dataAdmissao" id="dataAdmissao" value="${dataAdmissao }" />
                     <c:if test="${not empty erros['errodataAdmissao'] }">
                     		<span class="notification-input ni-error"><fmt:message key="dataAdmissao_invalido"/></span>
+					</c:if>
+					<c:if test="${not empty erros['errodataAdmIguaNasc'] }">
+                    		<span class="notification-input ni-error"><fmt:message key="dataAdmissaoIgualDataNasc_invalido"/></span>
 					</c:if>
 				<!--  -->
 						<script>
