@@ -58,12 +58,14 @@ public class CadastroProfessorAction implements Action {
 				return "/view/admin/professor/cadastroProfessorEndereco.jsp";
 			}
 			else{
-				JOptionPane.showInputDialog("61");
 				Professor professor = Util.getCadastroProfessor(req);
 				Endereco endereco = Util.getEnderecoCadastro(req);
-				JOptionPane.showInputDialog("64");	
+				professor.setEndereco(endereco);
+		
 				if(Factory.initEnderecoDAO().insert(endereco)){
+		
 					if(Factory.initProfessorDAO().insert(professor))
+		
 						Factory.initTelefoneDAO().insert(professor.getTelefones());
 				}
 				return "../../admin/principal/index.jsp";
@@ -76,9 +78,9 @@ public class CadastroProfessorAction implements Action {
 	}
 
 	public void setSessionProfessor(HttpSession sessao, HttpServletRequest req){
-		//setSessionPessoa(sessao,req);
+		
 		sessao.setAttribute("nome",req.getParameter("nome"));
-		//sessao.setAttribute("dataCadas",Util.formatDateOut(new Date().toString()));
+		sessao.setAttribute("dataCadas", new java.sql.Date(new java.util.Date().getTime()));
 		sessao.setAttribute("dataNasc",req.getParameter("dataNasc"));
 
 		System.out.println(req.getParameter("dataNasc"));
