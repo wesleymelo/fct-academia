@@ -14,7 +14,7 @@
 			<!-- Button -->
 			<div class="float-right">
 				<a
-					href="${pageContext.request.contextPath}/view/admin/aluno/cadastroGraduacao.do?pg=1"
+					href="${pageContext.request.contextPath}/view/admin/graduacao/cadastroGraduacao.do?pg=1"
 					class="button"> <span><b><fmt:message key="new" /></b>
 						<img
 						src="${pageContext.request.contextPath}/view/images/plus-small.gif"
@@ -60,6 +60,7 @@
 						<thead>
 							<tr>
 								<th style="width: 25%">Descricao</th>
+								<th style="width: 20%">Modalidade</th>
 								<th style="width: 10%">A&ccedil;&otilde;es</th>
 							</tr>
 						</thead>
@@ -67,10 +68,11 @@
 							<c:forEach var="gradu" items="${graduacoes}">
 								<tr>
 									<td><a href="">${gradu.descricao}</a></td>
+									<td><a href="">${gradu.modalidadeString}</a></td>
 									<td><input type="checkbox" /> <a href=""><img
 											src="${pageContext.request.contextPath}/view/images/tick-circle.gif"
 											tppabs="http://www.xooom.pl/work/magicadmin/images/tick-circle.gif"
-											width="16" height="16" alt="published" /></a> <a href="${pageContext.request.contextPath}/view/admin/aluno/alteraAluno.do?codigo=${aluno.idPessoa }"><img
+											width="16" height="16" alt="published" /></a> <a href="${pageContext.request.contextPath}/view/admin/graduacao/alteraGraduacao.do?codigo=${gradu.idGraduacao }"><img
 											src="${pageContext.request.contextPath}/view/images/pencil.gif"
 											tppabs="http://www.xooom.pl/work/magicadmin/images/pencil.gif"
 											width="16" height="16" alt="edit" /></a> <a href=""><img

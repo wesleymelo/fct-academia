@@ -17,7 +17,7 @@
 				<!-- Button -->
 				<div class="float-right">
 					<a
-						href="${pageContext.request.contextPath}/view/admin/aluno/listaAlunos.do"
+						href="${pageContext.request.contextPath}/view/admin/aluno/listaGraduacoes.do"
 						class="button"> <span><b><fmt:message key="back" /></b>
 							<img
 							src="${pageContext.request.contextPath}/view/images/arrow-curve-180-left.gif"
@@ -42,7 +42,9 @@
 			<div class="module-body">
 
 				<form action="cadastroGraduacao.do" method="post">
-
+					
+					<input type="hidden" value="2" name="pg">
+					
 					<p>
 						<label><fmt:message key="desc"/></label>
 						<input type="text" class="input-short" name="descricao" id="descricao" value="${descricao}"/>
@@ -65,7 +67,7 @@
 					
 					<fieldset>
 						<input class="submit-green" type="submit" value="<fmt:message key="cadastrar"/>" /> <input
-						class="submit-gray" type="submit" value="<fmt:message key="bt_cancelar"/>" />
+						class="submit-gray" type="reset" value="<fmt:message key="limpar"/>" />
 					</fieldset>
 
 				</form>
