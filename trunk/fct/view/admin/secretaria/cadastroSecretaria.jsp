@@ -41,7 +41,7 @@
 					</p>
 					
 					<script>
-						jQuery(function($){
+							jQuery(function($){
       							$("#dataNasc").mask("99/99/9999");
       						});
 					</script>
@@ -126,27 +126,76 @@
 							
 							<p>
 								<label><fmt:message key="horarioInicial" /></label> <input type="text"
-									class="input-short" name="horarioInicial"
-									value="${horarioInicial}" id="horarioInicial" /> <span
+									class="input-short-short" name="horarioInicial"
+									value="${horarioInicial}" readonly="readonly" id="horarioInicial" /> <span
 									class="notification-input ni-correct">This is correct,
 									thanks!</span>
 							</p>
-							<script>
-								jQuery(function($) {
-									$("#horarioInicial").mask("99:99");
-								});
-							</script>
+							
 							<p>
-								<label><fmt:message key="horarioFinal" /></label> <input type="text" class="input-short"
-									name="horarioFinal" value="${horarioFinal}" id="horarioFinal" />
+								<label><fmt:message key="horarioFinal" /></label> <input type="text" class="input-short-short"
+									name="horarioFinal" readonly="readonly" value="${horarioFinal}" id="horarioFinal" />
 								<span class="notification-input ni-correct">This is
 									correct, thanks!</span>
 							</p>
+							
+							
 							<script>
-								jQuery(function($) {
-									$("#horarioFinal").mask("99:99");
-								});
+							
+							$(document).ready(function() {
+							    $('#horarioInicial').timepicker({
+							        showLeadingZero: false,
+							        onHourShow: tpStartOnHourShowCallback,
+							        onMinuteShow: tpStartOnMinuteShowCallback
+							    });
+							    $('#horarioFinal').timepicker({
+							        showLeadingZero: false,
+							        onHourShow: tpEndOnHourShowCallback,
+							        onMinuteShow: tpEndOnMinuteShowCallback
+							    });
+							});
+
+							function tpStartOnHourShowCallback(hour) {
+							    var tpEndHour = $('#horarioFinal').timepicker('getHour');
+							    // Check if proposed hour is prior or equal to selected end time hour
+							    if (hour <= tpEndHour) { return true; }
+							    // if hour did not match, it can not be selected
+							    return false;
+							}
+							function tpStartOnMinuteShowCallback(hour, minute) {
+							    var tpEndHour = $('#horarioFinal').timepicker('getHour');
+							    var tpEndMinute = $('#horarioFinal').timepicker('getMinute');
+							    // Check if proposed hour is prior to selected end time hour
+							    if (hour < tpEndHour) { return true; }
+							    // Check if proposed hour is equal to selected end time hour and minutes is prior
+							    if ( (hour == tpEndHour) && (minute < tpEndMinute) ) { return true; }
+							    // if minute did not match, it can not be selected
+							    return false;
+							}
+
+							function tpEndOnHourShowCallback(hour) {
+							    var tpStartHour = $('#horarioInicial').timepicker('getHour');
+							    // Check if proposed hour is after or equal to selected start time hour
+							    if (hour >= tpStartHour) { return true; }
+							    // if hour did not match, it can not be selected
+							    return false;
+							}
+							function tpEndOnMinuteShowCallback(hour, minute) {
+							    var tpStartHour = $('#horarioInicial').timepicker('getHour');
+							    var tpStartMinute = $('#horarioInicial').timepicker('getMinute');
+							    // Check if proposed hour is after selected start time hour
+							    if (hour > tpStartHour) { return true; }
+							    // Check if proposed hour is equal to selected start time hour and minutes is after
+							    if ( (hour == tpStartHour) && (minute > tpStartMinute) ) { return true; }
+							    // if minute did not match, it can not be selected
+							    return false;
+							}
+							
+							
+							
 							</script>
+														
+							
 							<p>
 								<label><fmt:message key="dataAdmissao" /></label> <input type="text"
 									class="input-short" name="dataAdmissao" value="${dataAdmissao}"

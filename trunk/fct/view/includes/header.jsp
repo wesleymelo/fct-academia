@@ -66,24 +66,34 @@
 
 <!--  CSS  datepicked-->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/view/css/jquery.ui.all.css" media="screen"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/view/css/jquery-ui-1.8.14.custom.css" type="text/css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/view/css/jquery.ui.timepicker.css?v=0.3.0" type="text/css" />
 
 <!-- JQuery datepicked-->
+
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/view/js/jquery-1.7.2.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/view/js/datepicker/jquery.ui.core.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/view/js/datepicker/jquery.ui.widget.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/view/js/datepicker/jquery.ui.datepicker.js"></script>
 
+<script type="text/javascript" src="${pageContext.request.contextPath}/view/js/jquery-1.5.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/view/js/jquery.ui.core.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/view/js/jquery.ui.widget.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/view/js/jquery.ui.tabs.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/view/js/jquery.ui.position.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/view/js/jquery.ui.timepicker.js?v=0.3.0"></script>
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
 
-	<script src="${pageContext.request.contextPath}/view/js/jquery.bgiframe-2.1.2.js"></script>
-	<script src="${pageContext.request.contextPath}/view/js/jquery.ui.core.js"></script>
-	<script src="${pageContext.request.contextPath}/view/js/jquery.ui.widget.js"></script>
-	<script src="${pageContext.request.contextPath}/view/js/jquery.ui.mouse.js"></script>
-	<script src="${pageContext.request.contextPath}/view/js/jquery.ui.button.js"></script>
-	<script src="${pageContext.request.contextPath}/view/js/jquery.ui.draggable.js"></script>
-	<script src="${pageContext.request.contextPath}/view/js/jquery.ui.position.js"></script>
-	<script src="${pageContext.request.contextPath}/view/js/jquery.ui.resizable.js"></script>
-	<script src="${pageContext.request.contextPath}/view/js/jquery.ui.dialog.js"></script>
+<script src="${pageContext.request.contextPath}/view/js/jquery.bgiframe-2.1.2.js"></script>
+<script src="${pageContext.request.contextPath}/view/js/jquery.ui.core.js"></script>
+<script src="${pageContext.request.contextPath}/view/js/jquery.ui.widget.js"></script>
+<script src="${pageContext.request.contextPath}/view/js/jquery.ui.mouse.js"></script>
+<script src="${pageContext.request.contextPath}/view/js/jquery.ui.button.js"></script>
+<script src="${pageContext.request.contextPath}/view/js/jquery.ui.draggable.js"></script>
+<script src="${pageContext.request.contextPath}/view/js/jquery.ui.position.js"></script>
+<script src="${pageContext.request.contextPath}/view/js/jquery.ui.resizable.js"></script>
+<script src="${pageContext.request.contextPath}/view/js/jquery.ui.dialog.js"></script>
 
 <!-- JQuery WYSIWYG plugin script -->
 <script type="text/javascript"
@@ -183,6 +193,37 @@
 		});
 	});
 </script>
+
+
+<script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-24327002-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+        function plusone_clicked() {
+            $('#thankyou').fadeIn(300);
+        }
+
+        $(document).ready(function() {
+            $('#floating_timepicker').timepicker({
+                onSelect: function(time, inst) {
+                    $('#floating_selected_time').html('You selected ' + time);
+                }
+            });
+
+            $('#tabs').tabs();
+
+        });
+
+
+    </script>
 
 <!-- Initiate tablesorter script -->
 <script type="text/javascript">
