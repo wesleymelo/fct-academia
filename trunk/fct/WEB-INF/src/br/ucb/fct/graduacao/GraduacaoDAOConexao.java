@@ -57,18 +57,19 @@ public class GraduacaoDAOConexao implements GraduacaoDAO {
 	@Override
 	public boolean update(Graduacao graduacao, int id) throws DAOException {
 
-		String sql = "UPDATE graduacoes  SET  idModalidade = ?, descricao = ? WHERE = ? ;";
+		String sql = "UPDATE graduacoes  SET  idModalidade = ?, descricao = ? WHERE idGraduacao = ? ;";
 		Connection con = MyConnection.init();
 		PreparedStatement ps = null;
 		int retorno;
 		try {
 			ps = con.prepareStatement(sql);
-			ps.setObject(1,graduacao.getIdModalidade());
-			ps.setObject(2,graduacao.getDescricao());
+			ps.setInt(1,graduacao.getIdModalidade());
+			ps.setString(2,graduacao.getDescricao());
+			ps.setInt(3, id);
 			retorno = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DAOException(e,"ERRO! DELETE na TABELA GRADUACOES. DATA("+new Date()+")");
+			throw new DAOException(e,"ERRO! UPDATE na TABELA GRADUACOES. DATA("+new Date()+")");
 		}finally{
 			MyConnection.closeConnection(con, ps);
 		}
@@ -117,6 +118,9 @@ public class GraduacaoDAOConexao implements GraduacaoDAO {
 	}
 	
 	public Graduacao getGraduacao(ResultSet rs) throws SQLException{
-		return new Graduacao(rs.getInt("idGraduacao"), rs.getInt("idModalidade"), rs.getString("descricao"), Factory.initModalidadeDAO().selectById(rs.getInt("idModalidade")).getDescricao());
+		return new Graduacao(rs.getInt("idGraduacao"), 
+				             rs.getInt("idModalidade"),
+				             rs.getString("descricao"), 
+				             Factory.initModalidadeDAO().selectById(rs.getInt("idModalidade")).getDescricao());
 	}
 }
