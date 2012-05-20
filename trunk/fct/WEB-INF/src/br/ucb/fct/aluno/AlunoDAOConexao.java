@@ -78,10 +78,10 @@ public class AlunoDAOConexao implements AlunoDAO {
 		try {
 			con = MyConnection.init();
 			ps = con.prepareStatement(sql);
-			ps.setDouble(1,aluno.getAltura());
-			ps.setDouble(2,aluno.getPeso());
+			ps.setDouble(1,aluno.getPeso());
+			ps.setDouble(2,aluno.getAltura());
 			ps.setInt(3, id);
-			ps.executeUpdate();
+			retorno = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new DAOException(e,"ERRO! UPDATE na TABELA ALUNOS. DATA("+new Date()+")");
