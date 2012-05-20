@@ -1,7 +1,10 @@
 package br.ucb.fct.util;
 
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import javax.swing.JOptionPane;
 
 import br.ucb.fct.aluno.Aluno;
 
@@ -84,6 +87,16 @@ public class Validator {
 	}
 	
 	
+	public static int verificaPeriodoData(String deData,String ateData){
+		String [] arrayDeData = deData.split("/");
+		String [] arrayAteData = ateData.split("/");
+		int periodo =0;
+		for (int i = 2; (periodo==0&&i>=0) ; i--) {
+			periodo = arrayDeData[i].compareTo(arrayAteData[i]) ;
+		}
+		return periodo ;
+		}
+	
 	public static boolean isStringValid(String value, int qtde){
 		return (value != null && !(value.trim().isEmpty()) && value.length() <= qtde);
 	}
@@ -127,6 +140,9 @@ public class Validator {
 		return Factory.initAlunoDAO().selectAll().contains(aluno);
 		
 	}
+
+
+	
 
 
 
