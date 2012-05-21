@@ -2,28 +2,80 @@ package br.ucb.fct.turma;
 
 import java.sql.Time;
 
+import br.ucb.fct.modalidade.Modalidade;
+import br.ucb.fct.professor.Professor;
+
 public class Turma {
 	private Integer idTurma;
+	private Professor Professor;
 	private Integer idProfessor;
 	private Integer idModalidade;
-	private String  nomeTurma;
-	private Time horario;
+	private Modalidade modalidade;
+	private String  nome;
+	private Time horarioInicial;
+	private Time horarioFinal;
 	
 	public Turma(Integer idTurma, Integer idProfessor, Integer idModalidade,
-			String nomeTurma, Time horario) {
-		setHorario(horario);
+			String nomeTurma, Time horarioInicial, Time horarioFinal) {
+		setHorarioFinal(horarioFinal);
+		setHorarioInicial(horarioInicial);
 		setIdModalidade(idModalidade);
 		setIdProfessor(idProfessor);
 		setIdTurma(idTurma);
 		setNomeTurma(nomeTurma);
 	}
 	
-	public Time getHorario() {
-		return horario;
+	public Turma(Integer idTurma, Professor professor, Modalidade modalidade,
+			String nomeTurma, Time horarioInicial, Time horarioFinal) {
+		setHorarioFinal(horarioFinal);
+		setHorarioInicial(horarioInicial);
+		setModalidade(modalidade);
+		setProfessor(professor);
+		setIdTurma(idTurma);
+		setNomeTurma(nomeTurma);
 	}
 	
-	public void setHorario(Time horario) {
-		this.horario = horario;
+	public Turma(Integer idProfessor, Integer idModalidade,
+			String nomeTurma, Time horarioInicial, Time horarioFinal) {
+		setHorarioFinal(horarioFinal);
+		setHorarioInicial(horarioInicial);
+		setIdModalidade(idModalidade);
+		setIdProfessor(idProfessor);
+		setNomeTurma(nomeTurma);
+	}
+	
+	public Time getHorarioInicial() {
+		return horarioInicial;
+	}
+	
+	
+
+	public Professor getProfessor() {
+		return Professor;
+	}
+
+	public void setProfessor(Professor professor) {
+		Professor = professor;
+	}
+
+	public Modalidade getModalidade() {
+		return modalidade;
+	}
+
+	public void setModalidade(Modalidade modalidade) {
+		this.modalidade = modalidade;
+	}
+
+	public void setHorarioInicial(Time horarioInicial) {
+		this.horarioInicial = horarioInicial;
+	}
+
+	public Time getHorarioFinal() {
+		return horarioFinal;
+	}
+
+	public void setHorarioFinal(Time horarioFinal) {
+		this.horarioFinal = horarioFinal;
 	}
 	
 	public Integer getIdTurma() {
@@ -50,29 +102,32 @@ public class Turma {
 		this.idModalidade = idModalidade;
 	}
 	
-	public String getNomeTurma() {
-		return nomeTurma;
+	public String getNome() {
+		return nome;
 	}
 	
-	public void setNomeTurma(String nomeTurma) {
-		this.nomeTurma = nomeTurma;
+	public void setNomeTurma(String nome) {
+		this.nome = nome;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((horario == null) ? 0 : horario.hashCode());
+		result = prime * result
+				+ ((horarioFinal == null) ? 0 : horarioFinal.hashCode());
+		result = prime * result
+				+ ((horarioInicial == null) ? 0 : horarioInicial.hashCode());
 		result = prime * result
 				+ ((idModalidade == null) ? 0 : idModalidade.hashCode());
 		result = prime * result
 				+ ((idProfessor == null) ? 0 : idProfessor.hashCode());
 		result = prime * result + ((idTurma == null) ? 0 : idTurma.hashCode());
 		result = prime * result
-				+ ((nomeTurma == null) ? 0 : nomeTurma.hashCode());
+				+ ((nome == null) ? 0 : nome.hashCode());
 		return result;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -82,10 +137,15 @@ public class Turma {
 		if (getClass() != obj.getClass())
 			return false;
 		Turma other = (Turma) obj;
-		if (horario == null) {
-			if (other.horario != null)
+		if (horarioFinal == null) {
+			if (other.horarioFinal != null)
 				return false;
-		} else if (!horario.equals(other.horario))
+		} else if (!horarioFinal.equals(other.horarioFinal))
+			return false;
+		if (horarioInicial == null) {
+			if (other.horarioInicial != null)
+				return false;
+		} else if (!horarioInicial.equals(other.horarioInicial))
 			return false;
 		if (idModalidade == null) {
 			if (other.idModalidade != null)
@@ -102,11 +162,13 @@ public class Turma {
 				return false;
 		} else if (!idTurma.equals(other.idTurma))
 			return false;
-		if (nomeTurma == null) {
-			if (other.nomeTurma != null)
+		if (nome == null) {
+			if (other.nome != null)
 				return false;
-		} else if (!nomeTurma.equals(other.nomeTurma))
+		} else if (!nome.equals(other.nome))
 			return false;
 		return true;
 	}
+	
+	
 }
