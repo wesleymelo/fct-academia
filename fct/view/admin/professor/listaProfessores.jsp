@@ -72,7 +72,7 @@
 									<td><input type="checkbox" /> <a href=""><img
 											src="${pageContext.request.contextPath}/view/images/tick-circle.gif"
 											tppabs="http://www.xooom.pl/work/magicadmin/images/tick-circle.gif"
-											width="16" height="16" alt="published" /></a> <a href=""><img
+											width="16" height="16" alt="published" /></a> <a href="${pageContext.request.contextPath}/view/admin/professor/alteraProfessor.do?codigo=${professor.idPessoa }"><img
 											src="${pageContext.request.contextPath}/view/images/pencil.gif"
 											tppabs="http://www.xooom.pl/work/magicadmin/images/pencil.gif"
 											width="16" height="16" alt="edit" /></a> <a href=""><img
