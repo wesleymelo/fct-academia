@@ -17,7 +17,7 @@ public class TurmaDAOConexao implements TurmaDAO{
 
 	@Override
 	public boolean insert(Turma turma) throws DAOException {
-		String sql = "INSERT INTO turmas(idTurma, idProfessor, idModalidade, nome,horarioInicial, horarioFinal ) VALUES(null,?,?,?,?,?);";
+		String sql = "INSERT INTO turmas(idTurma, idProfessor, idModalidade, nome, horarioInicial, horarioFinal ) VALUES(null,?,?,?,?,?);";
 		Connection con = MyConnection.init();
 		int retorno;
 		PreparedStatement ps = null;
