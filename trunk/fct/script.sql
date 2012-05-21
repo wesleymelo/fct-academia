@@ -322,7 +322,7 @@ DROP TABLE IF EXISTS `academia`.`Turmas` ;
 
 CREATE  TABLE IF NOT EXISTS `academia`.`Turmas` (
 
-  `idTurma` INT(11) NOT NULL ,
+  `idTurma` INT(11) NOT NULL AUTO_INCREMENT,
 
   `idProfessor` INT(11) NOT NULL ,
 
