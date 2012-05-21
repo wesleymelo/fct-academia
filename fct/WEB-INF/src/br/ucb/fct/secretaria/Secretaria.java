@@ -15,19 +15,20 @@ public class Secretaria extends Pessoa{
 	private String dataAdmissaoString;
 	private String horarioInicial;
 	private String horarioFinal;
-
+	private Double salario;
 	
 
 	public Secretaria( EnumTypePessoa tipoPessoa,
 			Date dataCadastro, String nome, String cpf, EnumTypeSexo sexo,
 			Date dataNascimento, Endereco endereco,
 			List<Telefone> telefones, String email, Boolean status,
-			Date dataAdmissao, String horarioInicial, String horarioFinal) {
+			Date dataAdmissao, String horarioInicial, String horarioFinal,Double salario) {
 		super( tipoPessoa, dataCadastro, nome, cpf, sexo,
 				dataNascimento, endereco, telefones, email, status);
 		setDataAdmissao(dataAdmissao);
 		setHoraInicial(horarioInicial);
 		setHoraFinal(horarioFinal);
+		setSalario(salario);
 	}
 
 	public Secretaria(Integer idPessoa, EnumTypePessoa tipoPessoa,
@@ -35,7 +36,7 @@ public class Secretaria extends Pessoa{
 			Date dataNascimento, Endereco endereco,
 			List<Telefone> telefones, String email, Boolean status,
 			Date dataAdmissao, String horarioInicial, String horarioFinal,
-			String dataNascimentoString, String dateCadastroString) {
+			String dataNascimentoString, String dateCadastroString,Double salario) {
 		super(idPessoa, tipoPessoa, dataCadastro, nome, cpf, sexo,
 				dataNascimento, endereco, telefones, email, status,
 				dataNascimentoString, dateCadastroString);
@@ -43,6 +44,15 @@ public class Secretaria extends Pessoa{
 		setDataAdmissaoString(dateCadastroString);
 		setHoraInicial(horarioInicial);
 		setHoraFinal(horarioFinal);
+		setSalario(salario);
+	}
+
+	public Double getSalario() {
+		return salario;
+	}
+
+	public void setSalario(Double salario) {
+		this.salario = salario;
 	}
 
 	public Date getDataAdmissao() {
