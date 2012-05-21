@@ -12,24 +12,33 @@ import br.ucb.fct.telefone.Telefone;
 public class Professor extends Pessoa{
 	
 	private Date dataAdmissao;
+	private String dataAdmissaoString;
 	
+	public String getDataAdmissaoString() {
+		return dataAdmissaoString;
+	}
+	public void setDataAdmissaoString(String dataAdmissaoString) {
+		this.dataAdmissaoString = dataAdmissaoString;
+	}
 	public Professor(Integer idPessoa, EnumTypePessoa tipoPessoa,
 			Date dataCadastro, String nome, String cpf, EnumTypeSexo sexo,
 			Date dataNascimento, Endereco endereco,
 			List<Telefone> telefones, String email, Boolean status,
-			Date dataAdmissao,String dataNascimentoString, String dateCadastroString) {
+			Date dataAdmissao,String dataNascimentoString, String dateCadastroString,String dataAdmissaoString) {
 		super(idPessoa, tipoPessoa, dataCadastro, nome, cpf, sexo,
 				dataNascimento, endereco, telefones, email, status, dataNascimentoString, dateCadastroString);
 		setdataAdmissao(dataAdmissao);
+		setDataAdmissaoString(dataAdmissaoString);
 	}
 	public Professor( EnumTypePessoa tipoPessoa,
 			Date dataCadastro, String nome, String cpf, EnumTypeSexo sexo,
 			Date dataNascimento, Endereco endereco,
 			List<Telefone> telefones, String email, Boolean status,
-			Date dataAdmissao) {
+			Date dataAdmissao,String dataAdmissaoString) {
 		super( tipoPessoa, dataCadastro, nome, cpf, sexo,
 				dataNascimento, endereco, telefones, email, status);
 		setdataAdmissao(dataAdmissao);
+		setDataAdmissaoString(dataAdmissaoString);
 	}
 
 	public Date getDataAdmissao() {
@@ -40,29 +49,5 @@ public class Professor extends Pessoa{
 		this.dataAdmissao = dataAdmissao;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result
-				+ ((getDataAdmissao() == null) ? 0 : getDataAdmissao().hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!super.equals(obj))
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Professor other = (Professor) obj;
-		if (getDataAdmissao() == null) {
-			if (other.getDataAdmissao() != null)
-				return false;
-		} else if (!getDataAdmissao().equals(other.getDataAdmissao()))
-			return false;
-		return true;
-	}
+	
 }
