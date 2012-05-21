@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.swing.JOptionPane;
 
 import br.ucb.fct.aluno.Aluno;
 import br.ucb.fct.endereco.Endereco;
@@ -18,6 +17,8 @@ import br.ucb.fct.enuns.EnumTypeFone;
 import br.ucb.fct.enuns.EnumTypePessoa;
 import br.ucb.fct.enuns.EnumTypeSexo;
 import br.ucb.fct.graduacao.Graduacao;
+import br.ucb.fct.pacote.Pacote;
+import br.ucb.fct.pagamento.Pagamento;
 import br.ucb.fct.pessoa.Pessoa;
 import br.ucb.fct.professor.Professor;
 import br.ucb.fct.secretaria.Secretaria;
@@ -276,6 +277,47 @@ public class Util {
 		req.setAttribute("numero", endereco.getNumero());
 		req.setAttribute("complemento", endereco.getComplemento());
 	
-	}	
+	public static void putAtribuRequisicaoGraducao(HttpServletRequest req){
+		req.setAttribute("descricao", req.getParameter("descricao"));
+		req.setAttribute("modali", req.getParameter("modali"));
+		req.setAttribute("modalidades", Factory.initModalidadeDAO().selectAll());
+	}
+
+	public static void putAtribuRequisicaoGraducao(HttpServletRequest req, Graduacao graduacao){
+		req.setAttribute("descricao", graduacao.getDescricao());
+		req.setAttribute("modali", graduacao.getIdModalidade());
+		req.setAttribute("modalidades", Factory.initModalidadeDAO().selectAll());
+	}
+
+	public static Pacote getCadastroPacote(HttpServletRequest req) {
+		return new Pacote(Double.parseDouble(req.getParameter("preco")), req.getParameter("descricao"));
+	}
+	
+	public static void putAtribuRequisicaoPacote(HttpServletRequest req) {
+		req.setAttribute("descricao", req.getParameter("descricao"));
+		req.setAttribute("preco", req.getParameter("preco"));	
+	}
+	
+	public static void putAtribuRequisicaoPacote(HttpServletRequest req, Pacote pacote){
+		req.setAttribute("descricao", pacote.getDescricao());
+		req.setAttribute("preco", pacote.getValor());
+	}
+
+	public static void putAtribuRequisicaoPagamento(HttpServletRequest req) {
+		req.setAttribute("valorPago", req.getParameter("valorPago"));
+		req.setAttribute("dataPagamento", req.getParameter("dataPagamento"));	
+	}
+	
+	public static void putAtribuRequisicaoPagamento(HttpServletRequest req, Pagamento pagamento) {
+		req.setAttribute("valorPago", pagamento.getValorPago());
+		req.setAttribute("dataPagamento", pagamento.getDataPagamentoString());	
+	}
 	
 }
+
+
+
+
+
+
+
