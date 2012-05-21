@@ -55,11 +55,11 @@
 
 				<form action="cadastroTurma.do" method="post">
 					
-					<input type="hidden" name="idProfessor" id="idProfessor" value="${param.id}" />
+					<input type="hidden" name="idProfessor" id="idProfessor" value="${id}" />
 					
 					<p>
 						<label><fmt:message key="nome"/></label>
-						<input type="text" class="input-short" name="nome" id="nome" value="${param.nome }"/>
+						<input type="text" class="input-short" name="nome" id="nome" value="${nome }"/>
 						<c:if test="${not empty erros['erronome'] }">
 							<span class="notification-input ni-error"><fmt:message key="nome_invalido"/></span>
 						</c:if>
@@ -68,7 +68,7 @@
 					
 					<p>
                         <label><fmt:message key="professor"/></label>
-                        <input type="text" class="input-short" name="professor" id="professor" readonly="readonly" value="${param.professor}" /><a href="javascript:abrir('buscaProfessor.do')"> <fmt:message key="buscar"/> </a>
+                        <input type="text" class="input-short" name="professor" id="professor" readonly="readonly" value="${professor}" /><a href="javascript:abrir('buscaProfessor.do')"> <fmt:message key="buscar"/> </a>
                         <c:if test="${not empty erros['erroprofessor'] }">
 							<span class="notification-input ni-error"><fmt:message key="professor_invalido"/></span>
 						</c:if>                        
@@ -80,8 +80,8 @@
 							<c:choose>
 								<c:when test="${! empty modalidades}">
 									<option value="0"><fmt:message key="selecione"/></option>
-									<c:forEach var="modalidade" items="${modalidades}">	
-										<option value="${modalidade.idModalidade}" <c:if test="${param.modalidade == modalidade.idModalidade}"> selected="selected" </c:if> >${modalidade.descricao}</option>
+									<c:forEach var="m" items="${modalidades}">	
+										<option value="${m.idModalidade}" <c:if test="${modalidade == m.idModalidade}"> selected="selected" </c:if> >${m.descricao}</option>
 									</c:forEach>			
 								</c:when>
 								<c:otherwise>
@@ -97,7 +97,7 @@
 					
 					<p>
                         <label><fmt:message key="horarioInicial"/></label> 
-                        <input type="text" readonly="readonly" class="input-short-short" name="horarioInicial" id="horarioInicial" value="${param.horarioInicial }" />
+                        <input type="text" readonly="readonly" class="input-short-short" name="horarioInicial" id="horarioInicial" value="${horarioInicial }" />
                         <c:if test="${not empty erros['erroHorarioInicial'] }">
 							<span class="notification-input ni-error"><fmt:message key="horarioInicial_invalido"/></span>
 						</c:if>                        
@@ -106,7 +106,7 @@
 					
 					<p>
                         <label><fmt:message key="horarioFinal"/></label>
-                        <input type="text" readonly="readonly" class="input-short-short" name="horarioFinal" id="horarioFinal" value="${param.horarioFinal }" />
+                        <input type="text" readonly="readonly" class="input-short-short" name="horarioFinal" id="horarioFinal" value="${horarioFinal }" />
                         <c:if test="${not empty erros['erroHorarioFinal'] }">
 							<span class="notification-input ni-error"><fmt:message key="horarioFinal_invalido"/></span>
 						</c:if>                        
