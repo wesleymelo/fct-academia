@@ -276,6 +276,7 @@ public class Util {
 		req.setAttribute("estados", Factory.initEnderecoDAO().selectEstados());
 		req.setAttribute("numero", endereco.getNumero());
 		req.setAttribute("complemento", endereco.getComplemento());
+	}
 	
 	public static void putAtribuRequisicaoGraducao(HttpServletRequest req){
 		req.setAttribute("descricao", req.getParameter("descricao"));
