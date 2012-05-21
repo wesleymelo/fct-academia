@@ -51,6 +51,7 @@
 								<th style="width: 4%">#</th>
 								<th style="width: 25%"><fmt:message key="nome"/></th>
 								<th style="width: 10%"><fmt:message key="cpf"/></th>
+								<th style="width: 10%"><fmt:message key="nascimento"/></th>
 								<th style="width: 15%"><fmt:message key="telefones"/></th>
 								<th style="width: 25%"><fmt:message key="email"/></th>
 								<th style="width: 08%"><fmt:message key="sexo"/></th>
@@ -60,6 +61,7 @@
 						<tbody>
 							<c:forEach var="secretaria" items="${secretarias}">
 								<tr>
+									<td class="align-center">${secretaria.idPessoa}</td>
 									<td><a href="">${secretaria.nome}</a></td>
 									<td>${secretaria.cpf}</td>
 									<td>${secretaria.dataNascimento}</td>
