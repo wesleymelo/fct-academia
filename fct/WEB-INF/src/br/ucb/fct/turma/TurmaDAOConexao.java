@@ -16,7 +16,7 @@ public class TurmaDAOConexao implements TurmaDAO{
 
 	@Override
 	public boolean insert(Turma turma) throws DAOException {
-		String sql = "INSERT INTO turmas(idTurma, idProfessor, idModalidade, nomeTurma,horario) VALUES(null,?,?,?,?);";
+		String sql = "INSERT INTO turmas(idTurma, idProfessor, idModalidade, nome,horarioInicial, horarioFinal ) VALUES(null,?,?,?,?,?);";
 		Connection con = MyConnection.init();
 		int retorno;
 		PreparedStatement ps = null;
@@ -25,7 +25,8 @@ public class TurmaDAOConexao implements TurmaDAO{
 			ps.setInt(1,turma.getIdProfessor());
 			ps.setInt(2,turma.getIdModalidade());
 			ps.setString(3,turma.getNomeTurma());
-			ps.setTime(4,turma.getHorario());
+			ps.setTime(4,turma.getHorarioInicial());
+			ps.setTime(5, turma.getHorarioFinal());
 			retorno = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -58,16 +59,18 @@ public class TurmaDAOConexao implements TurmaDAO{
 	@Override
 	public boolean update(Turma turma, int id) throws DAOException {
 										  
-		String sql = "UPDATE turmas  SET idProfessor = ?, idModalidade = ?, nomeTurma = ?, horario = ? WHERE = ? ;";
+		String sql = "UPDATE turmas  SET idProfessor = ?, idModalidade = ?, nomeTurma = ?, horarioInicial = ?, horarioFinal = ?  WHERE = ? ;";
 		Connection con = MyConnection.init();
 		PreparedStatement ps = null;
 		int retorno;
 		try {
 			ps = con.prepareStatement(sql);
-			ps.setObject(1,turma.getIdProfessor());
-			ps.setObject(2,turma.getIdModalidade());
-			ps.setObject(3,turma.getNomeTurma());
-			ps.setObject(4,turma.getHorario());
+			ps.setInt(1,turma.getIdProfessor());
+			ps.setInt(2,turma.getIdModalidade());
+			ps.setString(3,turma.getNomeTurma());
+			ps.setTime(4,turma.getHorarioInicial());
+			ps.setTime(5,turma.getHorarioFinal());
+			ps.setInt(6,id);
 			retorno = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -121,6 +124,6 @@ public class TurmaDAOConexao implements TurmaDAO{
 		return turma;
 	}
 	public Turma getTurma(ResultSet rs) throws SQLException{
-		return new Turma(rs.getInt(1),rs.getInt(2) , rs.getInt(3), rs.getNString(4), rs.getTime(5));
+		return new Turma(rs.getInt("IdTurma"),rs.getInt("idProfessor") , rs.getInt("idModalidade"), rs.getString("nome"), rs.getTime("horarioInicial"), rs.getTime("horarioFinal"));
 	}
 }
