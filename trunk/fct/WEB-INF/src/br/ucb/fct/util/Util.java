@@ -156,17 +156,17 @@ public class Util {
 	public static Secretaria getCadastroSecretaria(HttpServletRequest req) {
 		String nome = (String) req.getSession().getAttribute("nome");
 		String cpf = (String) req.getSession().getAttribute("cpf");
-		EnumTypeSexo sexo = (EnumTypeSexo) req.getSession().getAttribute("sexo");
-		Date dataNasc = formatDateIn((String)req.getSession().getAttribute("dataNasc"));
+		EnumTypeSexo sexo = EnumTypeSexo.findByCodigo( req.getSession().getAttribute("sexo").toString().charAt(0));
 		Date dataCadas = (Date) req.getSession().getAttribute("dataCadas");
+		Date dataNasc = formatDateIn((String)req.getSession().getAttribute("dataNasc"));
 		String email = (String) req.getSession().getAttribute("email");
 		List<Telefone> telefones = (List<Telefone>) req.getSession().getAttribute("telefones"); 
 		Endereco endereco = getEnderecoCadastro(req);
-		Double salario = (Double) req.getSession().getAttribute("salario");
+		Double salario = Double.parseDouble( req.getSession().getAttribute("salario").toString());
 		String horarioInicial = (String) req.getSession().getAttribute("horarioInicial");
 		String horarioFinal = (String) req.getSession().getAttribute("horarioFinal");
-		Date dataAdmissao = (Date) req.getSession().getAttribute("dataAdmissao");
-		Secretaria secretaria = new Secretaria(EnumTypePessoa.SECRETARIA, dataCadas, nome, cpf, sexo, dataNasc, endereco, telefones, email, true, dataAdmissao, horarioInicial, horarioFinal) ;
+		Date dataAdmissao = formatDateIn((String)req.getSession().getAttribute("dataAdmissao"));
+		Secretaria secretaria = new Secretaria(EnumTypePessoa.SECRETARIA, dataCadas, nome, cpf, sexo, dataNasc, endereco, telefones, email, true, dataAdmissao, horarioInicial, horarioFinal,salario) ;
 		System.out.println(secretaria);
 		return secretaria;
 	}
@@ -174,7 +174,7 @@ public class Util {
 	public static Professor getCadastroProfessor(HttpServletRequest req) {
 		String nome = (String) req.getSession().getAttribute("nome");
 		String cpf = (String) req.getSession().getAttribute("cpf");
-		EnumTypeSexo sexo = (EnumTypeSexo) req.getSession().getAttribute("sexo");
+		EnumTypeSexo sexo = EnumTypeSexo.findByCodigo( req.getSession().getAttribute("sexo").toString().charAt(0) );
 		Date dataNasc = formatDateIn((String)req.getSession().getAttribute("dataNasc"));
 		Date dataCadas = (Date) req.getSession().getAttribute("dataCadas");
 		String email = (String) req.getSession().getAttribute("email");
@@ -315,10 +315,3 @@ public class Util {
 	}
 	
 }
-
-
-
-
-
-
-
