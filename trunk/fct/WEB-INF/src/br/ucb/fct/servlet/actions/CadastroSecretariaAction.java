@@ -1,6 +1,7 @@
 package br.ucb.fct.servlet.actions;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -69,9 +70,8 @@ public class CadastroSecretariaAction implements Action {
 	}
 
 	public void setSessionSecretaria(HttpSession sessao, HttpServletRequest req){
-		//setSessionPessoa(sessao,req);
 		sessao.setAttribute("nome",req.getParameter("nome"));
-		//sessao.setAttribute("dataCadas",Util.formatDateOut(new Date().toString()));
+		sessao.setAttribute("dataCadas", new java.sql.Date(new java.util.Date().getTime()));
 		sessao.setAttribute("dataNasc",req.getParameter("dataNasc"));
 
 		System.out.println(req.getParameter("dataNasc"));
