@@ -313,5 +313,17 @@ public class Util {
 		req.setAttribute("valorPago", pagamento.getValorPago());
 		req.setAttribute("dataPagamento", pagamento.getDataPagamentoString());	
 	}
+
+
+	public static void putAtribuRequisicaoTurma(HttpServletRequest req) {
+		req.setAttribute("nome",req.getParameter("nome"));
+		req.setAttribute("professor", req.getParameter("professor"));
+		req.setAttribute("idProfessor", req.getParameter("idProfessor"));
+		req.setAttribute("modalidades",Factory.initModalidadeDAO().selectAll());
+		req.setAttribute("modalidade",req.getParameter("modalidade"));
+		req.setAttribute("horarioInicial", req.getParameter("horarioInicial"));
+		req.setAttribute("horarioFinal", req.getParameter("horarioFinal"));
+		
+	}
 	
 }
