@@ -3,7 +3,6 @@ package br.ucb.fct.util;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import javax.swing.JOptionPane;
 
 import br.ucb.fct.aluno.Aluno;
@@ -116,13 +115,30 @@ public class Validator {
 		return (isDoubleValid(value) && (Double.parseDouble(value) >= min ));
 	}
 	
+	public static boolean verificaInt(String value, int min ){
+		return (isIntValid(value) && (Integer.parseInt(value) >= min ));
+	}
+	
+	private static boolean isIntValid(String value) {
+		if(!isStringValid(value, 100))
+			return false;
+		
+		try {
+			Integer.parseInt(value);
+		} catch (NumberFormatException e) {
+			return false;
+		}
+		return true;
+	}
+
+
 	public static boolean verificaInteger(String value, int min, int max ){
 		return verificaDouble(value, min, max);
 	}
 	
 	
 	public static boolean isDoubleValid(String value){
-		if(!isStringValid(value, 100))
+		if(!isStringValid(value, 50))
 			return false;
 		
 		try {
