@@ -14,6 +14,10 @@ import br.ucb.fct.graduacao.GraduacaoDAO;
 import br.ucb.fct.graduacao.GraduacaoDAOConexao;
 import br.ucb.fct.modalidade.ModalidadeDAO;
 import br.ucb.fct.modalidade.ModalidadeDAOConexao;
+import br.ucb.fct.pacote.PacoteDAO;
+import br.ucb.fct.pacote.PacoteDAOConexao;
+import br.ucb.fct.pagamento.PagamentoDAO;
+import br.ucb.fct.pagamento.PagamentoDAOConexao;
 import br.ucb.fct.pessoa.PessoaDAO;
 import br.ucb.fct.pessoa.PessoaDAOConexao;
 import br.ucb.fct.professor.ProfessorDAO;
@@ -72,6 +76,12 @@ public class Factory {
 	}
 	public static DespesaDAO initDespesaDAO(){
 		return new DespesaDAOConexao();
+	}
+	public static PacoteDAO initPacoteDAO(){
+		return new PacoteDAOConexao();
+	}
+	public static PagamentoDAO initPagamentoDAO(){
+		return new PagamentoDAOConexao();
 	}
 	
 }
