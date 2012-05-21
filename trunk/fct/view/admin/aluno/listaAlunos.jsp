@@ -13,8 +13,8 @@
 		
 			$( "#dialog-message" ).dialog({
 				modal: true,
-				height: 700,
-				width: 750,
+				height: 500,
+				width: 650,
 				buttons: {
 					Ok: function() {
 						$( this ).dialog( "close" );
@@ -38,47 +38,21 @@
                     <b> <fmt:message key="dataCadastro"/>: </b>${aluno.dateCadastroString}<br/>
                     <b><fmt:message key="status"/>: </b>${aluno.situacao}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <b> <fmt:message key="altura"/>: </b>${aluno.altura} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                    <b><fmt:message key="peso"/>: </b>${aluno.peso} kg<br/>
+                    <b><fmt:message key="peso"/>: </b>${aluno.peso} kg<br/><br/>
                            
                 
                 	<h4>
 						<fmt:message key="endereco"/>
 					</h4>
 					
-					<table>
-						<thead>
-							<tr>
-								<td><fmt:message key="logradouro"/></td><td>${aluno.endereco.enderecoResidencial}</td>
-                            </tr>
-                            
-                            <tr>
-								<td><fmt:message key="cidade"/></td><td>${aluno.endereco.cidade}</td>
-                            </tr>
-                            
-                            <tr>
-								<td><fmt:message key="bairro"/></td><td>${aluno.endereco.bairro}</td>
-                            </tr>
-                            
-                            <tr>
-								<td><fmt:message key="complemento"/></td> <td> <c:out value="${aluno.endereco.complemento}: " default="vazio"/></td>
-                            </tr>
-                            
-                            
-                            <tr>
-								<td><fmt:message key="uf"/></td><td>${aluno.endereco.uf}</td>
-                            </tr>
-                            
-                            <tr>
-								<td><fmt:message key="cep"/></td><td>${aluno.endereco.cep}</td>
-                            </tr>
-                            
-                            <tr>
-								<td><fmt:message key="numero"/></td><td>${aluno.endereco.numero}</td>
-                            </tr>
-                                                        
-                		</thead>
-                	</table>
-                
+					
+					<b> <fmt:message key="logradouro"/>: </b>${aluno.endereco.enderecoResidencial} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+					<b><fmt:message key="cidade"/>: </b>${aluno.endereco.cidade}<br/>
+                    <b> <fmt:message key="bairro"/>: </b>${aluno.endereco.bairro} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                    <b><fmt:message key="complemento"/>: </b><c:out value="${aluno.endereco.complemento}: " default="vazio"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <b> <fmt:message key="uf"/>: </b>${aluno.endereco.uf}<br/>
+                    <b><fmt:message key="cep"/>: </b>${aluno.endereco.cep}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <b> <fmt:message key="numero"/>: </b>${aluno.endereco.numero}<br/><br/>
                 	
                 	<h4>
 						<fmt:message key="contatos"/>
@@ -89,27 +63,19 @@
                 		<thead>
                 			<c:forEach var="telefone" items="${aluno.telefones}">
 	                			<tr>
-	                					<td><fmt:message key="numero"/></td>
 										<td>	
-											(${telefone.ddd}) ${telefone.numero} <br />
+											<b><fmt:message key="numero"/>:</b> (${telefone.ddd}) ${telefone.numero}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										</td>
-										<td>${telefone.tipo.descricao}</td>
+										<td>
+											<b><fmt:message key="tipo"/>:</b> ${telefone.tipo.descricao}
+										</td>
 										
 								</tr>
 							</c:forEach>
-							<tr>
-								<td><fmt:message key="email"/>: </td>
-								<td>${aluno.email}</td>
-							</tr>
-							<tr>
-	                							
-		
                 		</thead>
 					</table>
-					
+					<b> <fmt:message key="email"/>: </b>${aluno.email}<br/><br/>
 		                    
-						</thead>
-					</table>
 
 </div>
 </c:if>
