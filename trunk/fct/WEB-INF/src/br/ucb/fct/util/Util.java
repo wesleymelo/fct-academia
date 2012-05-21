@@ -171,6 +171,7 @@ public class Util {
 		return secretaria;
 	}
 
+	@SuppressWarnings("unchecked")
 	public static Professor getCadastroProfessor(HttpServletRequest req) {
 		String nome = (String) req.getSession().getAttribute("nome");
 		String cpf = (String) req.getSession().getAttribute("cpf");
@@ -183,7 +184,6 @@ public class Util {
 		Date dataAdmissao = formatDateIn((String) req.getSession().getAttribute("dataAdmissao"));
 		String dataAdmissaoString = (String) req.getSession().getAttribute("dataAdmissao");
 		Professor professor = new Professor(EnumTypePessoa.PROFESSOR, dataCadas, nome, cpf, sexo, dataNasc, endereco, telefones, email, true, dataAdmissao,dataAdmissaoString); 
-		System.out.println(professor);
 		return professor;
 	}
 	
@@ -278,6 +278,10 @@ public class Util {
 		req.setAttribute("complemento", endereco.getComplemento());
 	}
 	
+	public static Graduacao getCadastroGraduacao(HttpServletRequest req) {
+		return new Graduacao(Integer.parseInt("modali"), req.getParameter("descricao"));
+	}
+	
 	public static void putAtribuRequisicaoGraducao(HttpServletRequest req){
 		req.setAttribute("descricao", req.getParameter("descricao"));
 		req.setAttribute("modali", req.getParameter("modali"));
@@ -315,6 +319,10 @@ public class Util {
 	}
 
 
+	public static Pagamento getCadastroPagamento(HttpServletRequest req) {
+		return new Pagamento(Double.parseDouble(req.getParameter("valorPago")), Util.formatDateIn(req.getParameter("dataPagamento")));
+	}
+	
 	public static void putAtribuRequisicaoTurma(HttpServletRequest req) {
 		req.setAttribute("nome",req.getParameter("nome"));
 		req.setAttribute("professor", req.getParameter("professor"));
