@@ -14,7 +14,7 @@
 			<!-- Button -->
 			<div class="float-right">
 				<a
-					href="${pageContext.request.contextPath}/view/admin/turma/cadastroTurma.jsp"
+					href="${pageContext.request.contextPath}/view/admin/turma/carregaModalidades.do"
 					class="button"> <span><b><fmt:message key="new" /></b>
 						<img
 						src="${pageContext.request.contextPath}/view/images/plus-small.gif"
@@ -51,7 +51,7 @@
 		<!-- Example table -->
 		<div class="module">
 			<h2>
-				<span><fmt:message key="alunos" /></span>
+				<span><fmt:message key="turmas" /></span>
 			</h2>
 
 			<div class="module-table-body">
@@ -59,27 +59,24 @@
 					<table id="myTable" class="tablesorter">
 						<thead>
 							<tr>
-								<th style="width: 25%">Nome</th>
-								<th style="width: 10%">CPF</th>
-								<th style="width: 10%">Data Nascimento</th>
-								<th style="width: 15%">Telefones</th>
-								<th style="width: 25%">Email</th>
-								<th style="width: 08%">Sexo</th>
+								<th style="width: 5%">#</th>
+								<th style="width: 20%"><fmt:message key="nome"/></th>
+								<th style="width: 20%"><fmt:message key="professor"/></th>
+								<th style="width: 15%"><fmt:message key="modalidade"/></th>
+								<th style="width: 10%"><fmt:message key="horarioInicial"/></th>
+								<th style="width: 10%"><fmt:message key="horarioFinal"/></th>
 								<th style="width: 10%">A&ccedil;&otilde;es</th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="aluno" items="${alunos}">
+							<c:forEach var="turma" items="${turmas}">
 								<tr>
-									<td><a href="">${aluno.nome}</a></td>
-									<td>${aluno.cpf}</td>
-									<td>${aluno.dataNascimento}</td>
-									<td><c:forEach var="telefone" items="${aluno.telefones}">
-											${telefone.ddd} ${telefone.numero} <br />
-									</c:forEach></td>
-
-									<td>${aluno.email}</td>
-									<td>${aluno.sexo.descricao}</td>
+									<td>${turma.idTurma}</td>
+									<td><a href="">${turma.nome}</a></td>
+									<td>${turma.professor.nome}</td>
+									<td>${turma.modalidade.descricao}</td>
+									<td>${turma.horarioInicial}</td>
+									<td>${turma.horarioFinal}</td>
 									<td><input type="checkbox" /> <a href=""><img
 											src="${pageContext.request.contextPath}/view/images/tick-circle.gif"
 											tppabs="http://www.xooom.pl/work/magicadmin/images/tick-circle.gif"

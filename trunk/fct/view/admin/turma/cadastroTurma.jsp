@@ -67,8 +67,37 @@
 					</p>
 					
 					<p>
+                        <label><fmt:message key="professor"/></label>
+                        <input type="text" class="input-short" name="professor" id="professor" readonly="readonly" value="${param.professor}" /><a href="javascript:abrir('buscaProfessor.do')"> <fmt:message key="buscar"/> </a>
+                        <c:if test="${not empty erros['erroprofessor'] }">
+							<span class="notification-input ni-error"><fmt:message key="professor_invalido"/></span>
+						</c:if>                        
+					</p>
+					
+					<p>
+						<label><fmt:message key="modalidade"/></label>
+						<select class="input-short" name="modalidade">
+							<c:choose>
+								<c:when test="${! empty modalidades}">
+									<option value="0"><fmt:message key="selecione"/></option>
+									<c:forEach var="modalidade" items="${modalidades}">	
+										<option value="${modalidade.idModalidade}" <c:if test="${param.modalidade == modalidade.idModalidade}"> selected="selected" </c:if> >${modalidade.descricao}</option>
+									</c:forEach>			
+								</c:when>
+								<c:otherwise>
+									<option value="0"><fmt:message key="noItens"/></option>
+								</c:otherwise>
+							</c:choose>
+						</select>
+						<c:if test="${not empty erros['erromodalidade'] }">
+							<span class="notification-input ni-error"><fmt:message key="modalidade_invalido"/></span>
+						</c:if>
+						
+					</p>
+					
+					<p>
                         <label><fmt:message key="horarioInicial"/></label> 
-                        <input type="text" class="input-short-short" name="horarioInicial" id="horarioInicial" value="${param.horarioInicial }" />
+                        <input type="text" readonly="readonly" class="input-short-short" name="horarioInicial" id="horarioInicial" value="${param.horarioInicial }" />
                         <c:if test="${not empty erros['erroHorarioInicial'] }">
 							<span class="notification-input ni-error"><fmt:message key="horarioInicial_invalido"/></span>
 						</c:if>                        
@@ -77,117 +106,69 @@
 					
 					<p>
                         <label><fmt:message key="horarioFinal"/></label>
-                        <input type="text" class="input-short-short" name="horarioFinal" id="horarioFinal" value="${param.horarioFinal }" />
+                        <input type="text" readonly="readonly" class="input-short-short" name="horarioFinal" id="horarioFinal" value="${param.horarioFinal }" />
                         <c:if test="${not empty erros['erroHorarioFinal'] }">
 							<span class="notification-input ni-error"><fmt:message key="horarioFinal_invalido"/></span>
 						</c:if>                        
 					</p>
 					
 					<script>
-						jQuery(function($){
-      							$("#horarioInicial").mask("99:99");
-      							$("#horarioFinal").mask("99:99");
-      						});
-					</script>
+							
+							$(document).ready(function() {
+							    $('#horarioInicial').timepicker({
+							        showLeadingZero: false,
+							        onHourShow: tpStartOnHourShowCallback,
+							        onMinuteShow: tpStartOnMinuteShowCallback
+							    });
+							    $('#horarioFinal').timepicker({
+							        showLeadingZero: false,
+							        onHourShow: tpEndOnHourShowCallback,
+							        onMinuteShow: tpEndOnMinuteShowCallback
+							    });
+							});
 
-					<p>
-                        <label><fmt:message key="professor"/></label>
-                        <input type="text" class="input-short-short" name="professor" id="professor" readonly="readonly" value="${param.professor}" /><a href="javascript:abrir('buscaProfessor.do')"> <fmt:message key="buscar"/> </a>
-                        <c:if test="${not empty erros['erroProfessor'] }">
-							<span class="notification-input ni-error"><fmt:message key="professor_invalido"/></span>
-						</c:if>                        
-					</p>
+							function tpStartOnHourShowCallback(hour) {
+							    var tpEndHour = $('#horarioFinal').timepicker('getHour');
+							    // Check if proposed hour is prior or equal to selected end time hour
+							    if (hour <= tpEndHour) { return true; }
+							    // if hour did not match, it can not be selected
+							    return false;
+							}
+							function tpStartOnMinuteShowCallback(hour, minute) {
+							    var tpEndHour = $('#horarioFinal').timepicker('getHour');
+							    var tpEndMinute = $('#horarioFinal').timepicker('getMinute');
+							    // Check if proposed hour is prior to selected end time hour
+							    if (hour < tpEndHour) { return true; }
+							    // Check if proposed hour is equal to selected end time hour and minutes is prior
+							    if ( (hour == tpEndHour) && (minute < tpEndMinute) ) { return true; }
+							    // if minute did not match, it can not be selected
+							    return false;
+							}
 
-	
+							function tpEndOnHourShowCallback(hour) {
+							    var tpStartHour = $('#horarioInicial').timepicker('getHour');
+							    // Check if proposed hour is after or equal to selected start time hour
+							    if (hour >= tpStartHour) { return true; }
+							    // if hour did not match, it can not be selected
+							    return false;
+							}
+							function tpEndOnMinuteShowCallback(hour, minute) {
+							    var tpStartHour = $('#horarioInicial').timepicker('getHour');
+							    var tpStartMinute = $('#horarioInicial').timepicker('getMinute');
+							    // Check if proposed hour is after selected start time hour
+							    if (hour > tpStartHour) { return true; }
+							    // Check if proposed hour is equal to selected start time hour and minutes is after
+							    if ( (hour == tpStartHour) && (minute > tpStartMinute) ) { return true; }
+							    // if minute did not match, it can not be selected
+							    return false;
+							}
+							
+							
+							
+							</script>
 					<fieldset>
-						<ul>
-							<li><label><fmt:message key="sexo"/>:&nbsp;&nbsp;&nbsp;<input type="radio" name="sexo"	checked="checked" id="sexo" value="F" />&nbsp;&nbsp;<fmt:message key="feminino"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="sexo" id="sexo" value="M" />&nbsp;&nbsp;<fmt:message key="masculino"/></label></li>
-						</ul>
-					</fieldset>
-					<p>
-					
-						<label><fmt:message key="cpf"/></label> 
-						<input type="text" class="input-short-short" name="cpf" id="cpf" value="${param.cpf }" />
-						<c:if test="${not empty erros['errocpf'] }">
-							<span class="notification-input ni-error"><fmt:message key="cpf_invalido"/></span>
-						</c:if>                        
-					
-					</p>
-					
-					<script>
-						jQuery(function($){
-      							$("#cpf").mask("999.999.999-99");
-      						});
-					</script>
-
-					<p>
-						<label><fmt:message key="email"/></label> 
-						<input type="text" class="input-short" name="email" id="email" value="${param.email }"/>
-						<c:if test="${not empty erros['erroemail'] }">
-							<span class="notification-input ni-error"><fmt:message key="email_invalido"/></span>
-						</c:if>                        
-					<p>
-					
-					<p>	
-						<label><fmt:message key="celular"/></label>
-						<input type="text" class="input-short-short" name="celular" id="celular" value="${param.celular }" />
-						<c:if test="${not empty erros['errocelular'] }">
-							<span class="notification-input ni-error"><fmt:message key="telefone_invalido"/></span>
-						</c:if>                        
-					</p>
-					
-					<script>
-						jQuery(function($){
-      							$("#celular").mask("(99)9999-9999");
-      						});
-					</script>
-
-					<p>
-						<label><fmt:message key="residencial"/></label> 
-						<input type="text" class="input-short-short" name="residencial" id="residencial" value="${param.residencial }"/> 
-						<c:if test="${not empty erros['errocelular'] }">
-							<span class="notification-input ni-error"><fmt:message key="telefone_invalido"/></span>
-						</c:if>                        
-					</p>
-					
-					<script>
-						jQuery(function($){
-      							$("#residencial").mask("(99)9999-9999");
-      						});
-					</script>
-					
-					<p>
-						<label><fmt:message key="comercial"/></label> 
-						<input type="text" class="input-short-short" name="comercial" id="comercial" value="${param.comercial }"/> 
-						<c:if test="${not empty erros['errocomercial'] }">
-							<span class="notification-input ni-error"><fmt:message key="telefone_invalido"/></span>
-						</c:if> 
-					</p>
-					
-					<script>
-						jQuery(function($){
-      							$("#comercial").mask("(99)9999-9999");
-      						});
-					</script>
-					
-					<p>
-						<label><fmt:message key="altura"/></label> <input type="text" class="input-short-short" name="altura" value="${param.altura }" id="altura" />
-						<c:if test="${not empty erros['erroaltura'] }">
-							<span class="notification-input ni-error"><fmt:message key="altura_invalida"/></span>
-						</c:if> 
-					</p>
-
-					<p>
-						<label><fmt:message key="peso"/></label> 
-						<input type="text" class="input-short-short" name="peso" id="peso" value="${param.peso }" />
-						<c:if test="${not empty erros['erropeso'] }">
-							<span class="notification-input ni-error"><fmt:message key="peso_invalido"/></span>
-						</c:if>
-					</p>
-
-					<fieldset>
-						<input class="submit-green" type="submit" value="Próximo" /> <input
-						class="submit-gray" type="submit" value="Cancelar" />
+						<input class="submit-green" type="submit" value="<fmt:message key="bt_enviar"/>" /> <input
+						class="submit-gray" type="submit" value="<fmt:message key="bt_cancelar"/>" />
 					</fieldset>
 
 				</form>
