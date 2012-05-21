@@ -21,7 +21,7 @@ public class SecretariaDAOConexao implements SecretariaDAO {
 	//É NECESSÁRIO ARRUMAR ESSAS QUERYS, POIS NÃO PODEREMOS EXCLUIR SECRETARIA, ALUNO OU PROFESSOR.
 	@Override
 	public boolean insert(Secretaria secretaria) throws DAOException {
-		String sql = "INSERT INTO secretarias(idSecretaria,dataAdmissao , horarioInicial, horarioFinal) VALUES (?,?,?,?);";
+		String sql = "INSERT INTO secretarias(idSecretaria,dataAdmissao , horarioInicial, horarioFinal,salario) VALUES (?,?,?,?,?);";
 		Connection con = null;
 		PreparedStatement ps = null;
 		PessoaDAO dao = Factory.initPessoaDAO();
@@ -35,6 +35,7 @@ public class SecretariaDAOConexao implements SecretariaDAO {
 			ps.setDate(2,(java.sql.Date)secretaria.getDataAdmissao());
 			ps.setString(3, secretaria.getHoraInicial());
 			ps.setString(4, secretaria.getHoraFinal());
+			ps.setDouble(5, secretaria.getSalario());
 			retorno = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -145,7 +146,8 @@ public class SecretariaDAOConexao implements SecretariaDAO {
 				              rs.getString("horarioInicial"), 
 				              rs.getString("horarioFinal"),
 				              Util.getDateView(rs.getDate("dataNascimento").toString(),"/"),
-						      Util.getDateView(rs.getDate("dataCadastro").toString(),"/"));
+						      Util.getDateView(rs.getDate("dataCadastro").toString(),"/"),
+						      rs.getDouble("salario"));
 	}
 	
 	public static Pessoa getPessoaBySecretaria(Secretaria secretaria){
