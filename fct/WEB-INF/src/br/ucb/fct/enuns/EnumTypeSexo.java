@@ -11,6 +11,7 @@ public enum EnumTypeSexo {
 		setDescricao(descricao);
 	}
 	public static EnumTypeSexo findByCodigo(Character codigo){
+		Character.toUpperCase(0);
 		for (EnumTypeSexo e : values()) {
 			if(e.getCodigo()==codigo)
 				return e;
