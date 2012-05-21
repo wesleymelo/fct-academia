@@ -11,6 +11,7 @@ import java.util.List;
 
 import br.ucb.fct.connection.MyConnection;
 import br.ucb.fct.exceptions.DAOException;
+import br.ucb.fct.util.Factory;
 
 public class TurmaDAOConexao implements TurmaDAO{
 
@@ -24,7 +25,7 @@ public class TurmaDAOConexao implements TurmaDAO{
 			ps = con.prepareStatement(sql);
 			ps.setInt(1,turma.getIdProfessor());
 			ps.setInt(2,turma.getIdModalidade());
-			ps.setString(3,turma.getNomeTurma());
+			ps.setString(3,turma.getNome());
 			ps.setTime(4,turma.getHorarioInicial());
 			ps.setTime(5, turma.getHorarioFinal());
 			retorno = ps.executeUpdate();
@@ -67,7 +68,7 @@ public class TurmaDAOConexao implements TurmaDAO{
 			ps = con.prepareStatement(sql);
 			ps.setInt(1,turma.getIdProfessor());
 			ps.setInt(2,turma.getIdModalidade());
-			ps.setString(3,turma.getNomeTurma());
+			ps.setString(3,turma.getNome());
 			ps.setTime(4,turma.getHorarioInicial());
 			ps.setTime(5,turma.getHorarioFinal());
 			ps.setInt(6,id);
@@ -124,6 +125,6 @@ public class TurmaDAOConexao implements TurmaDAO{
 		return turma;
 	}
 	public Turma getTurma(ResultSet rs) throws SQLException{
-		return new Turma(rs.getInt("IdTurma"),rs.getInt("idProfessor") , rs.getInt("idModalidade"), rs.getString("nome"), rs.getTime("horarioInicial"), rs.getTime("horarioFinal"));
+		return new Turma(rs.getInt("IdTurma"), Factory.initProfessorDAO().selectById(rs.getInt("idProfessor")) , Factory.initModalidadeDAO().selectById(rs.getInt("idModalidade")), rs.getString("nome"), rs.getTime("horarioInicial"), rs.getTime("horarioFinal"));
 	}
 }
