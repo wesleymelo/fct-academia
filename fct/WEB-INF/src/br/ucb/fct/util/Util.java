@@ -1,6 +1,8 @@
 package br.ucb.fct.util;
 
 import java.sql.Date;
+import java.sql.Time;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
@@ -49,7 +51,7 @@ public class Util {
 
 	public static String unFormat(String str)  {
 		if(str != null)
-			return str.replace(".", "").replace("-", "").replace(" ", "").replace("/", "").replace("(", "").replace(")", "");
+			return str.replace(".", "").replace("-", "").replace(" ", "").replace("/", "").replace("(", "").replace(")", "").replace(":", "");
 		return str;
 	}
 
@@ -66,7 +68,18 @@ public class Util {
 		}  
 		return date;
 	}
-
+	public static Time formatTime(String hora){
+		Time hour;
+		DateFormat formato = new SimpleDateFormat("HH:mm");  
+		try {  
+			hour = new Time(formato.parse(hora).getTime());  
+		} catch (Exception e) {  
+			throw new RuntimeException(e.getMessage());  
+		}
+		return hour;
+	}
+	
+	
 	public static String[] formateTelOut(String tel){
 		String ddd = tel.substring(0,2);
 		String numero =  tel.substring(2);
