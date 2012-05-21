@@ -74,8 +74,7 @@ public class ProfessorDAOConexao implements ProfessorDAO {
 		try {
 			con = MyConnection.init();
 			ps = con.prepareStatement(sql);
-			ps.setInt(1,1 );
-			ps.setObject(2,dataAdmissao);
+			ps.setObject(1,dataAdmissao);
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -143,13 +142,23 @@ public class ProfessorDAOConexao implements ProfessorDAO {
 				             rs.getBoolean("status"), 
 				             rs.getDate("dataAdmissao"),
 							 Util.getDateView(rs.getDate("dataNascimento").toString(),"/"),
-							 Util.getDateView(rs.getDate("dataCadastro").toString(),"/"));
+							 Util.getDateView(rs.getDate("dataCadastro").toString(),"/"),
+							 rs.getString("dataAdmissao"));
 	}
 	
 	
 	public static Pessoa getPessoaByProfessor(Professor professor){
-		return new Pessoa(professor.getTipoPessoa(), professor.getDataCadastro(), professor.getNome(), professor.getCpf(), professor.getSexo(), professor.getDataNascimento(), professor.getEndereco(), professor.getTelefones(), professor.getEmail(), professor.getStatus());
-	}
+		return new Pessoa(professor.getTipoPessoa(), 
+				professor.getDataCadastro(),
+				professor.getNome(), 
+				professor.getCpf(), 
+				professor.getSexo(), 
+				professor.getDataNascimento(),
+				professor.getEndereco(), 
+				professor.getTelefones(), 
+				professor.getEmail(), 
+				professor.getStatus());
+}
 
 	@Override
 	public List<Professor> selectByNome(String nome) throws DAOException {
