@@ -62,11 +62,14 @@ public class GeraErros {
 		if(!Validator.verificaInt(req.getParameter("modalidade"), 1))
 			erros.put("erromodalidade","modalidade_invalida");
 		
-		if(!Validator.isStringValid(req.getParameter("horarioInicial"), 4))
+		if(!Validator.isStringValid(Util.unFormat(req.getParameter("horarioInicial")), 4))
 			erros.put("erroHorarioInicial","horarioInicial_invalido");
 		
-		if(!Validator.isStringValid(req.getParameter("horarioFinal"), 4))
-			erros.put("erroHorarioInicial","horarioFinal_invalido");
+		if(!Validator.isStringValid(Util.unFormat(req.getParameter("horarioFinal")), 4))
+			erros.put("erroHorarioFinal","horarioFinal_invalido");
+		
+		if(!erros.isEmpty())
+			Util.putAtribuRequisicaoTurma(req);
 		
 		return erros;
 

@@ -96,8 +96,8 @@ public class Validator {
 		return periodo ;
 		}
 	
-	public static boolean isStringValid(String value, int qtde){
-		return (value != null && !(value.trim().isEmpty()) && value.length() <= qtde);
+	public static boolean isStringValid(String value, int max){
+		return (value != null && !(value.trim().isEmpty()) && value.length() <= max);
 	}
 	
 	public static boolean verificaTamanho(String value, int max){
