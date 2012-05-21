@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 
 import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
 
+import br.ucb.fct.professor.Professor;
 import br.ucb.fct.connection.MyConnection;
 import br.ucb.fct.endereco.Endereco;
 import br.ucb.fct.enuns.EnumTypeFone;
@@ -26,7 +27,7 @@ public class CadastroProfessorAction implements Action {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) {
-
+		
 		//System.out.println(new Date().toString());
 
 
@@ -35,13 +36,12 @@ public class CadastroProfessorAction implements Action {
 		int pg = Integer.parseInt(req.getParameter("pg"));
 		Map<String, String> erros;
 		HttpSession sessao = req.getSession();
-       
+       boolean retorno = true;
 		switch (pg) {
 
 		case 1:
 			
 			erros = GeraErros.verificaErrosProfessors(req);
-			System.out.println(erros);
 			if(!erros.isEmpty()){
 				req.setAttribute("erros",erros);
 				return "/view/admin/professor/cadastroProfessor.jsp";
@@ -51,26 +51,59 @@ public class CadastroProfessorAction implements Action {
 				req.getSession().setAttribute("estados", Factory.initEnderecoDAO().selectEstados());
 				return "/view/admin/professor/cadastroProfessorEndereco.jsp";
 			}
-		default:
+		case 2:
 			erros = GeraErros.verificaErrosEndereco(req);
 			if(!erros.isEmpty()){
 				req.setAttribute("erros",erros);
 				return "/view/admin/professor/cadastroProfessorEndereco.jsp";
 			}
 			else{
-				Professor professor = Util.getCadastroProfessor(req);
+				Professor professor = Util.getCadastroProfessor(req);					
 				Endereco endereco = Util.getEnderecoCadastro(req);
 				professor.setEndereco(endereco);
-		
 				if(Factory.initEnderecoDAO().insert(endereco)){
-		
 					if(Factory.initProfessorDAO().insert(professor))
-		
-						Factory.initTelefoneDAO().insert(professor.getTelefones());
+						retorno = Factory.initTelefoneDAO().insert(professor.getTelefones());
 				}
-				return "../../admin/principal/index.jsp";
+				return "/view/admin/professor/listaProfessors.do?status="+retorno;
 			}
-		}
+		case 3:		JOptionPane.showInputDialog("");		
+			erros = GeraErros.verificaErrosProfessors(req);
+			
+			if(!erros.isEmpty()){
+				req.setAttribute("erros", erros);
+				req.setAttribute("codigo",req.getParameter("codigo"));
+				return "/view/admin/professor/alteraCadastroProfessor.jsp";
+			}
+			else{
+				setSessionProfessor(sessao, req);
+				Professor professor = Util.getCadastroProfessor(req);				
+				if(Factory.initProfessorDAO().update(professor, Integer.parseInt(req.getParameter("codigo")))){
+					if(Factory.initTelefoneDAO().update(professor.getTelefones(),Integer.parseInt(req.getParameter("codigo")))){
+						Endereco endereco = Factory.initEnderecoDAO().selectById(Integer.parseInt(req.getParameter("codigo").toString()));
+						Util.putAtribuRequisicaoPessoaEndereco(req,endereco);
+						req.setAttribute("codigo",endereco.getIdEndereco());
+						return "/view/admin/professor/alteraCadastroProfessorEndereco.jsp";
+					}
+				}
+			}
+			break;
+		case 4:
+			erros = GeraErros.verificaErrosEndereco(req);
+			
+			if(!erros.isEmpty()){
+				req.setAttribute("erros", erros);
+				req.setAttribute("codigo",req.getParameter("codigo"));
+				return "/view/admin/professor/alteraCadastroProfessorEndereco.jsp";
+			}
+			else{
+				System.out.println("codigo "+req.getParameter("codigo"));
+				Endereco endereco = Util.getEnderecoCadastro(req);
+				retorno = Factory.initEnderecoDAO().update(endereco,Integer.parseInt(req.getParameter("codigo")));
+				return "/view/admin/professor/listaProfessors.do?status="+retorno;
+			}
+	}
+	return "erros";
 
 
 
