@@ -62,14 +62,11 @@ public class GeraErros {
 		if(!Validator.verificaInt(req.getParameter("modalidade"), 1))
 			erros.put("erromodalidade","modalidade_invalida");
 		
-		if(!Validator.isStringValid(Util.unFormat(req.getParameter("horarioInicial")), 4))
+		if(!Validator.isStringValid(req.getParameter("horarioInicial"), 4))
 			erros.put("erroHorarioInicial","horarioInicial_invalido");
 		
-		if(!Validator.isStringValid(Util.unFormat(req.getParameter("horarioFinal")), 4))
-			erros.put("erroHorarioFinal","horarioFinal_invalido");
-		
-		if(!erros.isEmpty())
-			Util.putAtribuRequisicaoTurma(req);
+		if(!Validator.isStringValid(req.getParameter("horarioFinal"), 4))
+			erros.put("erroHorarioInicial","horarioFinal_invalido");
 		
 		return erros;
 
@@ -130,6 +127,10 @@ public class GeraErros {
 			erros.put("errosalario", "salario_invalida");
 		if(!Validator.isStringValid(Util.unFormat(req.getParameter("dataAdmissao")),8))
 			erros.put("errodataAdmissao", "dataAdmissao_invalido");
+		if(!Validator.isStringValid(Util.unFormat(req.getParameter("horarioFinal")),5))
+			erros.put("errohorarioFinal", "horarioFinal_invalido");		
+		if(!Validator.isStringValid(Util.unFormat(req.getParameter("horarioInicial")),5))
+			erros.put("errohorarioInicial", "horarioInicial_invalido");
 		
 		
 		if(!(erros.containsKey("errodataNasc")||erros.containsKey("errodataAdmissao")))
@@ -205,32 +206,6 @@ public class GeraErros {
 		if(!erros.isEmpty())
 			Util.putAtribuRequisicaoGraducao(req);
 		return erros;
-	}
-
-	public static Map<String, String> verificaErrosPacote(HttpServletRequest req) {
-		Map<String, String> erros = new HashMap<String, String>();
-		if(!Validator.isStringValid(req.getParameter("descricao"), 100))
-			erros.put("errodescricao","decricao_invalido");
-		if(!Validator.verificaDouble(req.getParameter("preco"),1))
-			erros.put("erropreco", "preco_invalido");
-		if(!erros.isEmpty())
-			Util.putAtribuRequisicaoPacote(req);
-		return erros;
-	}
-
-	public static Map<String, String> verificaErrosPagamento(HttpServletRequest req) {
-		
-		Map<String, String> erros = new HashMap<String, String>();
-		if(!Validator.verificaTamanho(req.getParameter("dataPagamento"), 8))
-			erros.put("errodatapagamento","datapagamento_invalido");
-		if(!Validator.verificaDouble(req.getParameter("valorPago"),1))
-			erros.put("errovalorpago", "valorpago_invalido");
-		
-		if(!erros.isEmpty()){
-			Util.putAtribuRequisicaoPagamento(req);
-		}
-		return erros;
-		
 	}
 
 }
