@@ -27,7 +27,7 @@
 				<!-- Button -->
 				<div class="float-right">
 					<a
-						href="${pageContext.request.contextPath}/view/admin/aluno/listaAlunos.do"
+						href="${pageContext.request.contextPath}/view/admin/turma/listaTurmas.do"
 						class="button"> <span><b><fmt:message key="back" /></b>
 							<img
 							src="${pageContext.request.contextPath}/view/images/arrow-curve-180-left.gif"
