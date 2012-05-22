@@ -10,4 +10,5 @@ public interface AlunoDAO {
 	public boolean update(Aluno aluno, int id) throws DAOException;
 	public List<Aluno> selectAll() throws DAOException;
 	public Aluno selectById(int id) throws DAOException;
+	public List<Aluno> selectByNome(String nome) throws DAOException;
 }

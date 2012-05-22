@@ -14,7 +14,7 @@ public class BuscaProfessorAction implements Action {
 			req.setAttribute("professores", Factory.initProfessorDAO().selectByNome(req.getParameter("busca")));
 		else
 			req.setAttribute("professores", Factory.initProfessorDAO().selectAll());
-		return "/view/admin/professor/listaProfessores.jsp";
+		return "/view/admin/turma/popupListaProfessores.jsp";
 	}
 
 }
