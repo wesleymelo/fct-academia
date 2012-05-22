@@ -56,7 +56,9 @@
 					<p>
 						<label><fmt:message key="dataPagamento"/></label>
 						<input type="text" class="input-short-short" readonly="readonly" name="dataPagamento" id="dataPagamento" value="${dataPagamento}"/>
-						
+						<c:if test="${not empty erros['errodatapagamento'] }">
+							<span class="notification-input ni-error"><fmt:message key="datapagamento_invalido"/></span>
+						</c:if>
 						<script>
 						$(function() {
 							$( "#dataPagamento").datepicker({
