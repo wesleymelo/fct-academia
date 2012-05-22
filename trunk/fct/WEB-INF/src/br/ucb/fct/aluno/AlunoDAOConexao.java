@@ -14,6 +14,7 @@ import br.ucb.fct.enuns.EnumTypeSexo;
 import br.ucb.fct.exceptions.*;
 import br.ucb.fct.pessoa.Pessoa;
 import br.ucb.fct.pessoa.PessoaDAO;
+import br.ucb.fct.professor.Professor;
 import br.ucb.fct.util.Factory;
 import br.ucb.fct.util.Util;
 
@@ -155,4 +156,24 @@ public class AlunoDAOConexao implements AlunoDAO {
 	public static Pessoa getPessoaByAluno(Aluno aluno){
 		return new Pessoa(aluno.getTipoPessoa(), aluno.getDataCadastro(), aluno.getNome(), aluno.getCpf(), aluno.getSexo(), aluno.getDataNascimento(), aluno.getEndereco(), aluno.getTelefones(), aluno.getEmail(), aluno.getStatus());
 	}
+	
+	@Override
+	public List<Aluno> selectByNome(String nome) throws DAOException {
+		String sql = "SELECT * FROM alunos, pessoas WHERE idAluno = idPessoa AND nome LIKE '%"+nome+"%'";
+		List<Aluno> alunos = new ArrayList<Aluno>();
+		Connection con = MyConnection.init();		
+		Statement stm = null;
+		ResultSet rs = null;
+		try {
+			stm = con.prepareStatement(sql);
+			rs = stm.executeQuery(sql);
+			while(rs.next())
+				alunos.add(getAluno(rs));
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException(e,"ERRO! SELECTBYNOME na TABELA ALUNOS e PESSOAS. DATA("+new Date()+")");
+		}
+		return alunos;
+	}
+	
 }

@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.ucb.fct.util.Factory;
 
-public class BuscaProfessorAction implements Action {
+public class BuscaProfessorTurmaAction implements Action {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) {
@@ -14,7 +14,7 @@ public class BuscaProfessorAction implements Action {
 			req.setAttribute("professores", Factory.initProfessorDAO().selectByNome(req.getParameter("busca")));
 		else
 			req.setAttribute("professores", Factory.initProfessorDAO().selectAll());
-		return "/view/admin/professor/listaProfessores.jsp";
+		return "/view/admin/turma/popupListaProfessores.jsp";
 	}
 
 }
