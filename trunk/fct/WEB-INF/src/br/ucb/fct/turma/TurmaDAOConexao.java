@@ -60,7 +60,7 @@ public class TurmaDAOConexao implements TurmaDAO{
 	@Override
 	public boolean update(Turma turma, int id) throws DAOException {
 										  
-		String sql = "UPDATE turmas  SET idProfessor = ?, idModalidade = ?, nomeTurma = ?, horarioInicial = ?, horarioFinal = ?  WHERE = ? ;";
+		String sql = "UPDATE turmas  SET idProfessor = ?, idModalidade = ?, nome = ?, horarioInicial = ?, horarioFinal = ?  WHERE = idTurma? ;";
 		Connection con = MyConnection.init();
 		PreparedStatement ps = null;
 		int retorno;
