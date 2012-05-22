@@ -68,6 +68,9 @@ public class GeraErros {
 		if(!Validator.isStringValid(req.getParameter("horarioFinal"), 4))
 			erros.put("erroHorarioInicial","horarioFinal_invalido");
 		
+		if(!erros.isEmpty())
+			Util.putAtribuRequisicaoTurma(req);
+		
 		return erros;
 
 	}
