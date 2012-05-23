@@ -28,7 +28,7 @@
 		
 		<div class="module">
 			<h2>
-				<span>Cadastro Aluno</span>
+				<span><fmt:message key="AlteraCadastroAluno"/></span>
 			</h2>
 
 			
