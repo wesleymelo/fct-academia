@@ -78,7 +78,6 @@ public class Secretaria extends Pessoa{
 	public void setHoraFinal(String horarioFinal) {
 		this.horarioFinal = horarioFinal;
 	}
-
 	
 
 	public String getDataAdmissaoString() {
