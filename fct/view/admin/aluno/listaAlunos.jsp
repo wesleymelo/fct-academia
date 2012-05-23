@@ -174,7 +174,8 @@
 
 									<td>${aluno.email}</td>
 									<td>${aluno.sexo.descricao}</td>
-									<td>	<a href="${pageContext.request.contextPath}/view/admin/aluno/alteraAluno.do?codigo=${aluno.idPessoa }"><img
+									<td>		
+											<a href="${pageContext.request.contextPath}/view/admin/aluno/alteraAluno.do?codigo=${aluno.idPessoa }"><img
 											src="${pageContext.request.contextPath}/view/images/pencil.gif"
 											tppabs="http://www.xooom.pl/work/magicadmin/images/pencil.gif"
 											width="16" height="16" alt="<fmt:message  key="alterar"/>" /></a> 
