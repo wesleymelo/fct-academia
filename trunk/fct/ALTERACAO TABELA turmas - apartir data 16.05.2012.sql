@@ -6,3 +6,6 @@ ALTER TABLE turmas ADD `horarioFinal` TIME not null AFTER horarioInicial;
 ALTER TABLE turmas CHANGE nomeTurma nome varchar(50) not null;
 ALTER TABLE turmas CHANGE idTurma idTurma INTEGER not null AUTO_INCREMENT;
 ALTER TABLE turmas ADD `capacidade` INTEGER not null AFTER horarioFinal;
+
+
+ALTER TABLE pacotes CHANGE idPacote idPacote INTEGER not null AUTO_INCREMENT;
