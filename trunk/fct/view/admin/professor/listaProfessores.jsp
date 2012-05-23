@@ -6,6 +6,78 @@
 
 <c:import url="../../includes/header.jsp" />
 
+<script>
+		$(function() {
+			// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
+			$( "#dialog:ui-dialog" ).dialog( "destroy" );
+		
+			$( "#dialog-message" ).dialog({
+				modal: true,
+				height: 500,
+				width: 650,
+				buttons: {
+					Ok: function() {
+						$( this ).dialog( "close" );
+					}
+				}
+			});
+		});
+	</script>
+
+<c:if test="${! empty param.show && param.show == true}">
+<div id="dialog-message" title="<fmt:message key="visualizaProfessor"/>">
+		
+					<h4>
+						<fmt:message key="dadosPessoais"/>
+					</h4>
+					
+					<b> <fmt:message key="nome"/>: </b>${professor.nome} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+					<b><fmt:message key="nascimento"/>: </b>${professor.dateNascimentoString}<br/>
+                    <b> <fmt:message key="cpf"/>: </b>${professor.cpf} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                    <b><fmt:message key="sexo"/>: </b>${professor.sexo.descricao}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <b> <fmt:message key="dataCadastro"/>: </b>${professor.dateCadastroString}<br/>
+                    <b><fmt:message key="status"/>: </b>${professor.situacao}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <b> <fmt:message key="dataAdmissao"/>: </b>${professor.dataAdmissaoString}<br/><br/>
+                           
+                
+                	<h4>
+						<fmt:message key="endereco"/>
+					</h4>
+					
+					
+					<b> <fmt:message key="logradouro"/>: </b>${professor.endereco.enderecoResidencial} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+					<b><fmt:message key="cidade"/>: </b>${professor.endereco.cidade}<br/>
+                    <b> <fmt:message key="bairro"/>: </b>${professor.endereco.bairro} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                    <b><fmt:message key="complemento"/>: </b><c:out value="${professor.endereco.complemento}: " default="vazio"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <b> <fmt:message key="uf"/>: </b>${professor.endereco.uf}<br/>
+                    <b><fmt:message key="cep"/>: </b>${professor.endereco.cep}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <b> <fmt:message key="numero"/>: </b>${professor.endereco.numero}<br/><br/>
+                	
+                	<h4>
+						<fmt:message key="contatos"/>
+					</h4>
+                
+                
+                	<table>
+                		<thead>
+                			<c:forEach var="telefone" items="${professor.telefones}">
+	                			<tr>
+										<td>	
+											<b><fmt:message key="numero"/>:</b> (${telefone.ddd}) ${telefone.numero}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										</td>
+										<td>
+											<b><fmt:message key="tipo"/>:</b> ${telefone.tipo.descricao}
+										</td>
+										
+								</tr>
+							</c:forEach>
+                		</thead>
+					</table>
+					<b> <fmt:message key="email"/>: </b>${professor.email}<br/><br/>
+		                    
+</div>
+</c:if>
+
 <div class="container_12">
 
 	<div class="grid_12">
@@ -101,7 +173,7 @@
 											width="16" height="16" alt="<fmt:message key="excluir" />" /></a>
 											
 											
-											<a href=""><img
+											<a href="visualizaProfessor.do?id=${professor.idPessoa}"><img
 											src="${pageContext.request.contextPath}/view/images/view.png"
 											tppabs="http://www.xooom.pl/work/magicadmin/images/view.png"
 											width="16" height="16" alt="<fmt:message key="view" />" /></a></td>
