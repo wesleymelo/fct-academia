@@ -55,19 +55,15 @@ public class GeraErros {
 
 		if(!Validator.isStringValid(req.getParameter("nome"), 50))
 			erros.put("erronome","nome_invalida");
-		
 		if(!Validator.isStringValid(req.getParameter("professor"), 50))
 			erros.put("erroprofessor","professor_invalido");
-		
 		if(!Validator.verificaInt(req.getParameter("modalidade"), 1))
 			erros.put("erromodalidade","modalidade_invalida");
-		
-		if(!Validator.isStringValid(req.getParameter("horarioInicial"), 4))
+		if(!Validator.isStringValid(req.getParameter("horarioInicial"), 5))
 			erros.put("erroHorarioInicial","horarioInicial_invalido");
-		
-		if(!Validator.isStringValid(req.getParameter("horarioFinal"), 4))
+		if(!Validator.isStringValid(req.getParameter("horarioFinal"), 5))
 			erros.put("erroHorarioInicial","horarioFinal_invalido");
-		
+
 		if(!erros.isEmpty())
 			Util.putAtribuRequisicaoTurma(req);
 		
@@ -87,9 +83,8 @@ public class GeraErros {
 			erros.put("errobairro", "bairro_invalido");
 		if(!Validator.verificaTamanho((Util.unFormat(req.getParameter("cep"))),8))
 			erros.put("errocep", "cep_invalido");
-		if(!Validator.verificaTamanho(req.getParameter("numero"),8))
-			erros.put("erronumero", "numero_invalido");
-		
+		if(!Validator.isIntValid(req.getParameter("numero")))
+			erros.put("erronumero", "numero_invalido");	
 		if(!erros.isEmpty())
 			Util.putAtribuRequisicaoPessoaEndereco(req);
 		return erros;
@@ -114,7 +109,7 @@ public class GeraErros {
 
 		if(!Validator.isStringValid(req.getParameter("nome"), 255))
 			erros.put("erronome","nome_invalido");
-		if(!Validator.isStringValid(Util.unFormat(req.getParameter("dataNasc")),8))
+	 	if(!Validator.isStringValid(Util.unFormat(req.getParameter("dataNasc")),8))
 			erros.put("errodataNasc", "dataNasc_invalido");
 		if(!Validator.isCPFValid(Util.unFormat(req.getParameter("cpf"))))
 			erros.put("errocpf","cpf_invalido");
@@ -130,8 +125,6 @@ public class GeraErros {
 			erros.put("errosalario", "salario_invalida");
 		if(!Validator.isStringValid(Util.unFormat(req.getParameter("dataAdmissao")),8))
 			erros.put("errodataAdmissao", "dataAdmissao_invalido");
-		
-		
 		if(!(erros.containsKey("errodataNasc")||erros.containsKey("errodataAdmissao")))
 		{
 		
