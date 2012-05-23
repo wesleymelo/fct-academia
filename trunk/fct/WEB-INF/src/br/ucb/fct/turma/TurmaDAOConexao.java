@@ -8,16 +8,19 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+import br.ucb.fct.aluno.Aluno;
 import br.ucb.fct.connection.MyConnection;
 import br.ucb.fct.exceptions.DAOException;
 import br.ucb.fct.util.Factory;
+import br.ucb.fct.util.Util;
+import br.ucb.fct.enuns.EnumTypePessoa;
+import br.ucb.fct.enuns.EnumTypeSexo;
 
 public class TurmaDAOConexao implements TurmaDAO{
 
 	@Override
 	public boolean insert(Turma turma) throws DAOException {
-		String sql = "INSERT INTO turmas(idTurma, idProfessor, idModalidade, nome, horarioInicial, horarioFinal ) VALUES(null,?,?,?,?,?);";
+		String sql = "INSERT INTO turmas(idTurma, idProfessor, idModalidade, nome, horarioInicial, horarioFinal, capacidade) VALUES(null,?,?,?,?,?,?);";
 		Connection con = MyConnection.init();
 		int retorno;
 		PreparedStatement ps = null;
@@ -28,6 +31,7 @@ public class TurmaDAOConexao implements TurmaDAO{
 			ps.setString(3,turma.getNome());
 			ps.setTime(4,turma.getHorarioInicial());
 			ps.setTime(5, turma.getHorarioFinal());
+			ps.setInt(6, turma.getCapacidade());
 			retorno = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -125,11 +129,46 @@ public class TurmaDAOConexao implements TurmaDAO{
 		return turma;
 	}
 	public Turma getTurma(ResultSet rs) throws SQLException{
-		return new Turma(rs.getInt("idTurma"),
-				         Factory.initProfessorDAO().selectById(rs.getInt("idProfessor")) , 
-				         Factory.initModalidadeDAO().selectById(rs.getInt("idModalidade")), 
+		return new Turma(rs.getInt("IdTurma"), Factory.initProfessorDAO().selectById(rs.getInt("idProfessor")), Factory.initTurmaDAO().selectAlunosById(rs.getInt("IdTurma")), Factory.initModalidadeDAO().selectById(rs.getInt("idModalidade")), rs.getString("nome"), rs.getTime("horarioInicial"), rs.getTime("horarioFinal"), rs.getInt("capacidade"));
+	}
+
+	@Override
+	public List<Aluno> selectAlunosById(int id) throws DAOException {
+		String sql = "SELECT * FROM alunos_turmas t, alunos a WHERE a.idAluno = t.idAluno AND idTurma = ?;";
+		Connection con = MyConnection.init();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Aluno> alunos = new ArrayList<Aluno>();
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setObject(1, id);
+			rs = ps.executeQuery();
+			if(rs.first())
+				alunos.add(getAluno(rs));
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException(e,"ERRO! SELECT_ALUNOS na TABELA ALUNOS_TURMAS. DATA("+new Date()+")");
+		}finally{
+			MyConnection.closeConnection(con, ps, rs);
+		}
+		return alunos;
+	}
+	
+	public static Aluno getAluno(ResultSet rs) throws SQLException{
+		return new Aluno(rs.getInt("idPessoa"), 
+				         EnumTypePessoa.findEmunTypePessoaByNumber(rs.getInt("tipoPessoa")), 
+				         rs.getDate("dataCadastro"),
 				         rs.getString("nome"), 
-				         rs.getTime("horarioInicial"), 
-				         rs.getTime("horarioFinal"));
+				         rs.getString("cpf"), 
+				         EnumTypeSexo.findByCodigo(rs.getString("sexo").charAt(0)), 
+				         rs.getDate("dataNascimento"),
+				         Factory.initEnderecoDAO().selectById(rs.getInt("idEndereco")), 
+				         Factory.initTelefoneDAO().selectById(rs.getInt("idPessoa")), 
+                         rs.getString("email"), 
+                         rs.getBoolean("status"),
+                         rs.getDouble("peso"),
+                         rs.getDouble("altura"),
+                         Util.getDateView(rs.getDate("dataNascimento").toString(),"/"),
+						 Util.getDateView(rs.getDate("dataCadastro").toString(),"/"));
 	}
 }
