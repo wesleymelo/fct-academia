@@ -197,7 +197,7 @@ function retorna(id, nome)
 
 		<form action="buscaProfessor.do" method="post">
                   <fieldset>
-                       <b><fmt:message key="nome"/></b> <input type="text" name="busca" class="input-short" />&nbsp;&nbsp;<input class="submit-green" type="submit" value="<fmt:message key="pesquisar"/>" />
+                       <b><fmt:message key="nome"/></b> <input type="text" name="busca" class="input-medium" />&nbsp;&nbsp;<input class="submit-green" type="submit" value="<fmt:message key="pesquisar"/>" />
                   </fieldset>
         </form>
 
