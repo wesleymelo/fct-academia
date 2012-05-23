@@ -35,6 +35,19 @@
 			</select>
 
 		</div>
+		
+		<c:choose>
+			<c:when test="${param.status == true}">
+				<span class="notification n-success">Success notification.</span>
+			</c:when>
+			<c:otherwise>
+				<c:choose>
+					<c:when test="${param.status == false }">
+						<span class="notification n-error">Error notification.</span>
+					</c:when>
+				</c:choose>
+			</c:otherwise>			
+		</c:choose>
 
 
 		<!-- Example table -->
