@@ -161,5 +161,24 @@ public class SecretariaDAOConexao implements SecretariaDAO {
 		return new Pessoa(secretaria.getTipoPessoa(), secretaria.getDataCadastro(), secretaria.getNome(), secretaria.getCpf(), secretaria.getSexo(), secretaria.getDataNascimento(), secretaria.getEndereco(), secretaria.getTelefones(), secretaria.getEmail(), secretaria.getStatus());
 	}
 	
+	@Override
+	public List<Secretaria> selectByNome(String nome) throws DAOException {
+		String sql = "SELECT * FROM secretarias, pessoas WHERE idSecretaria = idPessoa AND nome LIKE '%"+nome+"%'";
+		List<Secretaria> secretarias = new ArrayList<Secretaria>();
+		Connection con = MyConnection.init();		
+		Statement stm = null;
+		ResultSet rs = null;
+		try {
+			stm = con.prepareStatement(sql);
+			rs = stm.executeQuery(sql);
+			while(rs.next())
+				secretarias.add(getSecretaria(rs));
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException(e,"ERRO! SELECTBYNOME na TABELA SECRETARIAS e PESSOAS. DATA("+new Date()+")");
+		}
+		return secretarias;
+	}
+	
 
 }
