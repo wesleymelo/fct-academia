@@ -23,6 +23,7 @@ import br.ucb.fct.pessoa.Pessoa;
 import br.ucb.fct.professor.Professor;
 import br.ucb.fct.secretaria.Secretaria;
 import br.ucb.fct.telefone.Telefone;
+import br.ucb.fct.turma.Turma;
 
 public class Util {
 
@@ -78,6 +79,10 @@ public class Util {
 			throw new RuntimeException(e.getMessage());  
 		}
 		return hour;
+	}
+	
+	public static String formatTimeView(String hora){
+		return hora.substring(0,5);
 	}
 	
 	
@@ -153,6 +158,7 @@ public class Util {
 		
 	}
 	
+	@SuppressWarnings("unchecked")
 	public static Secretaria getCadastroSecretaria(HttpServletRequest req) {
 		String nome = (String) req.getSession().getAttribute("nome");
 		String cpf = (String) req.getSession().getAttribute("cpf");
@@ -161,13 +167,11 @@ public class Util {
 		Date dataNasc = formatDateIn((String)req.getSession().getAttribute("dataNasc"));
 		String email = (String) req.getSession().getAttribute("email");
 		List<Telefone> telefones = (List<Telefone>) req.getSession().getAttribute("telefones"); 
-		Endereco endereco = getEnderecoCadastro(req);
 		Double salario = Double.parseDouble( req.getSession().getAttribute("salario").toString());
 		String horarioInicial = (String) req.getSession().getAttribute("horarioInicial");
 		String horarioFinal = (String) req.getSession().getAttribute("horarioFinal");
 		Date dataAdmissao = formatDateIn((String)req.getSession().getAttribute("dataAdmissao"));
-		Secretaria secretaria = new Secretaria(EnumTypePessoa.SECRETARIA, dataCadas, nome, cpf, sexo, dataNasc, endereco, telefones, email, true, dataAdmissao, horarioInicial, horarioFinal,salario) ;
-		System.out.println(secretaria);
+		Secretaria secretaria = new Secretaria(EnumTypePessoa.SECRETARIA, dataCadas, nome, cpf, sexo, dataNasc, null, telefones, email, true, dataAdmissao, horarioInicial, horarioFinal,salario) ;
 		return secretaria;
 	}
 
@@ -195,9 +199,9 @@ public class Util {
 	}
 	
 	public static void putAtribuRequisicaoProfessor(HttpServletRequest req, Professor professor){
-		
+
 		putAtribuRequisicaoPessoa(req,professor);
-		req.setAttribute("dataAdmissao", professor.getDataAdmissao());
+		req.setAttribute("dataAdmissao", Util.getDateView(professor.getDataAdmissao().toString(),"/"));
 	}
 	
 	public static void putAtribuRequisicaoSecretaria(HttpServletRequest req){
@@ -209,12 +213,14 @@ public class Util {
 		req.setAttribute("horarioInicial", req.getParameter("horarioInicial"));
 	}
 	
-	public static void putAtribuRequisicaoSecretaria(HttpServletRequest req, Professor professor){
+	public static void putAtribuRequisicaoSecretaria(HttpServletRequest req, Secretaria secretaria){
 		
-		putAtribuRequisicaoPessoa(req,professor);
-		req.setAttribute("dataAdmissao", professor.getDataAdmissao());
-		req.setAttribute("horarioFinal", professor.getDataAdmissao());
-		req.setAttribute("horarioInicial", professor.getDataAdmissao());
+		putAtribuRequisicaoPessoa(req,secretaria);
+		req.setAttribute("salario", secretaria.getSalario());
+		req.setAttribute("dataAdmissao", secretaria.getDataAdmissaoString());
+		req.setAttribute("horarioFinal", secretaria.getHoraFinal());
+		req.setAttribute("horarioInicial", secretaria.getHoraInicial());
+		
 	}
 	
 	public static void putAtribuRequisicaoAluno(HttpServletRequest req){
@@ -314,6 +320,7 @@ public class Util {
 	}
 	
 	public static void putAtribuRequisicaoPagamento(HttpServletRequest req, Pagamento pagamento) {
+		req.setAttribute("codigo", pagamento.getIdPagamento());
 		req.setAttribute("valorPago", pagamento.getValorPago());
 		req.setAttribute("dataPagamento", pagamento.getDataPagamentoString());	
 	}
@@ -326,7 +333,7 @@ public class Util {
 	public static void putAtribuRequisicaoTurma(HttpServletRequest req) {
 		req.setAttribute("nome",req.getParameter("nome"));
 		req.setAttribute("professor", req.getParameter("professor"));
-		req.setAttribute("idProfessor", req.getParameter("idProfessor"));
+		req.setAttribute("id", req.getParameter("idProfessor"));
 		req.setAttribute("modalidades",Factory.initModalidadeDAO().selectAll());
 		req.setAttribute("modalidade",req.getParameter("modalidade"));
 		req.setAttribute("horarioInicial", req.getParameter("horarioInicial"));
@@ -334,4 +341,34 @@ public class Util {
 		
 	}
 	
+	public static void putAtribuRequisicaoTurma(HttpServletRequest req, Turma turma) {
+		req.setAttribute("codigo",turma.getIdTurma());		
+		req.setAttribute("nome",turma.getNome());
+		req.setAttribute("professor",turma.getProfessor().getNome());
+		req.setAttribute("id", turma.getProfessor().getIdPessoa());
+		req.setAttribute("modalidades",Factory.initModalidadeDAO().selectAll());
+		req.setAttribute("modalidade",turma.getModalidade().getIdModalidade());
+		req.setAttribute("horarioInicial", formatTimeView(turma.getHorarioInicial().toString()));
+		req.setAttribute("horarioFinal", formatTimeView(turma.getHorarioFinal().toString()));
+		
+	}
+
+
+	public static Turma getCadastroTurmas(HttpServletRequest req) {
+		return new Turma(Integer.parseInt(req.getParameter("idProfessor")), 
+				         Integer.parseInt(req.getParameter("modalidade")), 
+				         req.getParameter("nome"), 
+				         Util.formatTime(req.getParameter("horarioInicial")), 
+				         Util.formatTime(req.getParameter("horarioFinal")));
+	}
+	
 }
+
+
+
+
+
+
+
+
+
