@@ -90,7 +90,7 @@ public class PagamentoDAOConexao implements PagamentoDAO{
 				pagamentos.add(getPagamento(rs));
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DAOException(e,"ERRO! SELECT_ALL na TABELA PACOTES. DATA("+new Date()+")");
+			throw new DAOException(e,"ERRO! SELECT_ALL na TABELA PAGAMENTOS. DATA("+new Date()+")");
 		}finally{
 			MyConnection.closeConnection(con, stm, rs);
 		}
@@ -99,7 +99,7 @@ public class PagamentoDAOConexao implements PagamentoDAO{
 
 	@Override
 	public Pagamento selectById(int id) throws DAOException {
-		String sql = "SELECT * FROM pacotes WHERE idPagamento = ?;";
+		String sql = "SELECT * FROM pagamentos WHERE idPagamento = ?;";
 		Connection con = MyConnection.init();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -112,7 +112,7 @@ public class PagamentoDAOConexao implements PagamentoDAO{
 				pagamento = getPagamento(rs);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DAOException(e,"ERRO! SELECT_BY_ID na TABELA PACOTES. DATA("+new java.util.Date()+")");
+			throw new DAOException(e,"ERRO! SELECT_BY_ID na TABELA PAGAMENTOS. DATA("+new java.util.Date()+")");
 		}
 		return pagamento;
 	}
