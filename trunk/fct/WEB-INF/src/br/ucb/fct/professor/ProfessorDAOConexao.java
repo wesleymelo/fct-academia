@@ -32,8 +32,7 @@ public class ProfessorDAOConexao implements ProfessorDAO {
 			con = MyConnection.init();
 			ps = con.prepareStatement(sql);
 			ps.setInt(1,dao.findLastId());
-			java.sql.Date date = new java.sql.Date(professor.getDataAdmissao().getTime());
-			ps.setDate(2, date);
+			ps.setDate(2, Util.formatDateIn(professor.getDataAdmissao().toString()));
 			retorno = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -66,23 +65,28 @@ public class ProfessorDAOConexao implements ProfessorDAO {
 
 	@Override
 	public boolean update(Professor professor, int id) throws DAOException {
-		String sql = "UPDATE professores SET dataAdmissao = ?;";
+		String sql = "UPDATE professores SET dataAdmissao = ? WHERE idProfessor = ?;";
 		Connection con = null;
 		PreparedStatement ps = null;
-		Date dataAdmissao = new Date(professor.getDataAdmissao().getTime()); 
 		int retorno = 0;
+		PessoaDAO dao = Factory.initPessoaDAO();
+		boolean flag = dao.update(getPessoaByProfessor(professor),id);
+		System.out.println(flag);
+		if(!flag)
+			return false;
 		try {
 			con = MyConnection.init();
 			ps = con.prepareStatement(sql);
-			ps.setObject(1,dataAdmissao);
-			ps.executeUpdate();
+			ps.setDate(1, professor.getDataAdmissao());
+			ps.setInt(2,id);
+			retorno = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new DAOException(e,"ERRO! UPDATE na TABELA PROFESSORES. DATA("+new Date()+")");
 		}finally{
 			MyConnection.closeConnection(con, ps);
 		}
-		return retorno == 0 ? false: Factory.initPessoaDAO().update(getPessoaByProfessor(professor), id);
+		return retorno == 0 ? false: flag;
 		
 	}
 
