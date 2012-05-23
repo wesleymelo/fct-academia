@@ -180,7 +180,7 @@ DROP TABLE IF EXISTS `academia`.`Pacotes` ;
 
 CREATE  TABLE IF NOT EXISTS `academia`.`Pacotes` (
 
-  `idPacote` INT(11) NOT NULL ,
+  `idPacote` INT(11) NOT NULL AUTO_INCREMENT ,
 
   `descricao` VARCHAR(100) NOT NULL ,
 
@@ -328,9 +328,13 @@ CREATE  TABLE IF NOT EXISTS `academia`.`Turmas` (
 
   `idModalidade` INT(11) NOT NULL ,
 
-  `nomeTurma` VARCHAR(50) NOT NULL ,
+  `nome` VARCHAR(50) NOT NULL ,
 
-  `horario` TIME NOT NULL ,
+  `horarioInicial` TIME NOT NULL ,
+  
+  `horarioFinal` TIME NOT NULL ,
+  
+  `capacidade` INT(11) NOT NULL ,
 
   PRIMARY KEY (`idTurma`) ,
 
@@ -376,7 +380,7 @@ DROP TABLE IF EXISTS `academia`.`Alunos_turmas` ;
 
 CREATE  TABLE IF NOT EXISTS `academia`.`Alunos_turmas` (
 
-  `idAluno` INT(11) NOT NULL ,
+  `idAluno` INT(11) NOT NULL  ,
 
   `idTurma` INT(11) NOT NULL ,
 
@@ -424,7 +428,7 @@ DROP TABLE IF EXISTS `academia`.`Graduacoes` ;
 
 CREATE  TABLE IF NOT EXISTS `academia`.`Graduacoes` (
 
-  `idGraduacao` INT(11) NOT NULL ,
+  `idGraduacao` INT(11) NOT NULL AUTO_INCREMENT ,
 
   `idModalidade` INT(11) NOT NULL ,
 
@@ -512,7 +516,7 @@ DROP TABLE IF EXISTS `academia`.`Pagamentos` ;
 
 CREATE  TABLE IF NOT EXISTS `academia`.`Pagamentos` (
 
-  `idPagamento` INT(11) NOT NULL ,
+  `idPagamento` INT(11) NOT NULL AUTO_INCREMENT ,
 
   `valorPago` DOUBLE NOT NULL ,
 
@@ -614,7 +618,7 @@ DROP TABLE IF EXISTS `academia`.`Envelopes` ;
 
 CREATE  TABLE IF NOT EXISTS `academia`.`Envelopes` (
 
-  `idEnvelope` INT(11) NOT NULL ,
+  `idEnvelope` INT(11) NOT NULL AUTO_INCREMENT,
 
   `idSecretaria` INT(11) NOT NULL ,
 
@@ -752,7 +756,7 @@ DROP TABLE IF EXISTS `academia`.`Despesas` ;
 
 CREATE  TABLE IF NOT EXISTS `academia`.`Despesas` (
 
-  `idDespesa` INT(11) NOT NULL ,
+  `idDespesa` INT(11) NOT NULL AUTO_INCREMENT ,
 
   `descricao` VARCHAR(255) NOT NULL ,
 
@@ -777,7 +781,7 @@ DROP TABLE IF EXISTS `academia`.`Gastos` ;
 
 CREATE  TABLE IF NOT EXISTS `academia`.`Gastos` (
 
-  `idGasto` INT(11) NOT NULL ,
+  `idGasto` INT(11) NOT NULL AUTO_INCREMENT,
 
   `idDespesa` INT(11) NOT NULL ,
 
