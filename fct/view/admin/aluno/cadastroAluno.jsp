@@ -78,20 +78,22 @@
 						<ul>
 							<li><label><fmt:message key="sexo"/>:&nbsp;&nbsp;&nbsp;
 							
-								<input type="radio" name="sexo"	
-									 <c:if test="${empty sexo or (sexo == 'F') }">
-										checked="checked"
-									</c:if> 
-									 id="sexo" value="F" />
-									&nbsp;&nbsp;<fmt:message key="feminino"/>&nbsp;&nbsp;&nbsp;&nbsp;
-							
-								<input type="radio" 
-							
-							 <c:if test="${(sexo == 'M') }">
+							<input type="radio" name="sexo"	
+								<c:if test="${empty sexo or (sexo == 'F') }">
 									checked="checked"
-							</c:if> 
+								</c:if>
+								
+							 id="sexo" value="F" />
+							
+							&nbsp;&nbsp;<fmt:message key="feminino"/>&nbsp;&nbsp;&nbsp;&nbsp;
+							
+							<input type="radio" 
+							
+							<c:if test="${(sexo == 'M') }">
+									checked="checked"
+							</c:if>
 							name="sexo" id="sexo" value="M" />
-							&nbsp;&nbsp;<fmt:message key="masculino"/></label></li> 
+							&nbsp;&nbsp;<fmt:message key="masculino"/></label></li>
 						</ul>
 					</fieldset>
 					
@@ -116,9 +118,6 @@
 					<p>	
 						<label><fmt:message key="celular"/></label>
 						<input type="text" class="input-short-short" name="celular" id="celular" value="${celular }" />
-						<c:if test="${not empty erros['errocelular'] }">
-							<span class="notification-input ni-error"><fmt:message key="telefone_invalido"/></span>
-						</c:if>                        
 					</p>
 					
 					
@@ -126,7 +125,7 @@
 					<p>
 						<label><fmt:message key="residencial"/></label> 
 						<input type="text" class="input-short-short" name="residencial" id="residencial" value="${residencial }"/> 
-						<c:if test="${not empty erros['errocelular'] }">
+						<c:if test="${not empty erros['erroresidencial'] }">
 							<span class="notification-input ni-error"><fmt:message key="telefone_invalido"/></span>
 						</c:if>                        
 					</p>
@@ -136,9 +135,6 @@
 					<p>
 						<label><fmt:message key="comercial"/></label> 
 						<input type="text" class="input-short-short" name="comercial" id="comercial" value="${comercial }"/> 
-						<c:if test="${not empty erros['errocomercial'] }">
-							<span class="notification-input ni-error"><fmt:message key="telefone_invalido"/></span>
-						</c:if> 
 					</p>
 					
 					<script>
