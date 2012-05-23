@@ -77,7 +77,6 @@
 					</table>
 					<b> <fmt:message key="email"/>: </b>${aluno.email}<br/><br/>
 		                    
-
 </div>
 </c:if>
 
@@ -196,14 +195,12 @@
 					</table>
 				</form>
 				
-				<c:choose>
-					<c:when test="${fn:length(alunos) % tamPag == 0}">
+				<c:if test="${fn:length(alunos) % tamPag == 0}">
 						<c:set var="numPags" value="${fn:length(alunos) / tamPag }" />
-					</c:when>
-					<c:otherwise>
+				</c:if>
+				<c:if test="${fn:length(alunos) % tamPag != 0}">
 						<c:set var="numPags" value="${(fn:length(alunos) / tamPag)+1}" />
-					</c:otherwise>
-				</c:choose>
+				</c:if>
 				
 				<div class="pager" id="pager">
 					<form action="">
@@ -236,7 +233,6 @@
 		</div>
 		<!-- End .module -->
 
- tamPag
 		<div class="pagination">
 			<a href="${pageContext.request.contextPath}/view/admin/aluno/listaAlunos.do?pag=1" class="button"><span><img
 					src="${pageContext.request.contextPath}/view/images/arrow-stop-180-small.gif"
