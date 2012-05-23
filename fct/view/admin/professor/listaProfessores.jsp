@@ -237,7 +237,7 @@
 					height="9" width="12" alt="Previous" /><fmt:message key="anterior"/></span>
 		    </a>
 			<div class="numbers">
-				<span>Page:</span>
+				<span><fmt:message key="pg"/></span>
 				
 				
 				<%-- Links para as outras páginas --%>
