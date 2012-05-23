@@ -56,6 +56,7 @@
 				<form action="cadastroTurma.do" method="post">
 					
 					<input type="hidden" name="idProfessor" id="idProfessor" value="${id}" />
+					<input type="hidden" name="pg" value="1">
 					
 					<p>
 						<label><fmt:message key="nome"/></label>
@@ -68,7 +69,7 @@
 					
 					<p>
                         <label><fmt:message key="professor"/></label>
-                        <input type="text" class="input-short" name="professor" id="professor" readonly="readonly" value="${professor}" /><a href="javascript:abrir('buscaProfessorTurma.do')"> <fmt:message key="buscar"/> </a>
+                        <input type="text" class="input-short" name="professor" id="professor" readonly="readonly" value="${professor}" /><a href="javascript:abrir('buscaProfessor.do')"> <fmt:message key="buscar"/> </a>
                         <c:if test="${not empty erros['erroprofessor'] }">
 							<span class="notification-input ni-error"><fmt:message key="professor_invalido"/></span>
 						</c:if>                        
