@@ -17,7 +17,6 @@ public class AlteraProfessorAction implements Action {
 		
 		Professor professor = Factory.initProfessorDAO().selectById(Integer.parseInt(req.getParameter("codigo")));
 		Util.putAtribuRequisicaoProfessor(req, professor);
-		JOptionPane.showInputDialog(professor);
 		req.setAttribute("codigo",professor.getEndereco().getIdEndereco());
 		
 		return "/view/admin/professor/alteraCadastroProfessor.jsp?codigo="+professor.getIdPessoa();
