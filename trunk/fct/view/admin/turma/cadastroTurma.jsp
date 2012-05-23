@@ -97,6 +97,15 @@
 					</p>
 					
 					<p>
+						<label><fmt:message key="capacidade"/></label>
+						<input type="text" class="input-short" name="capacidade" id="capacidade" value="${capacidade }"/>
+						<c:if test="${not empty erros['errocapacidade'] }">
+							<span class="notification-input ni-error"><fmt:message key="capacidade_invalida"/></span>
+						</c:if>
+						
+					</p>
+					
+					<p>
                         <label><fmt:message key="horarioInicial"/></label> 
                         <input type="text" readonly="readonly" class="input-short-short" name="horarioInicial" id="horarioInicial" value="${horarioInicial }" />
                         <c:if test="${not empty erros['erroHorarioInicial'] }">
