@@ -23,7 +23,7 @@
                             
                             <p>
                                 <label><fmt:message key="cidade" /></label>
-                                <input type="text" class="input-short" name="cidade" value="${param.cidade }" />
+                                <input type="text" class="input-short" name="cidade" value="${cidade }" />
                                 <c:if test="${not empty erros['errocidade'] }">
 									<span class="notification-input ni-error"><fmt:message key="cidade_invalida"/></span>
 								</c:if>
@@ -31,7 +31,7 @@
                             
                             <p>
                                 <label><fmt:message key="bairro"/></label>
-                                <input type="text" class="input-short" name="bairro" value="${param.bairro }" />
+                                <input type="text" class="input-short" name="bairro" value="${bairro }" />
                                 <c:if test="${not empty erros['errobairro'] }">
 									<span class="notification-input ni-error"><fmt:message key="bairro_invalido"/></span>
 								</c:if>
@@ -39,7 +39,7 @@
                             
                             <p>
                                 <label><fmt:message key="cep" /></label>
-                                <input type="text" class="input-short" name="cep" value="${param.cep }" />
+                                <input type="text" class="input-short" name="cep" value="${cep }" />
                                 <c:if test="${not empty erros['errocep'] }">
 									<span class="notification-input ni-error"><fmt:message key="cep_invalido"/></span>
 								</c:if>
@@ -55,7 +55,7 @@
                             
                             <p>
                                 <label><fmt:message key="endereco"/></label>
-                                <input type="text" class="input-medium" name="endereco" id="endereco" value="${param.endereco }" />
+                                <input type="text" class="input-medium" name="endereco" id="endereco" value="${endereco }" />
                                 <c:if test="${not empty erros['erroendereco'] }">
 									<span class="notification-input ni-error"><fmt:message key="endereco_invalido"/></span>
 								</c:if>
@@ -63,7 +63,7 @@
                             
                             <p>
                                 <label><fmt:message key="numero"/></label>
-                                <input type="text" class="input-short" name="numero" value="${param.numero }" />
+                                <input type="text" class="input-short" name="numero" value="${numero }" />
                                 <c:if test="${not empty erros['erronumero'] }">
 									<span class="notification-input ni-error"><fmt:message key="numero_invalido"/></span>
 								</c:if>
@@ -71,7 +71,7 @@
                                 
                             <p>
                                 <label><fmt:message key="complemento"/></label>
-                                <input type="text" class="input-medium" name="complemento" id="cpf" value="${param.complemento }" />
+                                <input type="text" class="input-medium" name="complemento" id="cpf" value="${complemento }" />
                             </p>
                             
                             <fieldset>
