@@ -14,7 +14,6 @@ import br.ucb.fct.enuns.EnumTypeSexo;
 import br.ucb.fct.exceptions.*;
 import br.ucb.fct.pessoa.Pessoa;
 import br.ucb.fct.pessoa.PessoaDAO;
-import br.ucb.fct.professor.Professor;
 import br.ucb.fct.util.Factory;
 import br.ucb.fct.util.Util;
 
