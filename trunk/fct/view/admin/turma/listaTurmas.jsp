@@ -23,10 +23,17 @@
 						width="12" height="9" alt="<fmt:message key="new" />" /> </span>
 				</a>
 			</div>
-
-		</div>
+			<form action="buscaTurma.do" method="post">
+					<fieldset>
+						<b><fmt:message key="nome" /></b> <input type="text" name="busca"
+							class="input-short" />&nbsp;&nbsp;<input class="submit-green"
+							type="submit" value="<fmt:message key="pesquisar"/>" />
+					</fieldset>
+			</form>
 		
+		</div>
 		&nbsp;&nbsp;
+		
 		
 		<c:choose>
 			<c:when test="${param.status == true}">
@@ -174,7 +181,7 @@
 					height="9" width="12" alt="Previous" /><fmt:message key="anterior"/></span>
 		    </a>
 			<div class="numbers">
-				<span>Page:</span>
+				<span><fmt:message key="pg"/></span>
 				
 				
 				<%-- Links para as outras páginas --%>
