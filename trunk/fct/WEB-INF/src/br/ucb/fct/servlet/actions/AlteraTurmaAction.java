@@ -13,9 +13,11 @@ public class AlteraTurmaAction implements Action {
 	public String execute(HttpServletRequest req, HttpServletResponse resp) {
 		
 		Turma turma = Factory.initTurmaDAO().selectById(Integer.parseInt(req.getParameter("codigo")));
-		//Util.putAtribuRequisicaoGraducao(req, turma);
+		
+		System.out.println(turma);
+		Util.putAtribuRequisicaoTurma(req, turma);
 		req.setAttribute("codigo", turma.getIdTurma());
-		return "/view/admin/turmas/alteraTurma.jsp";
+		return "/view/admin/turma/alteraTurma.jsp";
 	}
 
 }
