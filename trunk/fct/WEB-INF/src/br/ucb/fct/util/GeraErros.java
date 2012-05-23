@@ -59,6 +59,9 @@ public class GeraErros {
 			erros.put("erroprofessor","professor_invalido");
 		if(!Validator.verificaInt(req.getParameter("modalidade"), 1))
 			erros.put("erromodalidade","modalidade_invalida");
+		if(!Validator.verificaInt(req.getParameter("capacidade"), 1))
+			erros.put("errocapacidade","capacidade_invalida");
+		
 		if(!Validator.isStringValid(req.getParameter("horarioInicial"), 5))
 			erros.put("erroHorarioInicial","horarioInicial_invalido");
 		if(!Validator.isStringValid(req.getParameter("horarioFinal"), 5))
