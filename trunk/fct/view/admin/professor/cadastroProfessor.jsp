@@ -54,7 +54,7 @@
 
 					<p>
 						<label><fmt:message key="nome" /></label> <input type="text"
-							class="input-short" name="nome" id="nome" value="${param.nome }" />
+							class="input-short" name="nome" id="nome" value="${nome }" />
 						<c:if test="${not empty erros['erronome'] }">
 							<span class="notification-input ni-error"><fmt:message
 									key="nome_invalido" /></span>
