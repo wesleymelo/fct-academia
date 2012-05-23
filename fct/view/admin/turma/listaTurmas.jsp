@@ -23,15 +23,6 @@
 				</a>
 			</div>
 
-			<!-- Table records filtering -->
-			Filter: <select class="input-short">
-				<option value="1" selected="selected">Select filter</option>
-				<option value="2">Created last week</option>
-				<option value="3">Created last month</option>
-				<option value="4">Edited last week</option>
-				<option value="5">Edited last month</option>
-			</select>
-
 		</div>
 		
 		<c:choose>
@@ -46,7 +37,25 @@
 				</c:choose>
 			</c:otherwise>			
 		</c:choose>
-		
+
+
+		<%-- Variáveis para paginação --%>
+		<c:if test="${empty param.pag}">
+			<c:set var="pag" value="${1}" scope="page" />
+		</c:if>
+
+		<c:if test="${not empty param.pag}">
+			<c:set var="pag" value="${param.pag}" scope="page" />
+		</c:if>
+
+		<c:set var="tamPag" value="${40}" scope="page" />
+
+
+		<c:set var="inicio" value="${pag * tamPag - tamPag}" scope="page" />
+
+
+		<c:set var="fim" value="${(pag * tamPag) - 1}" scope="page" />
+
 
 		<!-- Example table -->
 		<div class="module">
@@ -59,22 +68,27 @@
 					<table id="myTable" class="tablesorter">
 						<thead>
 							<tr>
-								<th style="width: 5%">#</th>
 								<th style="width: 20%"><fmt:message key="nome"/></th>
 								<th style="width: 20%"><fmt:message key="professor"/></th>
 								<th style="width: 15%"><fmt:message key="modalidade"/></th>
-								<th style="width: 10%"><fmt:message key="horarioInicial"/></th>
-								<th style="width: 10%"><fmt:message key="horarioFinal"/></th>
-								<th style="width: 10%">A&ccedil;&otilde;es</th>
+								<th style="width: 15%"><fmt:message key="horario"/></th>
+								<th style="width: 10%"><fmt:message key="capacidade"/></th>
+								<th style="width: 10%"><fmt:message key="vagas"/></th>
+								<th style="width: 10%"><fmt:message key="acoes"/></th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="turma" items="${turmas}">
+							<c:forEach var="turma" items="${turmas}" varStatus="i" begin="${inicio}" end="${fim}">
 								<tr>
-									<td>${turma.idTurma}</td>
-									<td><a href="">${turma.nome}</a></td>
+									<td>${turma.nome}</td>
 									<td>${turma.professor.nome}</td>
 									<td>${turma.modalidade.descricao}</td>
+									<td>${turma.horarioInicial} - ${turma.horarioFinal}</td>
+									<td>${turma.capacidade}</td>
+									<td>${turma.vagas}</td>
+									
+									<td>
+											</a> <a href="${pageContext.request.contextPath}/view/admin/aluno/alteraAluno.do?codigo=${aluno.idPessoa }"><img
 									<td>${turma.horarioInicial}</td>
 									<td>${turma.horarioFinal}</td>
 									<td><input type="checkbox" /> <a href=""><img
@@ -83,13 +97,21 @@
 											width="16" height="16" alt="published" /></a> <a href="${pageContext.request.contextPath}/view/admin/turma/alteraTurma.do?codigo=${turma.idTurma }"><img
 											src="${pageContext.request.contextPath}/view/images/pencil.gif"
 											tppabs="http://www.xooom.pl/work/magicadmin/images/pencil.gif"
-											width="16" height="16" alt="edit" /></a> <a href=""><img
-											src="${pageContext.request.contextPath}/view/images/balloon.gif"
-											tppabs="http://www.xooom.pl/work/magicadmin/images/balloon.gif"
-											width="16" height="16" alt="comments" /></a> <a href=""><img
+											width="16" height="16" alt="<fmt:message key="alterar"/>" /></a> 
+											
+											<a href=""><img
 											src="${pageContext.request.contextPath}/view/images/bin.gif"
-											tppabs="http://www.xooom.pl/work/magicadmin/images/bin.gif"
-											width="16" height="16" alt="delete" /></a></td>
+											width="16" height="16" alt="<fmt:message key="excluir"/>" /></a>
+											
+											<a href=""><img
+											src="${pageContext.request.contextPath}/view/images/add-person.png"
+											width="16" height="16" alt="<fmt:message key="adicionarAluno"/>" /></a>
+											
+											<a href=""><img
+											src="${pageContext.request.contextPath}/view/images/view.png"
+											width="16" height="16" alt="<fmt:message key="view"/>" /></a>
+											
+											</td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -117,19 +139,6 @@
 								<option value="20">20</option>
 								<option value="30">30</option>
 								<option value="40">40</option>
-							</select>
-						</div>
-					</form>
-				</div>
-				<div class="table-apply">
-					<form action="">
-						<div>
-							<span>Apply action to selected:</span> <select
-								class="input-medium">
-								<option value="1" selected="selected">Select action</option>
-								<option value="2">Publish</option>
-								<option value="3">Unpublish</option>
-								<option value="4">Delete</option>
 							</select>
 						</div>
 					</form>
