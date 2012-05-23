@@ -72,7 +72,7 @@
 									<td><input type="checkbox" /> <a href=""><img
 											src="${pageContext.request.contextPath}/view/images/tick-circle.gif"
 											tppabs="http://www.xooom.pl/work/magicadmin/images/tick-circle.gif"
-											width="16" height="16" alt="published" /></a> <a href="${pageContext.request.contextPath}/view/admin/pacote/alteraPamgamento.do?codigo=${pacote.idPagamento }"><img
+											width="16" height="16" alt="published" /></a> <a href="${pageContext.request.contextPath}/view/admin/pagamento/alteraPagamento.do?codigo=${pagamento.idPagamento }"><img
 											src="${pageContext.request.contextPath}/view/images/pencil.gif"
 											tppabs="http://www.xooom.pl/work/magicadmin/images/pencil.gif"
 											width="16" height="16" alt="edit" /></a> <a href=""><img
