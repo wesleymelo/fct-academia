@@ -26,19 +26,19 @@ public class CadastroPagamentoAction implements Action {
 			else{
 				Pagamento pagamento = Util.getCadastroPagamento(req);
 				retorno = Factory.initPagamentoDAO().insert(pagamento);
-				return "/view/admin/pagamento/listaPagamento.jsp?retorno="+retorno;
+				return "/view/admin/pagamento/listaPagamentos.do?status="+retorno;
 			}
 		}
 		else{
 			if(!erros.isEmpty()){
 				req.setAttribute("erros", erros);
 				req.setAttribute("codigo", req.getParameter("codigo"));
-				return "/view/admin/pagamento/alteraPagamento";
+				return "/view/admin/pagamento/alteraPagamento.jsp";
 			}
 			else{
 				Pagamento pagamento = Util.getCadastroPagamento(req);
 				retorno = Factory.initPagamentoDAO().update(pagamento, Integer.parseInt(req.getParameter("codigo")));
-				return "/view/admin/pagamento/listaPagamento.jsp?retorno="+retorno;
+				return "/view/admin/pagamento/listaPagamentos.do?status="+retorno;
 			}
 		}
 		
