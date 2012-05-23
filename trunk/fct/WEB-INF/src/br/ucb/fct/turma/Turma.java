@@ -1,12 +1,14 @@
 package br.ucb.fct.turma;
 
 import java.sql.Time;
-
+import java.util.List;
+import br.ucb.fct.aluno.Aluno;
 import br.ucb.fct.modalidade.Modalidade;
 import br.ucb.fct.professor.Professor;
 
 public class Turma {
 	private Integer idTurma;
+	private List<Aluno> alunos;
 	private Professor Professor;
 	private Integer idProfessor;
 	private Integer idModalidade;
@@ -14,41 +16,51 @@ public class Turma {
 	private String  nome;
 	private Time horarioInicial;
 	private Time horarioFinal;
+	private Integer capacidade;
 	
 	public Turma(Integer idTurma, Integer idProfessor, Integer idModalidade,
-			String nomeTurma, Time horarioInicial, Time horarioFinal) {
+			String nome, Time horarioInicial, Time horarioFinal) {
 		setHorarioFinal(horarioFinal);
 		setHorarioInicial(horarioInicial);
 		setIdModalidade(idModalidade);
 		setIdProfessor(idProfessor);
 		setIdTurma(idTurma);
-		setNomeTurma(nomeTurma);
+		setNome(nome);
 	}
 	
-	public Turma(Integer idTurma, Professor professor, Modalidade modalidade,
-			String nomeTurma, Time horarioInicial, Time horarioFinal) {
+	public Turma(Integer idTurma, Professor professor, List<Aluno> alunos, Modalidade modalidade,
+			String nome, Time horarioInicial, Time horarioFinal, int capacidade) {
 		setHorarioFinal(horarioFinal);
+		setAlunos(alunos);
 		setHorarioInicial(horarioInicial);
 		setModalidade(modalidade);
 		setProfessor(professor);
 		setIdTurma(idTurma);
-		setNomeTurma(nomeTurma);
+		setNome(nome);
+		setCapacidade(capacidade);
 	}
 	
 	public Turma(Integer idProfessor, Integer idModalidade,
-			String nomeTurma, Time horarioInicial, Time horarioFinal) {
+			String nome, Time horarioInicial, Time horarioFinal, Integer capacidade) {
 		setHorarioFinal(horarioFinal);
 		setHorarioInicial(horarioInicial);
 		setIdModalidade(idModalidade);
 		setIdProfessor(idProfessor);
-		setNomeTurma(nomeTurma);
+		setNome(nome);
+		setCapacidade(capacidade);
 	}
 	
 	public Time getHorarioInicial() {
 		return horarioInicial;
 	}
 	
+	public Integer getVagas(){
+		return getCapacidade() - getAlunos().size();
+	}
 	
+	public Integer getQtdeAlunos(){
+		return getAlunos().size();
+	}
 
 	public Professor getProfessor() {
 		return Professor;
@@ -106,69 +118,31 @@ public class Turma {
 		return nome;
 	}
 	
-	public void setNomeTurma(String nome) {
+	
+	
+	
+
+	public List<Aluno> getAlunos() {
+		return alunos;
+	}
+
+	public void setAlunos(List<Aluno> alunos) {
+		this.alunos = alunos;
+	}
+
+	public Integer getCapacidade() {
+		return capacidade;
+	}
+
+	public void setCapacidade(Integer capacidade) {
+		this.capacidade = capacidade;
+	}
+
+	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((horarioFinal == null) ? 0 : horarioFinal.hashCode());
-		result = prime * result
-				+ ((horarioInicial == null) ? 0 : horarioInicial.hashCode());
-		result = prime * result
-				+ ((idModalidade == null) ? 0 : idModalidade.hashCode());
-		result = prime * result
-				+ ((idProfessor == null) ? 0 : idProfessor.hashCode());
-		result = prime * result + ((idTurma == null) ? 0 : idTurma.hashCode());
-		result = prime * result
-				+ ((nome == null) ? 0 : nome.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Turma other = (Turma) obj;
-		if (horarioFinal == null) {
-			if (other.horarioFinal != null)
-				return false;
-		} else if (!horarioFinal.equals(other.horarioFinal))
-			return false;
-		if (horarioInicial == null) {
-			if (other.horarioInicial != null)
-				return false;
-		} else if (!horarioInicial.equals(other.horarioInicial))
-			return false;
-		if (idModalidade == null) {
-			if (other.idModalidade != null)
-				return false;
-		} else if (!idModalidade.equals(other.idModalidade))
-			return false;
-		if (idProfessor == null) {
-			if (other.idProfessor != null)
-				return false;
-		} else if (!idProfessor.equals(other.idProfessor))
-			return false;
-		if (idTurma == null) {
-			if (other.idTurma != null)
-				return false;
-		} else if (!idTurma.equals(other.idTurma))
-			return false;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
-			return false;
-		return true;
-	}
+	
 	
 	
 }
