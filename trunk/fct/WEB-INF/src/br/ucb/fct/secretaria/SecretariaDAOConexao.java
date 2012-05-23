@@ -68,24 +68,31 @@ public class SecretariaDAOConexao implements SecretariaDAO {
 
 	@Override
 	public boolean update(Secretaria secretaria, int id) throws DAOException {
-		String sql = "UPDATE secretarias SET dataAdmissao = ?, horarioInicial = ?, horarioFinal = ?;";
+		
+		String sql = "UPDATE secretarias SET dataAdmissao = ?, horarioInicial = ?, horarioFinal = ? WHERE idSecretaria = ?;";
 		Connection con = null;
 		PreparedStatement ps = null;
 		int retorno = 0;
+		PessoaDAO dao = Factory.initPessoaDAO();
+		boolean flag = dao.update(getPessoaBySecretaria(secretaria),id);
+		
+		if(!flag)
+			return false;
 		try {
 			con = MyConnection.init();
 			ps = con.prepareStatement(sql);
-			ps.setObject(1,secretaria.getDataAdmissao());
-			ps.setObject(2,secretaria.getHoraInicial());
-			ps.setObject(3,secretaria.getHoraFinal());
-			ps.executeUpdate();
+			ps.setDate(1,secretaria.getDataAdmissao());
+			ps.setString(2, secretaria.getHoraInicial());
+			ps.setString(3, secretaria.getHoraFinal());
+			ps.setInt(4, id);
+			retorno = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new DAOException(e,"ERRO! UPDATE na TABELA secretarias. DATA("+new Date()+")");
 		}finally{
 			MyConnection.closeConnection(con, ps);
 		}
-		return retorno == 0 ? false: Factory.initPessoaDAO().update(getPessoaBySecretaria(secretaria), id);
+		return retorno == 0 ? false: flag;
 		
 	}
 
