@@ -338,6 +338,7 @@ public class Util {
 		req.setAttribute("modalidade",req.getParameter("modalidade"));
 		req.setAttribute("horarioInicial", req.getParameter("horarioInicial"));
 		req.setAttribute("horarioFinal", req.getParameter("horarioFinal"));
+		req.setAttribute("capacidade", req.getParameter("capacidade"));
 		
 	}
 	
@@ -359,9 +360,9 @@ public class Util {
 				         Integer.parseInt(req.getParameter("modalidade")), 
 				         req.getParameter("nome"), 
 				         Util.formatTime(req.getParameter("horarioInicial")), 
-				         Util.formatTime(req.getParameter("horarioFinal")));
+				         Util.formatTime(req.getParameter("horarioFinal")),
+				         Integer.parseInt(req.getParameter("capacidade")));
 	}
-	
 }
 
 
