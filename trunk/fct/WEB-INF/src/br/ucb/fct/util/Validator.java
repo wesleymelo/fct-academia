@@ -46,8 +46,6 @@ public class Validator {
 		int []dig = new int [11];
 		int [] digVeri = new int[2];
 		
-		
-		
 		if(cpf.length() != 11)
 			return false;
 
@@ -119,7 +117,7 @@ public class Validator {
 		return (isIntValid(value) && (Integer.parseInt(value) >= min ));
 	}
 	
-	private static boolean isIntValid(String value) {
+	public static boolean isIntValid(String value) {
 		if(!isStringValid(value, 100))
 			return false;
 		
