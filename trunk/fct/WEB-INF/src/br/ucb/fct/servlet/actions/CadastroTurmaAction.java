@@ -16,13 +16,28 @@ public class CadastroTurmaAction implements Action {
 		Map<String, String> erros;
 		boolean retorno = false;
 		erros = GeraErros.verificaErrosTurmas(req);
-		if(!erros.isEmpty()){
-			req.setAttribute("erros",erros);
-			return "/view/admin/turma/cadastroTurma.jsp";
+		if(Integer.parseInt(req.getParameter("pg"))==1){	
+			if(!erros.isEmpty()){
+				req.setAttribute("erros",erros);
+				return "/view/admin/turma/cadastroTurma.jsp";
+			}
+			else{
+				Turma turma = Util.getCadastroTurmas(req);
+				retorno = Factory.initTurmaDAO().insert(turma);
+				return "/view/admin/turma/listaTurmas.do?status="+retorno;
+			}
 		}
-		Turma turma = new Turma(Integer.parseInt(req.getParameter("idProfessor")), Integer.parseInt(req.getParameter("modalidade")), req.getParameter("nome"), Util.formatTime(req.getParameter("horarioInicial")), Util.formatTime(req.getParameter("horarioFinal")));
-		retorno = Factory.initTurmaDAO().insert(turma);
-			
-		return "../../admin/turma/listaTurmas.do?status="+retorno;
+		else{
+			if(!erros.isEmpty()){
+				req.setAttribute("erros", erros);
+				req.setAttribute("codigo", req.getParameter("codigo"));
+				return "/view/admin/turma/alteraTurma.jsp"; 
+			}
+			else{
+				Turma turma = Util.getCadastroTurmas(req);
+				retorno = Factory.initTurmaDAO().update(turma,Integer.parseInt(req.getParameter("codigo")));
+				return "/view/admin/turma/listaTurmas.do?status="+retorno;
+			}
+		}
 	}
 }
