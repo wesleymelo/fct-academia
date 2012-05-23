@@ -60,7 +60,7 @@ public class TurmaDAOConexao implements TurmaDAO{
 	@Override
 	public boolean update(Turma turma, int id) throws DAOException {
 										  
-		String sql = "UPDATE turmas  SET idProfessor = ?, idModalidade = ?, nome = ?, horarioInicial = ?, horarioFinal = ?  WHERE = idTurma = ?;";
+		String sql = "UPDATE turmas  SET idProfessor = ?, idModalidade = ?, nome = ?, horarioInicial = ?, horarioFinal = ?  WHERE idTurma = ?;";
 		Connection con = MyConnection.init();
 		PreparedStatement ps = null;
 		int retorno;
@@ -75,7 +75,7 @@ public class TurmaDAOConexao implements TurmaDAO{
 			retorno = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DAOException(e,"ERRO! DELETE na TABELA TURMAS. DATA("+new Date()+")");
+			throw new DAOException(e,"ERRO! UPDATE na TABELA TURMAS. DATA("+new Date()+")");
 		}finally{
 			MyConnection.closeConnection(con, ps);
 		}
@@ -105,7 +105,7 @@ public class TurmaDAOConexao implements TurmaDAO{
 
 	@Override
 	public Turma selectById(int id) throws DAOException {
-		String sql = "SELECT * FROM enderecos e, pessoas p  WHERE e.idEndereco = p.idEndereco AND p.idPessoa = ?;";
+		String sql = "SELECT * FROM turmas WHERE idTurma = ?;";
 		Connection con = MyConnection.init();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -125,6 +125,11 @@ public class TurmaDAOConexao implements TurmaDAO{
 		return turma;
 	}
 	public Turma getTurma(ResultSet rs) throws SQLException{
-		return new Turma(rs.getInt("IdTurma"), Factory.initProfessorDAO().selectById(rs.getInt("idProfessor")) , Factory.initModalidadeDAO().selectById(rs.getInt("idModalidade")), rs.getString("nome"), rs.getTime("horarioInicial"), rs.getTime("horarioFinal"));
+		return new Turma(rs.getInt("idTurma"),
+				         Factory.initProfessorDAO().selectById(rs.getInt("idProfessor")) , 
+				         Factory.initModalidadeDAO().selectById(rs.getInt("idModalidade")), 
+				         rs.getString("nome"), 
+				         rs.getTime("horarioInicial"), 
+				         rs.getTime("horarioFinal"));
 	}
 }
