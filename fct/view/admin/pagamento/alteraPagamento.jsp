@@ -10,49 +10,60 @@
 	<!-- Form elements -->
 	<div class="grid_12">
 		
-		<div class="bottom-spacing">
-			<!-- Button -->
-			<div class="float-right">
-				<a
-					href="${pageContext.request.contextPath}/view/admin/pacote/listaPacotes.do"
-					class="button"> <span><b><fmt:message key="new" /></b>
-						<img
-						src="${pageContext.request.contextPath}/view/images/arrow-curve-180-left.gif"
-						tppabs="http://www.xooom.pl/work/magicadmin/images/arrow-curve-180-left.gif"
-						width="12" height="9" alt="<fmt:message key="new" />" /> </span>
-				</a>
+		<!-- Button -->
+		<div class="float-right">
+		
+			<div class="bottom-spacing">
+	
+				<!-- Button -->
+				<div class="float-right">
+					<a
+						href="${pageContext.request.contextPath}/view/admin/aluno/listaPagamento.do"
+						class="button"> <span><b><fmt:message key="back" /></b>
+							<img
+							src="${pageContext.request.contextPath}/view/images/arrow-curve-180-left.gif"
+							tppabs="http://www.xooom.pl/work/magicadmin/images/arrow-curve-180-left.gif"
+							width="12" height="9" alt="<fmt:message key="back" />" /> </span>
+					</a>
+				</div>
+				<div style="clear: both;"></div>
 			</div>
 			<div style="clear: both;"></div>
 		</div>
 		<div style="clear: both;"></div>	
 		
 		<div class="module">
-			
-			<h2>
-				<span>Cadastro Aluno</span>
-			</h2>
-
-			
+			 <h2><span><fmt:message key="cadastroPagamento" /></span></h2>         
+					
 			<div class="module-body">
 
-				<form action="cadastroPacote.do?codigo=${codigo }" method="post">
-	
+				<form action="cadastroPagamento.do?codigo=${codigo }" method="post">
+					
 					<input type="hidden" value="2" name="pg">
 					
 					<p>
-						<label><fmt:message key="desc"/></label>
-						<input type="text" class="input-short" name="descricao" id="descricao" value="${descricao}"/>
-						<c:if test="${not empty erros['errodescricao'] }">
+						<label><fmt:message key="valorPago"/></label>
+						<input type="text" class="input-short" name="valorPago" id="descricao" value="${valorPago}"/>
+						<c:if test="${not empty erros['errovalorpago'] }">
 							<span class="notification-input ni-error"><fmt:message key="descricao_invalido"/></span>
 						</c:if>
 					</p>					
 			
 					<p>
-						<label><fmt:message key="preco"/></label>
-						<input type="text" class="input-short-short" name="preco" id="preco" value="${preco}"/>
-						<c:if test="${not empty erros['erropreco'] }">
-							<span class="notification-input ni-error"><fmt:message key="preco_invalido"/></span>
+						<label><fmt:message key="dataPagamento"/></label>
+						<input type="text" class="input-short-short" readonly="readonly" name="dataPagamento" id="dataPagamento" value="${dataPagamento}"/>
+						<c:if test="${not empty erros['errodatapagamento'] }">
+							<span class="notification-input ni-error"><fmt:message key="datapagamento_invalido"/></span>
 						</c:if>
+						<script>
+						$(function() {
+							$( "#dataPagamento").datepicker({
+								changeMonth: true,
+								changeYear: true
+							});
+						});
+					</script>
+						
 					</p>
 										
 					<fieldset>
@@ -61,7 +72,6 @@
 					</fieldset>
 
 				</form>
-
 			</div>
 			<!-- End .module-body -->
 			<div style="clear: both;"></div>
