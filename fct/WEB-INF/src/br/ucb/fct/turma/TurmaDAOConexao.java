@@ -221,4 +221,25 @@ public class TurmaDAOConexao implements TurmaDAO{
 		}
 		return retorno == 0 ? false: true;
 	}
+	
+	@Override
+	public List<Turma> selectByOther(String string) throws DAOException {
+		String sql = "SELECT * FROM turmas t, professores pr, pessoas p, modalidades m WHERE t.idProfessor = pr.idProfessor AND p.idPessoa = pr.idProfessor AND t.idModalidade = m.idModalidade  AND  (t.nome LIKE '%"+string+"%' OR m.descricao LIKE '%"+string+"%' OR p.nome LIKE '%"+string+"%')";
+		Connection con = MyConnection.init();
+		Statement stm = null;
+		ResultSet rs = null;
+		List<Turma> turmas = new ArrayList<Turma>();
+		try {
+			stm = con.createStatement();
+			rs = stm.executeQuery(sql);
+			while(rs.next())
+				turmas.add(getTurma(rs));
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException(e,"ERRO! SELECTBYOTHER na TABELA TURMA. DATA("+new Date()+")");
+		}finally{
+			MyConnection.closeConnection(con, stm, rs);
+		}
+		return turmas;
+	}
 }
