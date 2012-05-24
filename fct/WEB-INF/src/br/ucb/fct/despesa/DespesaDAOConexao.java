@@ -15,7 +15,7 @@ public class DespesaDAOConexao implements DespesaDAO{
 
 	@Override
 	public boolean insert(Despesa despesa) throws DAOException {
-		String sql="INSERT INTO DESPESAS(idDespesa, descricao, quantidade) VALUES(null,?,?);";
+		String sql="INSERT INTO DESPESAS(idDespesa, descricao, valor) VALUES(null,?,?);";
 		Connection con = null;
 		PreparedStatement ps = null;
 		int retorno;
@@ -23,7 +23,7 @@ public class DespesaDAOConexao implements DespesaDAO{
 			con=MyConnection.init();
 			ps=con.prepareStatement(sql);
 			ps.setString(1,despesa.getDescricao());
-			ps.setInt(2,despesa.getQuantidade());
+			ps.setDouble(2,despesa.getValor());
 			retorno=ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -57,29 +57,29 @@ public class DespesaDAOConexao implements DespesaDAO{
 
 	@Override
 	public boolean update(Despesa despesas, int id) throws DAOException {
-		String sql="UPDATE despesas SET quantidade = ?, descricao = ? WHERE idDespesa = ?;";
+		String sql="UPDATE despesas SET valor=?,descricao=?;";
 		Connection con=null;
 		PreparedStatement ps=null;
 		int retorno=0;
 		try {
 			con=MyConnection.init();
 			ps=con.prepareStatement(sql);
-			ps.setInt(1,despesas.getQuantidade());
+			ps.setDouble(1,despesas.getValor());
 			ps.setString(2,despesas.getDescricao());
 			ps.setInt(3,id);
 			retorno=ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DAOException(e,"ERRO! UPDATE na TABELA DESPESAS. DATA("+new Date()+")");
+			throw new DAOException(e,"ERRO! UPDATE na TABELA despesas. DATA("+new Date()+")");
 		}finally{
 			MyConnection.closeConnection(con, ps);
 		}
-		return retorno == 0? false : true;
+		return retorno == 0?false:true;
 	}
 
 	@Override
 	public List<Despesa> selectAll() throws DAOException {
-		String sql="SELECT * FROM despesas;";
+		String sql="SELECT * FROM gastos;";
 		List<Despesa> despesas= new ArrayList<Despesa>();
 		Connection con=null;
 		Statement  stm=null;
@@ -101,27 +101,27 @@ public class DespesaDAOConexao implements DespesaDAO{
 	}
 	@Override
 	public Despesa selectById(int id) throws DAOException {
-		String sql="SELECT * FROM despesas WHERE idDespesa = ?;";
-		Connection con = MyConnection.init();
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-		Despesa despesa = null;
+		String sql="SELECT * FROM despesas WHERE idDespesa="+id+";";
+		Connection con=null;
+		Statement  stm=null;
+		ResultSet rs=null;
+		Despesa newDespesa=null;
 		try {
-			ps = con.prepareStatement(sql);
-			ps.setInt(1, id);
-			rs = ps.executeQuery();
-			if(rs.first())
-				despesa = getDespesa(rs);
+			con=MyConnection.init();
+			stm=con.createStatement();
+			rs=stm.executeQuery(sql);
+			newDespesa=getDespesa(rs);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DAOException(e,"ERRO! SELECT_BY_ID na TABELA DESPESAS. DATA("+new java.util.Date()+")");
+			throw new DAOException(e,"ERRO! SELECT BY ID NA TABELA DESPESAS. DATA("+new Date()+")");
+		}finally{
+			MyConnection.closeConnection(con, stm, rs);
 		}
-		return despesa;
-	
+		return newDespesa;
 	}
 	
 	private Despesa getDespesa(ResultSet rs) throws SQLException {
-		return new Despesa(rs.getInt("idDespesa"),rs.getString("descricao"),rs.getInt("quantidade"));
+		return new Despesa(rs.getInt("idDespesa"),rs.getString("descricao"),rs.getDouble("valor"));
 	}
 	
 
