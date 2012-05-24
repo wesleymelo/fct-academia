@@ -78,7 +78,7 @@
 							<tr>
 								<th style="width: 25%"><fmt:message key="valorPago"/></th>
 								<th style="width: 20%"><fmt:message key="dataPagmanto"/></th>
-								<th style="width: 10%"><fmt:message key="acao"/></th>
+								<th style="width: 10%"><fmt:message key="acoes"/></th>
 							</tr>
 						</thead>
 						<tbody>
