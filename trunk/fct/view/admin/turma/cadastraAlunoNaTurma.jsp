@@ -119,6 +119,11 @@
 					<p>
                         <label><fmt:message key="aluno"/></label>
                         <input type="text" value="${param.aluno}" class="input-short" name="aluno" id="aluno" readonly="readonly" value="${aluno}" /><a href="javascript:abrir('buscaAlunoTurma.do')"> <fmt:message key="buscar"/> </a>
+                    
+                        <c:if test="${not empty erros['erroturmacheia'] }">
+							<span class="notification-input ni-error"><fmt:message key="turmacheia_invalida"/></span>
+						</c:if>
+                        
                         <c:if test="${not empty erros['erroaluno'] }">
 							<span class="notification-input ni-error"><fmt:message key="aluno_invalido"/></span>
 						</c:if>
@@ -143,7 +148,6 @@
 	</div>
 	<!-- End .grid_12 -->
 	<div style="clear: both;"></div>
-		
 		
 		
 		

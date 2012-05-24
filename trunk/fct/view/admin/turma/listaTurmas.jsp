@@ -110,10 +110,6 @@
 											src="${pageContext.request.contextPath}/view/images/people.png"
 											width="16" height="16" alt="<fmt:message key="adicionarAluno"/>" /></a>
 											
-											<a href=""><img
-											src="${pageContext.request.contextPath}/view/images/view.png"
-											width="16" height="16" alt="<fmt:message key="view"/>" /></a>
-											
 								    </td>		
 											
 											
