@@ -60,7 +60,7 @@
 					
 					<p>
 						<label><fmt:message key="nome"/></label>
-						<input type="text" class="input-short" name="nome" id="nome" value="${nome }"/>
+						<input type="text" class="input-short" name="nome" id="nome" value="${nome}"/>
 						<c:if test="${not empty erros['erronome'] }">
 							<span class="notification-input ni-error"><fmt:message key="nome_invalido"/></span>
 						</c:if>
@@ -128,12 +128,14 @@
 							    $('#horarioInicial').timepicker({
 							        showLeadingZero: false,
 							        onHourShow: tpStartOnHourShowCallback,
-							        onMinuteShow: tpStartOnMinuteShowCallback
+							        onMinuteShow: tpStartOnMinuteShowCallback,
+							        defaultTime: '00:00'
 							    });
 							    $('#horarioFinal').timepicker({
 							        showLeadingZero: false,
 							        onHourShow: tpEndOnHourShowCallback,
-							        onMinuteShow: tpEndOnMinuteShowCallback
+							        onMinuteShow: tpEndOnMinuteShowCallback,
+							        defaultTime: '23:55'
 							    });
 							});
 

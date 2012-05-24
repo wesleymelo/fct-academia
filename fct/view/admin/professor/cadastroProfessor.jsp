@@ -5,9 +5,6 @@
 
 <c:import url="../../includes/header.jsp" />
 
-
-
-
 <div class="container_12">
 	
 	<div class="grid_12">
