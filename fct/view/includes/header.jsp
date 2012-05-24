@@ -280,7 +280,7 @@
 					<div id="logo">
 						<div id="logo_top">
 							<ul id="nav">
-								<li id="current"><a href="${pageContext.request.contextPath}/view/admin/principal/index.jsp"><fmt:message key="painel"/></a></li>
+								<li><a href="${pageContext.request.contextPath}/view/admin/principal/index.jsp"><fmt:message key="painel"/></a></li>
 								<li><a href="${pageContext.request.contextPath}/view/admin/principal/relatorio.jsp"><fmt:message key="relatorio"/></a></li>
 							</ul>
 						</div>
