@@ -24,7 +24,6 @@
 						class="button"> <span><b><fmt:message key="back" /></b>
 							<img
 							src="${pageContext.request.contextPath}/view/images/arrow-curve-180-left.gif"
-							tppabs="http://www.xooom.pl/work/magicadmin/images/arrow-curve-180-left.gif"
 							width="12" height="9" alt="<fmt:message key="back" />" /> </span>
 					</a>
 				</div>
@@ -86,7 +85,7 @@
 							<li><label><fmt:message key="sexo"/>:&nbsp;&nbsp;&nbsp;
 							
 							<input type="radio" name="sexo"	
-								<c:if test="${empty sexo or (sexo eq 'F') }">
+								<c:if test="${empty sexo or (sexo == 'F') }">
 									checked="checked"
 								</c:if>
 								
@@ -96,7 +95,7 @@
 							
 							<input type="radio" 
 							
-							<c:if test="${(sexo eq 'M') }">
+							<c:if test="${(sexo == 'M') }">
 									checked="checked"
 							</c:if>
 							name="sexo" id="sexo" value="M" />
