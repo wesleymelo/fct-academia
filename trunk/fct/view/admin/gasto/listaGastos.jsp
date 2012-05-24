@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <c:import url="../../includes/header.jsp" />
 
@@ -23,15 +24,6 @@
 				</a>
 			</div>
 
-			<!-- Table records filtering -->
-			Filter: <select class="input-short">
-				<option value="1" selected="selected">Select filter</option>
-				<option value="2">Created last week</option>
-				<option value="3">Created last month</option>
-				<option value="4">Edited last week</option>
-				<option value="5">Edited last month</option>
-			</select>
-
 		</div>
 		
 		<c:choose>
@@ -51,8 +43,27 @@
 		<!-- Example table -->
 		<div class="module">
 			<h2>
-				<span><fmt:message key="alunos" /></span>
+				<span><fmt:message key="gastos" /></span>
 			</h2>
+			
+			
+			<%-- Variáveis para paginação --%>
+			<c:if test="${empty param.pag}">
+				<c:set var="pag" value="${1}" scope="page" />
+			</c:if>
+
+			<c:if test="${not empty param.pag}">
+				<c:set var="pag" value="${param.pag}" scope="page" />
+			</c:if>
+
+			<c:set var="tamPag" value="${40}" scope="page" />
+
+
+			<c:set var="inicio" value="${pag * tamPag - tamPag}" scope="page" />
+
+
+			<c:set var="fim" value="${(pag * tamPag) - 1}" scope="page" />
+			
 
 			<div class="module-table-body">
 				<form action="">
@@ -67,24 +78,18 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="gasto" items="${gastos}">
+							<c:forEach var="gasto" items="${gastos}" varStatus="i" begin="${inicio}" end="${fim}">
 								<tr>
-									<td><a href="">${gasto.secretaria.nome}</a></td>
+									<td>${gasto.secretaria.nome}</td>
 									<td>${gasto.despesa}</td>
 									<td>${gasto.valor}</td>
 									<td>${gasto.dataString}</td>
-									<td><input type="checkbox" /> <a href=""><img
-											src="${pageContext.request.contextPath}/view/images/tick-circle.gif"
-											tppabs="http://www.xooom.pl/work/magicadmin/images/tick-circle.gif"
-											width="16" height="16" alt="published" /></a> <a href="${pageContext.request.contextPath}/view/admin/gasto/alteraGasto.do?codigo=${gasto.idGasto }"><img
+									<td>	<a href="${pageContext.request.contextPath}/view/admin/gasto/alteraGasto.do?codigo=${gasto.idGasto }"><img
 											src="${pageContext.request.contextPath}/view/images/pencil.gif"
-											tppabs="http://www.xooom.pl/work/magicadmin/images/pencil.gif"
-											width="16" height="16" alt="edit" /></a> <a href=""><img
-											src="${pageContext.request.contextPath}/view/images/balloon.gif"
-											tppabs="http://www.xooom.pl/work/magicadmin/images/balloon.gif"
-											width="16" height="16" alt="comments" /></a> <a href=""><img
+											width="16" height="16" alt="edit" /></a> 
+											
+											<a href=""><img
 											src="${pageContext.request.contextPath}/view/images/bin.gif"
-											tppabs="http://www.xooom.pl/work/magicadmin/images/bin.gif"
 											width="16" height="16" alt="delete" /></a></td>
 								</tr>
 							</c:forEach>
@@ -117,53 +122,62 @@
 						</div>
 					</form>
 				</div>
-				<div class="table-apply">
-					<form action="">
-						<div>
-							<span>Apply action to selected:</span> <select
-								class="input-medium">
-								<option value="1" selected="selected">Select action</option>
-								<option value="2">Publish</option>
-								<option value="3">Unpublish</option>
-								<option value="4">Delete</option>
-							</select>
-						</div>
-					</form>
-				</div>
 				<div style="clear: both"></div>
 			</div>
 			<!-- End .module-table-body -->
 		</div>
 		<!-- End .module -->
 
+		<c:if test="${fn:length(gastos) % tamPag == 0}">
+						<c:set var="numPags" value="${fn:length(gastos) / tamPag }" />
+				</c:if>
+				<c:if test="${fn:length(gastos) % tamPag != 0}">
+						<c:set var="numPags" value="${(fn:length(gastos) / tamPag)+1}" />
+				</c:if>
 
 		<div class="pagination">
-			<a href="" class="button"><span><img
+			<a href="${pageContext.request.contextPath}/view/admin/gasto/listaGastos.do?pag=1" class="button"><span><img
 					src="${pageContext.request.contextPath}/view/images/arrow-stop-180-small.gif"
-					tppabs="http://www.xooom.pl/work/magicadmin/images/arrow-stop-180-small.gif"
-					height="9" width="12" alt="First" /> First</span></a> <a href=""
-				class="button"><span><img
-					src="${pageContext.request.contextPath}/view/images/arrow-180-small.gif"
-					tppabs="http://www.xooom.pl/work/magicadmin/images/arrow-180-small.gif"
-					height="9" width="12" alt="Previous" /> Prev</span></a>
+					height="9" width="12" alt="First" /><fmt:message key="primeiro"/></span>
+			</a> 
+					
+					
+					
+			<a href="${pageContext.request.contextPath}/view/admin/gasto/listaGastos.do?pag=<c:if test="${pag > 1}">${pag - 1}</c:if><c:if test="${pag == 1}">1</c:if>"
+					class="button"><span>
+					<img src="${pageContext.request.contextPath}/view/images/arrow-180-small.gif"
+					height="9" width="12" alt="Previous" /><fmt:message key="anterior"/></span>
+		    </a>
 			<div class="numbers">
-				<span>Page:</span> <a href="">1</a> <span>|</span> <a href="">2</a>
-				<span>|</span> <span class="current">3</span> <span>|</span> <a
-					href="">4</a> <span>|</span> <a href="">5</a> <span>|</span> <a
-					href="">6</a> <span>|</span> <a href="">7</a> <span>|</span> <span>...</span>
-				<span>|</span> <a href="">99</a>
+				<span><fmt:message key="pg"/></span>
+				
+				
+				<%-- Links para as outras páginas --%>
+				<c:forEach var="i" begin="1" end="${numPags}">
+					<c:if test="${i == pag}">
+						<c:out value="${i}" />
+					</c:if>
+					<c:if test="${i != pag}">
+						<a href="${pageContext.request.contextPath}/view/admin/gasto/listaGastos.do?pag=${i}"><c:out value="${i}" /></a>
+					</c:if>
+					<c:if test="${i < numPags}">
+						<span>|</span>
+					</c:if>	
+				</c:forEach>
 			</div>
-			<a href="" class="button"><span>Next <img
+			
+			<a href="${pageContext.request.contextPath}/view/admin/gasto/listaGastos.do?pag=<c:if test="${pag < numPags}">${pag + 1}</c:if> <c:if test="${pag == numPags}">${pag}</c:if>" class="button"><span><fmt:message key="proximo"/> <img
 					src="${pageContext.request.contextPath}/view/images/arrow-000-small.gif"
-					tppabs="http://www.xooom.pl/work/magicadmin/images/arrow-000-small.gif"
-					height="9" width="12" alt="Next" /></span></a> <a href="" class="button last"><span>Last
-					<img
+					height="9" width="12" alt="Next" /></span>
+			</a> 
+					
+			<a href="${pageContext.request.contextPath}/view/admin/gasto/listaGastos.do?pag=<c:out value="${numPags}"/>" class="button last"><span><fmt:message key="ultimo"/><img
 					src="${pageContext.request.contextPath}/view/images/arrow-stop-000-small.gif"
-					tppabs="http://www.xooom.pl/work/magicadmin/images/arrow-stop-000-small.gif"
-					height="9" width="12" alt="Last" />
-			</span></a>
+					height="9" width="12" alt="Last" /></span>
+			</a>
 			<div style="clear: both;"></div>
 		</div>
+
 	</div>
 	<!-- End .grid_12 -->
 
