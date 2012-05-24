@@ -14,6 +14,7 @@ import br.ucb.fct.enuns.EnumTypeSexo;
 import br.ucb.fct.exceptions.*;
 import br.ucb.fct.pessoa.Pessoa;
 import br.ucb.fct.pessoa.PessoaDAO;
+import br.ucb.fct.turma.Turma;
 import br.ucb.fct.util.Factory;
 import br.ucb.fct.util.Util;
 
@@ -173,6 +174,32 @@ public class AlunoDAOConexao implements AlunoDAO {
 			throw new DAOException(e,"ERRO! SELECTBYNOME na TABELA ALUNOS e PESSOAS. DATA("+new Date()+")");
 		}
 		return alunos;
+	}
+	
+	public Turma getTurma(ResultSet rs) throws SQLException{
+		return new Turma(rs.getInt("IdTurma"), Factory.initProfessorDAO().selectById(rs.getInt("idProfessor")), Factory.initTurmaDAO().selectAlunosById(rs.getInt("IdTurma")), Factory.initModalidadeDAO().selectById(rs.getInt("idModalidade")), rs.getString("nome"), rs.getTime("horarioInicial"), rs.getTime("horarioFinal"), rs.getInt("capacidade"));
+	}
+	
+	@Override
+	public List<Turma> selectTurmasById(int id) throws DAOException {
+		String sql = "SELECT * FROM alunos_turmas at, turmas t WHERE at.idTurma = t.idTurma  AND at.idAluno = ?";
+		Connection con = MyConnection.init();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Turma> turmas = new ArrayList<Turma>();
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+			rs = ps.executeQuery();
+			while(rs.next())
+				turmas.add(getTurma(rs));
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException(e,"ERRO! SELECTTURMASBYID na TABELA ALUNOS_TURMAS. DATA("+new Date()+")");
+		}finally{
+			MyConnection.closeConnection(con, ps, rs);
+		}
+		return turmas;
 	}
 	
 }
