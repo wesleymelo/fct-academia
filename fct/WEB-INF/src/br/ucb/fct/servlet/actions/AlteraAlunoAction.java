@@ -14,8 +14,8 @@ public class AlteraAlunoAction implements Action {
 		Aluno aluno = Factory.initAlunoDAO().selectById(Integer.parseInt(req.getParameter("codigo")));
 		Util.putAtribuRequisicaoAluno(req, aluno);
 		req.setAttribute("codigo",aluno.getEndereco().getIdEndereco());
-
-		return "/view/admin/aluno/alteraCadastroAluno.jsp?codigo="+aluno.getIdPessoa();
+		req.setAttribute("idPessoa", aluno.getIdPessoa());
+		return "/view/admin/aluno/alteraCadastroAluno.jsp";
 		
 	}
 
