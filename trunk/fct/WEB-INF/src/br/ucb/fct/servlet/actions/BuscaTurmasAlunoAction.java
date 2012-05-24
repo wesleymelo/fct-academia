@@ -5,15 +5,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.ucb.fct.util.Factory;
 
-public class BuscaAlunoAction implements Action {
+public class BuscaTurmasAlunoAction implements Action {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) {
 		if(req.getParameter("busca") != null && !req.getParameter("busca").isEmpty())
-			req.setAttribute("alunos", Factory.initAlunoDAO().selectByNome(req.getParameter("busca")));
+			req.setAttribute("turmas", Factory.initTurmaDAO().selectByOther(req.getParameter("busca")));
 		else
-			req.setAttribute("alunos", Factory.initAlunoDAO().selectAll());
-		return "/view/admin/aluno/listaAlunos.jsp";
+			req.setAttribute("turmas", Factory.initTurmaDAO().selectAll());
+		return "/view/admin/aluno/popupListaTurmas.jsp";
 	}
 	
 }
