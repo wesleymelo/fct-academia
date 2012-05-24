@@ -8,35 +8,7 @@
 <!-- Dashboard icons -->
 <div class="container_12">
 	<div class="grid_7">
-		<!--  <a href="${pageContext.request.contextPath}/view/jasper/relatorio.do?relatorio='ALUNO'" class="dashboard-module"> <img
-			src="${pageContext.request.contextPath}/view/images/aluno_.png"
-			width="64" height="64" alt="edit" /> <span><fmt:message key="rel_alunos"/></span>
-		</a> <a href="${pageContext.request.contextPath}/view/jasper/relatorio.do?relatorio='PROFESSOR'" class="dashboard-module"> <img
-			src="${pageContext.request.contextPath}/view/images/professor_.png"
-			width="64" height="64" alt="edit" /> <span><fmt:message key="rel_professores"/></span>
-		 </a> 
-		 <a href="${pageContext.request.contextPath}/view/jasper/relatorio.do?relatorio='TURMA'" class="dashboard-module"> <img
-			src="${pageContext.request.contextPath}/view/images/turma.png"
-			width="64" height="64" alt="edit" /> <span><fmt:message key="rel_turmas"/></span>
-		</a> 
-		 <a href="${pageContext.request.contextPath}/view/jasper/relatorio.do?relatorio='MODALIDADE'" class="dashboard-module"> <img
-			src="${pageContext.request.contextPath}/view/images/modalidade.png"
-			width="64" height="64" alt="edit" /> <span><fmt:message key="rel_modalidades"/></span>
-		</a>
-		<a href="${pageContext.request.contextPath}/view/jasper/relatorio.do?relatorio='PAGAMENTO'" class="dashboard-module"> <img
-			src="${pageContext.request.contextPath}/view/images/pagamento.png"
-			width="64" height="64" alt="edit" /> <span><fmt:message key="rel_pagamentos"/></span>
-		</a>
 		
-		<a href="${pageContext.request.contextPath}/view/jasper/relatorio.do?relatorio='GASTO'" class="dashboard-module"> <img
-			src="${pageContext.request.contextPath}/view/images/gastos.png"
-			width="64" height="64" alt="edit" /> <span><fmt:message key="rel_gastos"/></span>
-		</a>
-		
-		<a href="${pageContext.request.contextPath}/view/jasper/relatorio.do?relatorio='DESPESA'" class="dashboard-module"> <img
-			src="${pageContext.request.contextPath}/view/images/despesas.png"
-			width="64" height="64" alt="edit" /> <span><fmt:message key="rel_despesas"/></span>
-		</a>-->
 		<a href="${pageContext.request.contextPath}/view/jasper/relatorio.do?relatorio=1" class="dashboard-module"> <img
 			src="${pageContext.request.contextPath}/view/images/aluno_.png"
 			width="64" height="64" alt="edit" /> <span><fmt:message key="rel_alunos"/></span>
