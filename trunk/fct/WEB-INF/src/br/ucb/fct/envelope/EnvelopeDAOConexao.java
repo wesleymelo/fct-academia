@@ -10,11 +10,13 @@ import java.util.Date;
 import java.util.List;
 import br.ucb.fct.connection.MyConnection;
 import br.ucb.fct.exceptions.*;
+import br.ucb.fct.util.Factory;
 
 public class EnvelopeDAOConexao implements EnvelopeDAO {
 
 	@Override
 	public boolean insert(Envelope envelope) throws DAOException {
+
 		String sql = "INSERT INTO envelopes(null,idSecretaria, idProfessor) VALUES (?,?);";
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -32,6 +34,7 @@ public class EnvelopeDAOConexao implements EnvelopeDAO {
 			MyConnection.closeConnection(con, ps);
 		}
 		return retorno == 0 ? false: true;
+		
 	}
 
 	@Override
@@ -56,16 +59,17 @@ public class EnvelopeDAOConexao implements EnvelopeDAO {
 
 	@Override
 	public boolean update(Envelope envelope, int id) throws DAOException {
-		String sql = "UPDATE envelopes SET idSecretaria = ?, idProfessor = ?;";
+		String sql = "UPDATE envelopes SET idSecretaria = ?, idProfessor = ?; WHERE idEnvelope = ?";
 		Connection con = null;
 		PreparedStatement ps = null;
 		int retorno = 0;
 		try {
 			con = MyConnection.init();
 			ps = con.prepareStatement(sql);
-			ps.setObject(1,envelope.getIdSecretaria());
-			ps.setObject(2,envelope.getIdProfessor());
-			ps.executeUpdate();
+			ps.setInt(1,envelope.getIdSecretaria());
+			ps.setInt(2,envelope.getIdProfessor());
+			ps.setInt(3, id);
+			retorno = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new DAOException(e,"ERRO! UPDATE na TABELA ENVELOPES. DATA("+new Date()+")");
@@ -119,7 +123,10 @@ public class EnvelopeDAOConexao implements EnvelopeDAO {
 	}
 	
 	public static Envelope getEnvelope(ResultSet rs) throws SQLException{
-		return new Envelope(rs.getInt("idSecretaria"), rs.getInt("idProfessor"));
+		return new Envelope(rs.getInt("idSecretaria"), 
+				            rs.getInt("idProfessor"),
+				            Factory.initProfessorDAO().selectById( rs.getInt("idProfessor")), 
+				            Factory.initSecretariaDAO().selectById(rs.getInt("idSecretaria")));
 	}
 
 }
