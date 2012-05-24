@@ -134,16 +134,16 @@ public class TurmaDAOConexao implements TurmaDAO{
 
 	@Override
 	public List<Aluno> selectAlunosById(int id) throws DAOException {
-		String sql = "SELECT * FROM alunos_turmas t, alunos a WHERE a.idAluno = t.idAluno AND idTurma = ?;";
+		String sql = "SELECT * FROM alunos_turmas t, alunos a, pessoas p WHERE a.idAluno = t.idAluno AND a.idAluno = p.idPessoa AND t.idTurma = ?;";
 		Connection con = MyConnection.init();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<Aluno> alunos = new ArrayList<Aluno>();
 		try {
 			ps = con.prepareStatement(sql);
-			ps.setObject(1, id);
+			ps.setInt(1, id);
 			rs = ps.executeQuery();
-			if(rs.first())
+			while(rs.next())
 				alunos.add(getAluno(rs));
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -154,7 +154,32 @@ public class TurmaDAOConexao implements TurmaDAO{
 		return alunos;
 	}
 	
+	@Override
+	public boolean hasAlunoInTurma(int idTurma, int idAluno) throws DAOException {
+		
+		String sql = "SELECT * FROM alunos_turmas WHERE idAluno = ? AND idTurma = ?";
+		Connection con = MyConnection.init();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		boolean retorno = false;
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, idAluno);
+			ps.setInt(2, idTurma);
+			rs = ps.executeQuery();
+			if(rs.first())
+				retorno = true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException(e,"ERRO! HASALUNOINTURMA na TABELA ALUNOS_TURMAS. DATA("+new Date()+")");
+		}finally{
+			MyConnection.closeConnection(con, ps, rs);
+		}
+		return retorno;
+	}
+	
 	public static Aluno getAluno(ResultSet rs) throws SQLException{
+		
 		return new Aluno(rs.getInt("idPessoa"), 
 				         EnumTypePessoa.findEmunTypePessoaByNumber(rs.getInt("tipoPessoa")), 
 				         rs.getDate("dataCadastro"),
@@ -170,5 +195,30 @@ public class TurmaDAOConexao implements TurmaDAO{
                          rs.getDouble("altura"),
                          Util.getDateView(rs.getDate("dataNascimento").toString(),"/"),
 						 Util.getDateView(rs.getDate("dataCadastro").toString(),"/"));
+	}
+
+	@Override
+	public boolean insertAlunoNaTurma(int idTurma, int idAluno)
+			throws DAOException {
+		
+		System.out.println("idTurma: "+idTurma);
+		System.out.println("idAluno: "+idAluno);
+		
+		String sql = "INSERT INTO alunos_turmas(idTurma, idAluno) VALUES(?,?);";
+		Connection con = MyConnection.init();
+		int retorno;
+		PreparedStatement ps = null;
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt(1,idTurma);
+			ps.setInt(2,idAluno);
+			retorno = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException(e,"ERRO! INSERT na TABELA ALUNOS_TURMAS. DATA("+new Date()+")");
+		}finally{
+			MyConnection.closeConnection(con, ps);
+		}
+		return retorno == 0 ? false: true;
 	}
 }
