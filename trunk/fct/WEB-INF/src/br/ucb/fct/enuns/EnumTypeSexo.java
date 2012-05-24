@@ -12,7 +12,7 @@ public enum EnumTypeSexo {
 	}
 	public static EnumTypeSexo findByCodigo(Character codigo){
 		for (EnumTypeSexo e : values()) {
-			if(e.getCodigo().equals(codigo.toString()))
+			if(e.getCodigo() == codigo)
 				return e;
 		}
 		return null;
