@@ -80,7 +80,7 @@
 							<tr>
 								<th style="width: 25%"><fmt:message key="desc"/></th>
 								<th style="width: 20%"><fmt:message key="preco"/></th>
-								<th style="width: 10%"><fmt:message key="acao"/></th>
+								<th style="width: 10%"><fmt:message key="acoes"/></th>
 							</tr>
 						</thead>
 						<tbody>
