@@ -63,6 +63,8 @@ public class Util {
 
 	public static java.sql.Date formatDateIn(String data){
 		
+		
+		
 		data = data.substring(6, 10) + "-" + data.substring(3, 5) + "-" + data.substring(0, 2);
 		
 		SimpleDateFormat formatador = new SimpleDateFormat("yyyy-MM-dd");  
@@ -106,7 +108,7 @@ public class Util {
 		java.sql.Date dataNasc = (java.sql.Date) req.getSession().getAttribute("dataNasc");
 		java.sql.Date dataCadas = (java.sql.Date) req.getSession().getAttribute("dataCadas");
 		String email = (String) req.getSession().getAttribute("email");
-		List<Telefone> telefones = (List<Telefone>) req.getSession().getAttribute("telefones"); 
+		List<Telefone> telefones = (List<Telefone>) req.getSession().getAttribute("telefones");
 		double altura = Double.parseDouble((String)req.getSession().getAttribute("altura"));
 		double peso = Double.parseDouble((String)req.getSession().getAttribute("peso"));
 		Aluno aluno = new Aluno(EnumTypePessoa.ALUNO, dataCadas, nome, cpf, sexo, dataNasc, null, telefones, email, true, peso, altura);
@@ -166,16 +168,16 @@ public class Util {
 	public static Secretaria getCadastroSecretaria(HttpServletRequest req) {
 		String nome = (String) req.getSession().getAttribute("nome");
 		String cpf = (String) req.getSession().getAttribute("cpf");
-		EnumTypeSexo sexo = EnumTypeSexo.findByCodigo( req.getSession().getAttribute("sexo").toString().charAt(0));
-		Date dataCadas = (Date) req.getSession().getAttribute("dataCadas");
-		Date dataNasc = formatDateIn((String)req.getSession().getAttribute("dataNasc"));
+		EnumTypeSexo sexo = (EnumTypeSexo) req.getSession().getAttribute("sexo");
+		java.sql.Date dataNasc = (java.sql.Date) req.getSession().getAttribute("dataNasc");
+		java.sql.Date dataCadas = (java.sql.Date) req.getSession().getAttribute("dataCadas");
 		String email = (String) req.getSession().getAttribute("email");
 		List<Telefone> telefones = (List<Telefone>) req.getSession().getAttribute("telefones"); 
 		Double salario = Double.parseDouble( req.getSession().getAttribute("salario").toString());
 		String horarioInicial = (String) req.getSession().getAttribute("horarioInicial");
 		String horarioFinal = (String) req.getSession().getAttribute("horarioFinal");
 		Date dataAdmissao = formatDateIn((String)req.getSession().getAttribute("dataAdmissao"));
-		Secretaria secretaria = new Secretaria(EnumTypePessoa.SECRETARIA, dataCadas, nome, cpf, sexo, dataNasc, null, telefones, email, true, dataAdmissao, horarioInicial, horarioFinal,salario) ;
+		Secretaria secretaria = new Secretaria(EnumTypePessoa.SECRETARIA, dataCadas, nome, cpf, sexo, dataNasc, null, telefones, email, true, dataAdmissao, horarioInicial, horarioFinal,salario);
 		return secretaria;
 	}
 
@@ -183,15 +185,14 @@ public class Util {
 	public static Professor getCadastroProfessor(HttpServletRequest req) {
 		String nome = (String) req.getSession().getAttribute("nome");
 		String cpf = (String) req.getSession().getAttribute("cpf");
-		EnumTypeSexo sexo = EnumTypeSexo.findByCodigo( req.getSession().getAttribute("sexo").toString().charAt(0) );
-		Date dataNasc = formatDateIn((String)req.getSession().getAttribute("dataNasc"));
-		Date dataCadas = (Date) req.getSession().getAttribute("dataCadas");
+		EnumTypeSexo sexo = (EnumTypeSexo) req.getSession().getAttribute("sexo");
+		java.sql.Date dataNasc = Util.formatDateIn(req.getSession().getAttribute("dataNasc").toString());
+		java.sql.Date dataCadas = (java.sql.Date) req.getSession().getAttribute("dataCadas");
 		String email = (String) req.getSession().getAttribute("email");
-		List<Telefone> telefones = (List<Telefone>) req.getSession().getAttribute("telefones"); 
-		Endereco endereco = null;
-		Date dataAdmissao = formatDateIn((String) req.getSession().getAttribute("dataAdmissao"));
+		List<Telefone> telefones = (List<Telefone>) req.getSession().getAttribute("telefones");
+		Date dataAdmissao = formatDateIn((String)req.getSession().getAttribute("dataAdmissao"));
 		String dataAdmissaoString = (String) req.getSession().getAttribute("dataAdmissao");
-		Professor professor = new Professor(EnumTypePessoa.PROFESSOR, dataCadas, nome, cpf, sexo, dataNasc, endereco, telefones, email, true, dataAdmissao,dataAdmissaoString); 
+		Professor professor = new Professor(EnumTypePessoa.PROFESSOR, dataCadas, nome, cpf, sexo, dataNasc, null, telefones, email, true, dataAdmissao,dataAdmissaoString); 
 		return professor;
 	}
 	
@@ -243,6 +244,7 @@ public class Util {
 	
 	
 	private static void putAtribuRequisicaoPessoa(HttpServletRequest req){
+		req.setAttribute("codigo", req.getParameter("codigo"));
 		req.setAttribute("nome", req.getParameter("nome"));
 		req.setAttribute("dataNasc", req.getParameter("dataNasc"));
 		req.setAttribute("sexo", req.getParameter("sexo"));
@@ -255,7 +257,6 @@ public class Util {
 	}
 	
 	private static void putAtribuRequisicaoPessoa(HttpServletRequest req, Pessoa pessoa){
-		
 		req.setAttribute("nome", pessoa.getNome());
 		req.setAttribute("dataNasc", pessoa.getDateNascimentoString());
 		req.setAttribute("sexo", pessoa.getSexo().getCodigo());
@@ -419,6 +420,14 @@ public class Util {
 						 Double.parseDouble(req.getParameter("valor")), 
 						 Util.formatDateIn(req.getParameter("data")), 
 						 Integer.parseInt(req.getParameter("idPessoa")));
+	}
+
+
+	public static void putAtribuRequisicaoEnvelope(HttpServletRequest req) {
+		req.setAttribute("codigo", req.getParameter("codigo"));
+		req.setAttribute("codigo", req.getParameter("codigo"));
+		req.setAttribute("codigo", req.getParameter("id"));
+		
 	}
 	
 }
