@@ -22,9 +22,4 @@ public class TurmaBO {
 	public void setEnderecoDAO(TurmaDAO turmaDAO) {
 		this.turmaDAO = turmaDAO;
 	}
-	
-	public boolean hasAlunoInTurma(int idAluno, int idTurma){
-		System.out.println("kkk idA:"+idAluno+" ------ kkk idT: "+idTurma);
-		return turmaDAO.hasAlunoInTurma(idAluno, idTurma);
-	}
 }
