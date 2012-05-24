@@ -237,8 +237,7 @@ public class GeraErros {
 		
 	}
 
-	public static Map<String, String> verificaErrosAlunosNaTurma(
-			HttpServletRequest req) {
+	public static Map<String, String> verificaErrosAlunosNaTurma(HttpServletRequest req) {
 		Map<String, String> erros = new HashMap<String, String>();
 		Turma turma = (Turma)req.getAttribute("turma");
 		if(turma.getVagas() == 0)
@@ -253,5 +252,10 @@ public class GeraErros {
 		}
 		return erros;
 	}
+
+	public static Map<String, String> verificaErrosEnvelope(HttpServletRequest req) {
+		return null;
+	}
+
 
 }
