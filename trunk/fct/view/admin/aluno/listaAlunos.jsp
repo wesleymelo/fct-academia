@@ -197,7 +197,7 @@
 											src="${pageContext.request.contextPath}/view/images/turma-short.png"
 											width="16" height="16" alt="<fmt:message key="view"/>" /></a>
 											
-											<a href=".do?id=${aluno.idPessoa}"><img
+											<a href="visualizaAluno.do?id=${aluno.idPessoa}"><img
 											src="${pageContext.request.contextPath}/view/images/view.png"
 											width="16" height="16" alt="<fmt:message key="view"/>" /></a>
 									</td>

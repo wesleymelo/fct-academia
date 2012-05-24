@@ -55,8 +55,14 @@
 									<span class="notification-input ni-error"><fmt:message key="cep_invalido"/></span>
 								</c:if>
                             </p>
+                            
+                            <script>
+								jQuery(function($){
+									$("#cep").mask("99.999-999");
+		      					});
+							</script>
   							
-  							<label>UF
+  							<label><fmt:message key="uf" /></label>
 	  							<select class="input" name="uf" >
 										<c:forEach items="${estados }" var="estado" >
 											<option value="${estado.sigla }"
