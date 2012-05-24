@@ -3,7 +3,6 @@ package br.ucb.fct.secretaria;
 import java.util.List;
 
 import br.ucb.fct.exceptions.DAOException;
-import br.ucb.fct.professor.Professor;
 
 public interface SecretariaDAO {
 	public boolean insert(Secretaria secretaria)  throws DAOException;
