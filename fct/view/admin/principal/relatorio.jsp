@@ -10,42 +10,42 @@
 	<div class="grid_7">
 		<a href="${pageContext.request.contextPath}/view/admin/aluno/listaAlunos.do" class="dashboard-module"> <img
 			src="${pageContext.request.contextPath}/view/images/aluno_.png"
-			width="64" height="64" alt="edit" /> <span><fmt:message key="alunos"/></span>
+			width="64" height="64" alt="edit" /> <span><fmt:message key="rel_alunos"/></span>
 		</a> <a href="${pageContext.request.contextPath}/view/admin/professor/listaProfessores.do" class="dashboard-module"> <img
 			src="${pageContext.request.contextPath}/view/images/professor_.png"
-			width="64" height="64" alt="edit" /> <span><fmt:message key="professores"/></span>
-		</a> <a href="${pageContext.request.contextPath}/view/admin/secretaria/listaSecretarias.do" class="dashboard-module"> <img
+			width="64" height="64" alt="edit" /> <span><fmt:message key="rel_professores"/></span>
+		 </a> <!--<a href="${pageContext.request.contextPath}/view/admin/secretaria/listaSecretarias.do" class="dashboard-module"> <img
 			src="${pageContext.request.contextPath}/view/images/secretaria.png"
-			width="64" height="64" alt="edit" /> <span><fmt:message key="secretarias"/></span>
-		</a> <a href="${pageContext.request.contextPath}/view/admin/turma/listaTurmas.do" class="dashboard-module"> <img
+			width="64" height="64" alt="edit" /> <span><fmt:message key="secretarias"/></span> 
+		</a> --><a href="${pageContext.request.contextPath}/view/admin/turma/listaTurmas.do" class="dashboard-module"> <img
 			src="${pageContext.request.contextPath}/view/images/turma.png"
-			width="64" height="64" alt="edit" /> <span><fmt:message key="turmas"/></span>
-		</a> <a href="${pageContext.request.contextPath}/view/admin/pacote/listaPacotes.do" class="dashboard-module"> <img
+			width="64" height="64" alt="edit" /> <span><fmt:message key="rel_turmas"/></span>
+		</a> <!--<a href="${pageContext.request.contextPath}/view/admin/pacote/listaPacotes.do" class="dashboard-module"> <img
 			src="${pageContext.request.contextPath}/view/images/pacote.png"
 			width="64" height="64" alt="edit" /> <span><fmt:message key="pacotes"/></span>
-		</a> <a href="${pageContext.request.contextPath}/view/admin/modalidade/listaModalidades.do" class="dashboard-module"> <img
+		</a>--> <a href="${pageContext.request.contextPath}/view/admin/modalidade/listaModalidades.do" class="dashboard-module"> <img
 			src="${pageContext.request.contextPath}/view/images/modalidade.png"
-			width="64" height="64" alt="edit" /> <span><fmt:message key="modalidades"/></span>
-		</a> <a href="${pageContext.request.contextPath}/view/admin/graduacao/listaGraduacoes.do" class="dashboard-module"> <img
+			width="64" height="64" alt="edit" /> <span><fmt:message key="rel_modalidades"/></span>
+		</a><!-- <a href="${pageContext.request.contextPath}/view/admin/graduacao/listaGraduacoes.do" class="dashboard-module"> <img
 			src="${pageContext.request.contextPath}/view/images/graduacao_.png"
 			width="64" height="64" alt="edit" /> <span><fmt:message key="graduacoes"/></span>
-		</a>
+		</a>-->
 		<a href="${pageContext.request.contextPath}/view/admin/pagamento/listaPagamentos.do" class="dashboard-module"> <img
 			src="${pageContext.request.contextPath}/view/images/pagamento.png"
-			width="64" height="64" alt="edit" /> <span><fmt:message key="pagamentos"/></span>
+			width="64" height="64" alt="edit" /> <span><fmt:message key="rel_pagamentos"/></span>
 		</a>
 		<a href="${pageContext.request.contextPath}/view/admin/envelope/listaEnvelopes.do" class="dashboard-module"> <img
 			src="${pageContext.request.contextPath}/view/images/envelope.png"
-			width="64" height="64" alt="edit" /> <span><fmt:message key="envelopes"/></span>
+			width="64" height="64" alt="edit" /> <span><fmt:message key="rel_envelopes"/></span>
 		</a>
 		<a href="${pageContext.request.contextPath}/view/admin/gasto/listaGastos.do" class="dashboard-module"> <img
 			src="${pageContext.request.contextPath}/view/images/gastos.png"
-			width="64" height="64" alt="edit" /> <span><fmt:message key="gastos"/></span>
+			width="64" height="64" alt="edit" /> <span><fmt:message key="rel_gastos"/></span>
 		</a>
 		
 		<a href="${pageContext.request.contextPath}/view/admin/despesa/listaDespesas.do" class="dashboard-module"> <img
 			src="${pageContext.request.contextPath}/view/images/despesas.png"
-			width="64" height="64" alt="edit" /> <span><fmt:message key="despesas"/></span>
+			width="64" height="64" alt="edit" /> <span><fmt:message key="rel_despesas"/></span>
 		</a>
 		<div style="clear: both"></div>
 	</div>
