@@ -14,13 +14,9 @@ public class ListaGastosAction implements Action{
 	
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) {
-		List<Gasto> gastos = Factory.initGastoDAO().selectAll();
-		List<Despesa> despesas=new ArrayList<Despesa>();
-		for (Gasto gasto : gastos) {
-			despesas.add(Factory.initDespesaDAO().selectById(gasto.getIdDespesa()));
-		}
-		req.setAttribute("despesas", despesas);
+		
+		List<Gasto> gastos = Factory.initGastoDAO().selectAll();		
 		req.setAttribute("gastos", gastos);
-		return "/view/admin/gasto/listaGasto.jsp";
+		return "/view/admin/gasto/listaGastos.jsp";
 	}
 }
