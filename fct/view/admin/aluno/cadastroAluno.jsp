@@ -79,7 +79,7 @@
 							<li><label><fmt:message key="sexo"/>:&nbsp;&nbsp;&nbsp;
 							
 							<input type="radio" name="sexo"	
-								<c:if test="${empty sexo or (sexo == 'F') }">
+								<c:if test="${empty sexo or (sexo eq 'F')}">
 									checked="checked"
 								</c:if>
 								
@@ -89,7 +89,7 @@
 							
 							<input type="radio" 
 							
-							<c:if test="${(sexo == 'M') }">
+							<c:if test="${(sexo eq 'M') }">
 									checked="checked"
 							</c:if>
 							name="sexo" id="sexo" value="M" />
@@ -118,6 +118,9 @@
 					<p>	
 						<label><fmt:message key="celular"/></label>
 						<input type="text" class="input-short-short" name="celular" id="celular" value="${celular }" />
+						<c:if test="${not empty erros['errocelular'] }">
+							<span class="notification-input ni-error"><fmt:message key="telefone_invalido"/></span>
+						</c:if>
 					</p>
 					
 					
@@ -134,7 +137,10 @@
 					
 					<p>
 						<label><fmt:message key="comercial"/></label> 
-						<input type="text" class="input-short-short" name="comercial" id="comercial" value="${comercial }"/> 
+						<input type="text" class="input-short-short" name="comercial" id="comercial" value="${comercial }"/>
+						<c:if test="${not empty erros['errocomercial'] }">
+							<span class="notification-input ni-error"><fmt:message key="telefone_invalido"/></span>
+						</c:if> 
 					</p>
 					
 					<script>
