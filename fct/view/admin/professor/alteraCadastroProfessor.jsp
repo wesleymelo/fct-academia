@@ -43,6 +43,7 @@
 				<form action="cadastroProfessor.do?codigo=${codigo }" method="post">
 
 					<input type="hidden" name="pg" value="3" />
+					<input type="hidden" name="idPessoa" value="${idPessoa }" />
 
 					<p>
 						<label><fmt:message key="nome" /></label> <input type="text"
@@ -78,7 +79,7 @@
 							<li><label><fmt:message key="sexo"/>:&nbsp;&nbsp;&nbsp;
 							
 							<input type="radio" name="sexo"	
-								<c:if test="${empty sexo or (sexo == 'F') }">
+								<c:if test="${empty sexo or (sexo eq 'F') }">
 									checked="checked"
 								</c:if>
 								
@@ -88,7 +89,7 @@
 							
 							<input type="radio" 
 							
-							<c:if test="${(sexo == 'M') }">
+							<c:if test="${(sexo eq 'M') }">
 									checked="checked"
 							</c:if>
 							name="sexo" id="sexo" value="M" />
