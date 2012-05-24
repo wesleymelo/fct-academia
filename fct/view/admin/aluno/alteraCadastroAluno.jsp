@@ -28,7 +28,7 @@
 		
 		<div class="module">
 			<h2>
-				<span><fmt:message key="AlteraCadastroAluno"/></span>
+				<span>Cadastro Aluno</span>
 			</h2>
 
 			
@@ -37,7 +37,6 @@
 				<form action="cadastroAluno.do?codigo=${codigo }" method="post">
 
 					<input type="hidden" name="pg" value="3" />
-					<input type="hidden" name="idPessoa" value="${idPessoa}" />
 
 					<p>
 						<label><fmt:message key="nome"/></label>
@@ -71,7 +70,7 @@
 							<li><label><fmt:message key="sexo"/>:&nbsp;&nbsp;&nbsp;
 							
 							<input type="radio" name="sexo"	
-								<c:if test="${empty sexo or (sexo eq 'F') }">
+								<c:if test="${empty sexo or (sexo == 'F') }">
 									checked="checked"
 								</c:if>
 								
@@ -81,7 +80,7 @@
 							
 							<input type="radio" 
 							
-							<c:if test="${(sexo eq 'M') }">
+							<c:if test="${(sexo == 'M') }">
 									checked="checked"
 							</c:if>
 							name="sexo" id="sexo" value="M" />
