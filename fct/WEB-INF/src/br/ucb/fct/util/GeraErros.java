@@ -19,12 +19,12 @@ public class GeraErros {
 			erros.put("errocpf","cpf_invalido");
 		if(!Validator.isEmailValid(req.getParameter("email"),100))
 			erros.put("erroemail","email_invalido");
-		if(!Validator.verificaTamanho(Util.unFormat(req.getParameter("celular")),10))
-			erros.put("errocelular", "telefone_invalido");
+		/*if(!Validator.verificaTamanho(Util.unFormat(req.getParameter("celular")),10))
+			erros.put("errocelular", "telefone_invalido");*/
 		if(!Validator.verificaTamanho(Util.unFormat(req.getParameter("residencial")),10))
 			erros.put("erroresidencial", "telefone_invalido");
-		if(!Validator.verificaTamanho(Util.unFormat(req.getParameter("comercial")),10))
-			erros.put("errocomercial", "telefone_invalido");
+		/*if(!Validator.verificaTamanho(Util.unFormat(req.getParameter("comercial")),10))
+			erros.put("errocomercial", "telefone_invalido");*/
 		if(!Validator.verificaDouble(req.getParameter("altura"),0.40,3))
 			erros.put("erroaltura", "altura_invalida");
 		if(!Validator.verificaDouble(req.getParameter("peso"),0.40,600))
@@ -189,8 +189,15 @@ public class GeraErros {
 
 	public static Map<String, String> verificaErrosGastos(HttpServletRequest req) {
 		
+		Map<String, String> erros = new HashMap<String, String>();
 		
-		return null;
+		if(!Validator.verificaDouble(req.getParameter("valor"), 0))
+			erros.put("errovalor","valor_invalido");
+		if(!Validator.verificaTamanho(Util.unFormat(req.getParameter("data")), 8))
+			erros.put("errodata", "data_invalido");
+		if(!erros.isEmpty())
+			Util.putAtribuRequisicaoGasto(req);
+		return erros;
 	}
 
 	public static Map<String, String> verificaErrosGraduacao(HttpServletRequest req) {
@@ -225,6 +232,20 @@ public class GeraErros {
 			Util.putAtribuRequisicaoPagamento(req);
 		}
 		return erros;
+		
+	}
+
+	public static Map<String, String> verificaErrosDespesas(HttpServletRequest req) {
+		Map<String, String> erros = new HashMap<String, String>();
+		if(!Validator.isStringValid(req.getParameter("descricao"), 100))
+			erros.put("errodescricao","decricao_invalido");
+		if(!Validator.isIntValid(req.getParameter("qtde")))
+			erros.put("erroqtde", "qtde_invalido");
+		if(!erros.isEmpty())
+			Util.putAtribuRequisicaoDespesa(req);
+		
+		return erros;
+		
 		
 	}
 
