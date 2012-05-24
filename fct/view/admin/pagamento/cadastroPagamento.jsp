@@ -17,7 +17,7 @@
 				<!-- Button -->
 				<div class="float-right">
 					<a
-						href="${pageContext.request.contextPath}/view/admin/aluno/listaPagamento.do"
+						href="${pageContext.request.contextPath}/view/admin/aluno/listaPagamentos.do"
 						class="button"> <span><b><fmt:message key="back" /></b>
 							<img
 							src="${pageContext.request.contextPath}/view/images/arrow-curve-180-left.gif"
@@ -54,7 +54,7 @@
 					</p>					
 			
 					<p>
-						<label><fmt:message key="dataPagamento"/></label>
+						<label><fmt:message key="dataPagmanto"/></label>
 						<input type="text" class="input-short-short" readonly="readonly" name="dataPagamento" id="dataPagamento" value="${dataPagamento}"/>
 						<c:if test="${not empty erros['errodatapagamento'] }">
 							<span class="notification-input ni-error"><fmt:message key="datapagamento_invalido"/></span>
