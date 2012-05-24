@@ -63,8 +63,6 @@ public class Util {
 
 	public static java.sql.Date formatDateIn(String data){
 		
-		
-		
 		data = data.substring(6, 10) + "-" + data.substring(3, 5) + "-" + data.substring(0, 2);
 		
 		SimpleDateFormat formatador = new SimpleDateFormat("yyyy-MM-dd");  
@@ -168,9 +166,9 @@ public class Util {
 	public static Secretaria getCadastroSecretaria(HttpServletRequest req) {
 		String nome = (String) req.getSession().getAttribute("nome");
 		String cpf = (String) req.getSession().getAttribute("cpf");
-		EnumTypeSexo sexo = (EnumTypeSexo) req.getSession().getAttribute("sexo");
-		java.sql.Date dataNasc = (java.sql.Date) req.getSession().getAttribute("dataNasc");
-		java.sql.Date dataCadas = (java.sql.Date) req.getSession().getAttribute("dataCadas");
+		EnumTypeSexo sexo = EnumTypeSexo.findByCodigo( req.getSession().getAttribute("sexo").toString().charAt(0));
+		Date dataCadas = (Date) req.getSession().getAttribute("dataCadas");
+		Date dataNasc = formatDateIn((String)req.getSession().getAttribute("dataNasc"));
 		String email = (String) req.getSession().getAttribute("email");
 		List<Telefone> telefones = (List<Telefone>) req.getSession().getAttribute("telefones"); 
 		Double salario = Double.parseDouble( req.getSession().getAttribute("salario").toString());
@@ -185,9 +183,9 @@ public class Util {
 	public static Professor getCadastroProfessor(HttpServletRequest req) {
 		String nome = (String) req.getSession().getAttribute("nome");
 		String cpf = (String) req.getSession().getAttribute("cpf");
-		EnumTypeSexo sexo = (EnumTypeSexo) req.getSession().getAttribute("sexo");
-		java.sql.Date dataNasc = Util.formatDateIn(req.getSession().getAttribute("dataNasc").toString());
-		java.sql.Date dataCadas = (java.sql.Date) req.getSession().getAttribute("dataCadas");
+		EnumTypeSexo sexo = EnumTypeSexo.findByCodigo( req.getSession().getAttribute("sexo").toString().charAt(0) );
+		Date dataNasc = formatDateIn((String)req.getSession().getAttribute("dataNasc"));
+		Date dataCadas = (Date) req.getSession().getAttribute("dataCadas");
 		String email = (String) req.getSession().getAttribute("email");
 		List<Telefone> telefones = (List<Telefone>) req.getSession().getAttribute("telefones");
 		Date dataAdmissao = formatDateIn((String)req.getSession().getAttribute("dataAdmissao"));
