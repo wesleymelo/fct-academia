@@ -106,8 +106,8 @@
 											src="${pageContext.request.contextPath}/view/images/bin.gif"
 											width="16" height="16" alt="<fmt:message key="excluir"/>" /></a>
 											
-											<a href=""><img
-											src="${pageContext.request.contextPath}/view/images/add-person.png"
+											<a href="${pageContext.request.contextPath}/view/admin/turma/carregaAlunosTurma.do?id=${turma.idTurma }"><img
+											src="${pageContext.request.contextPath}/view/images/people.png"
 											width="16" height="16" alt="<fmt:message key="adicionarAluno"/>" /></a>
 											
 											<a href=""><img
