@@ -20,6 +20,8 @@ public class TelefoneDAOConexao implements TelefoneDAO{
 		int retorno;
 		PreparedStatement ps;
 		
+		System.out.println(telefone.getDdd());
+		
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1,Factory.initPessoaDAO().findLastId());
@@ -33,7 +35,6 @@ public class TelefoneDAOConexao implements TelefoneDAO{
 		}
 		return retorno == 0 ? false: true;
 	}
-	
 	
 	public boolean insert(List<Telefone> telefones) throws DAOException{
 	
@@ -67,7 +68,6 @@ public class TelefoneDAOConexao implements TelefoneDAO{
 		Connection con = MyConnection.init();
 		int retorno;
 		PreparedStatement ps;
-		
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setString(1,telefone.getDdd());
@@ -79,7 +79,6 @@ public class TelefoneDAOConexao implements TelefoneDAO{
 			e.printStackTrace();
 			throw new DAOException(e,"ERRO! UPDATE na TABELA TELEFONES. DATA("+new java.util.Date()+")");
 		}
-			
 		return retorno == 0 ? false: true;
 		
 	}
@@ -118,35 +117,7 @@ public class TelefoneDAOConexao implements TelefoneDAO{
 	}
 
 	private Telefone getTelefone(ResultSet rs) throws SQLException {
-		return new Telefone(rs.getInt("idTelefone"), 
-				            rs.getInt("idPessoa"),
-				            rs.getString("numero"), 
-				            rs.getString("ddd"), 
-				            EnumTypeFone.findEnumTypeFonebyNumber(rs.getInt("tipo")));
+		return new Telefone(rs.getInt("idTelefone"), rs.getInt("idPessoa"), rs.getString("numero"), rs.getString("ddd"), EnumTypeFone.findEnumTypeFonebyNumber(rs.getInt("tipo")));
 	}
-	
-	public boolean verificaTelBD(Telefone tel, int id){
-		String sql = "SELECT * FROM telefones t, pessoas p WHERE p.idPessoa = t.idPessoa AND t.idPessoa = ? AND ddd = ? AND numero = ?;";
-		Connection con = MyConnection.init();
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-		Telefone t = null;
-		try {
-			ps = con.prepareStatement(sql);
-			ps.setInt(1, id);
-			ps.setString(2, tel.getDdd());
-			ps.setString(3, tel.getNumero());
-			rs = ps.executeQuery();
-			if(rs.first())
-				t = getTelefone(rs);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new DAOException(e,"ERRO! SELECTBYID na TABELA TELEFONES. DATA("+new java.util.Date()+")");
-		}finally{
-			MyConnection.closeConnection(con, ps, rs);
-		}
-		return t != null ? true: false;
-	}
-	
 
 }
