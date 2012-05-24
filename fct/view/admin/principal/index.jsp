@@ -43,7 +43,7 @@
 			width="64" height="64" alt="edit" /> <span><fmt:message key="gastos"/></span>
 		</a>
 		
-		<a href="${pageContext.request.contextPath}/view/admin/despesa/listaDespesas.do" class="dashboard-module"> <img
+		<a href="${pageContext.request.contextPath}/view/admin/despesa/listaDespesa.do" class="dashboard-module"> <img
 			src="${pageContext.request.contextPath}/view/images/despesas.png"
 			width="64" height="64" alt="edit" /> <span><fmt:message key="despesas"/></span>
 		</a>
