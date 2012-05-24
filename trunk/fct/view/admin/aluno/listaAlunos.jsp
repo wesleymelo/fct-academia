@@ -7,7 +7,15 @@
 <c:import url="../../includes/header.jsp" />
 
 
-	<script>
+<script type="text/javascript">
+	function abrir(programa,janela)
+	{
+   		if(janela=="") janela = "janela";
+   			window.open(programa,janela,'height=350,width=640');
+	}
+</script>
+
+<script>
 		$(function() {
 			// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
 			$( "#dialog:ui-dialog" ).dialog( "destroy" );
@@ -157,9 +165,9 @@
 								<th style="width: 10%"><fmt:message  key="cpf"/></th>
 								<th style="width: 10%"><fmt:message  key="nascimento"/></th>
 								<th style="width: 15%"><fmt:message  key="telefones"/></th>
-								<th style="width: 25%"><fmt:message  key="email"/></th>
+								<th style="width: 20%"><fmt:message  key="email"/></th>
 								<th style="width: 08%"><fmt:message  key="sexo"/></th>
-								<th style="width: 10%"><fmt:message  key="acoes"/></th>
+								<th style="width: 08%"><fmt:message  key="acoes"/></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -185,7 +193,11 @@
 											tppabs="http://www.xooom.pl/work/magicadmin/images/bin.gif"
 											width="16" height="16" alt="<fmt:message  key="excluir"/>" /></a>
 											
-											<a href="visualizaAluno.do?id=${aluno.idPessoa}"><img
+											<a href="javascript:abrir('listaTurmasAluno.do?id=${aluno.idPessoa}')"><img
+											src="${pageContext.request.contextPath}/view/images/turma-short.png"
+											width="16" height="16" alt="<fmt:message key="view"/>" /></a>
+											
+											<a href=".do?id=${aluno.idPessoa}"><img
 											src="${pageContext.request.contextPath}/view/images/view.png"
 											width="16" height="16" alt="<fmt:message key="view"/>" /></a>
 									</td>
