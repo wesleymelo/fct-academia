@@ -47,7 +47,7 @@
   							
   							<label>UF
 	  							<select class="input" name="uf">
-										<c:forEach items="${sessionScope.estados }" var="estado" >
+										<c:forEach items="${estados }" var="estado" >
 											<option value="${estado.sigla }"><c:out value="${estado.sigla }" /></option>
 										</c:forEach>
 								</select>
