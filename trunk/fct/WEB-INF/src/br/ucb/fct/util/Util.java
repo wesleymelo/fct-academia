@@ -369,6 +369,58 @@ public class Util {
 				         Util.formatTime(req.getParameter("horarioFinal")),
 				         Integer.parseInt(req.getParameter("capacidade")));
 	}
+	
+	
+	public static void putAtribuRequisicaoDespesa(HttpServletRequest req) {
+		req.setAttribute("descricao", req.getParameter("descricao"));
+		req.setAttribute("qtde", req.getParameter("qtde"));
+		
+	}
+	
+	public static void putAtribuRequisicaoDespesa(HttpServletRequest req, Despesa despesa) {
+		req.setAttribute("codigo", despesa.getIdDespesa());
+		req.setAttribute("descricao", despesa.getDescricao());
+		req.setAttribute("qtde", despesa.getQuantidade());
+		
+	}
+
+
+	public static Despesa getCadastroDespesa(HttpServletRequest req) {
+		return new Despesa(req.getParameter("descricao"), Integer.parseInt(req.getParameter("qtde")));
+	}
+
+
+	public static void putAtribuRequisicaoGasto(HttpServletRequest req) {
+		req.setAttribute("idPessoa",req.getParameter("idPessoa"));
+		req.setAttribute("secretaria", req.getParameter("secretaria"));
+		Pessoa pessoa = (Pessoa) ((Acesso) req.getSession().getAttribute(EnumAcesso.ACESSO.getChave())).getPessoa();
+		req.setAttribute("secret",pessoa);  
+		req.setAttribute("despesa", req.getParameter("despesa"));
+		req.setAttribute("id", req.getParameter("id"));
+		req.setAttribute("valor", req.getParameter("valor"));
+		req.setAttribute("data", req.getParameter("data"));
+	}
+	
+	public static void putAtribuRequisicaoGasto(HttpServletRequest req, Gasto gasto) {
+		req.setAttribute("codigo",gasto.getIdGasto());	
+		req.setAttribute("idPessoa",gasto.getIdSecretaria());
+		Secretaria secretaria = Factory.initSecretariaDAO().selectById(gasto.getIdSecretaria());
+		req.setAttribute("secretaria", secretaria);
+		req.setAttribute("secret",secretaria);
+		req.setAttribute("id", gasto.getIdDespesa());
+		req.setAttribute("valor", gasto.getValor());
+		req.setAttribute("data", gasto.getDataString());
+		req.setAttribute("despesa", Factory.initDespesaDAO().selectById(gasto.getIdDespesa()).getDescricao());
+	}
+
+
+	public static Gasto getCadastroGasto(HttpServletRequest req) {
+		return new Gasto(Integer.parseInt(req.getParameter("id")), 
+						 Double.parseDouble(req.getParameter("valor")), 
+						 Util.formatDateIn(req.getParameter("data")), 
+						 Integer.parseInt(req.getParameter("idPessoa")));
+	}
+	
 }
 
 
