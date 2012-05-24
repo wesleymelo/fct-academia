@@ -11,11 +11,15 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import br.ucb.fct.acesso.Acesso;
 import br.ucb.fct.aluno.Aluno;
+import br.ucb.fct.despesa.Despesa;
 import br.ucb.fct.endereco.Endereco;
+import br.ucb.fct.enuns.EnumAcesso;
 import br.ucb.fct.enuns.EnumTypeFone;
 import br.ucb.fct.enuns.EnumTypePessoa;
 import br.ucb.fct.enuns.EnumTypeSexo;
+import br.ucb.fct.gasto.Gasto;
 import br.ucb.fct.graduacao.Graduacao;
 import br.ucb.fct.pacote.Pacote;
 import br.ucb.fct.pagamento.Pagamento;
@@ -285,7 +289,7 @@ public class Util {
 	}
 	
 	public static Graduacao getCadastroGraduacao(HttpServletRequest req) {
-		return new Graduacao(Integer.parseInt("modali"), req.getParameter("descricao"));
+		return new Graduacao(Integer.parseInt(req.getParameter("modali")), req.getParameter("descricao"));
 	}
 	
 	public static void putAtribuRequisicaoGraducao(HttpServletRequest req){
@@ -327,7 +331,8 @@ public class Util {
 
 
 	public static Pagamento getCadastroPagamento(HttpServletRequest req) {
-		return new Pagamento(Double.parseDouble(req.getParameter("valorPago")), Util.formatDateIn(req.getParameter("dataPagamento")));
+		return new Pagamento(Double.parseDouble(req.getParameter("valorPago")), 
+				Util.formatDateIn(req.getParameter("dataPagamento")));
 	}
 	
 	public static void putAtribuRequisicaoTurma(HttpServletRequest req) {
@@ -351,6 +356,7 @@ public class Util {
 		req.setAttribute("modalidade",turma.getModalidade().getIdModalidade());
 		req.setAttribute("horarioInicial", formatTimeView(turma.getHorarioInicial().toString()));
 		req.setAttribute("horarioFinal", formatTimeView(turma.getHorarioFinal().toString()));
+		req.setAttribute("capacidade", turma.getCapacidade());
 		
 	}
 
