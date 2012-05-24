@@ -61,13 +61,13 @@
 							<li><label><fmt:message key="sexo" />:&nbsp;&nbsp;&nbsp;
 
 									<input type="radio" name="sexo"
-									<c:if test="${empty sexo or (sexo eq 'F') }">
+									<c:if test="${empty sexo or (sexo == 'F') }">
 									checked="checked"
 								</c:if>
 									id="sexo" value="F" /> &nbsp;&nbsp;<fmt:message key="feminino" />&nbsp;&nbsp;&nbsp;&nbsp;
 
 									<input type="radio"
-									<c:if test="${(sexo eq 'M') }">
+									<c:if test="${(sexo == 'M') }">
 									checked="checked"
 							</c:if>
 									name="sexo" id="sexo" value="M" /> &nbsp;&nbsp;<fmt:message
@@ -180,7 +180,7 @@
 					
 					<p>
 								<label><fmt:message key="horarioInicial" /></label> <input
-							type="text" class="input-short" name="horarioInicial"
+							type="text" class="input-short-short" name="horarioInicial"
 							value="${horarioInicial}" id="horarioInicial" readonly="readonly" />
 							
 							 <c:if test="${not empty erros['errohorarioInicial'] }">
@@ -192,7 +192,7 @@
 							
 							<p>
 								<label><fmt:message key="horarioFinal" /></label> <input
-							type="time" class="input-short" name="horarioFinal"
+							type="time" class="input-short-short" name="horarioFinal"
 							value="${horarioFinal}" id="horarioFinal" readonly="readonly" />
 						<c:if test="${not empty erros['errohorarioFinal'] }">
                     		<span class="notification-input ni-error"><fmt:message
@@ -209,13 +209,13 @@
 						        showLeadingZero: false,
 						        onHourShow: tpStartOnHourShowCallback,
 						        onMinuteShow: tpStartOnMinuteShowCallback,
-						        defaultTime: '12:25'
+						        defaultTime: '00:00'
 						    });
 						    $('#horarioFinal').timepicker({
 						        showLeadingZero: false,
 						        onHourShow: tpEndOnHourShowCallback,
 						        onMinuteShow: tpEndOnMinuteShowCallback,
-						        defaultTime: '12:30'
+						        defaultTime: '23:55'
 						    });
 							    
 							  
