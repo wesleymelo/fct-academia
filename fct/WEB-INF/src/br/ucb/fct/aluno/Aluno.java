@@ -77,20 +77,5 @@ public class Aluno extends Pessoa{
 			return false;
 		return true;
 	}
-
-	@Override
-	public String toString() {
-		return "Aluno [getPeso()=" + getPeso() + ", getAltura()=" + getAltura()
-				+ ", hashCode()=" + hashCode() + ", getIdPessoa()="
-				+ getIdPessoa() + ", getTipoPessoa()=" + getTipoPessoa()
-				+ ", getDataCadastro()=" + getDataCadastro() + ", getNome()="
-				+ getNome() + ", getCpf()=" + getCpf() + ", getSexo()="
-				+ getSexo() + ", getDataNascimento()=" + getDataNascimento()
-				+ ", getEndereco()=" + getEndereco() + ", getTelefones()="
-				+ getTelefones() + ", getEmail()=" + getEmail()
-				+ ", getStatus()=" + getStatus() + ", toString()="
-				+ super.toString() + ", getClass()=" + getClass() + "]";
-	}
-	
 	
 }
