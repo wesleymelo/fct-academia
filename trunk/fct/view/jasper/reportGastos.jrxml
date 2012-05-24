@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportTurmas" language="groovy" pageWidth="555" pageHeight="802" columnWidth="535" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportGastos" language="groovy" pageWidth="555" pageHeight="802" columnWidth="535" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
 	<property name="ireport.zoom" value="1.3310000000000006"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -13,16 +13,10 @@
 			<style mode="Opaque" backcolor="#F0EFEF"/>
 		</conditionalStyle>
 	</style>
-	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["I:\\fct\\view\\jasper\\"]]></defaultValueExpression>
-	</parameter>
-	<field name="nome" class="java.lang.String"/>
-	<field name="alunos" class="java.util.List"/>
-	<field name="professor" class="java.lang.String"/>
-	<field name="modalidade" class="java.lang.String"/>
-	<field name="horarioInicial" class="java.sql.Time"/>
-	<field name="horarioFinal" class="java.sql.Time"/>
-	<field name="capacidade" class="java.lang.Integer"/>
+	<field name="idGasto" class="java.lang.Integer"/>
+	<field name="idDespesa" class="java.lang.Integer"/>
+	<field name="idSecretaria" class="java.lang.Integer"/>
+	<field name="quantidade" class="java.lang.Integer"/>
 	<variable name="ALUNO_COUNT" class="java.lang.Integer" calculation="Count">
 		<variableExpression><![CDATA[($V{ALUNO_COUNT}!=null && $V{ALUNO_COUNT}.intValue()==1)?"":null]]></variableExpression>
 	</variable>
@@ -45,7 +39,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Sofachrome Rg"/>
 					</textElement>
-					<text><![CDATA[turma]]></text>
+					<text><![CDATA[gastos]]></text>
 				</staticText>
 			</frame>
 			<image>
@@ -75,10 +69,10 @@
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
 					<font fontName="Sofachrome Rg" size="7" isBold="true"/>
 				</textElement>
-				<text><![CDATA[NOME]]></text>
+				<text><![CDATA[descrição (id)]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="223" y="0" width="114" height="17"/>
+				<reportElement x="108" y="0" width="91" height="17"/>
 				<box>
 					<pen lineWidth="0.75"/>
 					<topPen lineWidth="0.75"/>
@@ -89,27 +83,13 @@
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
 					<font fontName="Sofachrome Rg" size="7" isBold="true"/>
 				</textElement>
-				<text><![CDATA[alunos]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="337" y="0" width="83" height="17"/>
-				<box>
-					<pen lineWidth="0.75"/>
-					<topPen lineWidth="0.75"/>
-					<leftPen lineWidth="0.75"/>
-					<bottomPen lineWidth="0.75"/>
-					<rightPen lineWidth="0.75"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Sofachrome Rg" size="6" isBold="true"/>
-				</textElement>
-				<text><![CDATA[modalidade]]></text>
+				<text><![CDATA[ID despesa]]></text>
 			</staticText>
 			<rectangle>
 				<reportElement x="0" y="17" width="555" height="11" backcolor="#CCCCCC"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="108" y="0" width="115" height="17"/>
+				<reportElement x="199" y="0" width="106" height="17"/>
 				<box>
 					<pen lineWidth="0.75"/>
 					<topPen lineWidth="0.75"/>
@@ -120,10 +100,10 @@
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
 					<font fontName="Sofachrome Rg" size="7" isBold="true"/>
 				</textElement>
-				<text><![CDATA[professor]]></text>
+				<text><![CDATA[ID secretaria]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="420" y="0" width="53" height="17"/>
+				<reportElement x="305" y="0" width="106" height="17"/>
 				<box>
 					<pen lineWidth="0.75"/>
 					<topPen lineWidth="0.75"/>
@@ -132,23 +112,9 @@
 					<rightPen lineWidth="0.75"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Sofachrome Rg" size="6" isBold="true"/>
+					<font fontName="Sofachrome Rg" size="7" isBold="true"/>
 				</textElement>
-				<text><![CDATA[horário]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="473" y="0" width="82" height="17"/>
-				<box>
-					<pen lineWidth="0.75"/>
-					<topPen lineWidth="0.75"/>
-					<leftPen lineWidth="0.75"/>
-					<bottomPen lineWidth="0.75"/>
-					<rightPen lineWidth="0.75"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Sofachrome Rg" size="6" isBold="true"/>
-				</textElement>
-				<text><![CDATA[capacidade]]></text>
+				<text><![CDATA[quantidade]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -166,15 +132,10 @@
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{nome}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{idGasto}]]></textFieldExpression>
 			</textField>
-			<subreport>
-				<reportElement x="223" y="0" width="114" height="18"/>
-				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "reportTurmas_subreportAlunos.jasper"]]></subreportExpression>
-			</subreport>
-			<textField isBlankWhenNull="false">
-				<reportElement key="" style="Row" x="108" y="0" width="115" height="18"/>
+			<textField isBlankWhenNull="true">
+				<reportElement key="" style="Row" x="108" y="0" width="91" height="18"/>
 				<box topPadding="6" leftPadding="0" bottomPadding="6">
 					<pen lineWidth="0.75" lineStyle="Double"/>
 					<topPen lineWidth="0.75" lineStyle="Double"/>
@@ -185,10 +146,10 @@
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{professor}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{idDespesa}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
-				<reportElement key="" style="Row" x="337" y="0" width="83" height="18"/>
+			<textField isBlankWhenNull="true">
+				<reportElement key="" style="Row" x="199" y="0" width="106" height="18"/>
 				<box topPadding="6" leftPadding="0" bottomPadding="6">
 					<pen lineWidth="0.75" lineStyle="Double"/>
 					<topPen lineWidth="0.75" lineStyle="Double"/>
@@ -199,10 +160,10 @@
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{modalidade}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{idSecretaria}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
-				<reportElement key="" style="Row" x="420" y="0" width="53" height="18"/>
+			<textField isBlankWhenNull="true">
+				<reportElement key="" style="Row" x="305" y="0" width="106" height="18"/>
 				<box topPadding="6" leftPadding="0" bottomPadding="6">
 					<pen lineWidth="0.75" lineStyle="Double"/>
 					<topPen lineWidth="0.75" lineStyle="Double"/>
@@ -213,21 +174,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{horarioInicial}+" às "+$F{horarioFinal}]]></textFieldExpression>
-			</textField>
-			<textField isBlankWhenNull="false">
-				<reportElement key="" style="Row" x="473" y="1" width="82" height="17"/>
-				<box topPadding="6" leftPadding="0" bottomPadding="6">
-					<pen lineWidth="0.75" lineStyle="Double"/>
-					<topPen lineWidth="0.75" lineStyle="Double"/>
-					<leftPen lineWidth="0.75" lineStyle="Double"/>
-					<bottomPen lineWidth="0.75" lineStyle="Double"/>
-					<rightPen lineWidth="0.75" lineStyle="Double"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{capacidade}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{quantidade}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
