@@ -5,6 +5,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import br.ucb.fct.turma.Turma;
+
 public class GeraErros {
 
 	public static Map<String, String> verificaErrosAlunos(HttpServletRequest req) {
@@ -235,22 +237,21 @@ public class GeraErros {
 		
 	}
 
-	public static Map<String, String> verificaErrosDespesas(HttpServletRequest req) {
+	public static Map<String, String> verificaErrosAlunosNaTurma(
+			HttpServletRequest req) {
 		Map<String, String> erros = new HashMap<String, String>();
-		if(!Validator.isStringValid(req.getParameter("descricao"), 100))
-			erros.put("errodescricao","decricao_invalido");
-		if(!Validator.isIntValid(req.getParameter("qtde")))
-			erros.put("erroqtde", "qtde_invalido");
-		if(!erros.isEmpty())
-			Util.putAtribuRequisicaoDespesa(req);
+		Turma turma = (Turma)req.getAttribute("turma");
+		if(turma.getVagas() == 0)
+			erros.put("erroturmacheia","turmacheia_invalida");
 		
+		if(!Validator.isStringValid(req.getParameter("aluno"), 50)){
+			erros.put("erroaluno","aluno_invalido");
+		}
+		else{
+			if(Factory.initTurmaDAO().hasAlunoInTurma(Integer.parseInt(req.getParameter("idTurma")), Integer.parseInt(req.getParameter("idAluno"))))
+				erros.put("erroaluno_duplicado","aluno_duplicado");
+		}
 		return erros;
-		
-		
-	}
-
-	public static Map<String, String> verificaErrosEnvelope(HttpServletRequest req) {
-		return null;
 	}
 
 }
