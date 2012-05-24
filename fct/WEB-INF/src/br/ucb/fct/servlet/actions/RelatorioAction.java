@@ -7,6 +7,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.ucb.fct.enuns.EnumRelatorio;
+
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -20,7 +22,7 @@ public class RelatorioAction implements Action {
 
 		try {
 			JasperPrint print = JasperFillManager.fillReport(req.getSession().
-					getServletContext().getRealPath("jasper/relatorio"+req.getParameter("numRelatorio")+".jasper")/*chama relatorio*/
+					getServletContext().getRealPath(EnumRelatorio.valueOf(req.getParameter("relatorio")).getRelatorio())/*chama relatorio*/
 					, null, 
 					new JRBeanCollectionDataSource(null));//puxando do banco...(fazer aqui o select)
 			OutputStream outStream;
