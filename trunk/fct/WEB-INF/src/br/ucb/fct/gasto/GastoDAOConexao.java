@@ -11,12 +11,14 @@ import java.util.List;
 
 import br.ucb.fct.connection.MyConnection;
 import br.ucb.fct.exceptions.DAOException;
+import br.ucb.fct.util.Factory;
+import br.ucb.fct.util.Util;
 
 public class GastoDAOConexao implements GastoDAO {
 
 	@Override
 	public boolean insert(Gasto gasto) throws DAOException {
-		String sql="INSERT INTO gastos(idGasto,idDespesa,quantidade,data,idSecretaria) VALUES (null,?,?,?,?);";
+		String sql="INSERT INTO gastos(idGasto,idDespesa,valor,data,idSecretaria) VALUES (null,?,?,?,?);";
 		Connection con = null;
 		PreparedStatement ps = null;
 		int retorno;
@@ -24,7 +26,7 @@ public class GastoDAOConexao implements GastoDAO {
 			con=MyConnection.init();
 			ps=con.prepareStatement(sql);
 			ps.setInt(1,gasto.getIdDespesa());
-			ps.setInt(2,gasto.getQuantidade());
+			ps.setDouble(2,gasto.getValor());
 			ps.setDate(3,(java.sql.Date)gasto.getData());
 			ps.setInt(4,gasto.getIdSecretaria());
 			retorno=ps.executeUpdate();
@@ -55,7 +57,7 @@ public class GastoDAOConexao implements GastoDAO {
 		}finally{
 			MyConnection.closeConnection(con,ps);
 		}
-		return retorno ==0?false:true;
+		return retorno ==0?false:true;//AJUSTAR AO FACTORY???
 	}
 
 	@Override
@@ -68,7 +70,7 @@ public class GastoDAOConexao implements GastoDAO {
 			con=MyConnection.init();
 			ps=con.prepareStatement(sql);
 			ps.setInt(1,gasto.getIdDespesa());
-			ps.setInt(2,gasto.getQuantidade());
+			ps.setDouble(2,gasto.getValor());
 			ps.setDate(3,(java.sql.Date)gasto.getData());
 			ps.setInt(4,gasto.getIdSecretaria());
 			ps.setInt(5,id);
@@ -86,13 +88,12 @@ public class GastoDAOConexao implements GastoDAO {
 	public List<Gasto> selectAll() throws DAOException {
 		String sql="SELECT * FROM gastos;";
 		List<Gasto> gastos= new ArrayList<Gasto>();
-		Connection con=null;
+		Connection con = MyConnection.init();
 		Statement  stm=null;
 		ResultSet rs=null;
 		try {
-			con=MyConnection.init();
-			stm=con.createStatement();
-			rs=stm.executeQuery(sql);
+			stm = con.createStatement();
+			rs = stm.executeQuery(sql);
 			while(rs.next()){
 				gastos.add(getGasto(rs));
 			}
@@ -106,28 +107,38 @@ public class GastoDAOConexao implements GastoDAO {
 	}
 	@Override
 	public Gasto selectById(int id) throws DAOException {
-		String sql="SELECT * FROM gastos WHERE idGasto="+id+";";
-		Connection con=null;
-		Statement  stm=null;
-		ResultSet rs=null;
-		Gasto newGasto=null;
+		String sql="SELECT * FROM gastos WHERE idGasto = ?;";
+		Connection con = MyConnection.init();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Gasto newGasto = null;
 		try {
-			con=MyConnection.init();
-			stm=con.createStatement();
-			rs=stm.executeQuery(sql);
-			newGasto=getGasto(rs);
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+			rs = ps.executeQuery();
+			if(rs.first())
+				newGasto = getGasto(rs);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new DAOException(e,"ERRO! SELECT BY ID NA TABELA GASTOS. DATA("+new Date()+")");
 		}finally{
-			MyConnection.closeConnection(con, stm, rs);
+			MyConnection.closeConnection(con, ps, rs);
 		}
 		return newGasto;
 	}
 	
 	private Gasto getGasto(ResultSet rs) throws SQLException {
-		return new Gasto(rs.getInt("idGasto"),rs.getInt("idDespesa"),rs.getInt("quantidade"),rs.getDate("data"),rs.getInt("idSecretaria"));
+		return new Gasto(rs.getInt("idGasto"),
+				         rs.getInt("idDespesa"),
+				         rs.getDouble("valor"),
+				         rs.getDate("data"),
+				         rs.getInt("idSecretaria"),
+				         Util.getDateView(rs.getDate("data").toString(), "/"),
+				         Factory.initSecretariaDAO().selectById(rs.getInt("idSecretaria")),
+				         Factory.initDespesaDAO().selectById(rs.getInt("idDespesa")).getDescricao());
 	}
+
+	
 	
 	
 
