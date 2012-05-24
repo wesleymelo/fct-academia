@@ -19,12 +19,12 @@ public class GeraErros {
 			erros.put("errocpf","cpf_invalido");
 		if(!Validator.isEmailValid(req.getParameter("email"),100))
 			erros.put("erroemail","email_invalido");
-		/*if(!Validator.verificaTamanho(Util.unFormat(req.getParameter("celular")),10))
-			erros.put("errocelular", "telefone_invalido");*/
+		if(!Validator.verificaTamanho(Util.unFormat(req.getParameter("celular")),10))
+			erros.put("errocelular", "telefone_invalido");
 		if(!Validator.verificaTamanho(Util.unFormat(req.getParameter("residencial")),10))
 			erros.put("erroresidencial", "telefone_invalido");
-		/*if(!Validator.verificaTamanho(Util.unFormat(req.getParameter("comercial")),10))
-			erros.put("errocomercial", "telefone_invalido");*/
+		if(!Validator.verificaTamanho(Util.unFormat(req.getParameter("comercial")),10))
+			erros.put("errocomercial", "telefone_invalido");
 		if(!Validator.verificaDouble(req.getParameter("altura"),0.40,3))
 			erros.put("erroaltura", "altura_invalida");
 		if(!Validator.verificaDouble(req.getParameter("peso"),0.40,600))
@@ -247,6 +247,10 @@ public class GeraErros {
 		return erros;
 		
 		
+	}
+
+	public static Map<String, String> verificaErrosEnvelope(HttpServletRequest req) {
+		return null;
 	}
 
 }
