@@ -1,19 +1,61 @@
 package br.ucb.fct.gasto;
 
-import java.util.Date;
+import java.sql.Date;
+
+import br.ucb.fct.secretaria.Secretaria;
 
 public class Gasto {
-	private Integer idGasto, idDespesa,idSecretaria,quantidade;
+	private Integer idGasto, idDespesa,idSecretaria;
+	private Double valor;
 	private Date data;
+	private String dataString;
+	private Secretaria secretaria;
+	private String despesa;
 	
 	public Gasto(Integer idGasto, Integer idDespesa,
-			Integer quantidade, Date data, Integer idSecretaria) {
+			Double valor, Date data, Integer idSecretaria, String dataString, Secretaria secretaria,String despesa) {
 		setIdGasto(idGasto);
 		setIdDespesa(idDespesa);
 		setIdSecretaria(idSecretaria);
-		setQuantidade(quantidade);		
+		setValor(valor);
+		setData(data);
+		setDataString(dataString);
+		setSecretaria(secretaria);
+		setDespesa(despesa);
+	}
+	
+	public Gasto(Integer idDespesa,
+			Double valor, Date data, Integer idSecretaria) {
+		setIdDespesa(idDespesa);
+		setIdSecretaria(idSecretaria);
+		setValor(valor);
 		setData(data);
 	}
+	
+	public String getDespesa() {
+		return despesa;
+	}
+
+	public void setDespesa(String despesa) {
+		this.despesa = despesa;
+	}
+
+	public Secretaria getSecretaria() {
+		return secretaria;
+	}
+
+	public void setSecretaria(Secretaria secretaria) {
+		this.secretaria = secretaria;
+	}
+	
+	public String getDataString() {
+		return dataString;
+	}
+
+	public void setDataString(String dataString) {
+		this.dataString = dataString;
+	}
+
 	public Integer getIdGasto() {
 		return idGasto;
 	}
@@ -32,69 +74,17 @@ public class Gasto {
 	public void setIdSecretaria(Integer idSecretaria) {
 		this.idSecretaria = idSecretaria;
 	}
-	
-	public Integer getQuantidade() {
-		return quantidade;
+	public Double getValor() {
+		return valor;
 	}
-	public void setQuantidade(Integer quantidade) {
-		this.quantidade = quantidade;
+	public void setValor(Double valor) {
+		this.valor = valor;
 	}
 	public Date getData() {
 		return data;
 	}
 	public void setData(Date data) {
 		this.data = data;
-	}
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((data == null) ? 0 : data.hashCode());
-		result = prime * result
-				+ ((idDespesa == null) ? 0 : idDespesa.hashCode());
-		result = prime * result + ((idGasto == null) ? 0 : idGasto.hashCode());
-		result = prime * result
-				+ ((idSecretaria == null) ? 0 : idSecretaria.hashCode());
-		result = prime * result
-				+ ((quantidade == null) ? 0 : quantidade.hashCode());
-		return result;
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Gasto other = (Gasto) obj;
-		if (data == null) {
-			if (other.data != null)
-				return false;
-		} else if (!data.equals(other.data))
-			return false;
-		if (idDespesa == null) {
-			if (other.idDespesa != null)
-				return false;
-		} else if (!idDespesa.equals(other.idDespesa))
-			return false;
-		if (idGasto == null) {
-			if (other.idGasto != null)
-				return false;
-		} else if (!idGasto.equals(other.idGasto))
-			return false;
-		if (idSecretaria == null) {
-			if (other.idSecretaria != null)
-				return false;
-		} else if (!idSecretaria.equals(other.idSecretaria))
-			return false;
-		if (quantidade == null) {
-			if (other.quantidade != null)
-				return false;
-		} else if (!quantidade.equals(other.quantidade))
-			return false;
-		return true;
-	}
-	
+	}	
 	
 }
