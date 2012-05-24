@@ -8,10 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import br.ucb.fct.secretaria.Secretaria;
 import br.ucb.fct.endereco.Endereco;
 import br.ucb.fct.enuns.EnumTypeFone;
 import br.ucb.fct.enuns.EnumTypeSexo;
+import br.ucb.fct.secretaria.Secretaria;
 import br.ucb.fct.telefone.Telefone;
 import br.ucb.fct.util.Factory;
 import br.ucb.fct.util.GeraErros;
@@ -67,8 +67,8 @@ public class CadastroSecretariaAction implements Action {
 				else{
 					setSessionSecretaria(sessao, req);
 					Secretaria secretaria = Util.getCadastroSecretaria(req);				
-					if(Factory.initSecretariaDAO().update(secretaria, Integer.parseInt(req.getParameter("codigo")))){
-						if(Factory.initTelefoneDAO().update(secretaria.getTelefones(),Integer.parseInt(req.getParameter("codigo")))){
+					if(Factory.initSecretariaDAO().update(secretaria, Integer.parseInt(req.getParameter("idPessoa")))){
+						if(Factory.initTelefoneDAO().update(secretaria.getTelefones(),Integer.parseInt(req.getParameter("idPessoa")))){
 							Endereco endereco = Factory.initEnderecoDAO().selectById(Integer.parseInt(req.getParameter("codigo")));
 							Util.putAtribuRequisicaoPessoaEndereco(req,endereco);
 							req.setAttribute("codigo",endereco.getIdEndereco());
@@ -114,17 +114,21 @@ public class CadastroSecretariaAction implements Action {
 		sessao.setAttribute("email",req.getParameter("email"));
 
 		// telefone
-
+		
 		List<Telefone> tel = new ArrayList<Telefone>();		
-		String [] fone = Util.formateTelOut(Util.unFormat(req.getParameter("celular")));
-
-		System.out.println(fone[0]);
-
-		tel.add(new Telefone(fone[0], fone[1], EnumTypeFone.CELULAR));		
-		fone = Util.formateTelOut(Util.unFormat(req.getParameter("residencial")));
-		tel.add(new Telefone(fone[0], fone[1], EnumTypeFone.RESIDENCIAL));
-		fone = Util.formateTelOut(Util.unFormat(req.getParameter("comercial")));
-		tel.add(new Telefone(fone[0], fone[1], EnumTypeFone.COMERCIAL));
+		String [] fone;
+		if(req.getParameter("celular") != null && !req.getParameter("celular").isEmpty()){
+			fone = Util.formateTelOut(Util.unFormat(req.getParameter("celular")));		
+			tel.add(new Telefone(fone[0], fone[1], EnumTypeFone.CELULAR));		
+		}
+		if(req.getParameter("residencial") != null && !req.getParameter("residencial").isEmpty()){
+			fone = Util.formateTelOut(Util.unFormat(req.getParameter("residencial")));
+			tel.add(new Telefone(fone[0], fone[1], EnumTypeFone.RESIDENCIAL));
+		}
+		if(req.getParameter("comercial") != null && !req.getParameter("comercial").isEmpty()){
+			fone = Util.formateTelOut(Util.unFormat(req.getParameter("comercial")));
+			tel.add(new Telefone(fone[0], fone[1], EnumTypeFone.COMERCIAL));
+		}
 
 		// fim telefone
 		sessao.setAttribute("telefones",tel);
