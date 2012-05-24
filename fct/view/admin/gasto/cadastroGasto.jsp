@@ -80,7 +80,7 @@
 					</p>
 					
 					<p>
-						<label><fmt:message key="data"/></label>
+						<label><fmt:message key="dataPag"/></label>
 						<input type="text" class="input-short-short" name="data" id="data" value="${data}"/>
 						<c:if test="${not empty erros['errodata'] }">
 							<span class="notification-input ni-error"><fmt:message key="data_invalido"/></span>
