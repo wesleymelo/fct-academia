@@ -62,8 +62,8 @@
 								<th style="width: 25%"><fmt:message key="secretaria"/></th>
 								<th style="width: 20%"><fmt:message key="despesa"/></th>
 								<th style="width: 20%"><fmt:message key="valor"/></th>
-								<th style="width: 20%"><fmt:message key="data"/></th>
-								<th style="width: 10%"><fmt:message key="acao"/></th>
+								<th style="width: 20%"><fmt:message key="dataPag"/></th>
+								<th style="width: 10%"><fmt:message key="acoes"/></th>
 							</tr>
 						</thead>
 						<tbody>
