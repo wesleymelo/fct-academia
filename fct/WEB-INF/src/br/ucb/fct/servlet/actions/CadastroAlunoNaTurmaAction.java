@@ -17,6 +17,7 @@ public class CadastroAlunoNaTurmaAction implements Action {
 		
 		Map<String, String> erros;
 		boolean retorno = false;
+		req.setAttribute("turma", Factory.initTurmaDAO().selectById(Integer.parseInt(req.getParameter("idTurma"))));
 		erros = GeraErros.verificaErrosAlunosNaTurma(req);
 		if(!erros.isEmpty()){
 			req.setAttribute("erros",erros);
