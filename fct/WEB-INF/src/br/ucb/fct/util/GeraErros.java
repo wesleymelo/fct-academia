@@ -256,6 +256,19 @@ public class GeraErros {
 	public static Map<String, String> verificaErrosEnvelope(HttpServletRequest req) {
 		return null;
 	}
-
+	
+	public static Map<String, String> verificaErrosDespesas(HttpServletRequest req) {
+		Map<String, String> erros = new HashMap<String, String>();
+		if(!Validator.isStringValid(req.getParameter("descricao"), 100))
+			erros.put("errodescricao","decricao_invalido");
+		if(!Validator.isIntValid(req.getParameter("qtde")))
+			erros.put("erroqtde", "qtde_invalido");
+		if(!erros.isEmpty())
+			Util.putAtribuRequisicaoDespesa(req);
+		
+		return erros;
+		
+		
+	}
 
 }
