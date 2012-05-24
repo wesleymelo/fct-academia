@@ -3,6 +3,7 @@ package br.ucb.fct.aluno;
 import java.util.List;
 
 import br.ucb.fct.exceptions.DAOException;
+import br.ucb.fct.turma.Turma;
 
 public interface AlunoDAO {
 	public boolean insert(Aluno aluno)  throws DAOException;
@@ -11,4 +12,5 @@ public interface AlunoDAO {
 	public List<Aluno> selectAll() throws DAOException;
 	public Aluno selectById(int id) throws DAOException;
 	public List<Aluno> selectByNome(String nome) throws DAOException;
+	public List<Turma> selectTurmasById(int id) throws DAOException;
 }
