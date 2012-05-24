@@ -16,4 +16,5 @@ public interface TurmaDAO {
 	public List<Aluno> selectAlunosById(int id) throws DAOException;
 	public boolean insertAlunoNaTurma(int idTurma, int idAluno) throws DAOException;
 	public boolean hasAlunoInTurma(int idAluno, int idTurma) throws DAOException;
+	public List<Turma> selectByOther(String string) throws DAOException;
 }
