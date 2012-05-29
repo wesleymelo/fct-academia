@@ -19,7 +19,7 @@
                         <form action="cadastroProfessor.do?codigo=${codigo }" method="post">
                    
                         	<input type="hidden" name="pg" value="4"/>
-                   
+                   			<input type="hidden" name="idPessoa" value="${idPessoa}" />
                             
                             <p>
                                 <label><fmt:message key="cidade" /></label>
