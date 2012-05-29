@@ -80,7 +80,7 @@
 							<li><label><fmt:message key="sexo"/>:&nbsp;&nbsp;&nbsp;
 							
 							<input type="radio" name="sexo"	
-								<c:if test="${empty sexo or (sexo == 'F') }">
+								<c:if test="${empty sexo or (sexo eq 'F') }">
 									checked="checked"
 								</c:if>
 								
@@ -90,7 +90,7 @@
 							
 							<input type="radio" 
 							
-							<c:if test="${(sexo == 'M') }">
+							<c:if test="${(sexo eq 'M') }">
 									checked="checked"
 							</c:if>
 							name="sexo" id="sexo" value="M" />
