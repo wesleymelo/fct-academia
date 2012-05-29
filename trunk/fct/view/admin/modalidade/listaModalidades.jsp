@@ -34,6 +34,20 @@
 		
 		</div>
 		&nbsp;&nbsp;
+		
+		
+		<c:choose>
+			<c:when test="${param.status == true}">
+				<span class="notification n-success"><fmt:message key="sucesso"/></span>
+			</c:when>
+			<c:otherwise>
+				<c:choose>
+					<c:when test="${param.status == false }">
+						<span class="notification n-error"><fmt:message key="fracasso"/></span>
+					</c:when>
+				</c:choose>
+			</c:otherwise>			
+		</c:choose>
 
 		<!-- Example table -->
 		<div class="module">
