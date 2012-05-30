@@ -47,6 +47,11 @@
 			src="${pageContext.request.contextPath}/view/images/despesas.png"
 			width="64" height="64" alt="edit" /> <span><fmt:message key="despesas"/></span>
 		</a>
+		<a href="${pageContext.request.contextPath}/view/admin/acesso/listaAcessos.do" class="dashboard-module"> <img
+			src="${pageContext.request.contextPath}/view/images/acessos.png"
+			width="64" height="64" alt="edit" /> <span><fmt:message key="acessos"/></span>
+		</a>
+		
 		<div style="clear: both"></div>
 	</div>
 	<!-- End .grid_7 -->
