@@ -15,17 +15,6 @@
 		
 			<div class="bottom-spacing">
 	
-				<!-- Button -->
-				<div class="float-right">
-					<a
-						href="${pageContext.request.contextPath}/view/admin/professor/listaProfessores.do"
-						class="button"> <span><b><fmt:message key="back" /></b>
-							<img
-							src="${pageContext.request.contextPath}/view/images/arrow-curve-180-left.gif"
-							tppabs="http://www.xooom.pl/work/magicadmin/images/arrow-curve-180-left.gif"
-							width="12" height="9" alt="<fmt:message key="back" />" /> </span>
-					</a>
-				</div>
 				<div style="clear: both;"></div>
 			</div>
 			<div style="clear: both;"></div>
@@ -176,8 +165,8 @@
 						</script>
 
 					<fieldset>
-						<input class="submit-green" type="submit" value="<fmt:message key="bt_alterar_endereco"/>" /> 
-						<input class="submit-gray" type="submit" value="<fmt:message key="bt_cancelar"/>" />
+						<input class="submit-green" type="submit" value="<fmt:message key="bt_proximo"/>" name="enviar"/> 
+						<input class="submit-gray" type="submit" value="<fmt:message key="back"/>" name="voltar" />
 					</fieldset>
 
 				</form>
