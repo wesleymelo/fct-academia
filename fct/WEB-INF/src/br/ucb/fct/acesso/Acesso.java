@@ -3,19 +3,28 @@ package br.ucb.fct.acesso;
 import br.ucb.fct.pessoa.Pessoa;
 
 public class Acesso {
-	@Override
-	public String toString() {
-		return "Acesso [idAcesso=" + idAcesso + ", pessoa=" + pessoa
-				+ ", senha=" + senha + "]";
-	}
-
+	
 	private Integer idAcesso;
+	private Integer idPessoa; 
 	private Pessoa pessoa;
 	private String senha;
 
 	public Acesso(Integer idAcesso, Pessoa pessoa) {
 		setIdAcesso(idAcesso);
 		setPessoa(pessoa);
+	}
+	
+	public Acesso(Integer idPessoa, String senha) {
+		setIdPessoa(idPessoa);
+		setSenha(senha);
+	}
+	
+	public Integer getIdPessoa() {
+		return idPessoa;
+	}
+
+	public void setIdPessoa(Integer idPessoa) {
+		this.idPessoa = idPessoa;
 	}
 
 	public Integer getIdAcesso() {
@@ -41,8 +50,4 @@ public class Acesso {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
-	
-	
-	
 }
