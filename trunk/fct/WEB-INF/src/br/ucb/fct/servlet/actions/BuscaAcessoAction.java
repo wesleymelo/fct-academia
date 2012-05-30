@@ -5,16 +5,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.ucb.fct.util.Factory;
 
-public class BuscaSecretariaAction implements Action {
+public class BuscaAcessoAction implements Action {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) {
 		
 		if(req.getParameter("busca") != null && !req.getParameter("busca").isEmpty())
-			req.setAttribute("professores", Factory.initProfessorDAO().selectByNome(req.getParameter("busca")));
+			req.setAttribute("acessos", Factory.initAcessoDAO().selectByNome(req.getParameter("busca")));
 		else
-			req.setAttribute("professores", Factory.initProfessorDAO().selectAll());
-		return "/view/admin/professor/listaProfessores.jsp";
+			req.setAttribute("acessos", Factory.initAcessoDAO().selectAll());
+		return "/view/admin/acesso/listaAcessos.jsp";
 	}
 
 }
