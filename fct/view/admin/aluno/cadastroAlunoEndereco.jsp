@@ -6,18 +6,64 @@
 <c:import url="../../includes/header.jsp" />
     
 		<div class="container_12">
-        	
-		<!-- Button -->
-		<div class="float-right">
-			<a
-				href="${pageContext.request.contextPath}/view/admin/listaAlunos.jsp"
-				class="button"> <span><b><fmt:message key="new" /></b>
-					<img
-					src="${pageContext.request.contextPath}/view/images/plus-small.gif"
-					tppabs="http://www.xooom.pl/work/magicadmin/images/plus-small.gif"
-					width="12" height="9" alt="<fmt:message key="new" />" /> </span>
-			</a>
-		</div>
+        
+		<div style="clear:both;"></div>
+		<div class="grid_12">
+               <div class="module">
+                    <h2><span><fmt:message key="aluno"/></span></h2>
+                    	<div class="module-body">
+	                    	<div id="dialog-message" title="<fmt:message key="visualizaAluno"/>">
+		
+							<h4>
+								<fmt:message key="dadosPessoais"/>
+							</h4>
+							
+							<b> <fmt:message key="nome"/>: </b>${sessionScope.nome}<br/><br/> 
+							<b><fmt:message key="nascimento"/>: </b>${sessionScope.dataNasc}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<c:choose> 
+								<c:when test="${sessionScope.sexo eq 'F'}">
+									<b><fmt:message key="sexo"/>: </b><fmt:message key="feminino"/><br/><br/>
+								</c:when>
+								<c:otherwise>
+									<b><fmt:message key="sexo"/>: </b><fmt:message key="masculino"/><br/><br/>
+								</c:otherwise>
+							</c:choose>
+							
+							<b><fmt:message key="sexo"/>: </b>${sessionScope.sexo}<br/><br/>
+		                    <b> <fmt:message key="cpf"/>: </b>${sessionScope.cpf} <br/><br/> 
+		                    <b> <fmt:message key="altura"/>: </b>${sessionScope.altura}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		                    <b><fmt:message key="peso"/>: </b>${sessionScope.peso} kg<br/><br/><br/>
+		                           
+		                	<h4>
+								<fmt:message key="contatos"/>
+							</h4>
+		                
+		                    <c:if test="${not empty sessionScope.telefones}">
+			                	<table>
+			                		<thead>
+			                			<c:forEach var="telefone" items="${sessionScope.telefones}">
+				                			<tr>
+													<td>	
+														<b><fmt:message key="numero"/>:</b> (${telefone.ddd}) ${telefone.numero}
+													</td>
+													<td>
+														<b><fmt:message key="tipo"/>:</b> ${telefone.tipo.descricao}
+													</td>
+													
+											</tr>
+										</c:forEach>
+			                		</thead>
+								</table>
+							</c:if>
+							<b> <fmt:message key="email"/>: </b>${sessionScope.email}<br/><br/>
+	                    </div>
+	                    <div style="clear:both;"></div>
+	                </div>
+                    <div style="clear:both;"></div>
+               </div> <!-- module -->
+               <div style="clear:both;"></div>
+		</div> <!-- End .grid_12 -->
+        
         
           <!-- Form elements -->    
             <div class="grid_12">
@@ -26,6 +72,7 @@
                      <h2><span><fmt:message key="cadastroAluno" /></span></h2>
                         
                      <div class="module-body">
+                     
                         <form action="cadastroAluno.do?codigo=${param.codigo }" method="post">
                    
                         	<input type="hidden" name="pg" value="2"/>
@@ -98,8 +145,8 @@
                             </p>
                             
                             <fieldset>
-                                <input class="submit-green" type="submit" value="<fmt:message key="bt_enviar"/>" /> 
-                                <input class="submit-gray" type="submit" value="<fmt:message key="bt_cancelar"/>" />
+                                <input class="submit-green" type="submit" value="<fmt:message key="bt_enviar"/>" name="enviar" /> 
+                                <input class="submit-gray" type="submit" value="<fmt:message key="back"/>" name="voltar" />
                             </fieldset>
                             
                         </form>
