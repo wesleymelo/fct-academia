@@ -167,8 +167,8 @@
 					</p>
 
 					<fieldset>
-						<input class="submit-green" type="submit" value="<fmt:message key="bt_proximo"/>" name="enviar"/> <input
-						class="submit-gray" type="submit" value="<fmt:message key="back"/>" name="voltar" />
+						<input class="submit-green" type="submit" value="<fmt:message key="bt_proximo"/>" name="enviar"/> 
+						<input class="submit-gray" type="submit" value="<fmt:message key="back"/>" name="voltar" />
 					</fieldset>
 
 				</form>
