@@ -103,8 +103,8 @@ public class Util {
 		String nome = (String) req.getSession().getAttribute("nome");
 		String cpf = (String) req.getSession().getAttribute("cpf");
 		EnumTypeSexo sexo = (EnumTypeSexo) req.getSession().getAttribute("sexo");
-		java.sql.Date dataNasc = (java.sql.Date) req.getSession().getAttribute("dataNasc");
-		java.sql.Date dataCadas = (java.sql.Date) req.getSession().getAttribute("dataCadas");
+		java.sql.Date dataNasc = formatDateIn(req.getSession().getAttribute("dataNasc").toString());
+		java.sql.Date dataCadas = formatDateIn(req.getSession().getAttribute("dataCadas").toString());
 		String email = (String) req.getSession().getAttribute("email");
 		List<Telefone> telefones = (List<Telefone>) req.getSession().getAttribute("telefones");
 		double altura = Double.parseDouble((String)req.getSession().getAttribute("altura"));
@@ -183,12 +183,13 @@ public class Util {
 	public static Professor getCadastroProfessor(HttpServletRequest req) {
 		String nome = (String) req.getSession().getAttribute("nome");
 		String cpf = (String) req.getSession().getAttribute("cpf");
-		EnumTypeSexo sexo = EnumTypeSexo.findByCodigo( req.getSession().getAttribute("sexo").toString().charAt(0) );
-		Date dataNasc = formatDateIn((String)req.getSession().getAttribute("dataNasc"));
-		Date dataCadas = (Date) req.getSession().getAttribute("dataCadas");
+		EnumTypeSexo sexo = (EnumTypeSexo) req.getSession().getAttribute("sexo");
+		java.sql.Date dataNasc = formatDateIn(req.getSession().getAttribute("dataNasc").toString());
+		java.sql.Date dataCadas = formatDateIn(req.getSession().getAttribute("dataCadas").toString());
 		String email = (String) req.getSession().getAttribute("email");
 		List<Telefone> telefones = (List<Telefone>) req.getSession().getAttribute("telefones");
-		Date dataAdmissao = formatDateIn((String)req.getSession().getAttribute("dataAdmissao"));
+		java.sql.Date dataAdmissao = formatDateIn(req.getSession().getAttribute("dataAdmissao").toString());
+		System.out.println(formatDateIn(req.getSession().getAttribute("dataAdmissao").toString()));
 		String dataAdmissaoString = (String) req.getSession().getAttribute("dataAdmissao");
 		Professor professor = new Professor(EnumTypePessoa.PROFESSOR, dataCadas, nome, cpf, sexo, dataNasc, null, telefones, email, true, dataAdmissao,dataAdmissaoString); 
 		return professor;
