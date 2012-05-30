@@ -20,8 +20,6 @@ public class TelefoneDAOConexao implements TelefoneDAO{
 		int retorno;
 		PreparedStatement ps;
 		
-		System.out.println(telefone.getDdd());
-		
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1,Factory.initPessoaDAO().findLastId());
@@ -35,6 +33,7 @@ public class TelefoneDAOConexao implements TelefoneDAO{
 		}
 		return retorno == 0 ? false: true;
 	}
+	
 	
 	public boolean insert(List<Telefone> telefones) throws DAOException{
 	
@@ -68,6 +67,7 @@ public class TelefoneDAOConexao implements TelefoneDAO{
 		Connection con = MyConnection.init();
 		int retorno;
 		PreparedStatement ps;
+		
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setString(1,telefone.getDdd());
@@ -79,6 +79,7 @@ public class TelefoneDAOConexao implements TelefoneDAO{
 			e.printStackTrace();
 			throw new DAOException(e,"ERRO! UPDATE na TABELA TELEFONES. DATA("+new java.util.Date()+")");
 		}
+			
 		return retorno == 0 ? false: true;
 		
 	}
