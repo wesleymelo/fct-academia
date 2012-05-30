@@ -5,6 +5,14 @@
 
 <c:import url="../../includes/header.jsp" />
 
+<script type="text/javascript">
+	function abrir(programa,janela)
+	{
+   		if(janela=="") janela = "janela";
+   			window.open(programa,janela,'height=350,width=640');
+	}
+</script>
+
 <div class="container_12">
 	
 	<div class="grid_12">
@@ -45,19 +53,24 @@
 
 				<form action="cadastroAcesso.do" method="post">
 					
-					<input type="hidden" name="idSecretaria" id="idSecretaria" value="${id}" />
+					<input type="hidden" name="idSecretaria" id="idSecretaria" value="${idSecretaria}" />
 					
 					<p>
                         <label><fmt:message key="secretaria"/></label>
                         <input type="text" class="input-short" name="secretaria" id="secretaria" readonly="readonly" value="${secretaria}" /><a href="javascript:abrir('buscaSecretariaAcesso.do')"> <fmt:message key="buscar"/> </a>
-                        <c:if test="${not empty erros['errosecretaria'] }">
-							<span class="notification-input ni-error"><fmt:message key="secretaria_invalido"/></span>
-						</c:if>                        
+                        <c:choose>
+	                        <c:when test="${not empty erros['errosecretaria'] }">
+								<span class="notification-input ni-error"><fmt:message key="secretaria_invalido"/></span>
+							</c:when>
+							<c:when test="${not empty erros['errosecretariaexistente'] }">
+								<span class="notification-input ni-error"><fmt:message key="usuarioduplicado"/></span>
+							</c:when>  
+						</c:choose>                      
 					</p>
 					
 					<p>
 						<label><fmt:message key="senha"/></label>
-						<input type="text" class="input-short" name="senha" id="senha" value="${senha}"/>
+						<input type="password" class="input-short" name="senha" id="senha" value="${senha}"/>
 						<c:if test="${not empty erros['errosenha'] }">
 							<span class="notification-input ni-error"><fmt:message key="senha_invalida"/></span>
 						</c:if>
@@ -65,7 +78,7 @@
 					
 					<p>
 						<label><fmt:message key="repetesenha"/></label>
-						<input type="text" class="input-short" name="repetesenha" id="repetesenha" value="${repetesenha}"/>
+						<input type="password" class="input-short" name="repetesenha" id="repetesenha" value="${repetesenha}"/>
 						<c:if test="${not empty erros['errorepetesenha'] }">
 							<span class="notification-input ni-error"><fmt:message key="repetesenha_invalida"/></span>
 						</c:if>
