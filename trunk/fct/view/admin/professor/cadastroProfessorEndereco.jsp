@@ -32,6 +32,7 @@
 		                    <b> <fmt:message key="cpf"/>: </b>${sessionScope.cpf} <br/><br/> 
 		                    <b> <fmt:message key="altura"/>: </b>${sessionScope.altura}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		                    <b><fmt:message key="peso"/>: </b>${sessionScope.peso} kg<br/><br/><br/>
+		                    <b><fmt:message key="dataAdmissao"/>: </b>${sessionScope.dataAdmissao} <br/><br/><br/>
 		                           
 		                	<h4>
 								<fmt:message key="contatos"/>

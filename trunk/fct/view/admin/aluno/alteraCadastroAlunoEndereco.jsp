@@ -28,8 +28,6 @@
 									<b><fmt:message key="sexo"/>: </b><fmt:message key="masculino"/><br/><br/>
 								</c:otherwise>
 							</c:choose>
-							
-							<b><fmt:message key="sexo"/>: </b>${sessionScope.sexo}<br/><br/>
 		                    <b> <fmt:message key="cpf"/>: </b>${sessionScope.cpf} <br/><br/> 
 		                    <b> <fmt:message key="altura"/>: </b>${sessionScope.altura}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		                    <b><fmt:message key="peso"/>: </b>${sessionScope.peso} kg<br/><br/><br/>
