@@ -171,8 +171,8 @@
 					</p>
 
 					<fieldset>
-						<input class="submit-green" type="submit" value="<fmt:message key="bt_alterar_endereco"/>" /> 
-						<input class="submit-gray" type="submit" value="<fmt:message key="bt_cancelar"/>" />
+						<input class="submit-green" type="submit" value="<fmt:message key="bt_alterar_endereco"/>" name="enviar" /> 
+						<input class="submit-gray" type="submit" value="<fmt:message key="back"/>" name="voltar"/>
 					</fieldset>
 
 				</form>
