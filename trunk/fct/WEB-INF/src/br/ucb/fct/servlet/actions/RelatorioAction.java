@@ -34,38 +34,35 @@ public class RelatorioAction implements Action {
 			String url= new String();
 			List<?> acessa= null;
 			Integer i=Integer.parseInt(req.getParameter("relatorio"));
-			System.out.println(i);
-			System.out.println("OLÁAAAAAAAAAAAAAAAAA ESTOU AQUIIIIIIIII   "+i);
 			switch (i) {
 			case 1:
-				url="view/jasper/reportAluno.jasper";
+				url=EnumRelatorio.ALUNO.getRelatorio();
 				acessa=Factory.initAlunoDAO().selectAll();
 				break;
 			case 2:
-				url="view/jasper/reportProfessores.jasper";
+				url=EnumRelatorio.PROFESSOR.getRelatorio();
 				acessa=Factory.initProfessorDAO().selectAll();
 				break;
 			case 3:
-				url="view/jasper/reportTurmas.jasper";
+				url=EnumRelatorio.TURMA.getRelatorio();
 				acessa=Factory.initTurmaDAO().selectAll();
 				break;
 			case 4:
-				url="view/jasper/reportModalidades.jasper";
+				url=EnumRelatorio.MODALIDADE.getRelatorio();
 				acessa=Factory.initModalidadeDAO().selectAll();
 				break;
 			case 5:
-				url="view/jasper/reportPagamentos.jasper";
+				url=EnumRelatorio.PAGAMENTO.getRelatorio();
 				acessa=Factory.initPagamentoDAO().selectAll();
 				break;
 			case 6:
-				url="view/jasper/reportGastos.jasper";
+				url=EnumRelatorio.GASTO.getRelatorio();
 				acessa=Factory.initGastoDAO().selectAll();
 				break;
-			default:
-				url="view/jasper/reportDespesas.jasper";
+			case 7:
+				url=EnumRelatorio.DESPESA.getRelatorio();
 				acessa=Factory.initDespesaDAO().selectAll();
 			}
-
 			JasperPrint print = JasperFillManager.fillReport(req.getSession().
 					getServletContext().getRealPath(url)/*chama relatorio*/
 					, null, 
