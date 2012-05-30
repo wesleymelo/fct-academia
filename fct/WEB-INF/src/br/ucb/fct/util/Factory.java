@@ -1,5 +1,7 @@
 package br.ucb.fct.util;
 
+import br.ucb.fct.acesso.AcessoDAO;
+import br.ucb.fct.acesso.AcessoDAOConexao;
 import br.ucb.fct.aluno.AlunoDAO;
 import br.ucb.fct.aluno.AlunoDAOConexao;
 import br.ucb.fct.despesa.DespesaDAO;
@@ -37,6 +39,10 @@ public class Factory {
 	
 	public static TelefoneDAO initTelefoneDAO(){
 		return new TelefoneDAOConexao();
+	}
+	
+	public static AcessoDAO initAcessoDAO(){
+		return new AcessoDAOConexao();
 	}
 	
 	public static ModalidadeDAO initModalidadeDAO(){

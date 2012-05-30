@@ -211,6 +211,28 @@ public class GeraErros {
 			Util.putAtribuRequisicaoGraducao(req);
 		return erros;
 	}
+	
+	public static Map<String, String> verificaErrosAcesso(HttpServletRequest req) {
+		
+		Map<String, String> erros = new HashMap<String, String>();
+		if(!Validator.isStringValid(req.getParameter("secretaria"), 255))
+			erros.put("errosecretaria","secretaria_invalida");
+		else{
+			if(Factory.initAcessoDAO().findByUsuario(Integer.parseInt(req.getParameter("idSecretaria"))) != null)
+				erros.put("errosecretariaexistente", "usuarioduplicado");
+			else{
+				if(!Validator.isStringValid(req.getParameter("senha"), 255))
+					erros.put("errosenha","senha_invalido");
+				if(!Validator.isStringValid(req.getParameter("repetesenha"), 255	))
+					erros.put("errorepetesenha","repetesenha_invalido");
+				if(!req.getParameter("repetesenha").equals(req.getParameter("senha")))
+					erros.put("errorepetesenha","senhasdiferentes_invalida");
+			}
+		}
+		if(!erros.isEmpty())
+			Util.putAtribuRequisicaoAcesso(req);
+		return erros;
+	}
 
 	public static Map<String, String> verificaErrosPacote(HttpServletRequest req) {
 		Map<String, String> erros = new HashMap<String, String>();

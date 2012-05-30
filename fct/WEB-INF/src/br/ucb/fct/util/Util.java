@@ -292,10 +292,21 @@ public class Util {
 		return new Graduacao(Integer.parseInt(req.getParameter("modali")), req.getParameter("descricao"));
 	}
 	
+	public static Acesso getCadastroAcesso(HttpServletRequest req) {
+		return new Acesso(Integer.parseInt(req.getParameter("idSecretaria")), req.getParameter("senha"));
+	}
+	
 	public static void putAtribuRequisicaoGraducao(HttpServletRequest req){
 		req.setAttribute("descricao", req.getParameter("descricao"));
 		req.setAttribute("modali", req.getParameter("modali"));
 		req.setAttribute("modalidades", Factory.initModalidadeDAO().selectAll());
+	}
+	
+	public static void putAtribuRequisicaoAcesso(HttpServletRequest req){
+		req.setAttribute("idSecretaria", req.getParameter("idSecretaria"));
+		req.setAttribute("secretaria", req.getParameter("secretaria"));
+		req.setAttribute("senha", req.getParameter("senha"));
+		req.setAttribute("repetesenha", req.getParameter("repetesenha"));
 	}
 
 	public static void putAtribuRequisicaoGraducao(HttpServletRequest req, Graduacao graduacao){
