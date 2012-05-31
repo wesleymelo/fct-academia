@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 import br.ucb.fct.connection.MyConnection;
+import br.ucb.fct.despesa.Despesa;
 import br.ucb.fct.exceptions.DAOException;
 import br.ucb.fct.util.Factory;
 
@@ -115,6 +116,25 @@ public class GraduacaoDAOConexao implements GraduacaoDAO {
 			throw new DAOException(e,"ERRO! SELECT_BY_ID na TABELA GRADUACOES. DATA("+new java.util.Date()+")");
 		}
 		return graduacao;
+	}
+	
+	@Override
+	public List<Graduacao> selectByDesc(String desc) throws DAOException {
+		String sql = "SELECT * FROM graduacoes WHERE descricao LIKE '%"+desc+"%'";
+		List<Graduacao> graduacoes = new ArrayList<Graduacao>();
+		Connection con = MyConnection.init();		
+		Statement stm = null;
+		ResultSet rs = null;
+		try {
+			stm = con.prepareStatement(sql);
+			rs = stm.executeQuery(sql);
+			while(rs.next())
+				graduacoes.add(getGraduacao(rs));
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException(e,"ERRO! SELECTBYNOME na TABELA ALUNOS e PESSOAS. DATA("+new Date()+")");
+		}
+		return graduacoes;
 	}
 	
 	public Graduacao getGraduacao(ResultSet rs) throws SQLException{
