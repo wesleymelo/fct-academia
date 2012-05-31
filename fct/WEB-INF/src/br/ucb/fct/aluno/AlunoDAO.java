@@ -14,9 +14,13 @@ public interface AlunoDAO {
 	public Aluno selectById(int id) throws DAOException;
 	public List<Aluno> selectByNome(String nome) throws DAOException;
 	public List<Turma> selectTurmasById(int id) throws DAOException;
+
+	public boolean desativa(int id) throws DAOException;
+
 	boolean hasGraduacaoInAluno(int idAluno, int idGraduacao)
 			throws DAOException;
 	public boolean insertGraducaoAluno(int idAluno, int idGraduacao)
 			throws DAOException;
 	List<Graduacao> selectGraducoesById(int id) throws DAOException;
+
 }
