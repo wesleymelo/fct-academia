@@ -56,8 +56,8 @@
 					</p>
 										
 					<fieldset>
-						<input class="submit-green" type="submit" value="<fmt:message key="cadastrar"/>" /> <input
-						class="submit-gray" type="reset" value="<fmt:message key="limpar"/>" />
+						<input class="submit-green" type="submit" value="<fmt:message key="cadastrar"/>" /> 
+						<input class="submit-gray" type="reset" value="<fmt:message key="limpar"/>" />
 					</fieldset>
 
 				</form>

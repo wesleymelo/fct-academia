@@ -5,6 +5,16 @@
 
 <c:import url="../../includes/header.jsp" />
 
+
+<script type="text/javascript">
+	function abrir(programa,janela)
+	{
+   		if(janela=="") janela = "janela";
+   			window.open(programa,janela,'height=350,width=640');
+	}
+</script>
+
+
 <div class="container_12">
 	
 	<div class="grid_12">
@@ -60,13 +70,19 @@
 							<span class="notification-input ni-error"><fmt:message key="preco_invalido"/></span>
 						</c:if>
 					</p>
+					
+					<a href="javascript:abrir('buscaModalidades.do')"> <fmt:message key="incluirModalidade"/> </a>
 										
 					<fieldset>
-						<input class="submit-green" type="submit" value="<fmt:message key="cadastrar"/>" /> <input
-						class="submit-gray" type="reset" value="<fmt:message key="limpar"/>" />
+						<input class="submit-green" type="submit" value="<fmt:message key="cadastrar"/>" /> 
+						<input class="submit-gray" type="reset" value="<fmt:message key="limpar"/>" />
 					</fieldset>
-
+					
+					
+					
+						
 				</form>
+				
 			</div>
 			<!-- End .module-body -->
 
