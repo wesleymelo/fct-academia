@@ -98,9 +98,10 @@
 								</c:if>
                             </p>
   							
-  							<label>UF
+  							<label><fmt:message key="uf" /></label>
 	  							<select class="input" name="uf" >
 										<c:forEach items="${estados }" var="estado" >
+											
 											<option value="${estado.sigla }"
 												<c:if test="${uf==estado.sigla }">
 													 selected="selected"
@@ -108,7 +109,6 @@
 											><c:out value="${estado.sigla }" /></option>
 										</c:forEach>
 								</select>
-							</label>
                             
                             
                              <p>

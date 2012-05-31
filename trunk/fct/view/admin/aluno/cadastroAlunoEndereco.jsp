@@ -110,6 +110,7 @@
   							<label><fmt:message key="uf" /></label>
 	  							<select class="input" name="uf" >
 										<c:forEach items="${estados }" var="estado" >
+											
 											<option value="${estado.sigla }"
 												<c:if test="${uf==estado.sigla }">
 													 selected="selected"
@@ -117,9 +118,7 @@
 											><c:out value="${estado.sigla }" /></option>
 										</c:forEach>
 								</select>
-							</label>
-                            
-                            
+							
                              <p>
                                 <label><fmt:message key="endereco"/></label>
                                 <input type="text" class="input-medium" name="endereco" id="endereco" value="${ endereco }" />
@@ -149,7 +148,6 @@
                             
                         </form>
                      </div> <!-- End .module-body -->
-
                 </div>  <!-- End .module -->
         		<div style="clear:both;"></div>
             </div> <!-- End .grid_12 -->
