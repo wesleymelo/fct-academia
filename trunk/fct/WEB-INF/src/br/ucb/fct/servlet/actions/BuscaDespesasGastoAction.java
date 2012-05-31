@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.ucb.fct.util.Factory;
 
-public class BuscaDespesasAction implements Action {
+public class BuscaDespesasGastoAction implements Action {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) {
@@ -13,7 +13,7 @@ public class BuscaDespesasAction implements Action {
 			req.setAttribute("despesas", Factory.initDespesaDAO().selectByDesc(req.getParameter("busca")));
 		else
 			req.setAttribute("despesas", Factory.initDespesaDAO().selectAll());
-		return "/view/admin/despesa/listaDespesas.jsp";
+		return "/view/admin/gasto/popupListaDespesas.jsp";
 	}
 
 }
