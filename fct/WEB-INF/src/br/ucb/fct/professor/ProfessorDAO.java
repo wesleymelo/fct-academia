@@ -11,4 +11,5 @@ public interface ProfessorDAO {
 	public List<Professor> selectAll() throws DAOException;
 	public List<Professor> selectByNome(String nome) throws DAOException;
 	public Professor selectById(int id) throws DAOException;
+	public boolean desativa(int id) throws DAOException;
 }
