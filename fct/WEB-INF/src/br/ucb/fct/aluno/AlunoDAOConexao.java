@@ -71,6 +71,7 @@ public class AlunoDAOConexao implements AlunoDAO {
 		return dao.desativa(id);
 	}
 	
+	@Override
 	public boolean update(Aluno aluno, int id) throws DAOException {
 		String sql = "UPDATE alunos SET peso = ?, altura = ? WHERE idAluno = ?";
 		Connection con = null;
@@ -184,7 +185,7 @@ public class AlunoDAOConexao implements AlunoDAO {
 	
 	@Override
 	public List<Graduacao> selectGraducoesById(int id) throws DAOException {
-		String sql = "SELECT * FROM alunos_graduacoes WHERE idAluno = ?;";
+		String sql = "SELECT * FROM alunos_graduacoes ag, graduacoes g WHERE ag.idGraduacao = g.idGraduacao AND idAluno = ?;";
 		Connection con = MyConnection.init();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -197,7 +198,7 @@ public class AlunoDAOConexao implements AlunoDAO {
 				graduacoes.add(getGraduacao(rs));
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DAOException(e,"ERRO! SELECT_ALUNOS na TABELA ALUNOS_TURMAS. DATA("+new Date()+")");
+			throw new DAOException(e,"ERRO! SELECT_GRADUACOESBYID na TABELA ALUNOS_GRADUACOES. DATA("+new Date()+")");
 		}finally{
 			MyConnection.closeConnection(con, ps, rs);
 		}
@@ -208,7 +209,7 @@ public class AlunoDAOConexao implements AlunoDAO {
 	@Override
 	public boolean insertGraducaoAluno(int idAluno, int idGraduacao)
 			throws DAOException {
-		String sql = "INSERT INTO alunos_graduacoes(idAluno, idGraducao) VALUES(?,?);";
+		String sql = "INSERT INTO alunos_graduacoes(idAluno, idGraduacao) VALUES(?,?);";
 		Connection con = MyConnection.init();
 		int retorno;
 		PreparedStatement ps = null;
