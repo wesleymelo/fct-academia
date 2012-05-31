@@ -271,6 +271,21 @@ public class GeraErros {
 		}
 		return erros;
 	}
+	
+	public static Map<String, String> verificaErrosGraducaoAluno(HttpServletRequest req) {
+		Map<String, String> erros = new HashMap<String, String>();
+		
+		Aluno aluno = (Aluno)req.getAttribute("aluno");
+		
+		if(!Validator.isStringValid(req.getParameter("graduacao"), 50)){
+			erros.put("errograduacao","graduacao_invalida");
+		}
+		else{
+			if(Factory.initAlunoDAO().hasGraduacaoInAluno(Integer.parseInt(req.getParameter("idAluno")), Integer.parseInt(req.getParameter("idGraduacao"))))
+				erros.put("errograduacao_duplicada","graduacao_duplicada");
+		}
+		return erros;
+	}
 
 	public static Map<String, String> verificaErrosEnvelope(HttpServletRequest req) {
 		return null;
