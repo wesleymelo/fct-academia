@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import br.ucb.fct.aluno.Aluno;
 import br.ucb.fct.connection.MyConnection;
 import br.ucb.fct.exceptions.DAOException;
 
@@ -119,6 +121,27 @@ public class DespesaDAOConexao implements DespesaDAO{
 		return despesa;
 	
 	}
+	
+	
+	@Override
+	public List<Despesa> selectByDesc(String desc) throws DAOException {
+		String sql = "SELECT * FROM despesas WHERE descricao LIKE '%"+desc+"%'";
+		List<Despesa> despesas = new ArrayList<Despesa>();
+		Connection con = MyConnection.init();		
+		Statement stm = null;
+		ResultSet rs = null;
+		try {
+			stm = con.prepareStatement(sql);
+			rs = stm.executeQuery(sql);
+			while(rs.next())
+				despesas.add(getDespesa(rs));
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException(e,"ERRO! SELECTBYNOME na TABELA ALUNOS e PESSOAS. DATA("+new Date()+")");
+		}
+		return despesas;
+	}
+	
 	
 	private Despesa getDespesa(ResultSet rs) throws SQLException {
 		return new Despesa(rs.getInt("idDespesa"),rs.getString("descricao"),rs.getInt("quantidade"));

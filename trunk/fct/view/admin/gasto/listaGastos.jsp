@@ -23,6 +23,17 @@
 						width="12" height="9" alt="<fmt:message key="new" />" /> </span>
 				</a>
 			</div>
+			
+			<form action="buscaGastos.do" method="post">
+				<fieldset>
+					<b><fmt:message key="nome" /></b> <input type="text" name="busca"
+						class="input-short" />&nbsp;&nbsp;<input class="submit-green"
+						type="submit" value="<fmt:message key="pesquisar"/>" />
+				</fieldset>
+			</form>
+			
+			
+			&nbsp;&nbsp;
 
 		</div>
 		

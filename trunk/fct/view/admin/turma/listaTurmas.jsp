@@ -25,7 +25,7 @@
 			</div>
 			<form action="buscaTurma.do" method="post">
 					<fieldset>
-						<b><fmt:message key="nome" /></b> <input type="text" name="busca"
+						<b><fmt:message key="busca" /></b> <input type="text" name="busca"
 							class="input-short" />&nbsp;&nbsp;<input class="submit-green"
 							type="submit" value="<fmt:message key="pesquisar"/>" />
 					</fieldset>
