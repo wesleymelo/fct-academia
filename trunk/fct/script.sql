@@ -468,11 +468,9 @@ CREATE  TABLE IF NOT EXISTS `academia`.`Alunos_graduacoes` (
 
   `idAluno` INT(11) NOT NULL ,
 
-  `idGraducao` INT(11) NOT NULL ,
+  `idGraduacao` INT(11) NOT NULL ,
 
-  `idModalidade` INT(11) NOT NULL ,
-
-  PRIMARY KEY (`idAluno`, `idGraducao`, `idModalidade`) ,
+  PRIMARY KEY (`idAluno`, `idGraducao`) ,
 
   INDEX `fk_Alunos_graduacoes_Alunos1` (`idAluno` ASC) ,
 
