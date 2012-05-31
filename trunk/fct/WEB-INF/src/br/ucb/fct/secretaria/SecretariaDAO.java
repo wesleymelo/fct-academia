@@ -11,4 +11,5 @@ public interface SecretariaDAO {
 	public List<Secretaria> selectAll() throws DAOException;
 	public List<Secretaria> selectByNome(String nome) throws DAOException;
 	public Secretaria selectById(int id) throws DAOException;
+	public boolean desativa(int id) throws DAOException;
 }
