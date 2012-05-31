@@ -1,14 +1,12 @@
 package br.ucb.fct.servlet.actions;
 
 import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.ucb.fct.modalidade.Modalidade;
-import br.ucb.fct.turma.Turma;
 import br.ucb.fct.util.Factory;
 import br.ucb.fct.util.GeraErros;
-import br.ucb.fct.util.Util;
 
 public class CadastroAlunoNaTurmaAction implements Action {
 
