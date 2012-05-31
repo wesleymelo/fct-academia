@@ -13,12 +13,15 @@ public class Graduacao {
 	public void setModalidadeString(String modalidadeString) {
 		this.modalidadeString = modalidadeString;
 	}
+	
 	public Integer getIdGraduacao() {
 		return idGraduacao;
 	}
+	
 	public void setIdGraduacao(Integer idGraduacao) {
 		this.idGraduacao = idGraduacao;
 	}
+	
 	public Integer getIdModalidade() {
 		return idModalidade;
 	}
