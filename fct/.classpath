@@ -13,6 +13,7 @@
 	<classpathentry kind="lib" path="WEB-INF/lib/commons-io-2.1.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/commons-logging-1.1.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/dwr.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/groovy-all-1.7.5.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/iText-2.1.7.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/jasperreports-4.0.2.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/jstl-1.2.jar"/>
