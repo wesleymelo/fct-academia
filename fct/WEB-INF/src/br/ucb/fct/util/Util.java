@@ -19,8 +19,10 @@ import br.ucb.fct.enuns.EnumAcesso;
 import br.ucb.fct.enuns.EnumTypeFone;
 import br.ucb.fct.enuns.EnumTypePessoa;
 import br.ucb.fct.enuns.EnumTypeSexo;
+import br.ucb.fct.envelope.Envelope;
 import br.ucb.fct.gasto.Gasto;
 import br.ucb.fct.graduacao.Graduacao;
+import br.ucb.fct.modalidade.Modalidade;
 import br.ucb.fct.pacote.Pacote;
 import br.ucb.fct.pagamento.Pagamento;
 import br.ucb.fct.pessoa.Pessoa;
@@ -489,6 +491,72 @@ public class Util {
 		
 	}
 	
+public static Object buscaPendencias(Aluno selectById) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public static Object buscaPendencias(Graduacao selectById) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public static Object buscaPendencias(Turma selectById) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public static Object buscaPendencias(Despesa selectById) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public static Object buscaPendencias(Pacote selectById) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public static Object buscaPendencias(Pagamento selectById) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public static Object buscaPendencias(Secretaria selectById) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public static Object buscaPendencias(Envelope selectById) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public static Object buscaPendencias(Modalidade selectById) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public static Object buscaPendencias(Gasto selectById) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public static Object buscaPendencias(Professor selectById) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 }
 
 
