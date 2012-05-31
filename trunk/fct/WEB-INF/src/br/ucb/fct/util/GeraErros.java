@@ -21,13 +21,13 @@ public class GeraErros {
 			erros.put("errocpf","cpf_invalido");
 		if(!Validator.isEmailValid(req.getParameter("email"),100))
 			erros.put("erroemail","email_invalido");
-		if(!Validator.verificaTamanho(Util.unFormat(req.getParameter("celular")),10))
+		/*if(!Validator.verificaTamanho(Util.unFormat(req.getParameter("celular")),10))
 			erros.put("errocelular", "telefone_invalido");
-		if(!Validator.verificaTamanho(Util.unFormat(req.getParameter("residencial")),10))
+		*/if(!Validator.verificaTamanho(Util.unFormat(req.getParameter("residencial")),10))
 			erros.put("erroresidencial", "telefone_invalido");
-		if(!Validator.verificaTamanho(Util.unFormat(req.getParameter("comercial")),10))
+		/*if(!Validator.verificaTamanho(Util.unFormat(req.getParameter("comercial")),10))
 			erros.put("errocomercial", "telefone_invalido");
-		if(!Validator.verificaDouble(req.getParameter("altura"),0.40,3))
+		*/if(!Validator.verificaDouble(req.getParameter("altura"),0.40,3))
 			erros.put("erroaltura", "altura_invalida");
 		if(!Validator.verificaDouble(req.getParameter("peso"),0.40,600))
 			erros.put("erropeso", "peso_invalido");	
@@ -120,19 +120,17 @@ public class GeraErros {
 			erros.put("errocpf","cpf_invalido");
 		if(!Validator.isEmailValid(req.getParameter("email"),100))
 			erros.put("erroemail","email_invalido");
-		if(!Validator.verificaTamanho(Util.unFormat(req.getParameter("celular")),10))
+		/*if(!Validator.verificaTamanho(Util.unFormat(req.getParameter("celular")),10))
 			erros.put("errocelular", "telefone_invalido");
-		if(!Validator.verificaTamanho(Util.unFormat(req.getParameter("residencial")),10))
+		*/if(!Validator.verificaTamanho(Util.unFormat(req.getParameter("residencial")),10))
 			erros.put("erroresidencial", "telefone_invalido");
-		if(!Validator.verificaTamanho(Util.unFormat(req.getParameter("comercial")),10))
+		/*if(!Validator.verificaTamanho(Util.unFormat(req.getParameter("comercial")),10))
 			erros.put("errocomercial", "telefone_invalido");
-		if(!Validator.verificaDouble(req.getParameter("salario"),1))
+		*/if(!Validator.verificaDouble(req.getParameter("salario"),1))
 			erros.put("errosalario", "salario_invalida");
 		if(!Validator.isStringValid(Util.unFormat(req.getParameter("dataAdmissao")),8))
 			erros.put("errodataAdmissao", "dataAdmissao_invalido");
-		if(!(erros.containsKey("errodataNasc")||erros.containsKey("errodataAdmissao")))
-		{
-		
+		if(!(erros.containsKey("errodataNasc")||erros.containsKey("errodataAdmissao"))){
 			if(!(Validator.verificaPeriodoData(req.getParameter("dataNasc").toString(),req.getParameter("dataAdmissao").toString() )<0))
 				erros.put("errodataAdmIguaNasc", "dataAdmissaoIgualDataNasc_invalido");
 		}
@@ -157,14 +155,13 @@ public class GeraErros {
 			erros.put("errocpf","cpf_invalido");
 		if(!Validator.isEmailValid(req.getParameter("email"),100))
 			erros.put("erroemail","email_invalido");
-		if(!Validator.verificaTamanho(Util.unFormat(req.getParameter("celular")),10))
+		/*if(!Validator.verificaTamanho(Util.unFormat(req.getParameter("celular")),10))
 			erros.put("errocelular", "telefone_invalido");
-		if(!Validator.verificaTamanho(Util.unFormat(req.getParameter("residencial")),10))
+		*/if(!Validator.verificaTamanho(Util.unFormat(req.getParameter("residencial")),10))
 			erros.put("erroresidencial", "telefone_invalido");
-		if(!Validator.verificaTamanho(Util.unFormat(req.getParameter("comercial")),10))
+		/*if(!Validator.verificaTamanho(Util.unFormat(req.getParameter("comercial")),10))
 			erros.put("errocomercial", "telefone_invalido");
-
-		if(!Validator.isStringValid(Util.unFormat(req.getParameter("dataAdmissao")),8))
+*/		if(!Validator.isStringValid(Util.unFormat(req.getParameter("dataAdmissao")),8))
 			erros.put("errodataAdmissao", "dataAdmissao_invalido");
 		if(!(erros.containsKey("errodataNasc")||erros.containsKey("errodataAdmissao")))
 			{
