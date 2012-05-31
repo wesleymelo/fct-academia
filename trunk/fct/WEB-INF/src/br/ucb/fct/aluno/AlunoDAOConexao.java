@@ -66,7 +66,11 @@ public class AlunoDAOConexao implements AlunoDAO {
 		return retorno == 0 ? false: Factory.initPessoaDAO().delete(id);
 	}
 
-	@Override
+	public boolean desativa(int id) throws DAOException {
+		PessoaDAO dao = Factory.initPessoaDAO();
+		return dao.desativa(id);
+	}
+	
 	public boolean update(Aluno aluno, int id) throws DAOException {
 		String sql = "UPDATE alunos SET peso = ?, altura = ? WHERE idAluno = ?";
 		Connection con = null;
