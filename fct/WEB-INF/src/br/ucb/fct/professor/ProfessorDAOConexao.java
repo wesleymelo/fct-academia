@@ -32,7 +32,7 @@ public class ProfessorDAOConexao implements ProfessorDAO {
 			con = MyConnection.init();
 			ps = con.prepareStatement(sql);
 			ps.setInt(1,dao.findLastId());
-			ps.setDate(2, Util.formatDateIn(professor.getDataAdmissao().toString()));
+			ps.setDate(2,professor.getDataAdmissao());
 			retorno = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -140,7 +140,7 @@ public class ProfessorDAOConexao implements ProfessorDAO {
 				             rs.getString("cpf"), 
 				             EnumTypeSexo.findByCodigo(rs.getString("sexo").charAt(0)), 
 				             rs.getDate("dataNascimento"), 
-				             Factory.initEnderecoDAO().selectById(rs.getInt("idEndereco")), 
+				             Factory.initEnderecoDAO().selectById(rs.getInt("idPessoa")), 
 				             Factory.initTelefoneDAO().selectById(rs.getInt("idPessoa")), 
 				             rs.getString("email"), 
 				             rs.getBoolean("status"), 
