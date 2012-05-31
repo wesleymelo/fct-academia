@@ -8,10 +8,12 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
 import br.ucb.fct.connection.MyConnection;
 import br.ucb.fct.enuns.EnumTypePessoa;
 import br.ucb.fct.enuns.EnumTypeSexo;
-import br.ucb.fct.exceptions.*;
+import br.ucb.fct.exceptions.DAOException;
+import br.ucb.fct.graduacao.Graduacao;
 import br.ucb.fct.pessoa.Pessoa;
 import br.ucb.fct.pessoa.PessoaDAO;
 import br.ucb.fct.turma.Turma;
@@ -176,6 +178,75 @@ public class AlunoDAOConexao implements AlunoDAO {
 		return alunos;
 	}
 	
+	@Override
+	public List<Graduacao> selectGraducoesById(int id) throws DAOException {
+		String sql = "SELECT * FROM alunos_graduacoes WHERE idAluno = ?;";
+		Connection con = MyConnection.init();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Graduacao> graduacoes = new ArrayList<Graduacao>();
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+			rs = ps.executeQuery();
+			while(rs.next())
+				graduacoes.add(getGraduacao(rs));
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException(e,"ERRO! SELECT_ALUNOS na TABELA ALUNOS_TURMAS. DATA("+new Date()+")");
+		}finally{
+			MyConnection.closeConnection(con, ps, rs);
+		}
+		return graduacoes;
+	}
+	
+	
+	@Override
+	public boolean insertGraducaoAluno(int idAluno, int idGraduacao)
+			throws DAOException {
+		String sql = "INSERT INTO alunos_graduacoes(idAluno, idGraducao) VALUES(?,?);";
+		Connection con = MyConnection.init();
+		int retorno;
+		PreparedStatement ps = null;
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt(1,idAluno);
+			ps.setInt(2,idGraduacao);
+			retorno = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException(e,"ERRO! INSERT na TABELA ALUNOS_GRADUACOES. DATA("+new Date()+")");
+		}finally{
+			MyConnection.closeConnection(con, ps);
+		}
+		return retorno == 0 ? false: true;
+	}
+	
+	
+	@Override
+	public boolean hasGraduacaoInAluno(int idAluno, int idGraduacao) throws DAOException {
+		
+		String sql = "SELECT * FROM alunos_graduacoes WHERE idAluno = ? AND idGraduacao = ?";
+		Connection con = MyConnection.init();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		boolean retorno = false;
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, idAluno);
+			ps.setInt(2, idGraduacao);
+			rs = ps.executeQuery();
+			if(rs.first())
+				retorno = true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException(e,"ERRO! HASGRADUCAOINALUNO na TABELA ALUNOS_GRADUCOES. DATA("+new Date()+")");
+		}finally{
+			MyConnection.closeConnection(con, ps, rs);
+		}
+		return retorno;
+	}
+	
 	public Turma getTurma(ResultSet rs) throws SQLException{
 		return new Turma(rs.getInt("IdTurma"), Factory.initProfessorDAO().selectById(rs.getInt("idProfessor")), Factory.initTurmaDAO().selectAlunosById(rs.getInt("IdTurma")), Factory.initModalidadeDAO().selectById(rs.getInt("idModalidade")), rs.getString("nome"), rs.getTime("horarioInicial"), rs.getTime("horarioFinal"), rs.getInt("capacidade"));
 	}
@@ -200,6 +271,13 @@ public class AlunoDAOConexao implements AlunoDAO {
 			MyConnection.closeConnection(con, ps, rs);
 		}
 		return turmas;
+	}
+	
+	public Graduacao getGraduacao(ResultSet rs) throws SQLException{
+		return new Graduacao(rs.getInt("idGraduacao"), 
+				             rs.getInt("idModalidade"),
+				             rs.getString("descricao"), 
+				             Factory.initModalidadeDAO().selectById(rs.getInt("idModalidade")).getDescricao());
 	}
 	
 }
