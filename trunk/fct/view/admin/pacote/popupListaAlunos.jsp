@@ -183,18 +183,19 @@
 </script>
 
 <script>
-function retorna(id, descricao)
+function retorna(id, nome)
         {
+           
            window.self.close();
-		   window.opener.document.getElementById('idModalidade').value = id;
-		   window.opener.document.getElementById('modalidade').value = descricao;
+		   window.opener.document.getElementById('idAluno').value = id;
+		   window.opener.document.getElementById('aluno').value = nome;
         }
 </script>
 
 </head>
 <body>
 
-		<form action="buscaProfessor.do" method="post">
+		<form action="buscaAlunoTurma.do" method="post">
                   <fieldset>
                        <b><fmt:message key="nome"/></b> <input type="text" name="busca" class="input-medium" />&nbsp;&nbsp;<input class="submit-green" type="submit" value="<fmt:message key="pesquisar"/>" />
                   </fieldset>
@@ -202,33 +203,41 @@ function retorna(id, descricao)
 
 	<!-- Example table -->
                 <div class="module">
-                	<h2><span><fmt:message key="modalidades" /></span></h2>
+                	<h2><span><fmt:message key="alunos" /></span></h2>
                     
                     <div class="module-table-body">
                     	<form action="">
-	                        <table id="myTable" class="tablesorter">
-	                        	<thead>
-	                        	
-	                                <tr>
-	                                    <th style="width: 4%">#</th>
-										<th style="width: 60%"><fmt:message key="desc" /></th>
-	                                    
-	                                </tr>
-	                            </thead>
-	                            <tbody>
-	                             	<c:forEach var="modalidade" items="${modalidades}">
-										<tr>
-											<td class="align-center">${modalidade.idModalidade}</td>
-											<td>
-												<a href="javascript:retorna('${modalidade.idModalidade}', '${modalidade.descricao}');">${modalidade.descricao}</a>
-											</td>
-										</tr>
-									</c:forEach>
-	                            </tbody>
-	                       	</table>
-                        	
-                        	
-                        	
+                        <table id="myTable" class="tablesorter">
+                        	<thead>
+                                <tr>
+                                    <th style="width: 4%">#</th>
+									<th style="width: 20%"><fmt:message key="nome" /></th>
+									<th style="width: 10%"><fmt:message key="cpf" /></th>
+									<th style="width: 15%"><fmt:message key="email" /></th>
+									<th style="width: 10%"><fmt:message key="sexo" /></th>
+									<th style="width: 10%"><fmt:message key="nascimento" /></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                             	<c:forEach var="aluno" items="${alunos}">
+									<tr>
+										<td class="align-center">${aluno.idPessoa}</td>
+										<td>
+											<a href="javascript:retorna('${aluno.idPessoa}', '${aluno.nome}');">${aluno.nome}</a>
+										</td>
+										<td>${aluno.cpf}</td>
+										<td>${aluno.email}</td>
+										<td>${aluno.sexo.descricao}</td>
+										<td>${aluno.dateNascimentoString}</td>
+									</tr>
+								</c:forEach>
+                                
+             
+                            </tbody>
+                        </table>
+                        
+                        
+                        
                         </form>
                         <div class="pager" id="pager">
                             <form action="">
