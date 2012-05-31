@@ -171,13 +171,6 @@
 							
 					</p>
 					
-					
-					
-					
-					
-					
-					
-					
 					<p>
 								<label><fmt:message key="horarioInicial" /></label> <input
 							type="text" class="input-short-short" name="horarioInicial"

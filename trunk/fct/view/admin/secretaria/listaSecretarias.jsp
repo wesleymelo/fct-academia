@@ -166,7 +166,7 @@
 								<tr>
 									<td>${secretaria.nome}</td>
 									<td>${secretaria.cpf}</td>
-									<td>${secretaria.dataNascimento}</td>
+									<td>${secretaria.dateNascimentoString}</td>
 									<td><c:forEach var="telefone" items="${secretaria.telefones}">
 											(${telefone.ddd}) ${telefone.numero} <br />
 										</c:forEach></td>
