@@ -141,13 +141,21 @@ public class CadastroProfessorAction implements Action {
 
 		List<Telefone> tel = new ArrayList<Telefone>();		
 		String [] fone;
-		fone = Util.formateTelOut(Util.unFormat(req.getParameter("celular")));		
-		tel.add(new Telefone(fone[0], fone[1], EnumTypeFone.CELULAR));		
+		if(req.getParameter("celular") != null && !Util.unFormat(req.getParameter("celular")).trim().isEmpty()){
+			fone = Util.formateTelOut(Util.unFormat(req.getParameter("celular")));		
+			tel.add(new Telefone(fone[0], fone[1], EnumTypeFone.CELULAR));
+		}
+		else
+			tel.add(new Telefone(null, null, EnumTypeFone.CELULAR));
 		fone = Util.formateTelOut(Util.unFormat(req.getParameter("residencial")));
 		tel.add(new Telefone(fone[0], fone[1], EnumTypeFone.RESIDENCIAL));
-		fone = Util.formateTelOut(Util.unFormat(req.getParameter("comercial")));
-		tel.add(new Telefone(fone[0], fone[1], EnumTypeFone.COMERCIAL));
-
+		if(req.getParameter("comercial") != null && !Util.unFormat(req.getParameter("comercial")).trim().isEmpty()){
+			fone = Util.formateTelOut(Util.unFormat(req.getParameter("comercial")));
+			tel.add(new Telefone(fone[0], fone[1], EnumTypeFone.COMERCIAL));
+		}
+		else{
+			tel.add(new Telefone(null, null, EnumTypeFone.COMERCIAL));
+		}
 		// fim telefone		
 		
 		sessao.setAttribute("telefones",tel);

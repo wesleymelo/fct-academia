@@ -9,10 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import br.ucb.fct.secretaria.Secretaria;
-import br.ucb.fct.secretaria.SecretariaDAO;
 import br.ucb.fct.endereco.Endereco;
 import br.ucb.fct.enuns.EnumTypeFone;
-import br.ucb.fct.enuns.EnumTypeSexo;
 import br.ucb.fct.telefone.Telefone;
 import br.ucb.fct.util.Factory;
 import br.ucb.fct.util.GeraErros;
@@ -49,7 +47,6 @@ public class CadastroSecretariaAction implements Action {
 				}
 			}
 		case 2:			
-			System.out.println("entrou grava");
 			if(req.getParameter("enviar") != null){
 				erros = GeraErros.verificaErrosEndereco(req);
 				if(!erros.isEmpty()){
@@ -116,11 +113,10 @@ public class CadastroSecretariaAction implements Action {
 					return "/view/admin/secretaria/alteraCadastroSecretariaEndereco.jsp";
 				}
 				else{
-					System.out.println("codigo "+req.getParameter("codigo"));
 					Endereco endereco = Util.getEnderecoCadastro(req);
 					retorno = Factory.initEnderecoDAO().update(endereco,Integer.parseInt(req.getParameter("codigo")));
 					Util.limpaAtributosRequisicao(req);
-					return "/view/admin/secretaria/listaSecretariaes.do?status="+retorno;
+					return "/view/admin/secretaria/listaSecretarias.do?status="+retorno;
 				}
 			}
 		}
@@ -141,12 +137,22 @@ public class CadastroSecretariaAction implements Action {
 
 		List<Telefone> tel = new ArrayList<Telefone>();		
 		String [] fone;
-		fone = Util.formateTelOut(Util.unFormat(req.getParameter("celular")));		
-		tel.add(new Telefone(fone[0], fone[1], EnumTypeFone.CELULAR));		
+		
+		if(req.getParameter("celular") != null && !Util.unFormat(req.getParameter("celular")).trim().isEmpty()){
+			fone = Util.formateTelOut(Util.unFormat(req.getParameter("celular")));		
+			tel.add(new Telefone(fone[0], fone[1], EnumTypeFone.CELULAR));
+		}
+		else
+			tel.add(new Telefone(null, null, EnumTypeFone.CELULAR));
 		fone = Util.formateTelOut(Util.unFormat(req.getParameter("residencial")));
 		tel.add(new Telefone(fone[0], fone[1], EnumTypeFone.RESIDENCIAL));
-		fone = Util.formateTelOut(Util.unFormat(req.getParameter("comercial")));
-		tel.add(new Telefone(fone[0], fone[1], EnumTypeFone.COMERCIAL));
+		if(req.getParameter("comercial") != null && !Util.unFormat(req.getParameter("comercial")).trim().isEmpty()){
+			fone = Util.formateTelOut(Util.unFormat(req.getParameter("comercial")));
+			tel.add(new Telefone(fone[0], fone[1], EnumTypeFone.COMERCIAL));
+		}
+		else{
+			tel.add(new Telefone(null, null, EnumTypeFone.COMERCIAL));
+		}
 
 		// fim telefone		
 		
