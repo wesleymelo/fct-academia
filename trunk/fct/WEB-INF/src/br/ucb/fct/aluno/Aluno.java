@@ -6,6 +6,7 @@ import java.util.List;
 import br.ucb.fct.endereco.Endereco;
 import br.ucb.fct.enuns.EnumTypePessoa;
 import br.ucb.fct.enuns.EnumTypeSexo;
+import br.ucb.fct.graduacao.Graduacao;
 import br.ucb.fct.pessoa.Pessoa;
 import br.ucb.fct.telefone.Telefone;
 
@@ -13,7 +14,8 @@ public class Aluno extends Pessoa{
 	
 	private Double peso;
 	private Double altura;
-	
+	private List<Graduacao> graduacoes;
+
 	public Aluno(Integer idPessoa, EnumTypePessoa tipoPessoa, Date dataCadastro, String nome,
 			String cpf, EnumTypeSexo sexo, Date dataNascimento,
 			Endereco endereco, List<Telefone> telefones,
@@ -22,6 +24,17 @@ public class Aluno extends Pessoa{
 		super(idPessoa,tipoPessoa,dataCadastro,nome, cpf, sexo, dataNascimento, endereco, telefones,email,  status, dataNascimentoString, dateCadastroString);
 		setAltura(altura);
 		setPeso(peso);
+	}
+	
+	public Aluno(Integer idPessoa, EnumTypePessoa tipoPessoa, Date dataCadastro, String nome,
+			String cpf, EnumTypeSexo sexo, Date dataNascimento,
+			Endereco endereco, List<Telefone> telefones,
+			String email, Boolean status, Double peso, Double altura, String dataNascimentoString, String dateCadastroString, List<Graduacao> graduacoes) {
+		
+		super(idPessoa,tipoPessoa,dataCadastro,nome, cpf, sexo, dataNascimento, endereco, telefones,email,  status, dataNascimentoString, dateCadastroString);
+		setAltura(altura);
+		setPeso(peso);
+		setGraduacoes(graduacoes);
 	}
 	
 	public Aluno(EnumTypePessoa tipoPessoa, Date dataCadastro, String nome,
@@ -45,6 +58,14 @@ public class Aluno extends Pessoa{
 	}
 	public void setAltura(Double altura) {
 		this.altura = altura;
+	}
+	
+	public List<Graduacao> getGraduacoes() {
+		return graduacoes;
+	}
+
+	public void setGraduacoes(List<Graduacao> graduacoes) {
+		this.graduacoes = graduacoes;
 	}
 	
 	@Override
