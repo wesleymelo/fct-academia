@@ -46,11 +46,11 @@
 	<div class="grid_12">
 
 		<div class="module">
-			 <h2><span><fmt:message key="cadastroGasto" /></span></h2>         
+			 <h2><span><fmt:message key="cadastroEnvelope" /></span></h2>         
 					
 			<div class="module-body">
 
-				<form action="cadastroGasto.do" method="post">
+				<form action="cadastroEnvelope.do" method="post">
 					
 					<input type="hidden" value="1" name="ps">
 					<input type="hidden" value="1" name="pg">
@@ -67,7 +67,7 @@
                         <label><fmt:message key="professor"/></label>
                         <input type="text" class="input-short" name="professor" id="professor" readonly="readonly" value="${professor}" /><a href="javascript:abrir('buscaProfessorEnvelope.do')"> <fmt:message key="buscar"/> </a>
                         <c:if test="${not empty erros['erroprofessor'] }">
-							<span class="notification-input ni-error"><fmt:message key="secretaria_invalido"/></span>
+							<span class="notification-input ni-error"><fmt:message key="professor_invalido"/></span>
 						</c:if>                        
 					</p>
 					
