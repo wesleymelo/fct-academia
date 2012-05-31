@@ -65,7 +65,7 @@
 					
 					<p>
                         <label><fmt:message key="despesas"/></label>
-                        <input type="text" class="input-short" name="despesa" id="despesa" readonly="readonly" value="${despesa}" /><a href="javascript:abrir('buscaDespesa.do')"> <fmt:message key="buscar"/> </a>
+                        <input type="text" class="input-short" name="despesa" id="despesa" readonly="readonly" value="${despesa}" /><a href="javascript:abrir('buscaDespesasGasto.do')"> <fmt:message key="buscar"/> </a>
                         <c:if test="${not empty erros['errodespesa'] }">
 							<span class="notification-input ni-error"><fmt:message key="secretaria_invalido"/></span>
 						</c:if>                        
