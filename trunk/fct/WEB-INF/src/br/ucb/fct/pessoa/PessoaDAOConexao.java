@@ -188,4 +188,23 @@ public class PessoaDAOConexao implements PessoaDAO {
 		return pessoa;
 	}
 
+	@Override
+	public boolean desativa(int id) throws DAOException {
+	   String sql = "UPDATE pessoas SET status = ? WHERE idPessoa = ?";
+		
+		Connection con = MyConnection.init();
+		int retorno;
+		PreparedStatement ps;
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setBoolean(1,false);
+			ps.setInt(2, id);
+			retorno = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException(e,"ERRO! DESATIVA na TABELA PESSOAS. DATA("+new java.util.Date()+")");
+		}
+		return retorno == 0 ? false: true;
+	}
+
 }
