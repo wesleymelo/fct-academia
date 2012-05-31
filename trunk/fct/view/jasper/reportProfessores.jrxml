@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportProfessores" language="groovy" pageWidth="555" pageHeight="802" columnWidth="535" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportProfessores" pageWidth="555" pageHeight="802" whenNoDataType="AllSectionsNoDetail" columnWidth="535" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
 	<property name="ireport.zoom" value="1.3310000000000006"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -20,7 +20,7 @@
 	<field name="cpf" class="java.lang.String"/>
 	<field name="email" class="java.lang.String"/>
 	<field name="endereco" class="java.lang.String"/>
-	<field name="dataAdmissaoString" class="java.lang.String"/>
+	<field name="dataAdmissao" class="java.util.Date"/>
 	<field name="telefones" class="java.util.List"/>
 	<variable name="ALUNO_COUNT" class="java.lang.Integer" calculation="Count">
 		<variableExpression><![CDATA[($V{ALUNO_COUNT}!=null && $V{ALUNO_COUNT}.intValue()==1)?"":null]]></variableExpression>
@@ -29,9 +29,9 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="127" splitType="Stretch">
+		<band height="83" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="0" y="95" width="555" height="32" forecolor="#000000" backcolor="#CC0000"/>
+				<reportElement mode="Opaque" x="0" y="49" width="556" height="32" forecolor="#000000" backcolor="#CC0000"/>
 				<textField pattern="EEEEE dd MMMMM yyyy">
 					<reportElement x="411" y="12" width="144" height="20" forecolor="#FFFFFF"/>
 					<textElement textAlignment="Right">
@@ -39,31 +39,27 @@
 					</textElement>
 					<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
 				</textField>
-				<staticText>
-					<reportElement x="0" y="0" width="140" height="32" forecolor="#FFFFFF"/>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Sofachrome Rg"/>
-					</textElement>
-					<text><![CDATA[professor]]></text>
-				</staticText>
 			</frame>
-			<image>
-				<reportElement x="0" y="0" width="555" height="95"/>
-				<imageExpression class="java.lang.String"><![CDATA["I:\\fct\\view\\images\\banner_relatorio.jpg"]]></imageExpression>
-			</image>
-			<image>
-				<reportElement x="456" y="0" width="99" height="95"/>
-				<imageExpression class="java.lang.String"><![CDATA["I:\\fct\\view\\images\\logo_relatorio.gif"]]></imageExpression>
-			</image>
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="49"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+					<paragraph lineSpacing="Fixed"/>
+				</textElement>
+				<text><![CDATA[RELATÓRIO DE PROFESSORES]]></text>
+			</staticText>
 		</band>
 	</title>
 	<pageHeader>
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="28" splitType="Stretch">
+		<band height="44" splitType="Stretch">
+			<rectangle>
+				<reportElement x="-2" y="32" width="555" height="11" backcolor="#CCCCCC"/>
+			</rectangle>
 			<staticText>
-				<reportElement x="0" y="0" width="164" height="17"/>
+				<reportElement x="1" y="0" width="164" height="32"/>
 				<box>
 					<pen lineWidth="0.75"/>
 					<topPen lineWidth="0.75"/>
@@ -72,12 +68,12 @@
 					<rightPen lineWidth="0.75"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Sofachrome Rg" size="7" isBold="true"/>
+					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[NOME]]></text>
+				<text><![CDATA[Nome]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="164" y="0" width="62" height="17"/>
+				<reportElement x="165" y="0" width="62" height="32"/>
 				<box>
 					<pen lineWidth="0.75"/>
 					<topPen lineWidth="0.75"/>
@@ -86,12 +82,12 @@
 					<rightPen lineWidth="0.75"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Sofachrome Rg" size="7" isBold="true"/>
+					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[cpf]]></text>
+				<text><![CDATA[Cpf]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="226" y="0" width="85" height="17"/>
+				<reportElement x="227" y="0" width="118" height="32"/>
 				<box>
 					<pen lineWidth="0.75"/>
 					<topPen lineWidth="0.75"/>
@@ -100,12 +96,12 @@
 					<rightPen lineWidth="0.75"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Sofachrome Rg" size="6" isBold="true"/>
+					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[data de admissão]]></text>
+				<text><![CDATA[Data de Admissão]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="311" y="0" width="64" height="17"/>
+				<reportElement x="346" y="0" width="110" height="32"/>
 				<box>
 					<pen lineWidth="0.75"/>
 					<topPen lineWidth="0.75"/>
@@ -114,12 +110,12 @@
 					<rightPen lineWidth="0.75"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Sofachrome Rg" size="6" isBold="true"/>
+					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[e-mail]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="376" y="0" width="80" height="17"/>
+				<reportElement x="457" y="0" width="99" height="32"/>
 				<box>
 					<pen lineWidth="0.75"/>
 					<topPen lineWidth="0.75"/>
@@ -128,33 +124,16 @@
 					<rightPen lineWidth="0.75"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Sofachrome Rg" size="6" isBold="true"/>
+					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[endereço]]></text>
-			</staticText>
-			<rectangle>
-				<reportElement x="0" y="17" width="555" height="11" backcolor="#CCCCCC"/>
-			</rectangle>
-			<staticText>
-				<reportElement x="456" y="0" width="99" height="17"/>
-				<box>
-					<pen lineWidth="0.75"/>
-					<topPen lineWidth="0.75"/>
-					<leftPen lineWidth="0.75"/>
-					<bottomPen lineWidth="0.75"/>
-					<rightPen lineWidth="0.75"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Bottom">
-					<font fontName="Sofachrome Rg" size="6" isBold="true"/>
-				</textElement>
-				<text><![CDATA[telefone]]></text>
+				<text><![CDATA[Telefone]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="18" splitType="Stretch">
+		<band height="30" splitType="Stretch">
 			<textField isBlankWhenNull="false">
-				<reportElement key="" style="Row" x="0" y="0" width="164" height="18"/>
+				<reportElement key="" x="0" y="0" width="164" height="30"/>
 				<box topPadding="6" leftPadding="0" bottomPadding="6">
 					<pen lineWidth="0.75" lineStyle="Double"/>
 					<topPen lineWidth="0.75" lineStyle="Double"/>
@@ -163,12 +142,12 @@
 					<rightPen lineWidth="0.75" lineStyle="Double"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font size="8"/>
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{nome}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement key="" style="Row" x="311" y="0" width="64" height="18"/>
+				<reportElement key="" x="345" y="0" width="111" height="30"/>
 				<box topPadding="6" leftPadding="0" bottomPadding="6">
 					<pen lineWidth="0.75" lineStyle="Double"/>
 					<topPen lineWidth="0.75" lineStyle="Double"/>
@@ -177,12 +156,12 @@
 					<rightPen lineWidth="0.75" lineStyle="Double"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font size="8"/>
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{email}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement key="" style="Row" x="376" y="0" width="80" height="18"/>
+				<reportElement key="" x="164" y="0" width="62" height="30"/>
 				<box topPadding="6" leftPadding="0" bottomPadding="6">
 					<pen lineWidth="0.75" lineStyle="Double"/>
 					<topPen lineWidth="0.75" lineStyle="Double"/>
@@ -191,26 +170,12 @@
 					<rightPen lineWidth="0.75" lineStyle="Double"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{endereco}]]></textFieldExpression>
-			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement key="" style="Row" x="164" y="0" width="62" height="18"/>
-				<box topPadding="6" leftPadding="0" bottomPadding="6">
-					<pen lineWidth="0.75" lineStyle="Double"/>
-					<topPen lineWidth="0.75" lineStyle="Double"/>
-					<leftPen lineWidth="0.75" lineStyle="Double"/>
-					<bottomPen lineWidth="0.75" lineStyle="Double"/>
-					<rightPen lineWidth="0.75" lineStyle="Double"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font size="8"/>
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{cpf}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement key="" style="Row" x="226" y="0" width="85" height="18"/>
+				<reportElement key="" x="226" y="0" width="120" height="30"/>
 				<box topPadding="6" leftPadding="0" bottomPadding="6">
 					<pen lineWidth="0.75" lineStyle="Double"/>
 					<topPen lineWidth="0.75" lineStyle="Double"/>
@@ -219,12 +184,12 @@
 					<rightPen lineWidth="0.75" lineStyle="Double"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font size="8"/>
+					<font size="10"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{dataAdmissaoString}]]></textFieldExpression>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{dataAdmissao}]]></textFieldExpression>
 			</textField>
 			<subreport>
-				<reportElement x="456" y="0" width="99" height="18"/>
+				<reportElement x="456" y="0" width="99" height="30"/>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "reportTelefones_subreport.jasper"]]></subreportExpression>
 			</subreport>
