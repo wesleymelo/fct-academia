@@ -13,4 +13,5 @@ public interface PessoaDAO {
 	public Pessoa selectById(int id) throws DAOException;
 	public Pessoa selectByCPF(String cpf) throws DAOException;
 	public int findLastId() throws DAOException;
+	public boolean desativa(int id) throws DAOException;
 }
