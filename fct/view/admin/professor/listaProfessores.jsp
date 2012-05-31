@@ -17,16 +17,38 @@
 				width: 650,
 				buttons: {
 					Ok: function() {
-						$( this ).dialog( "close" );
+						<c:choose>
+							<c:when test="${! empty param.excluir && param.excluir == true }">
+							  document.location.href="excluirProfessor.do?id=${professor.idPessoa}&confirma=true";
+							</c:when>
+							<c:otherwise>							       
+							       $( this ).dialog( "close" );	
+							</c:otherwise>
+						</c:choose>
+						
+						
 					}
-				}
+			      <c:if test="${! empty param.excluir && param.excluir == true }">
+					,
+					Cancela:
+						function() {
+						$( this ).dialog( "close" );
+					}	
+				  </c:if>
+				  }
 			});
 		});
 	</script>
 
 <c:if test="${! empty param.show && param.show == true}">
-<div id="dialog-message" title="<fmt:message key="visualizaProfessor"/>">
-		
+		<c:choose>
+		<c:when test="${! empty param.excluir && param.excluir == true }">
+			<div id="dialog-message"title="<fmt:message key="excluirProfessor"/>">	
+		</c:when>
+		<c:otherwise>
+			<div id="dialog-message"title="<fmt:message key="visualizaProfessor"/>">
+		</c:otherwise>
+	</c:choose>
 					<h4>
 						<fmt:message key="dadosPessoais"/>
 					</h4>
@@ -163,6 +185,7 @@
 						</thead>
 						<tbody>
 							<c:forEach var="professor" items="${professores}" varStatus="i" begin="${inicio}" end="${fim}">
+								<c:if test="${professor.status }">
 								<tr>
 									<td class="align-center">${professor.idPessoa}</td>
 									<td>${professor.nome}</td>
@@ -181,10 +204,10 @@
 											src="${pageContext.request.contextPath}/view/images/pencil.gif"
 											width="16" height="16" alt="<fmt:message key="alterar" />" /></a> 
 											
-											<a href=""><img
+											<a href="excluirProfessor.do?id=${professor.idPessoa}"><img
 											src="${pageContext.request.contextPath}/view/images/bin.gif"
 											tppabs="http://www.xooom.pl/work/magicadmin/images/bin.gif"
-											width="16" height="16" alt="<fmt:message key="excluir" />" /></a>
+											width="16" height="16" alt="<fmt:message  key="excluir"/>" /></a>
 											
 											
 											<a href="visualizaProfessor.do?id=${professor.idPessoa}"><img
@@ -192,6 +215,7 @@
 											tppabs="http://www.xooom.pl/work/magicadmin/images/view.png"
 											width="16" height="16" alt="<fmt:message key="view" />" /></a></td>
 								</tr>
+								</c:if>
 							</c:forEach>
 						</tbody>
 					</table>
