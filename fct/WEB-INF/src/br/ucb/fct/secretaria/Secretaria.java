@@ -36,12 +36,12 @@ public class Secretaria extends Pessoa{
 			Date dataNascimento, Endereco endereco,
 			List<Telefone> telefones, String email, Boolean status,
 			Date dataAdmissao, String horarioInicial, String horarioFinal,
-			String dataNascimentoString, String dateCadastroString,Double salario) {
+			String dataNascimentoString, String dateCadastroString,Double salario, String dataAdmissaoString) {
 		super(idPessoa, tipoPessoa, dataCadastro, nome, cpf, sexo,
 				dataNascimento, endereco, telefones, email, status,
 				dataNascimentoString, dateCadastroString);
 		setDataAdmissao(dataAdmissao);
-		setDataAdmissaoString(dateCadastroString);
+		setDataAdmissaoString(dataAdmissaoString);
 		setHoraInicial(horarioInicial);
 		setHoraFinal(horarioFinal);
 		setSalario(salario);
