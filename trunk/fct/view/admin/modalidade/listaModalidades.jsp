@@ -5,7 +5,41 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <c:import url="../../includes/header.jsp" />
-
+<script>
+		$(function() {
+			// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
+			$( "#dialog:ui-dialog" ).dialog( "destroy" );
+		
+			$( "#dialog-message" ).dialog({
+				modal: true,
+				height: 240,
+				width: 320,
+				buttons: {
+					Ok: function() {
+							  document.location.href="excluirModalidade.do?id=${modalidade.idModalidade}&confirma=true";
+							
+					}
+			      <c:if test="${! empty param.excluir && param.excluir == true }">
+					,
+					Cancela:
+						function() {
+						$( this ).dialog( "close" );
+					}	
+				  </c:if>
+				  }
+			});
+		});
+	</script>
+	
+	<c:if test="${! empty param.show && param.show == true}">
+			<div id="dialog-message"title="<fmt:message key="excluirModalidade"/>">	
+					<h4>
+						<fmt:message key="modalidade"/>
+					</h4>
+					
+					<b><fmt:message key="desc"/>: </b>${modalidade.descricao}<br/>
+             </div>
+	</c:if>
 <div class="container_12">
 
 	<div class="grid_12">
@@ -93,9 +127,11 @@
 											src="${pageContext.request.contextPath}/view/images/pencil.gif"
 											width="16" height="16" alt="edit" /></a> 
 											
-											<a href=""><img
+											<a href="excluirModalidade.do?id=${modalidade.idModalidade}"><img
 											src="${pageContext.request.contextPath}/view/images/bin.gif"
-											width="16" height="16" alt="delete" /></a></td>
+											tppabs="http://www.xooom.pl/work/magicadmin/images/bin.gif"
+											width="16" height="16" alt="<fmt:message  key="excluir"/>" /></a>
+											
 								</tr>
 							</c:forEach>
 						</tbody>
