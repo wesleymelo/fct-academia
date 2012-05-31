@@ -22,9 +22,8 @@
 				<form action="cadastroSecretaria.do?codigo=${codigo }" method="post">
 
 					<input type="hidden" name="pg" value="3" />
-
-
-
+					<input type="hidden" name="idPessoa" value="${idPessoa}" />
+					
 					<p>
 						<label><fmt:message key="nome" /></label> <input type="text"
 							class="input-short" name="nome" id="nome" value="${nome }" />

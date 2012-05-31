@@ -93,7 +93,7 @@
                             
                             <p>
                                 <label><fmt:message key="cep" /></label>
-                                <input type="text" class="input-short" name="cep" value="${cep }" />
+                                <input type="text" class="input-short" name="cep" value="${cep }" id="cep"/>
                                 <c:if test="${not empty erros['errocep'] }">
 									<span class="notification-input ni-error"><fmt:message key="cep_invalido"/></span>
 								</c:if>
@@ -106,12 +106,15 @@
 							</script>
   							
   							<label><fmt:message key="uf" /></label>
-	  							<select class="input" name="uf">
+	  							<select class="input" name="uf" >
 										<c:forEach items="${estados }" var="estado" >
-											<option value="${estado.sigla }"><c:out value="${estado.sigla }" /></option>
+											<option value="${estado.sigla }"
+												<c:if test="${uf==estado.sigla }">
+													 selected="selected"
+												</c:if>
+											><c:out value="${estado.sigla }" /></option>
 										</c:forEach>
 								</select>
-							</label>
                             
                             <p>
                                 <label><fmt:message key="endereco"/></label>
