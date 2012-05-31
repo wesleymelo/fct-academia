@@ -150,9 +150,7 @@
 
 			<c:set var="tamPag" value="${40}" scope="page" />
 
-
 			<c:set var="inicio" value="${pag * tamPag - tamPag}" scope="page" />
-
 
 			<c:set var="fim" value="${(pag * tamPag) - 1}" scope="page" />
 
@@ -167,7 +165,7 @@
 								<th style="width: 15%"><fmt:message  key="telefones"/></th>
 								<th style="width: 20%"><fmt:message  key="email"/></th>
 								<th style="width: 08%"><fmt:message  key="sexo"/></th>
-								<th style="width: 08%"><fmt:message  key="acoes"/></th>
+								<th style="width: 10%"><fmt:message  key="acoes"/></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -197,8 +195,12 @@
 											src="${pageContext.request.contextPath}/view/images/turma-short.png"
 											width="16" height="16" alt="<fmt:message key="view"/>" /></a>
 											
-											<a href="visualizaAluno.do?id=${aluno.idPessoa}"><img
+											<a href="${pageContext.request.contextPath}/view/admin/aluno/visualizaAluno.do?id=${aluno.idPessoa}"><img
 											src="${pageContext.request.contextPath}/view/images/view.png"
+											width="16" height="16" alt="<fmt:message key="view"/>" /></a>
+											
+											<a href="${pageContext.request.contextPath}/view/admin/aluno/carregaGraduacoesAluno.do?id=${aluno.idPessoa}"><img
+											src="${pageContext.request.contextPath}/view/images/graduacao_.png"
 											width="16" height="16" alt="<fmt:message key="view"/>" /></a>
 									</td>
 											
