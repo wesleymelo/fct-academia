@@ -10,7 +10,6 @@ import java.util.Date;
 import java.util.List;
 
 import br.ucb.fct.connection.MyConnection;
-import br.ucb.fct.despesa.Despesa;
 import br.ucb.fct.exceptions.DAOException;
 import br.ucb.fct.util.Factory;
 
@@ -143,4 +142,5 @@ public class GraduacaoDAOConexao implements GraduacaoDAO {
 				             rs.getString("descricao"), 
 				             Factory.initModalidadeDAO().selectById(rs.getInt("idModalidade")).getDescricao());
 	}
+
 }
