@@ -201,9 +201,6 @@ public class TurmaDAOConexao implements TurmaDAO{
 	public boolean insertAlunoNaTurma(int idTurma, int idAluno)
 			throws DAOException {
 		
-		System.out.println("idTurma: "+idTurma);
-		System.out.println("idAluno: "+idAluno);
-		
 		String sql = "INSERT INTO alunos_turmas(idTurma, idAluno) VALUES(?,?);";
 		Connection con = MyConnection.init();
 		int retorno;
