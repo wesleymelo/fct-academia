@@ -102,7 +102,7 @@ public class Util {
 
 		String nome = (String) req.getSession().getAttribute("nome");
 		String cpf = (String) req.getSession().getAttribute("cpf");
-		EnumTypeSexo sexo = (EnumTypeSexo) req.getSession().getAttribute("sexo");
+		EnumTypeSexo sexo = EnumTypeSexo.findByCodigo(req.getSession().getAttribute("sexo").toString().charAt(0));
 		java.sql.Date dataNasc = formatDateIn(req.getSession().getAttribute("dataNasc").toString());
 		java.sql.Date dataCadas = formatDateIn(req.getSession().getAttribute("dataCadas").toString());
 		String email = (String) req.getSession().getAttribute("email");
@@ -112,6 +112,19 @@ public class Util {
 		Aluno aluno = new Aluno(EnumTypePessoa.ALUNO, dataCadas, nome, cpf, sexo, dataNasc, null, telefones, email, true, peso, altura);
 		return aluno;
 
+	}
+	
+	public static void limpaAtributosRequisicao(HttpServletRequest req){
+		req.setAttribute("nome",null);
+		req.setAttribute("dataNasc",null);
+		req.setAttribute("sexo",null);
+		req.setAttribute("cpf",null);
+		req.setAttribute("email",null);
+		req.setAttribute("celular",null);
+		req.setAttribute("residencial",null);
+		req.setAttribute("comercial",null);
+		req.setAttribute("altura",null);
+		
 	}
 
 	public static Telefone getTelefoneCadastro(HttpServletRequest req){
@@ -166,15 +179,15 @@ public class Util {
 	public static Secretaria getCadastroSecretaria(HttpServletRequest req) {
 		String nome = (String) req.getSession().getAttribute("nome");
 		String cpf = (String) req.getSession().getAttribute("cpf");
-		EnumTypeSexo sexo = EnumTypeSexo.findByCodigo( req.getSession().getAttribute("sexo").toString().charAt(0));
-		Date dataCadas = (Date) req.getSession().getAttribute("dataCadas");
-		Date dataNasc = formatDateIn((String)req.getSession().getAttribute("dataNasc"));
+		EnumTypeSexo sexo = EnumTypeSexo.findByCodigo(req.getSession().getAttribute("sexo").toString().charAt(0));
+		java.sql.Date dataNasc = formatDateIn(req.getSession().getAttribute("dataNasc").toString());
+		java.sql.Date dataCadas = formatDateIn(req.getSession().getAttribute("dataCadas").toString());
 		String email = (String) req.getSession().getAttribute("email");
 		List<Telefone> telefones = (List<Telefone>) req.getSession().getAttribute("telefones"); 
 		Double salario = Double.parseDouble( req.getSession().getAttribute("salario").toString());
 		String horarioInicial = (String) req.getSession().getAttribute("horarioInicial");
 		String horarioFinal = (String) req.getSession().getAttribute("horarioFinal");
-		Date dataAdmissao = formatDateIn((String)req.getSession().getAttribute("dataAdmissao"));
+		java.sql.Date dataAdmissao = formatDateIn(req.getSession().getAttribute("dataAdmissao").toString());
 		Secretaria secretaria = new Secretaria(EnumTypePessoa.SECRETARIA, dataCadas, nome, cpf, sexo, dataNasc, null, telefones, email, true, dataAdmissao, horarioInicial, horarioFinal,salario);
 		return secretaria;
 	}
@@ -183,16 +196,16 @@ public class Util {
 	public static Professor getCadastroProfessor(HttpServletRequest req) {
 		String nome = (String) req.getSession().getAttribute("nome");
 		String cpf = (String) req.getSession().getAttribute("cpf");
-		EnumTypeSexo sexo = (EnumTypeSexo) req.getSession().getAttribute("sexo");
+		EnumTypeSexo sexo = EnumTypeSexo.findByCodigo(req.getSession().getAttribute("sexo").toString().charAt(0));
 		java.sql.Date dataNasc = formatDateIn(req.getSession().getAttribute("dataNasc").toString());
 		java.sql.Date dataCadas = formatDateIn(req.getSession().getAttribute("dataCadas").toString());
 		String email = (String) req.getSession().getAttribute("email");
 		List<Telefone> telefones = (List<Telefone>) req.getSession().getAttribute("telefones");
 		java.sql.Date dataAdmissao = formatDateIn(req.getSession().getAttribute("dataAdmissao").toString());
-		System.out.println(formatDateIn(req.getSession().getAttribute("dataAdmissao").toString()));
 		String dataAdmissaoString = (String) req.getSession().getAttribute("dataAdmissao");
 		Professor professor = new Professor(EnumTypePessoa.PROFESSOR, dataCadas, nome, cpf, sexo, dataNasc, null, telefones, email, true, dataAdmissao,dataAdmissaoString); 
 		return professor;
+		
 	}
 	
 	
@@ -206,6 +219,11 @@ public class Util {
 
 		putAtribuRequisicaoPessoa(req,professor);
 		req.setAttribute("dataAdmissao", Util.getDateView(professor.getDataAdmissao().toString(),"/"));
+	}
+	
+	public static void putAtribuRequisicaoProfessorSession(HttpServletRequest req) {
+		putAtribuRequisicaoPessoaSession(req);
+		req.setAttribute("dataAdmissao", req.getSession().getAttribute("dataAdmissao"));
 	}
 	
 	public static void putAtribuRequisicaoSecretaria(HttpServletRequest req){
@@ -227,6 +245,16 @@ public class Util {
 		
 	}
 	
+	public static void putAtribuRequisicaoSecretariaSession(HttpServletRequest req) {
+		
+		putAtribuRequisicaoPessoaSession(req);
+		req.setAttribute("salario", req.getSession().getAttribute("salario"));
+		req.setAttribute("dataAdmissao", req.getSession().getAttribute("dataAdmissao"));
+		req.setAttribute("horarioFinal", req.getSession().getAttribute("horarioFinal"));
+		req.setAttribute("horarioInicial", req.getSession().getAttribute("horarioInicial"));
+		
+	}
+	
 	public static void putAtribuRequisicaoAluno(HttpServletRequest req){
 		
 		putAtribuRequisicaoPessoa(req);
@@ -234,11 +262,18 @@ public class Util {
 		req.setAttribute("peso", req.getParameter("peso"));
 	}
 	
+	
 	public static void putAtribuRequisicaoAluno(HttpServletRequest req, Aluno aluno){
 		
 		putAtribuRequisicaoPessoa(req,aluno);
 		req.setAttribute("altura", aluno.getAltura());
 		req.setAttribute("peso", aluno.getPeso());
+	}
+	
+	public static void putAtribuRequisicaoAlunoSession(HttpServletRequest req){
+		putAtribuRequisicaoPessoaSession(req);
+		req.setAttribute("altura", req.getSession().getAttribute("altura"));
+		req.setAttribute("peso", req.getSession().getAttribute("peso"));
 	}
 	
 	
@@ -264,6 +299,20 @@ public class Util {
 		Map<String,String> tels = separaTelefones(pessoa.getTelefones(),req);
 		req.setAttribute("tel",tels);
 	}
+	
+	
+	@SuppressWarnings("unchecked")
+	private static void putAtribuRequisicaoPessoaSession(HttpServletRequest req){
+		req.setAttribute("nome", req.getSession().getAttribute("nome"));
+		req.setAttribute("dataNasc", req.getSession().getAttribute("dataNasc"));
+		req.setAttribute("sexo", req.getSession().getAttribute("sexo"));
+		req.setAttribute("cpf", req.getSession().getAttribute("cpf"));
+		req.setAttribute("email", req.getSession().getAttribute("email"));
+		List<Telefone> teles = (List<Telefone>) req.getSession().getAttribute("telefones");
+		Map<String,String> tels = separaTelefones(teles, req);
+		req.setAttribute("tel",tels);
+	}
+	
 	
 	public static void putAtribuRequisicaoPessoaEndereco(HttpServletRequest req){
 		req.setAttribute("cidade", req.getParameter("cidade"));
