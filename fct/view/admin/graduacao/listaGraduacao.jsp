@@ -6,6 +6,41 @@
 
 <c:import url="../../includes/header.jsp" />
 
+<script>
+		$(function() {
+			// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
+			$( "#dialog:ui-dialog" ).dialog( "destroy" );
+		
+			$( "#dialog-message" ).dialog({
+				modal: true,
+				height: 240,
+				width: 320,
+				buttons: {
+					Ok: function() {
+							  document.location.href="excluirGraduacao.do?id=${graduacao.idGraduacao}&confirma=true";
+							
+					}
+			      <c:if test="${! empty param.excluir && param.excluir == true }">
+					,
+					Cancela:
+						function() {
+						$( this ).dialog( "close" );
+					}	
+				  </c:if>
+				  }
+			});
+		});
+</script>
+<c:if test="${! empty param.show && param.show == true}">
+			<div id="dialog-message"title="<fmt:message key="excluirGraduacao"/>">	
+					<h4>
+						<fmt:message key="graduacao"/>
+					</h4>
+					<b><fmt:message key="modalidade"/>:</b>${graduacao.modalidadeString} <br>
+					<b><fmt:message key="desc"/>: </b>${graduacao.descricao}<br/>
+             </div>
+	</c:if>
+	
 <div class="container_12">
 
 	<div class="grid_12">
@@ -93,10 +128,10 @@
 											tppabs="http://www.xooom.pl/work/magicadmin/images/pencil.gif"
 											width="16" height="16" alt="edit" /></a> 
 											
-											<a href=""><img
+											<a href="excluirGraduacao.do?id=${gradu.idGraduacao}"><img
 											src="${pageContext.request.contextPath}/view/images/bin.gif"
 											tppabs="http://www.xooom.pl/work/magicadmin/images/bin.gif"
-											width="16" height="16" alt="delete" /></a></td>
+											width="16" height="16" alt="<fmt:message  key="excluir"/>" /></a>
 								</tr>
 							</c:forEach>
 						</tbody>
