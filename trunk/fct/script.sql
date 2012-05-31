@@ -453,22 +453,21 @@ ENGINE = InnoDB;
 
 
 
+-- -----------------------------------------------------
+
+-- Table `mydb`.`Alunos_graduacoes`
 
 -- -----------------------------------------------------
 
--- Table `academia`.`Alunos_graduacoes`
-
--- -----------------------------------------------------
-
-DROP TABLE IF EXISTS `academia`.`Alunos_graduacoes` ;
+DROP TABLE IF EXISTS `mydb`.`Alunos_graduacoes` ;
 
 
 
-CREATE  TABLE IF NOT EXISTS `academia`.`Alunos_graduacoes` (
+CREATE  TABLE IF NOT EXISTS `mydb`.`Alunos_graduacoes` (
 
   `idAluno` INT(11) NOT NULL ,
 
-  `idGraduacao` INT(11) NOT NULL ,
+  `idGraducao` INT(11) NOT NULL ,
 
   PRIMARY KEY (`idAluno`, `idGraducao`) ,
 
@@ -480,7 +479,7 @@ CREATE  TABLE IF NOT EXISTS `academia`.`Alunos_graduacoes` (
 
     FOREIGN KEY (`idAluno` )
 
-    REFERENCES `academia`.`Alunos` (`idAluno` )
+    REFERENCES `mydb`.`Alunos` (`idAluno` )
 
     ON DELETE NO ACTION
 
@@ -490,16 +489,13 @@ CREATE  TABLE IF NOT EXISTS `academia`.`Alunos_graduacoes` (
 
     FOREIGN KEY (`idGraducao` )
 
-    REFERENCES `academia`.`Graduacoes` (`idGraduacao` )
+    REFERENCES `mydb`.`Graduacoes` (`idGraduacao` )
 
     ON DELETE NO ACTION
 
     ON UPDATE NO ACTION)
 
 ENGINE = InnoDB;
-
-
-
 
 
 -- -----------------------------------------------------
