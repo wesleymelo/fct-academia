@@ -6,6 +6,42 @@
 
 <c:import url="../../includes/header.jsp" />
 
+<script>
+		$(function() {
+			// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
+			$( "#dialog:ui-dialog" ).dialog( "destroy" );
+		
+			$( "#dialog-message" ).dialog({
+				modal: true,
+				height: 240,
+				width: 320,
+				buttons: {
+					Ok: function() {
+							  document.location.href="excluirDespesa.do?id=${despesa.idModalidade}&confirma=true";
+							
+					}
+			      <c:if test="${! empty param.excluir && param.excluir == true }">
+					,
+					Cancela:
+						function() {
+						$( this ).dialog( "close" );
+					}	
+				  </c:if>
+				  }
+			});
+		});
+	</script>
+		
+	<c:if test="${! empty param.show && param.show == true}">
+			<div id="dialog-message"title="<fmt:message key="excluirModalidade"/>">	
+					<h4>
+						<fmt:message key="despesa"/>
+					</h4>
+					
+					<b><fmt:message key="desc"/>: </b>${despesa.descricao}<br/>
+             </div>
+	</c:if>
+
 <div class="container_12">
 
 	<div class="grid_12">
