@@ -455,31 +455,31 @@ ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 
--- Table `mydb`.`Alunos_graduacoes`
+-- Table `academia`.`Alunos_graduacoes`
 
 -- -----------------------------------------------------
 
-DROP TABLE IF EXISTS `mydb`.`Alunos_graduacoes` ;
+DROP TABLE IF EXISTS `academia`.`Alunos_graduacoes` ;
 
 
 
-CREATE  TABLE IF NOT EXISTS `mydb`.`Alunos_graduacoes` (
+CREATE  TABLE IF NOT EXISTS `academia`.`Alunos_graduacoes` (
 
   `idAluno` INT(11) NOT NULL ,
 
-  `idGraducao` INT(11) NOT NULL ,
+  `idGraduacao` INT(11) NOT NULL ,
 
-  PRIMARY KEY (`idAluno`, `idGraducao`) ,
+  PRIMARY KEY (`idAluno`, `idGraduacao`) ,
 
   INDEX `fk_Alunos_graduacoes_Alunos1` (`idAluno` ASC) ,
 
-  INDEX `fk_Alunos_graduacoes_Graduacoes1` (`idGraducao` ASC) ,
+  INDEX `fk_Alunos_graduacoes_Graduacoes1` (`idGraduacao` ASC) ,
 
   CONSTRAINT `fk_Alunos_graduacoes_Alunos1`
 
     FOREIGN KEY (`idAluno` )
 
-    REFERENCES `mydb`.`Alunos` (`idAluno` )
+    REFERENCES `academia`.`Alunos` (`idAluno` )
 
     ON DELETE NO ACTION
 
@@ -487,9 +487,9 @@ CREATE  TABLE IF NOT EXISTS `mydb`.`Alunos_graduacoes` (
 
   CONSTRAINT `fk_Alunos_graduacoes_Graduacoes1`
 
-    FOREIGN KEY (`idGraducao` )
+    FOREIGN KEY (`idGraduacao` )
 
-    REFERENCES `mydb`.`Graduacoes` (`idGraduacao` )
+    REFERENCES `academia`.`Graduacoes` (`idGraduacao` )
 
     ON DELETE NO ACTION
 
@@ -817,7 +817,7 @@ SHOW WARNINGS;
 
 -- -----------------------------------------------------
 
--- Table `mydb`.`estados`
+-- Table `academia`.`estados`
 
 -- -----------------------------------------------------
 
