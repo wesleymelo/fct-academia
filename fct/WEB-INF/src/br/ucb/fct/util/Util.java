@@ -34,10 +34,10 @@ import br.ucb.fct.turma.Turma;
 public class Util {
 
 	public static Date formatDateOut(String data){
-		
+
 		String dataTmp[] = data.split("-");
 		data = dataTmp[2]+"/"+dataTmp[1]+"/"+dataTmp[0];
-		
+
 		SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");  
 		Date date = null;
 		try {
@@ -47,15 +47,15 @@ public class Util {
 		}  
 		return date;
 	}
-	
-	
+
+
 	public static String getDateView(String data, String symbol){
-		
+
 		String [] d = data.split("-");
 		return d[2]	+ symbol +	d[1] + symbol +d[0];
-				
+
 	}
-	
+
 
 	public static String unFormat(String str)  {
 		if(str != null)
@@ -64,9 +64,9 @@ public class Util {
 	}
 
 	public static java.sql.Date formatDateIn(String data){
-		
+
 		data = data.substring(6, 10) + "-" + data.substring(3, 5) + "-" + data.substring(0, 2);
-		
+
 		SimpleDateFormat formatador = new SimpleDateFormat("yyyy-MM-dd");  
 		java.sql.Date date = null;
 		try {
@@ -86,12 +86,12 @@ public class Util {
 		}
 		return hour;
 	}
-	
+
 	public static String formatTimeView(String hora){
 		return hora.substring(0,5);
 	}
-	
-	
+
+
 	public static String[] formateTelOut(String tel){
 		String ddd = tel.substring(0,2);
 		String numero =  tel.substring(2);
@@ -115,7 +115,7 @@ public class Util {
 		return aluno;
 
 	}
-	
+
 	public static void limpaAtributosRequisicao(HttpServletRequest req){
 		req.setAttribute("nome",null);
 		req.setAttribute("dataNasc",null);
@@ -126,7 +126,7 @@ public class Util {
 		req.setAttribute("residencial",null);
 		req.setAttribute("comercial",null);
 		req.setAttribute("altura",null);
-		
+
 	}
 
 	public static Telefone getTelefoneCadastro(HttpServletRequest req){
@@ -151,32 +151,32 @@ public class Util {
 	}
 
 	public static Map<String,String> separaTelefones(List<Telefone> telefones, HttpServletRequest req) {
-		
+
 		Map<String, String> tels = new HashMap<String, String>();
-		
+
 		for (Telefone telefone : telefones) {
-			
+
 			if(telefone.getTipo().getNumber() == 1){
 				tels.put("celular",telefone.getDdd()+telefone.getNumero());
 				req.setAttribute("celular", telefone.getDdd()+telefone.getNumero());
 			}
-			
+
 			if(telefone.getTipo().getNumber() == 2){
 				tels.put("residencial",telefone.getDdd()+telefone.getNumero());
 				req.setAttribute("residencial", telefone.getDdd()+telefone.getNumero());
 			}
-			
+
 			if(telefone.getTipo().getNumber() == 3){
 				tels.put("comercial",telefone.getDdd()+telefone.getNumero());
 				req.setAttribute("comercial", telefone.getDdd()+telefone.getNumero());
 			}
 		}
-		
+
 		return tels;
-		
-		
+
+
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public static Secretaria getCadastroSecretaria(HttpServletRequest req) {
 		String nome = (String) req.getSession().getAttribute("nome");
@@ -207,78 +207,78 @@ public class Util {
 		String dataAdmissaoString = (String) req.getSession().getAttribute("dataAdmissao");
 		Professor professor = new Professor(EnumTypePessoa.PROFESSOR, dataCadas, nome, cpf, sexo, dataNasc, null, telefones, email, true, dataAdmissao,dataAdmissaoString); 
 		return professor;
-		
+
 	}
-	
-	
+
+
 	public static void putAtribuRequisicaoProfessor(HttpServletRequest req){
-		
+
 		putAtribuRequisicaoPessoa(req);
 		req.setAttribute("dataAdmissao", req.getParameter("dataAdmissao"));
 	}
-	
+
 	public static void putAtribuRequisicaoProfessor(HttpServletRequest req, Professor professor){
 
 		putAtribuRequisicaoPessoa(req,professor);
 		req.setAttribute("dataAdmissao", Util.getDateView(professor.getDataAdmissao().toString(),"/"));
 	}
-	
+
 	public static void putAtribuRequisicaoProfessorSession(HttpServletRequest req) {
 		putAtribuRequisicaoPessoaSession(req);
 		req.setAttribute("dataAdmissao", req.getSession().getAttribute("dataAdmissao"));
 	}
-	
+
 	public static void putAtribuRequisicaoSecretaria(HttpServletRequest req){
-		
+
 		putAtribuRequisicaoPessoa(req);
 		req.setAttribute("salario", req.getParameter("salario"));
 		req.setAttribute("dataAdmissao", req.getParameter("dataAdmissao"));
 		req.setAttribute("horarioFinal", req.getParameter("horarioFinal"));
 		req.setAttribute("horarioInicial", req.getParameter("horarioInicial"));
 	}
-	
+
 	public static void putAtribuRequisicaoSecretaria(HttpServletRequest req, Secretaria secretaria){
-		
+
 		putAtribuRequisicaoPessoa(req,secretaria);
 		req.setAttribute("salario", secretaria.getSalario());
 		req.setAttribute("dataAdmissao", secretaria.getDataAdmissaoString());
 		req.setAttribute("horarioFinal", secretaria.getHoraFinal());
 		req.setAttribute("horarioInicial", secretaria.getHoraInicial());
-		
+
 	}
-	
+
 	public static void putAtribuRequisicaoSecretariaSession(HttpServletRequest req) {
-		
+
 		putAtribuRequisicaoPessoaSession(req);
 		req.setAttribute("salario", req.getSession().getAttribute("salario"));
 		req.setAttribute("dataAdmissao", req.getSession().getAttribute("dataAdmissao"));
 		req.setAttribute("horarioFinal", req.getSession().getAttribute("horarioFinal"));
 		req.setAttribute("horarioInicial", req.getSession().getAttribute("horarioInicial"));
-		
+
 	}
-	
+
 	public static void putAtribuRequisicaoAluno(HttpServletRequest req){
-		
+
 		putAtribuRequisicaoPessoa(req);
 		req.setAttribute("altura", req.getParameter("altura"));
 		req.setAttribute("peso", req.getParameter("peso"));
 	}
-	
-	
+
+
 	public static void putAtribuRequisicaoAluno(HttpServletRequest req, Aluno aluno){
-		
+
 		putAtribuRequisicaoPessoa(req,aluno);
 		req.setAttribute("altura", aluno.getAltura());
 		req.setAttribute("peso", aluno.getPeso());
 	}
-	
+
 	public static void putAtribuRequisicaoAlunoSession(HttpServletRequest req){
 		putAtribuRequisicaoPessoaSession(req);
 		req.setAttribute("altura", req.getSession().getAttribute("altura"));
 		req.setAttribute("peso", req.getSession().getAttribute("peso"));
 	}
-	
-	
+
+
 	private static void putAtribuRequisicaoPessoa(HttpServletRequest req){
 		req.setAttribute("codigo", req.getParameter("codigo"));
 		req.setAttribute("nome", req.getParameter("nome"));
@@ -289,9 +289,9 @@ public class Util {
 		req.setAttribute("celular", req.getParameter("celular"));
 		req.setAttribute("residencial", req.getParameter("residencial"));
 		req.setAttribute("comercial", req.getParameter("comercial"));
-		
+
 	}
-	
+
 	private static void putAtribuRequisicaoPessoa(HttpServletRequest req, Pessoa pessoa){
 		req.setAttribute("nome", pessoa.getNome());
 		req.setAttribute("dataNasc", pessoa.getDateNascimentoString());
@@ -301,8 +301,8 @@ public class Util {
 		Map<String,String> tels = separaTelefones(pessoa.getTelefones(),req);
 		req.setAttribute("tel",tels);
 	}
-	
-	
+
+
 	@SuppressWarnings("unchecked")
 	private static void putAtribuRequisicaoPessoaSession(HttpServletRequest req){
 		req.setAttribute("nome", req.getSession().getAttribute("nome"));
@@ -314,8 +314,8 @@ public class Util {
 		Map<String,String> tels = separaTelefones(teles, req);
 		req.setAttribute("tel",tels);
 	}
-	
-	
+
+
 	public static void putAtribuRequisicaoPessoaEndereco(HttpServletRequest req){
 		req.setAttribute("cidade", req.getParameter("cidade"));
 		req.setAttribute("bairro", req.getParameter("bairro"));
@@ -325,9 +325,9 @@ public class Util {
 		req.setAttribute("estados", Factory.initEnderecoDAO().selectEstados());
 		req.setAttribute("numero", req.getParameter("numero"));
 		req.setAttribute("complemento", req.getParameter("complemento"));
-		
+
 	}
-	
+
 	public static void putAtribuRequisicaoPessoaEndereco(HttpServletRequest req, Endereco endereco){
 		req.setAttribute("cidade", endereco.getCidade());
 		req.setAttribute("bairro", endereco.getBairro());
@@ -338,21 +338,21 @@ public class Util {
 		req.setAttribute("numero", endereco.getNumero());
 		req.setAttribute("complemento", endereco.getComplemento());
 	}
-	
+
 	public static Graduacao getCadastroGraduacao(HttpServletRequest req) {
 		return new Graduacao(Integer.parseInt(req.getParameter("modali")), req.getParameter("descricao"));
 	}
-	
+
 	public static Acesso getCadastroAcesso(HttpServletRequest req) {
 		return new Acesso(Integer.parseInt(req.getParameter("idSecretaria")), req.getParameter("senha"));
 	}
-	
+
 	public static void putAtribuRequisicaoGraducao(HttpServletRequest req){
 		req.setAttribute("descricao", req.getParameter("descricao"));
 		req.setAttribute("modali", req.getParameter("modali"));
 		req.setAttribute("modalidades", Factory.initModalidadeDAO().selectAll());
 	}
-	
+
 	public static void putAtribuRequisicaoAcesso(HttpServletRequest req){
 		req.setAttribute("idSecretaria", req.getParameter("idSecretaria"));
 		req.setAttribute("secretaria", req.getParameter("secretaria"));
@@ -369,12 +369,12 @@ public class Util {
 	public static Pacote getCadastroPacote(HttpServletRequest req) {
 		return new Pacote(Double.parseDouble(req.getParameter("preco")), req.getParameter("descricao"));
 	}
-	
+
 	public static void putAtribuRequisicaoPacote(HttpServletRequest req) {
 		req.setAttribute("descricao", req.getParameter("descricao"));
 		req.setAttribute("preco", req.getParameter("preco"));	
 	}
-	
+
 	public static void putAtribuRequisicaoPacote(HttpServletRequest req, Pacote pacote){
 		req.setAttribute("descricao", pacote.getDescricao());
 		req.setAttribute("preco", pacote.getValor());
@@ -384,7 +384,7 @@ public class Util {
 		req.setAttribute("valorPago", req.getParameter("valorPago"));
 		req.setAttribute("dataPagamento", req.getParameter("dataPagamento"));	
 	}
-	
+
 	public static void putAtribuRequisicaoPagamento(HttpServletRequest req, Pagamento pagamento) {
 		req.setAttribute("codigo", pagamento.getIdPagamento());
 		req.setAttribute("valorPago", pagamento.getValorPago());
@@ -396,7 +396,7 @@ public class Util {
 		return new Pagamento(Double.parseDouble(req.getParameter("valorPago")), 
 				Util.formatDateIn(req.getParameter("dataPagamento")));
 	}
-	
+
 	public static void putAtribuRequisicaoTurma(HttpServletRequest req) {
 		req.setAttribute("nome",req.getParameter("nome"));
 		req.setAttribute("professor", req.getParameter("professor"));
@@ -406,9 +406,9 @@ public class Util {
 		req.setAttribute("horarioInicial", req.getParameter("horarioInicial"));
 		req.setAttribute("horarioFinal", req.getParameter("horarioFinal"));
 		req.setAttribute("capacidade", req.getParameter("capacidade"));
-		
+
 	}
-	
+
 	public static void putAtribuRequisicaoTurma(HttpServletRequest req, Turma turma) {
 		req.setAttribute("codigo",turma.getIdTurma());		
 		req.setAttribute("nome",turma.getNome());
@@ -419,31 +419,31 @@ public class Util {
 		req.setAttribute("horarioInicial", formatTimeView(turma.getHorarioInicial().toString()));
 		req.setAttribute("horarioFinal", formatTimeView(turma.getHorarioFinal().toString()));
 		req.setAttribute("capacidade", turma.getCapacidade());
-		
+
 	}
 
 
 	public static Turma getCadastroTurmas(HttpServletRequest req) {
 		return new Turma(Integer.parseInt(req.getParameter("idProfessor")), 
-				         Integer.parseInt(req.getParameter("modalidade")), 
-				         req.getParameter("nome"), 
-				         Util.formatTime(req.getParameter("horarioInicial")), 
-				         Util.formatTime(req.getParameter("horarioFinal")),
-				         Integer.parseInt(req.getParameter("capacidade")));
+				Integer.parseInt(req.getParameter("modalidade")), 
+				req.getParameter("nome"), 
+				Util.formatTime(req.getParameter("horarioInicial")), 
+				Util.formatTime(req.getParameter("horarioFinal")),
+				Integer.parseInt(req.getParameter("capacidade")));
 	}
-	
-	
+
+
 	public static void putAtribuRequisicaoDespesa(HttpServletRequest req) {
 		req.setAttribute("descricao", req.getParameter("descricao"));
 		req.setAttribute("qtde", req.getParameter("qtde"));
-		
+
 	}
-	
+
 	public static void putAtribuRequisicaoDespesa(HttpServletRequest req, Despesa despesa) {
 		req.setAttribute("codigo", despesa.getIdDespesa());
 		req.setAttribute("descricao", despesa.getDescricao());
 		req.setAttribute("qtde", despesa.getQuantidade());
-		
+
 	}
 
 
@@ -462,7 +462,7 @@ public class Util {
 		req.setAttribute("valor", req.getParameter("valor"));
 		req.setAttribute("data", req.getParameter("data"));
 	}
-	
+
 	public static void putAtribuRequisicaoGasto(HttpServletRequest req, Gasto gasto) {
 		req.setAttribute("codigo",gasto.getIdGasto());	
 		req.setAttribute("idPessoa",gasto.getIdSecretaria());
@@ -478,20 +478,38 @@ public class Util {
 
 	public static Gasto getCadastroGasto(HttpServletRequest req) {
 		return new Gasto(Integer.parseInt(req.getParameter("id")), 
-						 Double.parseDouble(req.getParameter("valor")), 
-						 Util.formatDateIn(req.getParameter("data")), 
-						 Integer.parseInt(req.getParameter("idPessoa")));
+				Double.parseDouble(req.getParameter("valor")), 
+				Util.formatDateIn(req.getParameter("data")), 
+				Integer.parseInt(req.getParameter("idPessoa")));
 	}
 
 
 	public static void putAtribuRequisicaoEnvelope(HttpServletRequest req) {
-		req.setAttribute("codigo", req.getParameter("codigo"));
-		req.setAttribute("codigo", req.getParameter("codigo"));
-		req.setAttribute("codigo", req.getParameter("id"));
-		
+		req.setAttribute("idPessoa", req.getParameter("idPessoa"));
+		req.setAttribute("secret", Factory.initSecretariaDAO().selectById(Integer.parseInt(req.getParameter("idPessoa"))));
+		req.setAttribute("idProfessor", req.getParameter("idProfessor"));
+		req.setAttribute("secretaria", req.getParameter("secretaria"));
+		req.setAttribute("professor", req.getParameter("professor"));
 	}
-	
-public static Object buscaPendencias(Aluno selectById) {
+
+	public static void putAtribuRequisicaoModalidadePacote(
+			HttpServletRequest req) {
+
+		req.setAttribute("id", req.getParameter("idPacote"));
+		req.setAttribute("idPagamento", req.getParameter("idPagamento"));
+		req.setAttribute("idModalidade", req.getParameter("idModalidade"));
+		req.setAttribute("modalidade", req.getParameter("modalidade"));
+		req.setAttribute("pagamento", req.getParameter("pagamento"));
+
+	}
+
+
+	public static Envelope getCadastroEnvelope(HttpServletRequest req) {
+
+		return new Envelope(Integer.parseInt(req.getParameter("idPessoa")), Integer.parseInt(req.getParameter("idProfessor")));
+	}
+
+	public static Object buscaPendencias(Aluno selectById) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -558,7 +576,6 @@ public static Object buscaPendencias(Aluno selectById) {
 
 
 }
-
 
 
 
