@@ -17,15 +17,38 @@
 				width: 650,
 				buttons: {
 					Ok: function() {
-						$( this ).dialog( "close" );
+						<c:choose>
+							<c:when test="${! empty param.excluir && param.excluir == true }">
+							  document.location.href="excluirSecretaria.do?id=${secretaria.idPessoa}&confirma=true";
+							</c:when>
+							<c:otherwise>							       
+							       $( this ).dialog( "close" );	
+							</c:otherwise>
+						</c:choose>
+						
+						
 					}
+			      <c:if test="${! empty param.excluir && param.excluir == true }">
+					,
+					Cancela:
+						function() {
+						$( this ).dialog( "close" );
+					}	
+				  </c:if>
 				}
 			});
 		});
 	</script>
 
 <c:if test="${! empty param.show && param.show == true}">
-<div id="dialog-message" title="<fmt:message key="visualizaSecretaria"/>">
+<c:choose>
+		<c:when test="${! empty param.excluir && param.excluir == true }">
+			<div id="dialog-message"title="<fmt:message key="excluirSecretaria"/>">	
+		</c:when>
+		<c:otherwise>
+			<div id="dialog-message"title="<fmt:message key="visualizaSecretaria"/>">
+		</c:otherwise>
+	</c:choose>
 		
 					<h4>
 						<fmt:message key="dadosPessoais"/>
@@ -163,6 +186,7 @@
 						</thead>
 						<tbody>
 							<c:forEach var="secretaria" items="${secretarias}" varStatus="i" begin="${inicio}" end="${fim}" >
+									<c:if test="${secretaria.status }">
 								<tr>
 									<td>${secretaria.nome}</td>
 									<td>${secretaria.cpf}</td>
@@ -181,7 +205,7 @@
 											tppabs="http://www.xooom.pl/work/magicadmin/images/pencil.gif"
 											width="16" height="16" alt="<fmt:message  key="alterar"/>" /></a> 
 								
-											<a href=""><img
+											<a href="excluirSecretaria.do?id=${secretaria.idPessoa}"><img
 											src="${pageContext.request.contextPath}/view/images/bin.gif"
 											tppabs="http://www.xooom.pl/work/magicadmin/images/bin.gif"
 											width="16" height="16" alt="<fmt:message  key="excluir"/>" /></a>
@@ -192,6 +216,7 @@
 									</td>
 									
 								</tr>
+								</c:if>
 							</c:forEach>
 						</tbody>
 					</table>
