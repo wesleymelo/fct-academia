@@ -161,7 +161,7 @@
 						<c:out value="${i}" />
 					</c:if>
 					<c:if test="${i != pag}">
-						<a href="${pageContext.requeaontextPath}/view/admin/pagamento/listaPagamentos.do?pag=${i}"><c:out value="${i}" /></a>
+						<a href="${pageContext.request.contextPath}/view/admin/pagamento/listaPagamentos.do?pag=${i}"><c:out value="${i}" /></a>
 					</c:if>
 					<c:if test="${i < numPags}">
 						<span>|</span>
@@ -182,8 +182,6 @@
 		</div>
 	</div>
 	<!-- End .grid_12 -->
-
-
 
 	<div style="clear: both;"></div>
 </div>
