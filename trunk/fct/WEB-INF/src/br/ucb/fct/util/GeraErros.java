@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import br.ucb.fct.pacote.Pacote;
 import br.ucb.fct.aluno.Aluno;
 import br.ucb.fct.turma.Turma;
 
@@ -289,7 +290,13 @@ public class GeraErros {
 	}
 
 	public static Map<String, String> verificaErrosEnvelope(HttpServletRequest req) {
-		return null;
+		Map<String, String> erros = new HashMap<String, String>();
+		if(!Validator.isStringValid(req.getParameter("professor"), 100))
+			erros.put("erroprofessor","professor_invalido");
+		if(!erros.isEmpty())
+			Util.putAtribuRequisicaoEnvelope(req);
+		return erros;
+		
 	}
 	
 	public static Map<String, String> verificaErrosDespesas(HttpServletRequest req) {
@@ -304,6 +311,56 @@ public class GeraErros {
 		return erros;
 		
 		
+	}
+
+	public static Map<String, String> verificaErrosModalidadeNoPacote(HttpServletRequest req) {
+		
+		Map<String, String> erros = new HashMap<String, String>();
+		Pacote pacote = (Pacote)req.getAttribute("pacote");
+		
+		if(!Validator.isStringValid(req.getParameter("modalidade"), 50)){
+			erros.put("erromodalidade","modalidade_invalido");
+		}
+		else{
+			if(Factory.initPacoteDAO().hasModalidadeInPacote(Integer.parseInt(req.getParameter("idModalidade")),Integer.parseInt(req.getParameter("idPacote"))))
+				erros.put("erromodalidade_duplicado","modalidade_duplicado");
+		}
+		if(!Validator.isStringValid(req.getParameter("pagamento"), 50)){
+			erros.put("errodatapagamento","datapagamento_invalido");
+		}
+		
+		if(!erros.isEmpty())
+			Util.putAtribuRequisicaoModalidadePacote(req);
+		
+		return erros;
+		
+	}
+
+	public static Map<String, String> verificaErrosAlunoNoPacote(HttpServletRequest req) {
+		
+		Map<String, String> erros = new HashMap<String, String>();
+		if(!Validator.isStringValid(req.getParameter("aluno"), 50)){
+			erros.put("erroaluno","aluno_invalido");
+		}
+		else{
+			if(Factory.initPacoteDAO().hasAlunoInPacote(Integer.parseInt(req.getParameter("idPacote")), Integer.parseInt(req.getParameter("idAluno"))))
+				erros.put("erroaluno_duplicado","aluno_duplicado");
+		}
+		
+		return erros;
+	}
+
+	public static Map<String, String> verificaErrosAlunoNoEnvelope(
+			HttpServletRequest req) {
+		Map<String, String> erros = new HashMap<String, String>();
+		if(!Validator.isStringValid(req.getParameter("aluno"), 50)){
+			erros.put("erroaluno","aluno_invalido");
+		}
+		else{
+			if(Factory.initEnvelopeDAO().hasAlunoInEnvelope(Integer.parseInt(req.getParameter("idEnvelope")), Integer.parseInt(req.getParameter("idAluno"))))
+				erros.put("erroaluno_duplicado","aluno_duplicado");
+		}
+		return erros;
 	}
 
 }
