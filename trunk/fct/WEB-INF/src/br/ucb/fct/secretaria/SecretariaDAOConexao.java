@@ -181,5 +181,8 @@ public class SecretariaDAOConexao implements SecretariaDAO {
 		return secretarias;
 	}
 	
-
+	public boolean desativa(int id) throws DAOException {
+		PessoaDAO dao = Factory.initPessoaDAO();
+		return dao.desativa(id);
+	}
 }
