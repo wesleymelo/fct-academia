@@ -4,19 +4,28 @@ import br.ucb.fct.professor.Professor;
 import br.ucb.fct.secretaria.Secretaria;
 
 public class Envelope {
-	
+	private Integer idEnvelope;
 	private Integer idSecretaria;
 	private Integer idProfessor;
 	private Professor professor;
 	private Secretaria secretaria;
 	
-	public Envelope(Integer idSecretaria, Integer idProfessor, Professor professor, Secretaria secretaria) {
+	public Envelope(Integer idEnvelope, Integer idSecretaria, Integer idProfessor, Professor professor, Secretaria secretaria) {
+		setIdEnvelope(idEnvelope);
 		setIdSecretaria(idSecretaria);
 		setIdProfessor(idProfessor);
 		setSecretaria(secretaria);
 		setProfessor(professor);
 	}
 	
+	public Integer getIdEnvelope() {
+		return idEnvelope;
+	}
+
+	public void setIdEnvelope(Integer idEnvelope) {
+		this.idEnvelope = idEnvelope;
+	}
+
 	public Envelope(Integer idSecretaria, Integer idProfessor) {
 		setIdSecretaria(idSecretaria);
 		setIdProfessor(idProfessor);
