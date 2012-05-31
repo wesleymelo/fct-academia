@@ -14,27 +14,52 @@
    			window.open(programa,janela,'height=350,width=640');
 	}
 </script>
-
+		
 <script>
 		$(function() {
 			// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
 			$( "#dialog:ui-dialog" ).dialog( "destroy" );
-		
+
+			
 			$( "#dialog-message" ).dialog({
 				modal: true,
 				height: 500,
 				width: 650,
 				buttons: {
+
 					Ok: function() {
-						$( this ).dialog( "close" );
+						<c:choose>
+							<c:when test="${! empty param.excluir && param.excluir == true }">
+							  document.location.href="excluirAluno.do?id=${aluno.idPessoa}&confirma=true";
+							</c:when>
+							<c:otherwise>							       
+							       $( this ).dialog( "close" );	
+							</c:otherwise>
+						</c:choose>
+						
+						
 					}
+			      <c:if test="${! empty param.excluir && param.excluir == true }">
+					,
+					Cancela:
+						function() {
+						$( this ).dialog( "close" );
+					}	
+				  </c:if>
 				}
 			});
 		});
 	</script>
 
 <c:if test="${! empty param.show && param.show == true}">
-<div id="dialog-message" title="<fmt:message key="visualizaAluno"/>">
+	<c:choose>
+		<c:when test="${! empty param.excluir && param.excluir == true }">
+			<div id="dialog-message"title="<fmt:message key="excluirAluno"/>">	
+		</c:when>
+		<c:otherwise>
+			<div id="dialog-message"title="<fmt:message key="visualizaAluno"/>">
+		</c:otherwise>
+	</c:choose>
 		
 					<h4>
 						<fmt:message key="dadosPessoais"/>
@@ -150,7 +175,9 @@
 
 			<c:set var="tamPag" value="${40}" scope="page" />
 
+
 			<c:set var="inicio" value="${pag * tamPag - tamPag}" scope="page" />
+
 
 			<c:set var="fim" value="${(pag * tamPag) - 1}" scope="page" />
 
@@ -170,6 +197,7 @@
 						</thead>
 						<tbody>
 							<c:forEach var="aluno" items="${alunos}" varStatus="i" begin="${inicio}" end="${fim}" >
+								<c:if test="${aluno.status }">
 								<tr>
 									<td><a href="">${aluno.nome}</a></td>
 									<td>${aluno.cpf}</td>
@@ -186,7 +214,7 @@
 											tppabs="http://www.xooom.pl/work/magicadmin/images/pencil.gif"
 											width="16" height="16" alt="<fmt:message  key="alterar"/>" /></a> 
 								
-											<a href=""><img
+											<a href="excluirAluno.do?id=${aluno.idPessoa}"><img
 											src="${pageContext.request.contextPath}/view/images/bin.gif"
 											tppabs="http://www.xooom.pl/work/magicadmin/images/bin.gif"
 											width="16" height="16" alt="<fmt:message  key="excluir"/>" /></a>
@@ -195,7 +223,7 @@
 											src="${pageContext.request.contextPath}/view/images/turma-short.png"
 											width="16" height="16" alt="<fmt:message key="view"/>" /></a>
 											
-											<a href="${pageContext.request.contextPath}/view/admin/aluno/visualizaAluno.do?id=${aluno.idPessoa}"><img
+											<a href="visualizaAluno.do?id=${aluno.idPessoa}"><img
 											src="${pageContext.request.contextPath}/view/images/view.png"
 											width="16" height="16" alt="<fmt:message key="view"/>" /></a>
 											
@@ -205,6 +233,7 @@
 									</td>
 											
 								</tr>
+								</c:if>
 							</c:forEach>
 						</tbody>
 					</table>
