@@ -94,8 +94,19 @@
 											
 											<a href=""><img
 											src="${pageContext.request.contextPath}/view/images/bin.gif"
-											width="16" height="16" alt="delete" /></a></td>
+											width="16" height="16" alt="delete" /></a>
+											
+											<a href="${pageContext.request.contextPath}/view/admin/pacote/carregaModalidadePacote.do?id=${pacote.idPacote }"><img
+											src="${pageContext.request.contextPath}/view/images/vinculo.png"
+											width="16" height="16" alt="delete" /></a>
+											
+											<a href="${pageContext.request.contextPath}/view/admin/pacote/carregaAlunosPacote.do?id=${pacote.idPacote }"><img
+											src="${pageContext.request.contextPath}/view/images/people.png"
+											width="16" height="16" alt="<fmt:message key="adicionarAluno"/>" /></a>
 								</tr>
+								
+								
+								
 							</c:forEach>
 						</tbody>
 					</table>

@@ -183,11 +183,11 @@
 </script>
 
 <script>
-function retorna(id, descricao)
+function retorna(idPagamento, dataPagamentoString)
         {
            window.self.close();
-		   window.opener.document.getElementById('idModalidade').value = id;
-		   window.opener.document.getElementById('modalidade').value = descricao;
+		   window.opener.document.getElementById('idPagamento').value = idPagamento;
+		   window.opener.document.getElementById('pagamento').value = dataPagamentoString;
         }
 </script>
 
@@ -211,23 +211,22 @@ function retorna(id, descricao)
 	                        	
 	                                <tr>
 	                                    <th style="width: 4%">#</th>
-										<th style="width: 60%"><fmt:message key="desc" /></th>
-	                                    
+										<th style="width: 20%"><fmt:message key="dataPagmanto"/></th>
+										<th style="width: 25%"><fmt:message key="valorPago"/></th>
 	                                </tr>
 	                            </thead>
 	                            <tbody>
-	                             	<c:forEach var="modalidade" items="${modalidades}">
+	                             	<c:forEach var="pagamento" items="${pagamentos}">
 										<tr>
-											<td class="align-center">${modalidade.idModalidade}</td>
+											<td class="align-center">${pagamento.idPagamento}</td>
 											<td>
-												<a href="javascript:retorna('${modalidade.idModalidade}', '${modalidade.descricao}');">${modalidade.descricao}</a>
+												<a href="javascript:retorna('${pagamento.idPagamento}', '${pagamento.dataPagamentoString}');">${pagamento.dataPagamentoString}</a>
 											</td>
+											<td>${pagamento.valorPago}</td>
 										</tr>
 									</c:forEach>
 	                            </tbody>
 	                       	</table>
-                        	
-                        	
                         	
                         </form>
                         <div class="pager" id="pager">

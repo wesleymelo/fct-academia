@@ -70,8 +70,7 @@
 							<span class="notification-input ni-error"><fmt:message key="preco_invalido"/></span>
 						</c:if>
 					</p>
-					
-					<a href="javascript:abrir('buscaModalidades.do')"> <fmt:message key="incluirModalidade"/> </a>
+
 										
 					<fieldset>
 						<input class="submit-green" type="submit" value="<fmt:message key="cadastrar"/>" /> 
