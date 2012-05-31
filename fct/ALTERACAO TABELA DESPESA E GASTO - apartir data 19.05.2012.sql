@@ -3,3 +3,4 @@
 
 ALTER TABLE despesas CHANGE quantidade valor DOUBLE not null;
 ALTER TABLE gastos CHANGE valor quantidade INTEGER not null; 
+ALTER TABLE despesas CHANGE idDespesa idDespesa INTEGER not null AUTO_INCREMENT;
