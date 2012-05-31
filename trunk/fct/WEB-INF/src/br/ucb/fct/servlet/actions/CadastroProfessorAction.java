@@ -65,7 +65,7 @@ public class CadastroProfessorAction implements Action {
 							retorno = Factory.initTelefoneDAO().insert(professor.getTelefones());
 					}
 					Util.limpaAtributosRequisicao(req);
-					return "/view/admin/professor/listaProfessors.do?status="+retorno;
+					return "/view/admin/professor/listaProfessores.do?status="+retorno;
 				}
 			}
 			
