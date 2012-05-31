@@ -183,5 +183,8 @@ public class ProfessorDAOConexao implements ProfessorDAO {
 		return professores;
 	}
 	
-
+	public boolean desativa(int id) throws DAOException {
+		PessoaDAO dao = Factory.initPessoaDAO();
+		return dao.desativa(id);
+	}
 }
