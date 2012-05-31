@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import br.ucb.fct.aluno.Aluno;
 import br.ucb.fct.turma.Turma;
 
 public class GeraErros {
