@@ -10,7 +10,7 @@ DROP SCHEMA IF EXISTS `academia` ;
 
 CREATE SCHEMA IF NOT EXISTS `academia` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci ;
 
-USE `academia` ;
+USE `academia` alter table;
 
 
 
